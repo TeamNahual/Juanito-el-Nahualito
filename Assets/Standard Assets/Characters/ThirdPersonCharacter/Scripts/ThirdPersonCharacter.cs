@@ -150,6 +150,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				// don't use that while airborne
 				m_Animator.speed = 1;
 			}
+			
+			// Set game camera to player
+			if (Camera.main != null)
+            {
+                Camera.main.transform.position = transform.position + new Vector3(-5, 5, -5);
+            }
 		}
 
 
