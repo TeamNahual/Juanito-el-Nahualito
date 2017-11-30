@@ -155,8 +155,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			
 			// Set game camera to player
 			if (Camera.main != null)
-            {
-                Camera.main.transform.position = transform.position + m_CamOffset;
+            {	
+				// Make the camera movement smoother and delayed
+				Vector3 cam = Camera.main.transform.position;
+				Vector3 target = transform.position + m_CamOffset;
+				float dist = (target - cam).magnitude;
+				if (dist < 0.05f) {
+					Camera.main.transform.position = target;
+				} else {
+					Vector3 dir = (target - cam) / dist;
+					Camera.main.transform.position = cam + (dir * dist / 50);
+				}
             }
 		}
 
