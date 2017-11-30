@@ -28,6 +28,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
+		Vector3 m_CamOffset = new Vector3(-5,5,-5);
 
 
 		void Start()
@@ -154,7 +155,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// Set game camera to player
 			if (Camera.main != null)
             {
-                Camera.main.transform.position = transform.position + new Vector3(-5, 5, -5);
+                Camera.main.transform.position = transform.position + m_CamOffset;
             }
 		}
 
