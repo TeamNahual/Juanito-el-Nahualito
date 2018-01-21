@@ -28,7 +28,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-		Vector3 m_CamOffset = new Vector3(5,5,-5);
+		Vector3 m_CamOffset = new Vector3(10,10,-10);
+		Vector3 m_Move = new Vector3(0,0,0);
 
 
 		void Start()
@@ -57,6 +58,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
 			// direction.
+			m_Move = move;
 			if (move.magnitude > 1f) move.Normalize();
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
@@ -213,11 +215,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// this allows us to modify the positional speed before it's applied.
 			if (m_IsGrounded && Time.deltaTime > 0)
 			{
-				Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+				//Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+				float multiplier = 2.0f;
+				m_Move.x *= multiplier;
+				m_Move.z *= multiplier;
 
 				// we preserve the existing y part of the current velocity.
-				v.y = m_Rigidbody.velocity.y;
-				m_Rigidbody.velocity = v;
+				m_Move.y = m_Rigidbody.velocity.y;
+				m_Rigidbody.velocity = m_Move;
 			}
 		}
 
