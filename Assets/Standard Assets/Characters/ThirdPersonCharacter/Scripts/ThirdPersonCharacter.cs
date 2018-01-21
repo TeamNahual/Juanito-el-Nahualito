@@ -28,7 +28,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-		Vector3 m_CamOffset = new Vector3(-5,5,-5);
+		Vector3 m_CamOffset = new Vector3(5,5,-5);
 
 
 		void Start()
@@ -52,8 +52,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// direction.
 			if (move.magnitude > 1f) move.Normalize();
 			move = transform.InverseTransformDirection(move);
-			move = Quaternion.AngleAxis(0, Vector3.up) * move;
-            CheckGroundStatus();
+			move = Quaternion.AngleAxis(315, Vector3.up) * move;
+			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			m_TurnAmount = Mathf.Atan2(move.x, move.z);
 			m_ForwardAmount = move.z;
