@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour {
 
-	public float rotationsPerMinute = 10.0f;
-	
-	void Update()
+	void Start()
 	{
-		transform.Rotate(Vector3.up * rotationsPerMinute *Time.deltaTime, Space.World);
+
+	}
+
+	void OnCollisionStay(Collision other)
+	{
+		if(other.collider.tag == "Player")
+		{
+			other.gameObject.transform.parent = transform.parent;
+		}
+	}
+
+	void OnCollisionExit(Collision other)
+	{
+		if(other.collider.tag == "Player")
+		{
+			other.gameObject.transform.parent = null;
+		}
 	}
 }

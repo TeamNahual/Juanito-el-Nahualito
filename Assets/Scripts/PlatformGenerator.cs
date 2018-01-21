@@ -39,7 +39,6 @@ public class PlatformGenerator : MonoBehaviour {
 		for(int i = 0; i < platformSpeed.Length; i++)
 		{
 			platformSpeed[i] = Random.Range(minPlatformSpeed, maxPlatformSpeed);
-			Debug.Log(platformSpeed[i]);
 		}
 
 
