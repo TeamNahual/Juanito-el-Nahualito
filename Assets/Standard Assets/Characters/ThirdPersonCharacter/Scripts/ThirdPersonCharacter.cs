@@ -28,7 +28,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-		Vector3 m_CamOffset = new Vector3(5,5,-5);
+		Vector3 m_CamOffset = new Vector3(10,10,-10);
 
 
 		void Start()
