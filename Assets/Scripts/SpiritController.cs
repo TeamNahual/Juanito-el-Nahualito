@@ -30,6 +30,9 @@ public class SpiritController : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.E))
 				{
 					Debug.Log("Object Interacted With");
+					Vector3 dir = (2 * transform.position - hit.point);
+
+					obj.transform.position = Vector3.Lerp(obj.transform.position, dir, 1);
 				}
 			}
 		}

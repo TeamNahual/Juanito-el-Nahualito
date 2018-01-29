@@ -15,6 +15,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+		[SerializeField] bool m_isAI = false;
+
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -31,7 +33,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CamOffset = new Vector3(10,10,-10);
 		Vector3 m_Move = new Vector3(0,0,0);
 
-
 		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
@@ -44,7 +45,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 			
 			// Set game camera to player
-			if (Camera.main != null)
+			if (Camera.main != null && !m_isAI)
             {	
 				Vector3 target = transform.position + m_CamOffset;
 				Camera.main.transform.position = target;
@@ -162,7 +163,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			
 			// Set game camera to player
-			if (Camera.main != null)
+			if (Camera.main != null && !m_isAI)
             {	
 				// Make the camera movement smoother and delayed
 				Vector3 cam = Camera.main.transform.position;
