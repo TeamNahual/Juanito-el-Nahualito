@@ -9,7 +9,7 @@ public class SpiritManager : MonoBehaviour {
 	public GameObject Spirit;
 
 	private float spirit_start_time;
-	private float spirit_time_limit = 30;
+	private float spirit_time_limit = 15;
 	private bool SpiritState = false;
 
 	// Use this for initialization
@@ -37,8 +37,10 @@ public class SpiritManager : MonoBehaviour {
  	{
  		if(Input.GetKeyDown(KeyCode.A))
 		{
-			if(!SpiritState)
+			Debug.Log(Juanito.ins.GetSpiritCount());
+			if(!SpiritState && Juanito.ins.GetSpiritCount() >= 3)
 			{
+				Juanito.ins.DelSpiritCount(3);
 				EnterSpiritState();
 				spirit_start_time = Time.time;
 			}

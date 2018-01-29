@@ -11,6 +11,27 @@ public class SpiritController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		InteractWithObject();
+	}
+
+	void InteractWithObject()
+	{
+		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+		Ray ray = new Ray(fwd,transform.position);
+		RaycastHit hit;
+
+		Debug.DrawRay(transform.position, fwd, Color.green);
+		if(Physics.Raycast(ray, out hit, 1))
+		{
+			EventObject obj = hit.transform.gameObject.GetComponent<EventObject>();
+
+			if(obj)
+			{
+				if(Input.GetKeyDown(KeyCode.E))
+				{
+					Debug.Log("Object Interacted With");
+				}
+			}
+		}
 	}
 }
