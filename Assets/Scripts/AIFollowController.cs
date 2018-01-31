@@ -57,26 +57,34 @@ public class AIFollowController : MonoBehaviour {
 	void FleePlayer(Transform fleeTarget)
 	{
 		Vector3 directionToPlayer = transform.position - fleeTarget.position;
-		Vector3 checkPos = transform.position + directionToPlayer;
+		Vector3 checkPos = transform.position + directionToPlayer * 6;
+
+		Vector3 scale = directionToPlayer;
+		scale.Normalize();
+
+		// Debug.Log(transform.position + directionToPlayer*2);
+
+
+		// Debug.Log("Current Position: " + transform.position + " Check Pos: " + checkPos);
 
 		NavMeshHit navHitForward, navHitLeft, navHitRight, navHitToward;
 
-		if(NavMesh.SamplePosition(checkPos, out navHitForward, 1.0f, NavMesh.AllAreas))
+		if(NavMesh.SamplePosition(checkPos, out navHitForward, 3.0f, NavMesh.AllAreas))
 		{
 			// Debug.Log("Flee Forward: " + navHitForward.position);
 		}
 		
-		if(NavMesh.SamplePosition(FleeLeft(checkPos), out navHitLeft, 1.0f, NavMesh.AllAreas))
+		if(NavMesh.SamplePosition(FleeLeft(checkPos), out navHitLeft, 3.0f, NavMesh.AllAreas))
 		{
 			// Debug.Log("Flee Left: " + navHitLeft.position);
 		}
 		
-		if(NavMesh.SamplePosition(FleeRight(checkPos), out navHitRight, 1.0f, NavMesh.AllAreas))
+		if(NavMesh.SamplePosition(FleeRight(checkPos), out navHitRight, 3.0f, NavMesh.AllAreas))
 		{
 			// Debug.Log("Flee Right: " + navHitRight.position);
 		}
 
-		if(NavMesh.SamplePosition(FleeToward(checkPos), out navHitToward, 1.0f, NavMesh.AllAreas))
+		if(NavMesh.SamplePosition(FleeToward(checkPos), out navHitToward, 3.0f, NavMesh.AllAreas))
 		{
 			// Debug.Log("Flee Right: " + navHitRight.position);
 		}
@@ -99,31 +107,56 @@ public class AIFollowController : MonoBehaviour {
 		if(maxScore != 0)
 		{
 			if(maxScore == scoreForward)
+			{
 				escapeLocation.position = navHitForward.position;
+				// Debug.Log(escapeLocation.position);
+			}
 			else if(maxScore == scoreLeft)
+			{
 				escapeLocation.position = navHitLeft.position;
+				// Debug.Log(escapeLocation.position);
+			}
 			else if(maxScore == scoreRight)
+			{
 				escapeLocation.position = navHitRight.position;
+				// Debug.Log(escapeLocation.position);
+			}
 			else if(maxScore == scoreToward)
+			{
 				escapeLocation.position = navHitToward.position;
+				//Debug.Log(escapeLocation.position);
+			}
 		}
+
+		// escapeLocation.position = navHitForward.position;
+
+		// Debug.Log("Current Position: " + transform.position + " Check Pos: " + checkPos + " Escape: " + escapeLocation.position);
+
+		Debug.Log(directionToPlayer);
 
 		if(escapeLocation)
 			aiController.SetTarget(escapeLocation);
 	}
 
 	Vector3 FleeToward(Vector3 targetPos)
-	{
-		return Quaternion.Euler(0, 50, 0) * targetPos;	
+	{	
+		Vector3 dir =  targetPos - transform.position;
+		dir = Quaternion.Euler(0, 50, 0) * dir;
+
+		return dir + transform.position;
 	}
 
 	Vector3 FleeRight(Vector3 targetPos)
 	{
-		return Quaternion.Euler(0, 44, 0) * targetPos;
+		Vector3 dir =  targetPos - transform.position;
+		dir = Quaternion.Euler(0, 44, 0) * dir;
+		return dir + transform.position;
 	}
 
 	Vector3 FleeLeft(Vector3 targetPos)
 	{
-		return Quaternion.Euler(0, -46, 0) * targetPos;
+		Vector3 dir =  targetPos - transform.position;
+		dir = Quaternion.Euler(0, -46, 0) * dir;
+		return dir + transform.position;
 	}
 }
