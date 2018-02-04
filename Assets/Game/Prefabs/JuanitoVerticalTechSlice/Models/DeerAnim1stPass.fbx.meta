@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 997d2a9bae641bc41b48df636f98a5f0
+timeCreated: 1517480000
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ArmHandleL
+    100002: ArmHandleR
+    100004: back
+    100006: //RootNode
+    100008: ElbowL
+    100010: ElbowR
+    100012: FingerL
+    100014: FingerR
+    100016: FingerTipL
+    100018: FingerTipR
+    100020: FootHandleL
+    100022: FootHandleR
+    100024: FootL
+    100026: FootR
+    100028: FootR 1
+    100030: grp1
+    100032: grp1_2
+    100034: grp1_2.001
+    100036: HandHandleL
+    100038: HandHandleR
+    100040: HandL
+    100042: HandR
+    100044: Head
+    100046: HeadHandle
+    100048: HipL
+    100050: HipR
+    100052: joint23
+    100054: KneeL
+    100056: KneeR
+    100058: LegHandleL
+    100060: LegHandleR
+    100062: Neck1
+    100064: Neck2
+    100066: Neck3
+    100068: NeckHandle
+    100070: Nose
+    100072: Root
+    100074: ShoudlerL
+    100076: ShoulderR
+    100078: Spine1
+    100080: Spine2
+    100082: Spine3
+    100084: SpineHandle
+    100086: TailBase
+    100088: TailHandle
+    100090: TailTip
+    100092: ToeL
+    100094: ToeTIpL
+    400000: ArmHandleL
+    400002: ArmHandleR
+    400004: back
+    400006: //RootNode
+    400008: ElbowL
+    400010: ElbowR
+    400012: FingerL
+    400014: FingerR
+    400016: FingerTipL
+    400018: FingerTipR
+    400020: FootHandleL
+    400022: FootHandleR
+    400024: FootL
+    400026: FootR
+    400028: FootR 1
+    400030: grp1
+    400032: grp1_2
+    400034: grp1_2.001
+    400036: HandHandleL
+    400038: HandHandleR
+    400040: HandL
+    400042: HandR
+    400044: Head
+    400046: HeadHandle
+    400048: HipL
+    400050: HipR
+    400052: joint23
+    400054: KneeL
+    400056: KneeR
+    400058: LegHandleL
+    400060: LegHandleR
+    400062: Neck1
+    400064: Neck2
+    400066: Neck3
+    400068: NeckHandle
+    400070: Nose
+    400072: Root
+    400074: ShoudlerL
+    400076: ShoulderR
+    400078: Spine1
+    400080: Spine2
+    400082: Spine3
+    400084: SpineHandle
+    400086: TailBase
+    400088: TailHandle
+    400090: TailTip
+    400092: ToeL
+    400094: ToeTIpL
+    2000000: back
+    2100000: Material.002
+    2100002: Material.001
+    4300000: grp1_2.001
+    4300002: grp1_2
+    7400000: DeerWalk
+    9500000: //RootNode
+    13700000: grp1_2
+    13700002: grp1_2.001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: DeerWalk
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

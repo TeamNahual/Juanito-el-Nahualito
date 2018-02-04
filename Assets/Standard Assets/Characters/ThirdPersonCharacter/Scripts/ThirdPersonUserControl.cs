@@ -75,7 +75,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				// walk speed multiplier
 				if (!Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
 				#endif
-				m_Move = Quaternion.AngleAxis(45, Vector3.up) * m_Move;
+				//m_Move = Quaternion.AngleAxis(45, Vector3.up) * m_Move;
 			}
 			
             // pass all parameters to the character control script

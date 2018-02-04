@@ -48,7 +48,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (Camera.main != null && !m_isAI)
             {	
 				Vector3 target = transform.position + m_CamOffset;
-				Camera.main.transform.position = target;
+				//Camera.main.transform.position = target;
             }
 		}
 
@@ -163,7 +163,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			
 			// Set game camera to player
-			if (Camera.main != null && !m_isAI)
+			/*if (Camera.main != null && !m_isAI)
             {	
 				// Make the camera movement smoother and delayed
 				Vector3 cam = Camera.main.transform.position;
@@ -175,7 +175,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 					Vector3 dir = (target - cam) / dist;
 					Camera.main.transform.position = cam + (dir * dist / 50);
 				}
-            }
+            }*/
 		}
 
 
