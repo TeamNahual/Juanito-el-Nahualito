@@ -13,18 +13,19 @@ public class SpiritController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// InteractWithObject();
+		InteractWithObject();
 	}
 
 	void InteractWithObject()
 	{
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
-		Ray ray = new Ray(fwd,transform.position);
+		Ray ray = new Ray(transform.position + Vector3.up, fwd);
 		RaycastHit hit;
 
-		Debug.DrawRay(transform.position, fwd, Color.green);
+		Debug.DrawRay(transform.position + Vector3.up, fwd, Color.green);
 		if(Physics.Raycast(ray, out hit, 1))
 		{
+			Debug.DrawLine(ray.origin, hit.point, Color.red);
 			Debug.Log(hit.transform.gameObject);
 
 			EventObject obj = hit.transform.gameObject.GetComponent<EventObject>();
