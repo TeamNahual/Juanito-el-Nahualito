@@ -57,36 +57,28 @@ public class AIFollowController : MonoBehaviour {
 	void FleePlayer(Transform fleeTarget)
 	{
 		Vector3 directionToPlayer = transform.position - fleeTarget.position;
-		Vector3 checkPos = transform.position + directionToPlayer * 6;
-
-		Vector3 scale = directionToPlayer;
-		scale.Normalize();
-
-		// Debug.Log(transform.position + directionToPlayer*2);
-
-
-		// Debug.Log("Current Position: " + transform.position + " Check Pos: " + checkPos);
+		Vector3 checkPos = transform.position + directionToPlayer * 2;
 
 		NavMeshHit navHitForward, navHitLeft, navHitRight, navHitToward;
 
 		if(NavMesh.SamplePosition(checkPos, out navHitForward, 3.0f, NavMesh.AllAreas))
 		{
-			// Debug.Log("Flee Forward: " + navHitForward.position);
+			//
 		}
 		
 		if(NavMesh.SamplePosition(FleeLeft(checkPos), out navHitLeft, 3.0f, NavMesh.AllAreas))
 		{
-			// Debug.Log("Flee Left: " + navHitLeft.position);
+			//
 		}
 		
 		if(NavMesh.SamplePosition(FleeRight(checkPos), out navHitRight, 3.0f, NavMesh.AllAreas))
 		{
-			// Debug.Log("Flee Right: " + navHitRight.position);
+			// 
 		}
 
 		if(NavMesh.SamplePosition(FleeToward(checkPos), out navHitToward, 3.0f, NavMesh.AllAreas))
 		{
-			// Debug.Log("Flee Right: " + navHitRight.position);
+			// 
 		}
 
 		float scoreForward = Vector3.Distance(navHitForward.position, transform.position);
@@ -100,8 +92,6 @@ public class AIFollowController : MonoBehaviour {
 		scoreRight = (scoreRight == Mathf.Infinity ? 0 : scoreRight);
 		scoreToward = (scoreToward == Mathf.Infinity ? 0 : scoreToward);
 
-		// Debug.Log("F: " + scoreForward + " L: " + scoreLeft + " R: " + scoreRight + " T: " + scoreToward);
-
 		float maxScore = Mathf.Max(new float[] {scoreForward, scoreLeft, scoreRight, scoreToward});
 		
 		if(maxScore != 0)
@@ -109,30 +99,20 @@ public class AIFollowController : MonoBehaviour {
 			if(maxScore == scoreForward)
 			{
 				escapeLocation.position = navHitForward.position;
-				// Debug.Log(escapeLocation.position);
 			}
 			else if(maxScore == scoreLeft)
 			{
 				escapeLocation.position = navHitLeft.position;
-				// Debug.Log(escapeLocation.position);
 			}
 			else if(maxScore == scoreRight)
 			{
 				escapeLocation.position = navHitRight.position;
-				// Debug.Log(escapeLocation.position);
 			}
 			else if(maxScore == scoreToward)
 			{
 				escapeLocation.position = navHitToward.position;
-				//Debug.Log(escapeLocation.position);
 			}
 		}
-
-		// escapeLocation.position = navHitForward.position;
-
-		// Debug.Log("Current Position: " + transform.position + " Check Pos: " + checkPos + " Escape: " + escapeLocation.position);
-
-		Debug.Log(directionToPlayer);
 
 		if(escapeLocation)
 			aiController.SetTarget(escapeLocation);

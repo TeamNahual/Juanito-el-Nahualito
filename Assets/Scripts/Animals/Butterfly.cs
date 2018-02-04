@@ -28,7 +28,7 @@ public class Butterfly : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log(other.gameObject);
+		// Debug.Log(other.gameObject);
 
 		if(other.gameObject == Juanito.ins.JuanitoHuman && isActive)
 		{
