@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpiritController : MonoBehaviour {
 
+	public GameObject currentFollower;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,7 +13,7 @@ public class SpiritController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		InteractWithObject();
+		// InteractWithObject();
 	}
 
 	void InteractWithObject()
@@ -23,6 +25,8 @@ public class SpiritController : MonoBehaviour {
 		Debug.DrawRay(transform.position, fwd, Color.green);
 		if(Physics.Raycast(ray, out hit, 1))
 		{
+			Debug.Log(hit.transform.gameObject);
+
 			EventObject obj = hit.transform.gameObject.GetComponent<EventObject>();
 
 			if(obj)
@@ -30,9 +34,6 @@ public class SpiritController : MonoBehaviour {
 				if(Input.GetKeyDown(KeyCode.E))
 				{
 					Debug.Log("Object Interacted With");
-					Vector3 dir = (2 * transform.position - hit.point);
-
-					obj.transform.position = Vector3.Lerp(obj.transform.position, dir, 1);
 				}
 			}
 		}
