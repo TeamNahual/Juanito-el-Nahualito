@@ -165,13 +165,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &53172096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,13 +453,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &172749011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,13 +893,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &328450540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,12 +1155,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 416550724}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38dc5c82a1174b143a24d1a82e1f085a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camHold: {fileID: 0}
+  camHold: {fileID: 1249190948}
   rotationSpeed: 200
   verticalSpeed: 180
   player: {fileID: 0}
@@ -1310,7 +1310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &476124120
 Transform:
   m_ObjectHideFlags: 0
@@ -37756,13 +37756,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &569212222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41928,13 +41928,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &951827929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67737,13 +67737,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &1415768944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70371,13 +70371,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &1548053655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73804,13 +73804,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &1701805106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74285,6 +74285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ec2b96de5640e42a622fc3064f1c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Target: {fileID: 0}
+  m_AutoTargetPlayer: 1
+  m_UpdateType: 0
+  m_RotationRange: {x: 0, y: 0}
+  m_FollowSpeed: 1
 --- !u!114 &1867593337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74402,13 +74407,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &1868153866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77096,13 +77101,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
-  m_isAI: 1
+  m_GroundCheckDistance: 0.1
+  m_isAI: 0
 --- !u!114 &2032219783
 MonoBehaviour:
   m_ObjectHideFlags: 0

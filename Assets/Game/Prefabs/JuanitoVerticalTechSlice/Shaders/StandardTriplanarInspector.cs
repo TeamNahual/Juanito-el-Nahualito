@@ -2,8 +2,12 @@
 // https://github.com/keijiro/StandardTriplanar
 
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
+
+#if UNITY_EDITOR
 public class StandardTriplanarInspector : ShaderGUI
 {
     static class Styles
@@ -61,3 +65,5 @@ public class StandardTriplanarInspector : ShaderGUI
             m.DisableKeyword(keyword);
     }
 }
+
+#endif
