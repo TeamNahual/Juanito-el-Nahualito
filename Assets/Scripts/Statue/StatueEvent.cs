@@ -5,25 +5,34 @@ using UnityEngine;
 public class StatueEvent : EventObject {
 
 	bool pushing = false;
+	int PUSH_DEGREES = 30;
+	int PUSH_DURATION = 3;
 
 	void OnTriggerStay(Collider other) {
 
 		if(Input.GetKeyDown(KeyCode.E) && !pushing && CheckPlayerDirection(other.gameObject))
 		{
-			Debug.Log("Object Interacted With");
-			StartCoroutine(RotateStatue());
+			Vector3 playerRelative = other.gameObject.transform.InverseTransformPoint(transform.position);
+			if(playerRelative.x > 0)
+			{
+				StartCoroutine(RotateStatue(-PUSH_DEGREES, PUSH_DURATION));
+			}
+			else
+			{
+				StartCoroutine(RotateStatue(PUSH_DEGREES, PUSH_DURATION));
+			}
 		}
 	}
 
-	IEnumerator RotateStatue()
+	IEnumerator RotateStatue(float degrees, float duration)
 	{
 		pushing = true;
 		float k = 0;
 
-		while(k < 3)
+		while(k < duration)
 		{
 			Juanito.ins.transform.parent = transform.parent;
-			transform.parent.transform.Rotate(Vector3.up * Time.deltaTime * 45/3);
+			transform.parent.transform.Rotate(Vector3.up * Time.deltaTime * degrees/duration);
 			k += Time.deltaTime;
 			yield return null;
 		}
