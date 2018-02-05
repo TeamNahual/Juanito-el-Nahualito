@@ -10,16 +10,22 @@ public class StatueEvent : EventObject {
 
 	void OnTriggerStay(Collider other) {
 
-		if(Input.GetKeyDown(KeyCode.E) && !pushing && CheckPlayerDirection(other.gameObject))
+		if(Input.GetKeyDown(KeyCode.E) && !pushing)
 		{
-			Vector3 playerRelative = other.gameObject.transform.InverseTransformPoint(transform.position);
-			if(playerRelative.x > 0)
+			if(other.gameObject == Juanito.ins.JuanitoSpirit)
 			{
-				StartCoroutine(RotateStatue(-PUSH_DEGREES, PUSH_DURATION));
-			}
-			else
-			{
-				StartCoroutine(RotateStatue(PUSH_DEGREES, PUSH_DURATION));
+				if(CheckPlayerDirection(other.gameObject) && Juanito.ins.SpiritControl.currentFollower.GetComponent<AIFollowController>().animal == ReqAnimal)
+				{
+					Vector3 playerRelative = other.gameObject.transform.InverseTransformPoint(transform.position);
+					if(playerRelative.x > 0)
+					{
+						StartCoroutine(RotateStatue(-PUSH_DEGREES, PUSH_DURATION));
+					}
+					else
+					{
+						StartCoroutine(RotateStatue(PUSH_DEGREES, PUSH_DURATION));
+					}
+				}
 			}
 		}
 	}

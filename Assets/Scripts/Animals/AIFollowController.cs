@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof (AICharacterControl))]
 public class AIFollowController : MonoBehaviour {
 
+	public AnimalType animal;
 	public float CollisionRadius;
 
 	public AICharacterControl aiController;
@@ -36,6 +37,7 @@ public class AIFollowController : MonoBehaviour {
 				if(hit.gameObject.GetComponent<SpiritController>())
 				{
 					aiController.SetTarget(hit.gameObject.transform);
+					Juanito.ins.SpiritControl.currentFollower = transform.gameObject;
 					return;
 				}
 				else if(hit.gameObject.GetComponent<ThirdPersonUserControl>())
@@ -51,6 +53,8 @@ public class AIFollowController : MonoBehaviour {
 		{
 			Debug.Log("No collisions!");
 		}
+
+		aiController.SetTarget(null);
 
 	}
 

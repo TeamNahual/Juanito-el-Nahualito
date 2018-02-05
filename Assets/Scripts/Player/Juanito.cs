@@ -90,6 +90,7 @@ public class Juanito : MonoBehaviour {
 
  	private void EndSpiritState()
  	{
+ 		SpiritControl.currentFollower = null;
  		JuanitoSpirit.SetActive(false);
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
