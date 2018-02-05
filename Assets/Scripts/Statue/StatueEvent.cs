@@ -12,7 +12,7 @@ public class StatueEvent : EventObject {
 
 		if(Input.GetKeyDown(KeyCode.E) && !pushing)
 		{
-			if(other.gameObject == Juanito.ins.JuanitoSpirit)
+			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower.GetComponent<AIFollowController>().animal)
 			{
 				if(CheckPlayerDirection(other.gameObject) && Juanito.ins.SpiritControl.currentFollower.GetComponent<AIFollowController>().animal == ReqAnimal)
 				{
