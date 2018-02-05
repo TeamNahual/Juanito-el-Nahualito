@@ -13,7 +13,7 @@ public class SpiritController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		InteractWithObject();
+		// InteractWithObject();
 	}
 
 	void InteractWithObject()

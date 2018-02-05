@@ -8,7 +8,7 @@ public class StatueEvent : EventObject {
 
 	void OnTriggerStay(Collider other) {
 
-		if(Input.GetKeyDown(KeyCode.E) && !pushing)
+		if(Input.GetKeyDown(KeyCode.E) && !pushing && CheckPlayerDirection(other.gameObject))
 		{
 			Debug.Log("Object Interacted With");
 			StartCoroutine(RotateStatue());
