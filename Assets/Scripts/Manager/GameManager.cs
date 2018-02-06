@@ -38,4 +38,9 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		DynamicGI.UpdateEnvironment();
 	}
+	
+	public void exitGame()
+	{
+		Application.Quit();
+	}
 }
