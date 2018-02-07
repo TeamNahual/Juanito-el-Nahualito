@@ -5,7 +5,6 @@ using UnityEngine;
 public class butterfly_piece_body : MonoBehaviour {
 
 	public Vector3 direction;
-	public string message;
 
 	private butterfly_piece_controller controller;
 
@@ -14,11 +13,14 @@ public class butterfly_piece_body : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other){
-		print (message);
-		controller.StartMoving (direction);
+		if(other.gameObject.tag == "Juanito"){
+			controller.StartMoving (direction);
+		}
 	}
 
-	void OnCollisionLeave(Collision other){
-		controller.Stop ();
+	void OnCollisionExit(Collision other){
+		if (other.gameObject.tag == "Juanito") {
+			controller.Stop ();
+		}
 	}
 }
