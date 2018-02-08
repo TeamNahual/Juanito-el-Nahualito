@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance = null; // Allows us to access this from other scripts
-	private bool dialogueTest;
 
 	void Awake()
 	{
@@ -15,7 +14,6 @@ public class GameManager : MonoBehaviour
 		else if (instance != this)
 			Destroy(gameObject);
 		DontDestroyOnLoad(gameObject);
-		dialogueTest = false;
 	}
 	
     void Start()
@@ -25,13 +23,7 @@ public class GameManager : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetKey(KeyCode.Z) && !dialogueTest) {
-			UIManager.instance.addDialogueString("Test - Solo");
-			string[] arr = {"Test1", "Test2"};
-			UIManager.instance.addDialogueString(arr);
-		}
-		dialogueTest = Input.GetKey(KeyCode.Z);
-	}
+	}	
 	
 	public void reloadScene()
 	{
