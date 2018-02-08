@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatueEvent : EventObject {
 
-	bool pushing = false;
+	public bool pushing = false;
 	int PUSH_DEGREES = 30;
 	int PUSH_DURATION = 3;
 
@@ -14,18 +14,7 @@ public class StatueEvent : EventObject {
 		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
-				if(CheckPlayerDirection(other.gameObject) && Juanito.ins.SpiritControl.currentFollower.GetComponent<AIFollowController>().animal == ReqAnimal)
-				{
-					Vector3 playerRelative = other.gameObject.transform.InverseTransformPoint(transform.position);
-					if(playerRelative.x > 0)
-					{
-						StartCoroutine(RotateStatue(-PUSH_DEGREES, PUSH_DURATION));
-					}
-					else
-					{
-						StartCoroutine(RotateStatue(PUSH_DEGREES, PUSH_DURATION));
-					}
-				}
+				Juanito.ins.SpiritControl.currentFollower.GetComponent<Deer>().RunTask(transform);
 			}
 		}
 	}
@@ -37,13 +26,29 @@ public class StatueEvent : EventObject {
 
 		while(k < duration)
 		{
-			Juanito.ins.transform.parent = transform.parent;
+			Juanito.ins.SpiritControl.currentFollower.transform.parent = transform.parent;
 			transform.parent.transform.Rotate(Vector3.up * Time.deltaTime * degrees/duration);
 			k += Time.deltaTime;
 			yield return null;
 		}
 
-		Juanito.ins.transform.parent = null;
+		Juanito.ins.SpiritControl.currentFollower.transform.parent = null;
 		pushing = false;
+	}
+
+	public void TriggerEvent()
+	{
+		if(CheckPlayerDirection(Juanito.ins.gameObject) && Juanito.ins.SpiritControl.currentFollower.GetComponent<AIFollowController>().animal == ReqAnimal)
+		{
+			Vector3 playerRelative = Juanito.ins.gameObject.transform.InverseTransformPoint(transform.position);
+			if(playerRelative.x > 0)
+			{
+				StartCoroutine(RotateStatue(-PUSH_DEGREES, PUSH_DURATION));
+			}
+			else
+			{
+				StartCoroutine(RotateStatue(PUSH_DEGREES, PUSH_DURATION));
+			}
+		}
 	}
 }

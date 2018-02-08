@@ -17,6 +17,13 @@ public class FancyCam : MonoBehaviour {
     private float unsignedAngle;
     private float xRot;
     
+    public static FancyCam ins;
+
+    void Awake()
+    {
+        ins = this;
+    }
+
     void Start ()
     {
         // sets the camera pivot target to the player
