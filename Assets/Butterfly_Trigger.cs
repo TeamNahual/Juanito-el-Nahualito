@@ -34,6 +34,7 @@ public class Butterfly_Trigger : MonoBehaviour {
 	}
 		
 	//I used a coroutine to check if the piece is in position to reduce runtime
+	//Some functionality won't be used based on whether or not pieces unlock
 	IEnumerator CheckPosition(){
 		print ("Now checking position");
 		while (overlapped != null) {
@@ -42,6 +43,7 @@ public class Butterfly_Trigger : MonoBehaviour {
 				print ("In position");
 				manager.ActivatePoint ();
 				inPosition = true;
+				overlapped.GetComponent<butterfly_piece_controller> ().Lock ();
 			}else if(inPosition && angle >= successAngle){
 				print ("Out of position");
 				manager.DeactivatePoint ();

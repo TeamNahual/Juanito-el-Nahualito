@@ -13,6 +13,7 @@ public class butterfly_piece_controller : MonoBehaviour {
 	private int rotateFlag;
 	private Transform targetPoint;
 	private Transform player;
+	private bool locked = false;
 
 	void Awake(){
 		player = GameObject.Find ("ThirdPersonController").transform;
@@ -36,14 +37,21 @@ public class butterfly_piece_controller : MonoBehaviour {
 		//targetPoint = p;
 		rotating = true;
 	}
+
+	public void Lock(){
+		locked = true;
+	}
+
 		
 	void FixedUpdate(){
-		//adjust piece based on where Juanito is pushing
-		if (moving) {
-			transform.Translate (direction * Time.deltaTime);
-		} else if (rotating) {
-			transform.RotateAround (transform.position, Vector3.up, rotateSpeed * Time.deltaTime * rotateFlag);
-			//player.LookAt (targetPoint);
+		if(!locked){
+			//adjust piece based on where Juanito is pushing
+			if (moving) {
+				transform.Translate (direction * Time.deltaTime);
+			} else if (rotating) {
+				transform.RotateAround (transform.position, Vector3.up, rotateSpeed * Time.deltaTime * rotateFlag);
+				//player.LookAt (targetPoint);
+			}
 		}
 	}
 }
