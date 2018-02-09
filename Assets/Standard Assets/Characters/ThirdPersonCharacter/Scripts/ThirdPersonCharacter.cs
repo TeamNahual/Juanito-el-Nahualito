@@ -217,7 +217,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (m_IsGrounded && Time.deltaTime > 0)
 			{
 				//Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
-				float multiplier = 2.0f;
+				float multiplier = 3.5f;
 				m_Move.x *= multiplier;
 				m_Move.z *= multiplier;
 

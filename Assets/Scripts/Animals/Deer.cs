@@ -28,10 +28,9 @@ public class Deer : AIFollowController {
 	{
 		if(target.gameObject.GetComponent<StatueEvent>())
 		{
-			statue = target.gameObject.GetComponent<StatueEvent>();
 			runningTask = true;
 			aiController.SetTarget(target);
-			StartCoroutine(RotateStatue(transform.gameObject));
+			StartCoroutine(RotateStatue(target.gameObject));
 		}
 	}
 
@@ -41,13 +40,19 @@ public class Deer : AIFollowController {
 
 		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
 		{
+			Debug.Log("walking to statue");
 			yield return null;
 		}
 
 		controller.TriggerEvent();
 
+		controller.pushing = true;
+
 		while(controller.pushing)
+		{
+			Debug.Log("pushing");
 			yield return null;
+		}
 
 		runningTask = false;
 
