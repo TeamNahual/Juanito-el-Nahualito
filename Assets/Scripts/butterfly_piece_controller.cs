@@ -38,8 +38,9 @@ public class butterfly_piece_controller : MonoBehaviour {
 		rotating = true;
 	}
 
-	public void Lock(){
+	public void Lock(Quaternion rotation){
 		locked = true;
+		transform.rotation = rotation;
 	}
 
 		
