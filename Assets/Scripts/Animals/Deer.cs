@@ -38,9 +38,10 @@ public class Deer : AIFollowController {
 	{
 		StatueEvent controller = target.GetComponent<StatueEvent>();
 
+		transform.LookAt (controller.gameObject.transform);
+
 		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
 		{
-			Debug.Log("walking to statue");
 			yield return null;
 		}
 
@@ -50,11 +51,13 @@ public class Deer : AIFollowController {
 
 		while(controller.pushing)
 		{
-			Debug.Log("pushing");
 			yield return null;
 		}
+			
+		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
+	
+		yield return new WaitForSeconds (2);
 
 		runningTask = false;
-
 	}
 }

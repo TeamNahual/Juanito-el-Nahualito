@@ -5,6 +5,7 @@ using UnityEngine;
 public class StatueEvent : EventObject {
 
 	public bool pushing = false;
+	public int rotateFlag = 1;
 	int PUSH_DEGREES = 30;
 	int PUSH_DURATION = 3;
 
@@ -14,7 +15,9 @@ public class StatueEvent : EventObject {
 		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
-				Juanito.ins.SpiritControl.currentFollower.GetComponent<Deer>().RunTask(transform);
+				Deer deerController = Juanito.ins.SpiritControl.currentFollower.GetComponent<Deer> ();
+				if(deerController)
+					deerController.RunTask(transform);
 			}
 		}
 	}
@@ -38,17 +41,7 @@ public class StatueEvent : EventObject {
 
 	public void TriggerEvent()
 	{
-		if(CheckPlayerDirection(Juanito.ins.gameObject) && Juanito.ins.SpiritControl.currentFollower.GetComponent<AIFollowController>().animal == ReqAnimal)
-		{
-			Vector3 playerRelative = Juanito.ins.gameObject.transform.InverseTransformPoint(transform.position);
-			if(playerRelative.x > 0)
-			{
-				StartCoroutine(RotateStatue(-PUSH_DEGREES, PUSH_DURATION));
-			}
-			else
-			{
-				StartCoroutine(RotateStatue(PUSH_DEGREES, PUSH_DURATION));
-			}
-		}
+		StartCoroutine(RotateStatue(rotateFlag * PUSH_DEGREES, PUSH_DURATION));
+
 	}
 }
