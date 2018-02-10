@@ -15,7 +15,6 @@ public class StatuePuzzleManager : MonoBehaviour {
 			if (statuePuzzleManagerinstance == null) 
 			{
 				statuePuzzleManagerinstance = new GameObject ("StatuePuzzleManager").AddComponent<StatuePuzzleManager> ();
-				Debug.Log ("Creating Statue Puzzle Manager");
 			}
 			return statuePuzzleManagerinstance;
 		}
@@ -34,12 +33,10 @@ public class StatuePuzzleManager : MonoBehaviour {
 		{
 			if (statue.currentRotation != statue.requiredRotation)
 			{
-				Debug.Log ("Statues not in correct rotation");
 				return false;
 			}
 		}
-
-		Debug.Log ("All Statues in Correct Rotation");
+	
 		return true;
 	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatueContainer : MonoBehaviour {
 
-	public int currentRotation = 0;
+	public int currentRotation;
 	public int requiredRotation = 30;
 
 	void Start()
