@@ -194,8 +194,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 11920399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 574, y: 323, z: 0}
-  m_LocalScale: {x: 1.435, y: 1.435, z: 1.435}
+  m_LocalPosition: {x: 407, y: 229, z: 0}
+  m_LocalScale: {x: 1.0175, y: 1.0175, z: 1.0175}
   m_Children:
   - {fileID: 1544801549}
   - {fileID: 142619088}
@@ -37629,7 +37629,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh94836
+  m_Name: pb_Mesh11486
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -41594,6 +41594,11 @@ Prefab:
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114599116806035230, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: deleteOnEnter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
