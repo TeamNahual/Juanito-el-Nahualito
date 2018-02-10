@@ -6,6 +6,9 @@ public class StatueEvent : EventObject {
 
 	public bool pushing = false;
 	public int rotateFlag = 1;
+
+	public StatueContainer container; 
+
 	int PUSH_DEGREES = 30;
 	int PUSH_DURATION = 3;
 
@@ -35,6 +38,10 @@ public class StatueEvent : EventObject {
 			yield return null;
 		}
 
+		container.currentRotation += rotateFlag * PUSH_DEGREES;
+
+		StatuePuzzleManager.ins.CheckStatueRotations ();
+
 		Juanito.ins.SpiritControl.currentFollower.transform.parent = null;
 		pushing = false;
 	}
@@ -42,6 +49,5 @@ public class StatueEvent : EventObject {
 	public void TriggerEvent()
 	{
 		StartCoroutine(RotateStatue(rotateFlag * PUSH_DEGREES, PUSH_DURATION));
-
 	}
 }

@@ -19,7 +19,8 @@ public class AIFollowController : MonoBehaviour {
 	void Start () {
 		aiController = GetComponent<AICharacterControl>();
 
-		escapeLocation = new GameObject().transform;
+		escapeLocation = new GameObject("Escape Location").transform;
+		escapeLocation.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
@@ -102,19 +103,19 @@ public class AIFollowController : MonoBehaviour {
 		
 		if(maxScore != 0)
 		{
-			if(maxScore == scoreForward && navHitForward.position != null)
+			if(maxScore == scoreForward && navHitForward.hit)
 			{
 				escapeLocation.position = navHitForward.position;
 			}
-			else if(maxScore == scoreLeft && navHitLeft.position != null)
+			else if(maxScore == scoreLeft && navHitLeft.hit)
 			{
 				escapeLocation.position = navHitLeft.position;
 			}
-			else if(maxScore == scoreRight && navHitRight.position != null)
+			else if(maxScore == scoreRight && navHitRight.hit)
 			{
 				escapeLocation.position = navHitRight.position;
 			}
-			else if(maxScore == scoreToward && navHitToward.position != null)
+			else if(maxScore == scoreToward && navHitToward.hit)
 			{
 				escapeLocation.position = navHitToward.position;
 			}

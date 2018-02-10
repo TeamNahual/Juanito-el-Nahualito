@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4001780804980832}
+  - component: {fileID: 114019732253200120}
   m_Layer: 0
   m_Name: StatuePuzzle
   m_TagString: Untagged
@@ -85,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1504502967253116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.889343, y: -22.35, z: 10.8778515}
+  m_LocalPosition: {x: 16.62, y: -22.35, z: 4.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4942782670722190}
@@ -188,6 +189,19 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 1.00000005e-20
   m_Mesh: {fileID: 4300000, guid: 6d23ef9c2c44f6e45acfc5e3afd2a9af, type: 3}
+--- !u!114 &114019732253200120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504502967253116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d06b8c29adeee40b84c0b59ebac8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRotation: 0
+  requiredRotation: 30
 --- !u!114 &114851357488530560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +219,7 @@ MonoBehaviour:
   - {fileID: 1380798351793338}
   pushing: 0
   rotateFlag: 1
+  container: {fileID: 114019732253200120}
 --- !u!114 &114911661199334168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +237,7 @@ MonoBehaviour:
   - {fileID: 1415284239507910}
   pushing: 0
   rotateFlag: -1
+  container: {fileID: 114019732253200120}
 --- !u!136 &136509221097127392
 CapsuleCollider:
   m_ObjectHideFlags: 1

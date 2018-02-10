@@ -13,7 +13,8 @@ public class Deer : AIFollowController {
 	void Start () {
 		aiController = GetComponent<AICharacterControl>();
 
-		escapeLocation = new GameObject().transform;
+		escapeLocation = new GameObject("Escape Location").transform;
+		escapeLocation.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
