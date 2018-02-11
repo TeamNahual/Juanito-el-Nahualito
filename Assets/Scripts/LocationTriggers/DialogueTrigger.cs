@@ -3,7 +3,9 @@ using System.Collections;
 
 public class DialogueTrigger : MonoBehaviour {
 	public bool deleteOnEnter = false;
-	public string[] dialogue;
+	public string[] dialogueStrings;
+	public AudioClip[] dialogueAudio;
+	public int[] dialogueTimers;
 	
 	void Awake()
 	{
@@ -12,7 +14,7 @@ public class DialogueTrigger : MonoBehaviour {
 	}
 	
     void OnTriggerEnter(Collider other) {
-		UIManager.instance.addDialogueString(dialogue);
+		UIManager.instance.addDialogueString(dialogueStrings);
 		if (deleteOnEnter) {
 			Destroy(gameObject);
 		}
