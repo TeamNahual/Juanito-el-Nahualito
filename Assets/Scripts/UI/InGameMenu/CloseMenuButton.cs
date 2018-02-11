@@ -15,9 +15,9 @@ public class CloseMenuButton : MonoBehaviour {
 
 	void closeMenu()
 	{
-		if (GameManager.instance != null)
+		if (UIManager.instance != null)
 		{
-			GameManager.instance.closeMainMenu();
+			UIManager.instance.closeMainMenu();
 		}
 	}
 }

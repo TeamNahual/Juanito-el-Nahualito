@@ -11,7 +11,7 @@ public class Juanito : MonoBehaviour {
 	public GameObject JuanitoSpirit;
 
 	private float spirit_start_time;
-	private float spirit_time_limit = 15;
+	private float spirit_time_limit = 50;
 	private bool SpiritState = false;
 
 	[HideInInspector]
@@ -59,7 +59,7 @@ public class Juanito : MonoBehaviour {
  	{
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
-
+ 		FancyCam.ins.player = JuanitoSpirit.transform;
  		JuanitoSpirit.transform.position = JuanitoHuman.transform.position;
  		JuanitoSpirit.SetActive(true);
  		SpiritState = true;
@@ -68,7 +68,7 @@ public class Juanito : MonoBehaviour {
 
  	private void SpiritHandler()
  	{
- 		if(Input.GetKeyDown(KeyCode.A))
+ 		if(Input.GetKeyDown(KeyCode.Q))
 		{
 			if(!SpiritState && Juanito.ins.GetSpiritCount() >= 3)
 			{
@@ -90,7 +90,9 @@ public class Juanito : MonoBehaviour {
 
  	private void EndSpiritState()
  	{
+ 		SpiritControl.currentFollower = null;
  		JuanitoSpirit.SetActive(false);
+ 		FancyCam.ins.player = JuanitoHuman.transform;
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;

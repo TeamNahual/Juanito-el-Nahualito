@@ -7,17 +7,20 @@ using UnityEngine.AI;
 [RequireComponent(typeof (AICharacterControl))]
 public class AIFollowController : MonoBehaviour {
 
+	public AnimalType animal;
 	public float CollisionRadius;
 
+	[HideInInspector]
 	public AICharacterControl aiController;
 
-	private Transform escapeLocation;
-
+	protected Transform escapeLocation;
+	protected bool following;
 	// Use this for initialization
 	void Start () {
 		aiController = GetComponent<AICharacterControl>();
 
-		escapeLocation = new GameObject().transform;
+		escapeLocation = new GameObject("Escape Location").transform;
+		escapeLocation.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
@@ -25,7 +28,7 @@ public class AIFollowController : MonoBehaviour {
 		CheckForPlayer();
 	}
  
-	private void CheckForPlayer()
+	protected void CheckForPlayer()
 	{
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, CollisionRadius);
 
@@ -36,6 +39,8 @@ public class AIFollowController : MonoBehaviour {
 				if(hit.gameObject.GetComponent<SpiritController>())
 				{
 					aiController.SetTarget(hit.gameObject.transform);
+					following = true;
+					Juanito.ins.SpiritControl.currentFollower = transform.gameObject;
 					return;
 				}
 				else if(hit.gameObject.GetComponent<ThirdPersonUserControl>())
@@ -44,17 +49,19 @@ public class AIFollowController : MonoBehaviour {
 					return;
 				}
 			}
-
-			aiController.SetTarget(null);
+			// aiController.SetTarget(null);
 		}
 		else
 		{
 			Debug.Log("No collisions!");
 		}
 
+		following = false;
+		aiController.SetTarget(null);
+
 	}
 
-	void FleePlayer(Transform fleeTarget)
+	protected void FleePlayer(Transform fleeTarget)
 	{
 		Vector3 directionToPlayer = transform.position - fleeTarget.position;
 		Vector3 checkPos = transform.position + directionToPlayer * 2;
@@ -96,19 +103,19 @@ public class AIFollowController : MonoBehaviour {
 		
 		if(maxScore != 0)
 		{
-			if(maxScore == scoreForward)
+			if(maxScore == scoreForward && navHitForward.hit)
 			{
 				escapeLocation.position = navHitForward.position;
 			}
-			else if(maxScore == scoreLeft)
+			else if(maxScore == scoreLeft && navHitLeft.hit)
 			{
 				escapeLocation.position = navHitLeft.position;
 			}
-			else if(maxScore == scoreRight)
+			else if(maxScore == scoreRight && navHitRight.hit)
 			{
 				escapeLocation.position = navHitRight.position;
 			}
-			else if(maxScore == scoreToward)
+			else if(maxScore == scoreToward && navHitToward.hit)
 			{
 				escapeLocation.position = navHitToward.position;
 			}
@@ -118,7 +125,7 @@ public class AIFollowController : MonoBehaviour {
 			aiController.SetTarget(escapeLocation);
 	}
 
-	Vector3 FleeToward(Vector3 targetPos)
+	protected Vector3 FleeToward(Vector3 targetPos)
 	{	
 		Vector3 dir =  targetPos - transform.position;
 		dir = Quaternion.Euler(0, 50, 0) * dir;
@@ -126,14 +133,14 @@ public class AIFollowController : MonoBehaviour {
 		return dir + transform.position;
 	}
 
-	Vector3 FleeRight(Vector3 targetPos)
+	protected Vector3 FleeRight(Vector3 targetPos)
 	{
 		Vector3 dir =  targetPos - transform.position;
 		dir = Quaternion.Euler(0, 44, 0) * dir;
 		return dir + transform.position;
 	}
 
-	Vector3 FleeLeft(Vector3 targetPos)
+	protected Vector3 FleeLeft(Vector3 targetPos)
 	{
 		Vector3 dir =  targetPos - transform.position;
 		dir = Quaternion.Euler(0, -46, 0) * dir;
