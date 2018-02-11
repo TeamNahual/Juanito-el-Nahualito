@@ -60,6 +60,7 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
  		FancyCam.ins.player = JuanitoSpirit.transform;
+        Debug.Log("called");
  		JuanitoSpirit.transform.position = JuanitoHuman.transform.position;
  		JuanitoSpirit.SetActive(true);
  		SpiritState = true;
