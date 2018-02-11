@@ -59,9 +59,12 @@ public class FancyCam : MonoBehaviour {
             camHold.localPosition = Vector3.Lerp(camHold.localPosition, new Vector3(camWidth, camHold.localPosition.y, camHold.localPosition.z) , 1.4f * Time.fixedDeltaTime);
         }
         // move camera pilot to player
-        transform.position = player.position;
+        //transform.position = player.position;
+        Vector3 velocity3 = Vector3.zero;
+        transform.position = Vector3.SmoothDamp(transform.position, player.position,
+                                             ref velocity3, 0.05f);
         // set horizontal rotation on camera pivot
-		transform.Rotate (0f, Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed, 0f);
+        transform.Rotate (0f, Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed, 0f);
         // vertical rotation on camera holder
         xRot +=-Input.GetAxis("Mouse Y") * Time.deltaTime * (verticalSpeed - Mathf.Abs((xRot+20)*1.5f));
         // lock vertical rotation to avoid 'camera flipping'
