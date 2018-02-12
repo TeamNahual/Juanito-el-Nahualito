@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class FancyCam : MonoBehaviour {
 
@@ -59,24 +58,15 @@ public class FancyCam : MonoBehaviour {
             camWidth = Mathf.SmoothDamp(camHold.localPosition.x, 0f, ref velocity, 1.4f * Time.fixedDeltaTime);
             camHold.localPosition = Vector3.Lerp(camHold.localPosition, new Vector3(camWidth, camHold.localPosition.y, camHold.localPosition.z) , 1.4f * Time.fixedDeltaTime);
         }
-		
-		// Get input
-		float h = Input.GetAxis("Mouse X");
-		float v = Input.GetAxis("Mouse Y");
-		bool mouse = !(Mathf.Abs(h) < 0.1f && Mathf.Abs(v) < 0.1f);
-		
-		if (!mouse)
-		{
-			h = CrossPlatformInputManager.GetAxis("Horizontal-Joystick-Right");
-			v = CrossPlatformInputManager.GetAxis("Vertical-Joystick-Right");
-		}
-	
         // move camera pilot to player
-        transform.position = player.position;
+        //transform.position = player.position;
+        Vector3 velocity3 = Vector3.zero;
+        transform.position = Vector3.SmoothDamp(transform.position, player.position,
+                                             ref velocity3, 0.05f);
         // set horizontal rotation on camera pivot
-		transform.Rotate (0f, h * Time.deltaTime * rotationSpeed, 0f);
+        transform.Rotate (0f, Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed, 0f);
         // vertical rotation on camera holder
-        xRot += -v * Time.deltaTime * (verticalSpeed - Mathf.Abs((xRot+20)*1.5f));
+        xRot +=-Input.GetAxis("Mouse Y") * Time.deltaTime * (verticalSpeed - Mathf.Abs((xRot+20)*1.5f));
         // lock vertical rotation to avoid 'camera flipping'
         xRot = Mathf.Clamp(xRot, vertRotMin, vertRotMax);
         // set camera holder rotation
