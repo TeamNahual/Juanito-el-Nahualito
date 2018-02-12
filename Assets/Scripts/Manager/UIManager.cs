@@ -8,18 +8,16 @@ public class Dialogue : MonoBehaviour {
 	public string text;
 	public int timer;
 	public AudioClip audioClip;
+	public bool isMovementLocked;
 	
-	public Dialogue(string diaText, int diaTimer, AudioClip diaAudio) {
+	public Dialogue(string diaText, int diaTimer, AudioClip diaAudio, bool movementLocked) {
 		text = diaText;
 		timer = diaTimer;
 		audioClip = diaAudio;
+		isMovementLocked = movementLocked;
 	}
 	
-	public Dialogue(string diaText) {
-		text = diaText;
-		timer = 0;
-		audioClip = null;
-	}
+	public Dialogue(string diaText) : this(diaText, 0, null, false) {}
 }
 
 public class UIManager : MonoBehaviour
@@ -96,6 +94,7 @@ public class UIManager : MonoBehaviour
 		isDialogueOpen = dialogueQueue.Count > 0;
 		if (isDialogueOpen) {
 			Dialogue dialogue = (Dialogue) dialogueQueue.Peek();
+			Debug.Log(dialogue.isMovementLocked);
 			dialogueUI.transform.Find("Dialogue").GetComponent<Text>().text = dialogue.text;
 		}
 	}
@@ -114,16 +113,6 @@ public class UIManager : MonoBehaviour
 		updateDialogueText();
 	}
 	
-	public void addDialogue(string text) {
-		dialogueQueue.Enqueue(new Dialogue(text));
-		updateDialogueText();
-	}
-	
-	public void addDialogue(string text, int timer, AudioClip audioClip) {
-		dialogueQueue.Enqueue(new Dialogue(text, timer, audioClip));
-		updateDialogueText();
-	}
-	
 	public void addDialogue(Dialogue[] dialogue) {
 		for (int i = 0; i < dialogue.Length; ++i) {
 			dialogueQueue.Enqueue(dialogue[i]);
@@ -131,21 +120,25 @@ public class UIManager : MonoBehaviour
 		updateDialogueText();
 	}
 	
-	public void addDialogue(string[] text) {
-		for (int i = 0; i < text.Length; ++i) {
-			dialogueQueue.Enqueue(new Dialogue(text[i]));
+	public void addDialogue(string[] texts, int[] timers, AudioClip[] audioClips, bool[] movementLocked) {
+		for (int i = 0; i < texts.Length; ++i) {
+			string text = texts[i];
+			int timer = (i < timers.Length)? timers[i]: 0;
+			AudioClip audioClip = (i < audioClips.Length)? audioClips[i]: null;
+			bool isMovementLocked = !(i >= movementLocked.Length || !movementLocked[i]);
+			dialogueQueue.Enqueue(new Dialogue(text, timer, audioClip, isMovementLocked));
 		}
 		updateDialogueText();
 	}
 	
-	public void addDialogue(string[] texts, int[] timers, AudioClip[] audioClips) {
-		for (int i = 0; i < texts.Length; ++i) {
-			string text = texts[i];
-			int timer = (i < timers.Length)? timers[i]: 0;
-			int audioClipLength = audioClips.Length;
-			AudioClip audioClip = (i < audioClips.Length)? audioClips[i]: null;
-			dialogueQueue.Enqueue(new Dialogue(text, timer, audioClip));
-		}
-		updateDialogueText();
+	// Overloaded functions
+	public void addDialogue(string text) {
+		this.addDialogue(new Dialogue(text));
+	}
+	public void addDialogue(string text, int timer, AudioClip audioClip, bool movementLocked) {
+		this.addDialogue(new Dialogue(text, timer, audioClip, movementLocked));
+	}
+	public void addDialogue(string[] texts) {
+		this.addDialogue(texts, new int[0], new AudioClip[0], new bool[0]);
 	}
 }
