@@ -14,7 +14,8 @@ public class DialogueTrigger : MonoBehaviour {
 	}
 	
     void OnTriggerEnter(Collider other) {
-		UIManager.instance.addDialogueString(dialogueStrings);
+		UIManager.instance.addDialogue(dialogueStrings,
+			dialogueTimers, dialogueAudio);
 		if (deleteOnEnter) {
 			Destroy(gameObject);
 		}
