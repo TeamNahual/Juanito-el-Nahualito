@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65059330099328140}
   - component: {fileID: 23357447191286144}
   - component: {fileID: 114350949554796280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DialogueEvent
   m_TagString: Trigger
   m_Icon: {fileID: 0}
@@ -108,4 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deleteOnEnter: 0
-  dialogue: []
+  dialogueStrings: []
+  dialogueAudio: []
+  dialogueTimers: 
