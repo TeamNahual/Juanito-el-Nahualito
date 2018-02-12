@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 
 public class Juanito : MonoBehaviour {
@@ -68,7 +69,7 @@ public class Juanito : MonoBehaviour {
 
  	private void SpiritHandler()
  	{
- 		if(Input.GetKeyDown(KeyCode.Q))
+ 		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
 		{
 			if(!SpiritState && Juanito.ins.GetSpiritCount() >= 3)
 			{

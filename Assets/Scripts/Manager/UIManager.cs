@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Dialogue : MonoBehaviour {
 	public string text;
@@ -67,7 +68,7 @@ public class UIManager : MonoBehaviour
 			menuToggleProtect = false;
 		}
 		
-		if (Input.GetKey(KeyCode.Return)) {
+		if (Input.GetKey(KeyCode.Return) || CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
 			if (!dialogueToggleProtect) {
 				doDialogueAction();
 			}
