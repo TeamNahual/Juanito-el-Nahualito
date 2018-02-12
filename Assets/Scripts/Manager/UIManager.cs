@@ -94,8 +94,10 @@ public class UIManager : MonoBehaviour
 		isDialogueOpen = dialogueQueue.Count > 0;
 		if (isDialogueOpen) {
 			Dialogue dialogue = (Dialogue) dialogueQueue.Peek();
-			Debug.Log(dialogue.isMovementLocked);
+			GameManager.instance.isMovementLocked = dialogue.isMovementLocked;
 			dialogueUI.transform.Find("Dialogue").GetComponent<Text>().text = dialogue.text;
+		} else {
+			GameManager.instance.isMovementLocked = false;
 		}
 	}
 	

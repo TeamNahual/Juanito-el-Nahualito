@@ -44,7 +44,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
-        {
+        {	
             // read inputs
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -55,6 +55,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				h = CrossPlatformInputManager.GetAxis("Horizontal-Joystick");
 				v = CrossPlatformInputManager.GetAxis("Vertical-Joystick");
+			}
+			
+			// If movement is locked, disable further inputs for the time being
+			if (GameManager.instance.isMovementLocked) {
+				h = 0.0f;
+				v = 0.0f;
+				crouch = false;
+				m_Jump = false;
 			}
 
             // calculate move direction to pass to character
