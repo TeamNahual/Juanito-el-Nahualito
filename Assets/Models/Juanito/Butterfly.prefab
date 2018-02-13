@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23012297940386748}
   - component: {fileID: 114456421058894780}
   - component: {fileID: 114367548776662302}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Butterfly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   neighborDist: 1.04
   searchLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!114 &114456421058894780
 MonoBehaviour:
   m_ObjectHideFlags: 1
