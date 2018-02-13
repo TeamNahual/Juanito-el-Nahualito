@@ -19,8 +19,8 @@ public class Butterfly_Trigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		print("overlapping");
 		if (other.gameObject.tag == "Butterfly Wing") {
+			print("overlapping");
 			overlapped = other.gameObject.transform.parent.gameObject;
 			StartCoroutine (CheckPosition());
 		}

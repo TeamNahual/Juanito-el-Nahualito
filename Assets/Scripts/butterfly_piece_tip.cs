@@ -16,13 +16,13 @@ public class butterfly_piece_tip : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Juanito") {
+		if (other.gameObject.tag == "Player") {
 			cont.StartRotating (rotateFlag/*, focusPoint*/);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
-		if (other.gameObject.tag == "Juanito") {
+		if (other.gameObject.tag == "Player") {
 			cont.Stop ();
 		}
 	}

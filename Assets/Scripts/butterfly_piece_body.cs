@@ -13,13 +13,13 @@ public class butterfly_piece_body : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if(other.gameObject.tag == "Juanito"){
+		if(other.gameObject.tag == "Player"){
 			controller.StartMoving (direction);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
-		if (other.gameObject.tag == "Juanito") {
+		if (other.gameObject.tag == "Player") {
 			controller.Stop ();
 		}
 	}
