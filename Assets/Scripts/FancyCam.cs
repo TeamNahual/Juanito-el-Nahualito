@@ -16,7 +16,10 @@ public class FancyCam : MonoBehaviour {
     private float camWidth = 0f;
     private float unsignedAngle;
     private float xRot;
-    
+
+    private float xAxisCon = 0;
+    private float yAxisCon = 0;
+
     public static FancyCam ins;
 
     void Awake()
@@ -61,12 +64,27 @@ public class FancyCam : MonoBehaviour {
         // move camera pilot to player
         //transform.position = player.position;
         Vector3 velocity3 = Vector3.zero;
-        transform.position = Vector3.SmoothDamp(transform.position, player.position,
-                                             ref velocity3, 0.05f);
+        transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.05f);
         // set horizontal rotation on camera pivot
+        if(Input.GetAxis("Mouse X") != 0f)
+        {
+            xAxisCon = Input.GetAxis("Mouse X");
+        }
+        else if(Input.GetAxis("Horizontal-Joystick-Right") != 0)
+        {
+            xAxisCon = Input.GetAxis("Horizontal-Joystick-Right");
+        }
         transform.Rotate (0f, Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed, 0f);
         // vertical rotation on camera holder
-        xRot +=-Input.GetAxis("Mouse Y") * Time.deltaTime * (verticalSpeed - Mathf.Abs((xRot+20)*1.5f));
+        if (Input.GetAxis("Mouse Y") != 0f)
+        {
+            yAxisCon = Input.GetAxis("Mouse Y");
+        }
+        else if (Input.GetAxis("Vertical-Joystick-Right") != 0)
+        {
+            yAxisCon = Input.GetAxis("Vertical-Joystick-Right");
+        }
+        xRot +=-yAxisCon * Time.deltaTime * (verticalSpeed - Mathf.Abs((xRot+20)*1.5f));
         // lock vertical rotation to avoid 'camera flipping'
         xRot = Mathf.Clamp(xRot, vertRotMin, vertRotMax);
         // set camera holder rotation
