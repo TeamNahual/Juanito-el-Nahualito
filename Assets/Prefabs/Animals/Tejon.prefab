@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 195925227487454578}
   - component: {fileID: 114237455662087332}
   - component: {fileID: 114652523118540582}
-  - component: {fileID: 114607747133273078}
+  - component: {fileID: 114268448993416150}
   m_Layer: 0
   m_Name: Tejon
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500522688182302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.127163, y: 77.85831, z: 46.20223}
+  m_LocalPosition: {x: 153.90154, y: 77.906235, z: 23.11602}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4477803994607384}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
---- !u!114 &114607747133273078
+--- !u!114 &114268448993416150
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500522688182302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f62f6a0e3c663f744a852b784a42b904, type: 3}
+  m_Script: {fileID: 11500000, guid: ae5f93671b71da74d889c85081254c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animal: 1
