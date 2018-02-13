@@ -4,22 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Dialogue : MonoBehaviour {
-	public string text;
-	public int timer;
-	public AudioClip audioClip;
-	public bool isMovementLocked;
-	
-	public Dialogue(string diaText, int diaTimer, AudioClip diaAudio, bool movementLocked) {
-		text = diaText;
-		timer = diaTimer;
-		audioClip = diaAudio;
-		isMovementLocked = movementLocked;
-	}
-	
-	public Dialogue(string diaText) : this(diaText, 0, null, false) {}
-}
-
 public class UIManager : MonoBehaviour
 {
 	public static UIManager instance = null; // Allows us to access this from other scripts
@@ -30,8 +14,8 @@ public class UIManager : MonoBehaviour
     private bool isMenuOpen;
 	
 	// Dialogue System
-	private Queue dialogueQueue;
 	public GameObject dialogueUI;
+	public DialogueSystem dialogueSystem;
 	private bool dialogueToggleProtect;
     private bool isDialogueOpen;
 
@@ -44,7 +28,7 @@ public class UIManager : MonoBehaviour
 		isMenuOpen = false;
 		menuToggleProtect = false;
 		
-		dialogueQueue = new Queue();
+		dialogueSystem = new DialogueSystem();
 		dialogueToggleProtect = false;
 		isDialogueOpen = false;
 	}
@@ -67,12 +51,13 @@ public class UIManager : MonoBehaviour
 		
 		if (Input.GetKey(KeyCode.Return)) {
 			if (!dialogueToggleProtect) {
-				doDialogueAction();
+				dialogueSystem.doDialogueAction();
 			}
 			dialogueToggleProtect = true;
 		} else if (dialogueToggleProtect) {
 			dialogueToggleProtect = false;
 		}
+		dialogueSystem.Update();
 		
 		inGameMenu.gameObject.SetActive(isMenuOpen);
 		dialogueUI.gameObject.SetActive(isDialogueOpen);
@@ -83,64 +68,11 @@ public class UIManager : MonoBehaviour
 		isMenuOpen = false;
 	}
 	
-	
-	  ////////////////////////////////
-	 //  Dialogue Related Actions  //
-	////////////////////////////////
-	
-	
-	private void updateDialogueText()
-	{
-		isDialogueOpen = dialogueQueue.Count > 0;
-		if (isDialogueOpen) {
-			Dialogue dialogue = (Dialogue) dialogueQueue.Peek();
-			GameManager.instance.isMovementLocked = dialogue.isMovementLocked;
-			dialogueUI.transform.Find("Dialogue").GetComponent<Text>().text = dialogue.text;
-		} else {
-			GameManager.instance.isMovementLocked = false;
-		}
+	public void toggleDialogueBox(bool toggle) {
+		isDialogueOpen = toggle;
 	}
 	
-	private void doDialogueAction()
-	{
-		if (dialogueQueue.Count > 0) {
-			dialogueQueue.Dequeue();
-		}
-		updateDialogueText();
-	}
-	
-	
-	public void addDialogue(Dialogue dialogue) {
-		dialogueQueue.Enqueue(dialogue);
-		updateDialogueText();
-	}
-	
-	public void addDialogue(Dialogue[] dialogue) {
-		for (int i = 0; i < dialogue.Length; ++i) {
-			dialogueQueue.Enqueue(dialogue[i]);
-		}
-		updateDialogueText();
-	}
-	
-	public void addDialogue(string[] texts, int[] timers, AudioClip[] audioClips, bool[] movementLocked) {
-		for (int i = 0; i < texts.Length; ++i) {
-			string text = texts[i];
-			int timer = (i < timers.Length)? timers[i]: 0;
-			AudioClip audioClip = (i < audioClips.Length)? audioClips[i]: null;
-			bool isMovementLocked = !(i >= movementLocked.Length || !movementLocked[i]);
-			dialogueQueue.Enqueue(new Dialogue(text, timer, audioClip, isMovementLocked));
-		}
-		updateDialogueText();
-	}
-	
-	// Overloaded functions
-	public void addDialogue(string text) {
-		this.addDialogue(new Dialogue(text));
-	}
-	public void addDialogue(string text, int timer, AudioClip audioClip, bool movementLocked) {
-		this.addDialogue(new Dialogue(text, timer, audioClip, movementLocked));
-	}
-	public void addDialogue(string[] texts) {
-		this.addDialogue(texts, new int[0], new AudioClip[0], new bool[0]);
+	public void setDialogueBoxText(string text) {
+		dialogueUI.transform.Find("Dialogue").GetComponent<Text>().text = text;
 	}
 }
