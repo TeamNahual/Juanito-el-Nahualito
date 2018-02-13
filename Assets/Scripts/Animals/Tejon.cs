@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine;
 
-public class Deer : AIFollowController {
+public class Tejon : AIFollowController {
 
 	bool runningTask = false;
 
@@ -13,7 +13,7 @@ public class Deer : AIFollowController {
 	void Start () {
 		aiController = GetComponent<AICharacterControl>();
 
-		animal = AnimalType.Deer;
+		animal = AnimalType.Tejon;
 
 		escapeLocation = new GameObject("Escape Location").transform;
 		escapeLocation.transform.parent = transform;
@@ -29,23 +29,18 @@ public class Deer : AIFollowController {
 
 	public void RunTask(Transform target)
 	{
-		if(target.gameObject.GetComponent<StatueEvent>())
+		if(target.gameObject.GetComponent<RockWallEvent>())
 		{
 			runningTask = true;
 			aiController.SetTarget(target);
-			StartCoroutine(RotateStatue(target.gameObject));
+			StartCoroutine(DigRock(target.gameObject));
 		}
-		else if(target.gameObject.GetComponent<TreeEvent>())
-		{
-			runningTask = true;
-			aiController.SetTarget(target);
-			StartCoroutine(RotateTree(target.gameObject));
-		}
+
 	}
 
-	IEnumerator RotateStatue(GameObject target)
+	IEnumerator DigRock(GameObject target)
 	{
-		StatueEvent controller = target.GetComponent<StatueEvent>();
+		RockWallEvent controller = target.GetComponent<RockWallEvent>();
 
 		transform.LookAt (controller.gameObject.transform);
 
@@ -65,28 +60,6 @@ public class Deer : AIFollowController {
 			
 		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
 	
-		yield return new WaitForSeconds (2);
-
-		runningTask = false;
-	}
-
-	IEnumerator RotateTree(GameObject target)
-	{
-		TreeEvent controller = target.GetComponent<TreeEvent>();
-
-		transform.LookAt( controller.gameObject.transform);
-
-		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
-		{
-			yield return null;
-		}
-
-		controller.TriggerEvent();
-
-		controller.pushing = true;
-
-		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
-
 		yield return new WaitForSeconds (2);
 
 		runningTask = false;
