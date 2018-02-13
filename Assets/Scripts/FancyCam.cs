@@ -74,7 +74,7 @@ public class FancyCam : MonoBehaviour {
         {
             xAxisCon = Input.GetAxis("Horizontal-Joystick-Right");
         }
-        transform.Rotate (0f, Input.GetAxis("Mouse X") * Time.deltaTime * rotationSpeed, 0f);
+        transform.Rotate (0f, xAxisCon * Time.deltaTime * rotationSpeed, 0f);
         // vertical rotation on camera holder
         if (Input.GetAxis("Mouse Y") != 0f)
         {
