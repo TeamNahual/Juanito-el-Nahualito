@@ -74,6 +74,10 @@ public class FancyCam : MonoBehaviour {
         {
             xAxisCon = Input.GetAxis("Horizontal-Joystick-Right");
         }
+        else
+        {
+            xAxisCon = 0;
+        }
         transform.Rotate (0f, xAxisCon * Time.deltaTime * rotationSpeed, 0f);
         // vertical rotation on camera holder
         if (Input.GetAxis("Mouse Y") != 0f)
@@ -83,6 +87,10 @@ public class FancyCam : MonoBehaviour {
         else if (Input.GetAxis("Vertical-Joystick-Right") != 0)
         {
             yAxisCon = Input.GetAxis("Vertical-Joystick-Right");
+        }
+        else
+        {
+            yAxisCon = 0;
         }
         xRot +=-yAxisCon * Time.deltaTime * (verticalSpeed - Mathf.Abs((xRot+20)*1.5f));
         // lock vertical rotation to avoid 'camera flipping'
