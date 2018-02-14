@@ -41,6 +41,12 @@ public class Deer : AIFollowController {
 			aiController.SetTarget(target);
 			StartCoroutine(RotateTree(target.gameObject));
 		}
+		else if(target.gameObject.GetComponent<TreeRollEvent>())
+		{
+			runningTask = true;
+			aiController.SetTarget(target);
+			StartCoroutine(PushTree(target.gameObject));
+		}
 	}
 
 	IEnumerator RotateStatue(GameObject target)
@@ -91,5 +97,28 @@ public class Deer : AIFollowController {
 
 		runningTask = false;
 	}
+
+	IEnumerator PushTree(GameObject target)
+	{
+		TreeRollEvent controller = target.GetComponent<TreeRollEvent>();
+
+		transform.LookAt( controller.gameObject.transform);
+
+		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
+		{
+			yield return null;
+		}
+
+		controller.TriggerEvent();
+
+		controller.pushing = true;
+
+		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
+
+		yield return new WaitForSeconds (2);
+
+		runningTask = false;
+	}
+
 
 }
