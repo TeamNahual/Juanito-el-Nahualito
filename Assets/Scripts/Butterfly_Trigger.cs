@@ -43,7 +43,7 @@ public class Butterfly_Trigger : MonoBehaviour {
 				print ("In position");
 				manager.ActivatePoint ();
 				inPosition = true;
-				overlapped.GetComponent<butterfly_piece_controller> ().Lock (transform.rotation);
+				overlapped.GetComponent<butterfly_piece_controller> ().Lock (transform.rotation, transform.position + new Vector3(0f, 2f, 0f) );
 			}else if(inPosition && angle >= successAngle){
 				print ("Out of position");
 				manager.DeactivatePoint ();
