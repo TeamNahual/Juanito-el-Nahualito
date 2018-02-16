@@ -9,9 +9,9 @@ public class TreeRollEvent : EventObject {
 	public int PUSH_DISTANCE = -90;
 	int PUSH_DURATION = 3;
 
-	void OnTriggerStay(Collider other) 
+	void OnTriggerEnter(Collider other) 
 	{
-		if(Input.GetKeyDown(KeyCode.E) && !pushing)
+		if(!pushing)
 		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
