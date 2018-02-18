@@ -27,7 +27,7 @@ public class butterfly_puzzle_manager : MonoBehaviour {
 			allActive = true;
 			//whatever functionality needs to happen for when all pieces are aligned should go here
 			
-			UIManager.instance.addDialogue("You have completed the butterfly puzzle.");
+			UIManager.instance.dialogueSystem.addDialogue("You have completed the butterfly puzzle.");
 		}
 	}
 

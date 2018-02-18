@@ -45,11 +45,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 			
 			// Set game camera to player
-			if (Camera.main != null && !m_isAI)
+			/*if (Camera.main != null && !m_isAI)
             {	
 				// Vector3 target = transform.position + m_CamOffset;
 				//Camera.main.transform.position = target;
-            }
+            }*/
 		}
 
 
