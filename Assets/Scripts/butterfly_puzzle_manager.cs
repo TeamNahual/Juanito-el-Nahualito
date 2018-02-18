@@ -6,7 +6,15 @@ public class butterfly_puzzle_manager : MonoBehaviour {
 
 	private int count = 0;
 	private int activePoints = 0;
-	private bool allActive = false;
+	public bool allActive = false;
+
+	public static butterfly_puzzle_manager ins;
+
+	void Awake()
+	{
+		if(ins == null)
+			ins = this;
+	}
 
 	public void IncreaseCount(){
 		++count;
