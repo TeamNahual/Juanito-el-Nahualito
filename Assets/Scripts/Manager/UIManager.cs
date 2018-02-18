@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Dialogue : MonoBehaviour {
+public class Dialogue {
 	public string text;
 	public int timer;
 	public AudioClip audioClip;

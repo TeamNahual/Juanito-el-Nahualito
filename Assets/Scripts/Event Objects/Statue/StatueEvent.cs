@@ -6,15 +6,16 @@ public class StatueEvent : EventObject {
 
 	public bool pushing = false;
 	public int rotateFlag = 1;
+	public bool disable = false;
 
 	public StatueContainer container; 
 
 	int PUSH_DEGREES = 30;
 	int PUSH_DURATION = 3;
 
-	void OnTriggerStay(Collider other) {
+	void OnTriggerEnter(Collider other) {
 
-		if(Input.GetKeyDown(KeyCode.E) && !pushing)
+		if(!pushing && !disable)
 		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
@@ -40,6 +41,9 @@ public class StatueEvent : EventObject {
 		}
 
 		container.currentRotation += rotateFlag * PUSH_DEGREES;
+
+		if(container.currentRotation == container.requiredRotation)
+			disable = true;
 
 		StatuePuzzleManager.ins.CheckStatueRotations ();
 

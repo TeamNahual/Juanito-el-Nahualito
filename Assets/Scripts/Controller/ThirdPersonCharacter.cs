@@ -47,7 +47,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// Set game camera to player
 			if (Camera.main != null && !m_isAI)
             {	
-				Vector3 target = transform.position + m_CamOffset;
+				// Vector3 target = transform.position + m_CamOffset;
 				//Camera.main.transform.position = target;
             }
 		}

@@ -151,7 +151,7 @@ public class FootstepMaster_Curves : MonoBehaviour {
 				currentFoot = "Right";              //This will help us place the Instantiated or Toggled FX at the correct position.
 				if (floor != null && move_Speed >= 0.075f) {
 					Invoke ("CheckTexture", 0);     //Play RIGHT FOOTSTEP
-					Debug.Log("Right Works!");
+					// Debug.Log("Right Works!");
 				}
 			}
 		}                                                                                                                                       //???????????????????????????????????????????????????????
