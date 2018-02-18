@@ -14,7 +14,7 @@ public class butterfly_piece_controller : MonoBehaviour {
 	private Vector3 direction;
 	private int rotateFlag;
 	private Transform targetPoint;
-	private Transform player;
+	// private Transform player;
 	private bool locked = false;
 	private Vector3 upBoundary;
 	private Vector3 downBoundary;
@@ -22,7 +22,7 @@ public class butterfly_piece_controller : MonoBehaviour {
 	private Vector3 rightBoundary;
 
 	void Awake(){
-		player = GameObject.Find ("ThirdPersonController").transform;
+		// player = GameObject.Find ("ThirdPersonController").transform;
 
 		// upBoundary = puzzleCenter + new Vector3 (0f, 0f, centerBuffer);
 		// downBoundary = puzzleCenter + new Vector3 (0f, 0f, -centerBuffer);

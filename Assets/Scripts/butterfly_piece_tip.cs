@@ -8,11 +8,11 @@ public class butterfly_piece_tip : MonoBehaviour {
 	public int rotateFlag = 1;
 
 	private butterfly_piece_controller cont;
-	private Transform focusPoint;
+	// private Transform focusPoint;
 
 	void Awake(){
 		cont = GetComponentInParent <butterfly_piece_controller> ();
-		focusPoint = GetComponentInChildren <Transform> ();
+		// focusPoint = GetComponentInChildren <Transform> ();
 	}
 
 	void OnTriggerEnter(Collider other){
