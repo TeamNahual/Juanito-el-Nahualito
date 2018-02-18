@@ -13,7 +13,7 @@ public class Juanito : MonoBehaviour {
 
 	private float spirit_start_time;
 	private float spirit_time_limit = 50;
-	private bool SpiritState = false;
+	public bool SpiritState = false;
 
 	[HideInInspector]
 	public SpiritController SpiritControl;
