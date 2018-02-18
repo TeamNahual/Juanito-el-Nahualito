@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8cd91cdae53a0c440a54b604be8fefdc
-timeCreated: 1517470494
+guid: 6b0529069cc031a459f03eb395dd1120
+timeCreated: 1518850208
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,18 +9,18 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
+    4300000: Cylinder
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: c706d13444b62af4da57b66b1377a6bb, type: 2}
+    second: {fileID: 2100000, guid: 38e937f56a142c446877c65ff65e04f8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: ebd4e9056df6a1c469109eab7688b81b, type: 2}
+      name: Material.000
+    second: {fileID: 2100000, guid: 1cc16aa46194cea4da14b0a7e2ad8b48, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,7 +50,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1000
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -63,8 +63,6 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
