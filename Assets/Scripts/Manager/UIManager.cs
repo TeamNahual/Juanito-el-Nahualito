@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
 	private bool dialogueToggleProtect;
     private bool isDialogueOpen;
 	public AudioSource dialogueAudioSource;
+	
+	// Butterflies
+	public GameObject butterflyUI;
 
 	void Awake()
 	{
@@ -62,6 +65,9 @@ public class UIManager : MonoBehaviour
 		}
 		dialogueSystem.Update();
 		
+		// Update butteflies
+		updateButterflyUI(Juanito.ins.GetSpiritCount());
+		
 		inGameMenu.gameObject.SetActive(isMenuOpen);
 		dialogueUI.gameObject.SetActive(isDialogueOpen);
 	}
@@ -82,5 +88,10 @@ public class UIManager : MonoBehaviour
 	public void setAndPlayAudioClip(AudioClip clip) {
 		dialogueAudioSource.clip = clip;
 		dialogueAudioSource.Play();
+	}
+	
+	private void updateButterflyUI(int count) {
+		string text = (count < 3)? "Butterflies: " + count + " / 3": "Spirit form ready!";
+		butterflyUI.transform.Find("ButterflyCount").GetComponent<Text>().text = text;
 	}
 }
