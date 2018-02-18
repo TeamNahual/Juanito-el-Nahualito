@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance = null; // Allows us to access this from other scripts
+	public bool isMovementLocked = false; // Should this be somewhere else?
 
 	void Awake()
 	{
