@@ -48,6 +48,9 @@ public class DialogueSystem : MonoBehaviour
 			if (dialogue.timer > 0) {
 				timerEnd = (int) (Time.time * 1000) + dialogue.timer;
 			}
+			if (dialogue.audioClip != null) {
+				UIManager.instance.setAndPlayAudioClip(dialogue.audioClip);
+			}
 		} else {
 			GameManager.instance.isMovementLocked = false;
 		}

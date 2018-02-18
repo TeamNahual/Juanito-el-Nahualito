@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Audio;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
 	public DialogueSystem dialogueSystem;
 	private bool dialogueToggleProtect;
     private bool isDialogueOpen;
+	public AudioSource dialogueAudioSource;
 
 	void Awake()
 	{
@@ -75,5 +77,10 @@ public class UIManager : MonoBehaviour
 	
 	public void setDialogueBoxText(string text) {
 		dialogueUI.transform.Find("Dialogue").GetComponent<Text>().text = text;
+	}
+	
+	public void setAndPlayAudioClip(AudioClip clip) {
+		dialogueAudioSource.clip = clip;
+		dialogueAudioSource.Play();
 	}
 }
