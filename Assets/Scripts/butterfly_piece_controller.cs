@@ -24,10 +24,15 @@ public class butterfly_piece_controller : MonoBehaviour {
 	void Awake(){
 		player = GameObject.Find ("ThirdPersonController").transform;
 
-		upBoundary = puzzleCenter + new Vector3 (0f, 0f, centerBuffer);
-		downBoundary = puzzleCenter + new Vector3 (0f, 0f, -centerBuffer);
-		leftBoundary = puzzleCenter + new Vector3 (-centerBuffer, 0f, 0f);
-		rightBoundary = puzzleCenter + new Vector3 (centerBuffer, 0f, 0f);
+		// upBoundary = puzzleCenter + new Vector3 (0f, 0f, centerBuffer);
+		// downBoundary = puzzleCenter + new Vector3 (0f, 0f, -centerBuffer);
+		// leftBoundary = puzzleCenter + new Vector3 (-centerBuffer, 0f, 0f);
+		// rightBoundary = puzzleCenter + new Vector3 (centerBuffer, 0f, 0f);
+
+		upBoundary = transform.position + new Vector3 (0f, 0f, centerBuffer);
+		downBoundary = transform.position + new Vector3 (0f, 0f, -centerBuffer);
+		leftBoundary = transform.position + new Vector3 (-centerBuffer, 0f, 0f);
+		rightBoundary = transform.position + new Vector3 (centerBuffer, 0f, 0f);
 
 		if (!CheckBoundaries (transform.position))
 			Debug.Log (gameObject.name + " is not within set boundaries on awake");
