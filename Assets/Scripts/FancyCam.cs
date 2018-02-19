@@ -64,7 +64,7 @@ public class FancyCam : MonoBehaviour {
         // move camera pilot to player
         //transform.position = player.position;
         Vector3 velocity3 = Vector3.zero;
-        transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.05f);
+        transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.15f);
         // set horizontal rotation on camera pivot
         if(Input.GetAxis("Mouse X") != 0f)
         {
