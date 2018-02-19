@@ -25,6 +25,11 @@ public class UIManager : MonoBehaviour
 	// Butterflies
 	public GameObject butterflyUI;
 
+	//Audio Mixer Snapshots
+	public AudioMixerSnapshot paused;
+	public AudioMixerSnapshot mainGame;
+	public AudioMixerSnapshot voiceOver;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -49,6 +54,9 @@ public class UIManager : MonoBehaviour
 		if (Input.GetKey(KeyCode.Escape)) {
 			if (!menuToggleProtect) {
 				isMenuOpen = !isMenuOpen;
+
+				// Will Call Funcition to Lower Audio Volume when Paused
+				AudioPause ();
 			}
 			menuToggleProtect = true;
 		} else if (menuToggleProtect) {
@@ -79,6 +87,15 @@ public class UIManager : MonoBehaviour
 	
 	public void toggleDialogueBox(bool toggle) {
 		isDialogueOpen = toggle;
+
+		// Control Audio When Juanito's Grandpa is Talking
+		if (toggle) {
+			voiceOver.TransitionTo (.01f);
+		}
+
+		if (!toggle) {
+			mainGame.TransitionTo (.01f);
+		}
 	}
 	
 	public void setDialogueBoxText(string text) {
@@ -93,5 +110,16 @@ public class UIManager : MonoBehaviour
 	private void updateButterflyUI(int count) {
 		string text = (count < 3)? "Butterflies: " + count + " / 3": "Spirit form ready!";
 		butterflyUI.transform.Find("ButterflyCount").GetComponent<Text>().text = text;
+	}
+
+	// Used For Bringing down the volume of things when Pausing or entering the menu
+	public void AudioPause(){
+		if (isMenuOpen) {
+			paused.TransitionTo (.01f);
+		}
+
+		if (!isMenuOpen) {
+			mainGame.TransitionTo (.01f);
+		}
 	}
 }
