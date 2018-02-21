@@ -31903,10 +31903,10 @@ GameObject:
   - component: {fileID: 1206178687}
   - component: {fileID: 1206178686}
   - component: {fileID: 1206178685}
-  - component: {fileID: 1206178690}
-  - component: {fileID: 1206178689}
   - component: {fileID: 1206178684}
   - component: {fileID: 1206178683}
+  - component: {fileID: 1206178690}
+  - component: {fileID: 1206178689}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: Player
@@ -31917,18 +31917,8 @@ GameObject:
 --- !u!114 &1206178683
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1206178682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1206178684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114174982934495670, guid: d646961f6e220414492919bedfecf8c3,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206178682}
   m_Enabled: 1
@@ -31938,14 +31928,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 8
+  m_JumpPower: 6
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 2
+  m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
   m_isAI: 0
   m_ForwardAmount: 0
+--- !u!114 &1206178684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114345790614323200, guid: d646961f6e220414492919bedfecf8c3,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1206178682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &1206178685
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -32081,7 +32083,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -32105,7 +32107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab389cd46bc8d1b4e9a40598ec944329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.217
+  volume: 0.527
   volumeVariance: 0.04
   pitchVariance: 0.08
   leftFoot: {fileID: 1607957673}
