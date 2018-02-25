@@ -14,7 +14,6 @@ public class butterfly_piece_controller : MonoBehaviour {
 	private Vector3 direction;
 	private int rotateFlag;
 	private Transform targetPoint;
-	// private Transform player;
 	private bool locked = false;
 	private Vector3 upBoundary;
 	private Vector3 downBoundary;
@@ -33,11 +32,6 @@ public class butterfly_piece_controller : MonoBehaviour {
 		downBoundary = puzzleCenter + new Vector3 (0f, 0f, -centerBuffer);
 		leftBoundary = puzzleCenter + new Vector3 (-centerBuffer, 0f, 0f);
 		rightBoundary = puzzleCenter + new Vector3 (centerBuffer, 0f, 0f);
-
-		/*upBoundary = transform.position + new Vector3 (0f, 0f, centerBuffer);
-		downBoundary = transform.position + new Vector3 (0f, 0f, -centerBuffer);
-		leftBoundary = transform.position + new Vector3 (-centerBuffer, 0f, 0f);
-		rightBoundary = transform.position + new Vector3 (centerBuffer, 0f, 0f);*/
 
 		if (!CheckBoundaries (transform.position))
 			Debug.Log (gameObject.name + " is not within set boundaries on awake\nPuzzle center: "+puzzleCenter+"\nGame object position: "+transform.position+"\nBuffer: "+centerBuffer);
@@ -66,6 +60,7 @@ public class butterfly_piece_controller : MonoBehaviour {
 		locked = true;
 		transform.rotation = rotation;
 		transform.position = pos;
+		rb.constraints = RigidbodyConstraints.FreezeAll;
 	}
 
 	private bool CheckBoundaries(Vector3 pos){
