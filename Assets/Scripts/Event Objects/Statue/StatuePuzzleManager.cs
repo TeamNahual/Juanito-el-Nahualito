@@ -31,7 +31,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 	{
 		foreach (StatueContainer statue in statues)
 		{
-			if (statue.currentRotation != statue.requiredRotation)
+			if (!statue.disabled)
 			{
 				return false;
 			}

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StatueContainer : MonoBehaviour {
 
-	public int currentRotation;
-	public int requiredRotation = 30;
+	public float currentRotation;
+	public float requiredRotation = 30;
+	public float bounds = 1;
+	public bool disabled = false;
 
 	void Start()
 	{
@@ -18,5 +20,10 @@ public class StatueContainer : MonoBehaviour {
 			currentRotation += 360;
 		else if (currentRotation > 360)
 			currentRotation -= 360;
+
+		if(currentRotation >= requiredRotation - 1 && currentRotation <= requiredRotation + 1)
+		{
+			disabled = true;
+		}
 	}
 }

@@ -14,7 +14,7 @@ public class EventObject : MonoBehaviour {
 		Ray ray = new Ray(player.transform.position + Vector3.up, fwd);
 		RaycastHit hit;
 
-		Debug.DrawRay(transform.position + Vector3.up, fwd, Color.green);
+		Debug.DrawRay(player.transform.position + Vector3.up, fwd, Color.green);
 		if(Physics.Raycast(ray, out hit, 1))
 		{
 			foreach(GameObject obj in targetObjects)
