@@ -52,7 +52,7 @@ public class FancyCam : MonoBehaviour {
         // checks that the player isn't facing the camera, then smoothly drifts the camera holder away from center
         if (unsignedAngle < 150)
         {
-            camWidth = Mathf.SmoothDamp(camHold.localPosition.x, Mathf.Clamp(angleDiff/10, -xDrift, xDrift), ref velocity, 1.4f * Time.fixedDeltaTime);
+            camWidth = Mathf.SmoothDamp(camHold.localPosition.x, Mathf.Clamp(angleDiff/30, -xDrift, xDrift), ref velocity, 1.4f * Time.fixedDeltaTime);
             camHold.localPosition = Vector3.Lerp(camHold.localPosition, new Vector3(camWidth, camHold.localPosition.y, camHold.localPosition.z) , 3f * Time.fixedDeltaTime);
         }
         // if the player is facing the camera, smoothly drift the camera back to center
@@ -64,7 +64,7 @@ public class FancyCam : MonoBehaviour {
         // move camera pilot to player
         //transform.position = player.position;
         Vector3 velocity3 = Vector3.zero;
-        transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.05f);
+        transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.15f);
         // set horizontal rotation on camera pivot
         if(Input.GetAxis("Mouse X") != 0f)
         {

@@ -209,7 +209,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
 		}
 
-        public float movementSpeed = 5;
+
 		public void OnAnimatorMove()
 		{
 			// we implement this function to override the default root motion.
@@ -217,7 +217,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (m_IsGrounded && Time.deltaTime > 0)
 			{
 				//Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
-				float multiplier = movementSpeed;
+				float multiplier = 3.5f;
 				m_Move.x *= multiplier;
 				m_Move.z *= multiplier;
 
