@@ -94,14 +94,12 @@ public class butterfly_piece_controller : MonoBehaviour {
 	void FixedUpdate(){
 		if (!locked) {
 			//adjust piece based on where Juanito is pushing
-			rb.mass = 20;
 			if (moving) {
 				rb.velocity = direction * moveSpeed;
 			} else if (rotating) {
 				transform.RotateAround (transform.position, Vector3.up, rotateSpeed * Time.deltaTime * rotateFlag);
 			} else {
 				rb.velocity = Vector3.zero;
-				rb.mass = 1000;
 			}
 			CheckBoundaries (transform.position);
 		} 
