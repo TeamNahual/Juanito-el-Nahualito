@@ -18,9 +18,9 @@ public class Juanito : MonoBehaviour {
 	[HideInInspector]
 	public SpiritController SpiritControl;
 
-	private int numberOfButterflies = 0;
+	private float numberOfButterflies = 0;
 
-	int MAX_SPIRIT_COUNT = 3;
+	int MAX_SPIRIT_COUNT = 100;
 
 	// Use this for initialization
 	void Awake () {
@@ -35,12 +35,12 @@ public class Juanito : MonoBehaviour {
 		SpiritHandler();
 	}
 
-	public int GetSpiritCount()
+	public float GetSpiritCount()
 	{
 		return numberOfButterflies;
 	}
 
-	public bool AddSpiritCount(int count)
+	public bool AddSpiritCount(float count)
 	{
 		if(numberOfButterflies < MAX_SPIRIT_COUNT)
 		{
@@ -51,7 +51,7 @@ public class Juanito : MonoBehaviour {
 		return false;
 	}
 
-	public void DelSpiritCount(int count)
+	public void DelSpiritCount(float count)
 	{
 		numberOfButterflies = Mathf.Max(numberOfButterflies - count, 0); 
 	}
@@ -71,9 +71,8 @@ public class Juanito : MonoBehaviour {
  	{
  		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
 		{
-			if(!SpiritState && Juanito.ins.GetSpiritCount() >= 3)
+			if(!SpiritState && Juanito.ins.GetSpiritCount() >= 100)
 			{
-				DelSpiritCount(3);
 				EnterSpiritState();
 				spirit_start_time = Time.time;
 			}
@@ -82,6 +81,9 @@ public class Juanito : MonoBehaviour {
 				EndSpiritState();
 			}
 		}
+
+		if(SpiritState)
+			DelSpiritCount ((Time.deltaTime * 100)/spirit_time_limit);
 
 		if(SpiritState && Time.time - spirit_start_time > spirit_time_limit)
 		{

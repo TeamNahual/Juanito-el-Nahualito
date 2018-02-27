@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class Butterfly : MonoBehaviour {
 
 	Renderer rend;
+
+	public float DebugRadius = 0;
 
 	bool isActive = true;
 	float timeout = 3;
@@ -27,16 +33,23 @@ public class Butterfly : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
+	#if UNITY_EDITOR
+	void OnDrawGizmos()
+	{
+		Handles.DrawWireDisc(transform.position, Vector3.up, DebugRadius);
+	}
+	#endif
+
+	void OnTriggerStay(Collider other) {
 		// Debug.Log(other.gameObject);
 
 		if(other.gameObject == Juanito.ins.JuanitoHuman && isActive)
 		{
-			if(Juanito.ins.AddSpiritCount(1))
+			if(Juanito.ins.AddSpiritCount(Time.deltaTime * 10))
 			{
-				rend.enabled = false;
-				isActive = false;
-				timeout_start = Time.time;
+//				rend.enabled = false;
+//				isActive = false;
+//				timeout_start = Time.time;
 			}
 		}
 	}

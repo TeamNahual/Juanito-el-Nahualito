@@ -38,7 +38,7 @@ public class Butterfly_Trigger : MonoBehaviour {
 	IEnumerator CheckPosition(){
 		print ("Now checking position");
 		while (overlapped != null) {
-			float angle = Vector3.Angle( transform.forward, overlapped.transform.forward);
+			float angle = Vector3.Angle( transform.forward, overlapped.transform.up);
 			if (!inPosition && angle <= successAngle) {
 				print ("In position");
 				manager.ActivatePoint ();

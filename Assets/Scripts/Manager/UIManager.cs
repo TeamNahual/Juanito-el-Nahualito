@@ -90,8 +90,8 @@ public class UIManager : MonoBehaviour
 		dialogueAudioSource.Play();
 	}
 	
-	private void updateButterflyUI(int count) {
-		string text = (count < 3)? "Butterflies: " + count + " / 3": "Spirit form ready!";
+	private void updateButterflyUI(float count) {
+		string text = (count < 100)? "Butterflies: " + Mathf.RoundToInt(count) + " / 100": "Spirit form ready!";
 		butterflyUI.transform.Find("ButterflyCount").GetComponent<Text>().text = text;
 	}
 }
