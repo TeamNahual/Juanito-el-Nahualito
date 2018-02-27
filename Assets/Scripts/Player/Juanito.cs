@@ -71,7 +71,7 @@ public class Juanito : MonoBehaviour {
  	{
  		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
 		{
-			if(!SpiritState && Juanito.ins.GetSpiritCount() >= 100)
+			if(!SpiritState && GetSpiritCount() >= 10)
 			{
 				EnterSpiritState();
 				spirit_start_time = Time.time;
@@ -82,12 +82,14 @@ public class Juanito : MonoBehaviour {
 			}
 		}
 
-		if(SpiritState)
-			DelSpiritCount ((Time.deltaTime * 100)/spirit_time_limit);
-
-		if(SpiritState && Time.time - spirit_start_time > spirit_time_limit)
+		if (SpiritState) 
 		{
-			EndSpiritState();
+			DelSpiritCount ((Time.deltaTime * 100) / spirit_time_limit);
+
+			if(GetSpiritCount() <= 0)
+			{
+				EndSpiritState ();
+			}
 		}
  	}
 
