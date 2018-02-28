@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine;
 
+using MalbersAnimations.Events;
+using MalbersAnimations.Utilities;
+using MalbersAnimations;
+
 public class Deer : AIFollowController {
 
 	bool runningTask = false;
 
-	Transform targetObject;
+	public Transform targetObject;
+    
 
 	// Use this for initialization
 	void Start () {
-		aiController = GetComponent<AICharacterControl>();
+		//aiController = GetComponent<AICharacterControl>();
+        aiController = GetComponent<AnimalAIControl>();
 
-		animal = AnimalType.Deer;
+        animal = AnimalType.Deer;
 
 		escapeLocation = new GameObject("Escape Location").transform;
 		escapeLocation.transform.parent = transform;

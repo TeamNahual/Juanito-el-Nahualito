@@ -11,7 +11,7 @@ namespace MalbersAnimations
     public class AnimalAIControl : MonoBehaviour
     {
         #region Components References
-        private NavMeshAgent agent;                 //The NavMeshAgent
+        public NavMeshAgent agent;                 //The NavMeshAgent
         protected Animal animal;                    //The Animal Script
         #endregion
 

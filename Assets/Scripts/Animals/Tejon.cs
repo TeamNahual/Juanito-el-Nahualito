@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine;
 
+using MalbersAnimations.Events;
+using MalbersAnimations.Utilities;
+using MalbersAnimations;
+
+
 public class Tejon : AIFollowController {
 
 	bool runningTask = false;
@@ -11,9 +16,10 @@ public class Tejon : AIFollowController {
 
 	// Use this for initialization
 	void Start () {
-		aiController = GetComponent<AICharacterControl>();
+        //aiController = GetComponent<AICharacterControl>();
+        aiController = GetComponent<AnimalAIControl>();
 
-		animal = AnimalType.Tejon;
+        animal = AnimalType.Tejon;
 
 		escapeLocation = new GameObject("Escape Location").transform;
 		escapeLocation.transform.parent = transform;
