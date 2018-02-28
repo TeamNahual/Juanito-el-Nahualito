@@ -12,7 +12,6 @@ public class Butterfly : MonoBehaviour {
 
 	public float DebugRadius = 0;
 
-	bool isActive = true;
 	float timeout = 3;
 	float timeout_start;
 
@@ -23,14 +22,6 @@ public class Butterfly : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!isActive)
-		{
-			if(Time.time - timeout_start >= timeout)
-			{
-				isActive = true;
-				rend.enabled = true;
-			}	
-		}
 	}
 
 	#if UNITY_EDITOR
@@ -43,7 +34,7 @@ public class Butterfly : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		// Debug.Log(other.gameObject);
 
-		if(other.gameObject == Juanito.ins.JuanitoHuman && isActive)
+        if(other.gameObject == Juanito.ins.JuanitoHuman && !Juanito.ins.SpiritState)
 		{
 			if(Juanito.ins.AddSpiritCount(Time.deltaTime * 10))
 			{
