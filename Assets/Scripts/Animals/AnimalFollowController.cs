@@ -24,12 +24,16 @@ public class AnimalFollowController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//aiController = GetComponent<AICharacterControl>();
 		aiController = GetComponent<AnimalAIControl>();
 	}
 
 	// Update is called once per frame
 	void Update () {
+		UpdateAnimal ();
+	}
+
+	protected void UpdateAnimal()
+	{
 		if (!traveling)
 			CheckForPlayer ();
 		else

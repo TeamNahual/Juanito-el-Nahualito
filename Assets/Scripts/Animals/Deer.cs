@@ -7,7 +7,7 @@ using MalbersAnimations.Events;
 using MalbersAnimations.Utilities;
 using MalbersAnimations;
 
-public class Deer : AIFollowController {
+public class Deer : AnimalFollowController {
 
 	bool runningTask = false;
 
@@ -16,20 +16,17 @@ public class Deer : AIFollowController {
 
 	// Use this for initialization
 	void Start () {
-		//aiController = GetComponent<AICharacterControl>();
         aiController = GetComponent<AnimalAIControl>();
 
         animal = AnimalType.Deer;
 
-		escapeLocation = new GameObject("Escape Location").transform;
-		escapeLocation.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(!runningTask)
 		{
-			CheckForPlayer();
+			UpdateAnimal ();
 		}
 	}
 
@@ -74,8 +71,6 @@ public class Deer : AIFollowController {
 	IEnumerator PushTree(GameObject target)
 	{
 		TreeRollEvent controller = target.GetComponent<TreeRollEvent>();
-
-		transform.LookAt( controller.gameObject.transform);
 
 		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
 		{
