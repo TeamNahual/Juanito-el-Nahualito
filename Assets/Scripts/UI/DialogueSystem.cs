@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dialogue : MonoBehaviour {
+public class Dialogue {
 	public string text;
 	public int timer;
 	public AudioClip audioClip;
@@ -19,7 +19,7 @@ public class Dialogue : MonoBehaviour {
 	public Dialogue(string diaText) : this(diaText, 0, null, false) {}
 }
 
-public class DialogueSystem : MonoBehaviour
+public class DialogueSystem
 {
 	// Dialogue System
 	private Queue dialogueQueue;
