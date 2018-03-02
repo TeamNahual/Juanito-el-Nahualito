@@ -40,7 +40,7 @@ public class AnimalFollowController : MonoBehaviour {
 		{
 			if (currentWaypoint != null)
 			{
-				if (Vector3.Distance (transform.position, currentWaypoint.transform.position) < aiController.stoppingDistance + 1)
+				if (Vector3.Distance (transform.position, currentWaypoint.transform.position) < aiController.stoppingDistance + 1.5f)
 				{
 					Debug.Log ("Reached " + currentWaypoint.name);
 					traveling = false;

@@ -4723,6 +4723,9 @@ AnimatorStateMachine:
   - {fileID: 110979786}
   m_StateMachineTransitions:
     data:
+      first: {fileID: 110703742}
+      second: []
+    data:
       first: {fileID: 110743868}
       second: []
     data:
@@ -4732,9 +4735,6 @@ AnimatorStateMachine:
       - {fileID: 110956508}
       - {fileID: 110991308}
       - {fileID: 110968886}
-    data:
-      first: {fileID: 110703742}
-      second: []
     data:
       first: {fileID: 110789220}
       second: []
@@ -4953,10 +4953,6 @@ AnimatorStateMachine:
       second:
       - {fileID: 110965176}
     data:
-      first: {fileID: 1107864222436740830}
-      second:
-      - {fileID: 1109606915135088038}
-    data:
       first: {fileID: 1107116292750364134}
       second:
       - {fileID: 1109979089402423600}
@@ -4964,6 +4960,10 @@ AnimatorStateMachine:
       first: {fileID: 1107726781127436760}
       second:
       - {fileID: 1109396227196742494}
+    data:
+      first: {fileID: 1107864222436740830}
+      second:
+      - {fileID: 1109606915135088038}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -492, y: 0, z: 0}
   m_EntryPosition: {x: 288, y: 72, z: 0}
@@ -5492,7 +5492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: 3dfc40c3621fb004ba2ba9d2e6f682d7, type: 3}
+  - {fileID: 0}
   playOnEnter: 1
   playOnTime: 0
   NormalizedTime: 0.5
