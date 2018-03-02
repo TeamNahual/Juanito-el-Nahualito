@@ -33,7 +33,7 @@ public class CutsceneLoading : MonoBehaviour {
 
 		Application.backgroundLoadingPriority = ThreadPriority.Low;
 
-		ao = SceneManager.LoadSceneAsync (1);
+		ao = SceneManager.LoadSceneAsync ("LVL2VS Chris");
 
 		while (!ao.isDone) 
 		{

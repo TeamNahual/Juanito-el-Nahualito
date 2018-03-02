@@ -41,7 +41,7 @@ namespace MalbersAnimations
         /// <summary>
         /// Important for changing Waypoints
         /// </summary>
-        public bool isMoving = false;
+        private bool isMoving = false;
 
         protected float RemainingDistance;
 
@@ -93,9 +93,9 @@ namespace MalbersAnimations
         void UpdateTarget()
         {
             if (deltaTarget != target)
-			{
+            {
                 deltaTarget = target;
-				if (debug && target != null) Debug.Log("Target Updated: " + target.name);
+                if (debug) Debug.Log("Target Updated: " + target.name);
 
                 Target_is_Animal = deltaTarget ? deltaTarget.GetComponent<Animal>() : null;
                 Target_is_ActionZone = deltaTarget ? deltaTarget.GetComponent<ActionZone>() : null;
