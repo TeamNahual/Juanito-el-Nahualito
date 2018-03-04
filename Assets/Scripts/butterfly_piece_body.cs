@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class butterfly_piece_body : MonoBehaviour {
 
-	public Vector3 direction;
+	public string direction;
 
 	private butterfly_piece_controller controller;
 
@@ -14,7 +14,15 @@ public class butterfly_piece_body : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player"){
-			controller.StartMoving (direction);
+			Vector3 d;
+			if (direction == "right") {
+				d = transform.parent.right;
+			} else if (direction == "left") {
+				d = -transform.parent.right;
+			} else {
+				d = transform.parent.forward;
+			}
+			controller.StartMoving (d);
 		}
 	}
 

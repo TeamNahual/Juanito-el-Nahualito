@@ -8,5 +8,6 @@ public enum AnimalType
 	Tejon,
 	Coati,
 	Quetzal,
-	Ethan
+	Ethan,
+	None
 }

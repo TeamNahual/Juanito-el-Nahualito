@@ -4,22 +4,27 @@ using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine.AI;
 
-[RequireComponent(typeof (AICharacterControl))]
+using MalbersAnimations.Events;
+using MalbersAnimations.Utilities;
+using MalbersAnimations;
+
+//[RequireComponent(typeof (AICharacterControl))]
 public class AIFollowController : MonoBehaviour {
 
 	public AnimalType animal;
 	public float CollisionRadius;
 
 	[HideInInspector]
-	public AICharacterControl aiController;
+	//public AICharacterControl aiController;
+    public AnimalAIControl aiController;
 
-	protected Transform escapeLocation;
+    protected Transform escapeLocation;
 	protected bool following;
 	// Use this for initialization
 	void Start () {
-		aiController = GetComponent<AICharacterControl>();
-
-		escapeLocation = new GameObject("Escape Location").transform;
+        //aiController = GetComponent<AICharacterControl>();
+        aiController = GetComponent<AnimalAIControl>();
+        escapeLocation = new GameObject("Escape Location").transform;
 		escapeLocation.transform.parent = transform;
 	}
 	

@@ -1,58 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
+using UnityStandardAssets.CrossPlatformInput;
+
 
 public class StatueEvent : EventObject {
 
 	public bool pushing = false;
 	public int rotateFlag = 1;
-	public bool disable = false;
 
 	public StatueContainer container; 
 
-	int PUSH_DEGREES = 30;
-	int PUSH_DURATION = 3;
+	float push_strength = 0.5f;
 
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerStay(Collider other) {
+		if(other.gameObject != Juanito.ins.JuanitoHuman)
+			return;
 
-		if(!pushing && !disable)
+		if(container.disabled)
 		{
-			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
+			if(pushing)
 			{
-				Deer deerController = Juanito.ins.SpiritControl.currentFollower.GetComponent<Deer> ();
-				if(deerController)
-					deerController.RunTask(transform);
+				pushing = false;
+				Juanito.ins.transform.parent = null;
+				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
+ 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
+ 				UIManager.instance.dialogueSystem.addDialogue("The statue locks in place and refuses to budge.");
+ 				StatuePuzzleManager.ins.CheckStatueRotations();
+			}
+
+			return;
+		}
+
+		if(Input.GetKeyDown(KeyCode.E) && CheckPlayerDirection(Juanito.ins.JuanitoHuman))
+		{
+			if(pushing)
+			{
+				pushing = false;
+				Juanito.ins.transform.parent = null;
+				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
+ 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
+
+
+			}
+			else
+			{
+				pushing = true;
+				Juanito.ins.transform.parent = transform.parent;
+				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
+ 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
 			}
 		}
-	}
 
-	IEnumerator RotateStatue(float degrees, float duration)
-	{
-		pushing = true;
-		float k = 0;
-
-		Juanito.ins.SpiritControl.currentFollower.transform.parent = transform.parent;
-		
-		while(k < duration)
+		if(pushing)
 		{
-			transform.parent.transform.Rotate(Vector3.up * Time.deltaTime * degrees/duration);
-			k += Time.deltaTime;
-			yield return null;
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            float v = CrossPlatformInputManager.GetAxis("Vertical");
+			bool keyboard = !(Mathf.Abs(h) < 0.1f && Mathf.Abs(v) < 0.1f);
+
+			if (!keyboard)
+			{
+				h = CrossPlatformInputManager.GetAxis("Horizontal-Joystick");
+				v = CrossPlatformInputManager.GetAxis("Vertical-Joystick");
+			}
+
+            transform.parent.transform.Rotate(v * Vector3.up * rotateFlag * push_strength);
+            container.currentRotation += v * rotateFlag * push_strength;
 		}
-
-		container.currentRotation += rotateFlag * PUSH_DEGREES;
-
-		if(container.currentRotation == container.requiredRotation)
-			disable = true;
-
-		StatuePuzzleManager.ins.CheckStatueRotations ();
-
-		Juanito.ins.SpiritControl.currentFollower.transform.parent = null;
-		pushing = false;
-	}
-
-	public void TriggerEvent()
-	{
-		StartCoroutine(RotateStatue(rotateFlag * PUSH_DEGREES, PUSH_DURATION));
 	}
 }

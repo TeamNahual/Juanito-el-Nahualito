@@ -6,36 +6,38 @@ public class butterfly_piece_controller : MonoBehaviour {
 
 	public float moveSpeed;
 	public float rotateSpeed;
-	public Vector3 puzzleCenter;
 	public float centerBuffer;
 
+	private int rotateFlag;
+
+	private Transform targetPoint;
+
+	private bool locked = false;
 	private bool moving = false;
 	private bool rotating = false;
+	private bool colliding = false;
+
+	private Vector3 puzzleCenter;
 	private Vector3 direction;
-	private int rotateFlag;
-	private Transform targetPoint;
-	// private Transform player;
-	private bool locked = false;
 	private Vector3 upBoundary;
 	private Vector3 downBoundary;
 	private Vector3 leftBoundary;
 	private Vector3 rightBoundary;
 
+	private Rigidbody rb;
+
 	void Awake(){
-		// player = GameObject.Find ("ThirdPersonController").transform;
+		puzzleCenter = GameObject.Find ("Butterfly Puzzle Center").transform.position;
 
-		// upBoundary = puzzleCenter + new Vector3 (0f, 0f, centerBuffer);
-		// downBoundary = puzzleCenter + new Vector3 (0f, 0f, -centerBuffer);
-		// leftBoundary = puzzleCenter + new Vector3 (-centerBuffer, 0f, 0f);
-		// rightBoundary = puzzleCenter + new Vector3 (centerBuffer, 0f, 0f);
+		rb = GetComponent<Rigidbody>();
 
-		upBoundary = transform.position + new Vector3 (0f, 0f, centerBuffer);
-		downBoundary = transform.position + new Vector3 (0f, 0f, -centerBuffer);
-		leftBoundary = transform.position + new Vector3 (-centerBuffer, 0f, 0f);
-		rightBoundary = transform.position + new Vector3 (centerBuffer, 0f, 0f);
+		upBoundary = puzzleCenter + new Vector3 (0f, 0f, centerBuffer);
+		downBoundary = puzzleCenter + new Vector3 (0f, 0f, -centerBuffer);
+		leftBoundary = puzzleCenter + new Vector3 (-centerBuffer, 0f, 0f);
+		rightBoundary = puzzleCenter + new Vector3 (centerBuffer, 0f, 0f);
 
 		if (!CheckBoundaries (transform.position))
-			Debug.Log (gameObject.name + " is not within set boundaries on awake");
+			Debug.Log (gameObject.name + " is not within set boundaries on awake\nPuzzle center: "+puzzleCenter+"\nGame object position: "+transform.position+"\nBuffer: "+centerBuffer);
 	}
 
 	//stop all movement on the piece
@@ -51,46 +53,56 @@ public class butterfly_piece_controller : MonoBehaviour {
 	}
 
 	//start rotating either left or right based on flag
-	public void StartRotating(int f/*, Transform p*/){
+	public void StartRotating(int f){
 		rotateFlag = f;
-		//targetPoint = p;
 		rotating = true;
 	}
 
 	public void Lock(Quaternion rotation, Vector3 pos){
 		locked = true;
 		transform.rotation = rotation;
-		transform.position = pos;
+		transform.RotateAround (transform.position, transform.right, 90f);
+		transform.position = new Vector3(pos.x, pos.y + 0.75f, pos.z);
+		rb.constraints = RigidbodyConstraints.FreezeAll;
 	}
 
 	private bool CheckBoundaries(Vector3 pos){
+		bool flag = true;
 		if (pos.z > upBoundary.z) {
-			Debug.Log ("Hitting up bounds");
-			return false;
-		} else if (pos.z < downBoundary.z) {
-			Debug.Log ("Hitting down bounds");
-			return false;
-		} else if (pos.x > rightBoundary.x) {
-			Debug.Log ("Hitting right bounds");
-			return false;
-		} else if (pos.x < leftBoundary.x) {
-			Debug.Log ("Hitting left bounds");
-			return false;
-		} else {
-			return true;
+			Debug.Log ("Hitting up bounds\nBounds: "+upBoundary.z+"\nnew pos: "+pos.z);
+			transform.position = new Vector3 (transform.position.x, transform.position.y, upBoundary.z);
+			flag = false;
 		}
+		if (pos.z < downBoundary.z) {
+			Debug.Log ("Hitting down bounds\nBounds: "+downBoundary.z+"\nnew pos: "+pos.z);
+			transform.position = new Vector3 (transform.position.x, transform.position.y, downBoundary.z);
+			flag = false;
+		}
+		if (pos.x > rightBoundary.x) {
+			Debug.Log ("Hitting right bounds\nBounds: "+rightBoundary.x+"\nnew pos: "+pos.x);
+			transform.position = new Vector3 (rightBoundary.x, transform.position.y, transform.position.z);
+			flag = false;
+		}
+		if (pos.x < leftBoundary.x) {
+			Debug.Log ("Hitting left bounds\nBounds: "+leftBoundary.x+"\nnew pos: "+pos.x);
+			transform.position = new Vector3 (leftBoundary.x, transform.position.y, transform.position.z);
+			flag = false;
+		}
+		return flag;
 	}
 		
 	void FixedUpdate(){
-		if(!locked){
+		if (!locked) {
 			//adjust piece based on where Juanito is pushing
 			if (moving) {
-				if(CheckBoundaries(transform.position + direction * Time.deltaTime))
-					transform.Translate (direction * Time.deltaTime);
+				rb.velocity = direction * moveSpeed;
 			} else if (rotating) {
 				transform.RotateAround (transform.position, Vector3.up, rotateSpeed * Time.deltaTime * rotateFlag);
-				//player.LookAt (targetPoint);
+			} else {
+				rb.velocity = Vector3.zero;
 			}
-		}
+			CheckBoundaries (transform.position);
+		} 
 	}
+
 }
