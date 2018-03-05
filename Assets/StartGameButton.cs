@@ -31,7 +31,7 @@ public class StartGameButton : MonoBehaviour {
 
     public void StartScene()
     {
-        SceneManager.LoadScene("LoadingScreen");
+		GameManager.instance.loadLevel ("Lvl2VS Chris");
     }
 
 	IEnumerator SetText()

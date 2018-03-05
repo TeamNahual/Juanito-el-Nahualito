@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void ToAct2()
 	{
-		SceneManager.LoadScene("StartCutscene");
+		GameManager.instance.loadLevel ("Act2Cutscene");
 	}
 
 	public void EndGame()

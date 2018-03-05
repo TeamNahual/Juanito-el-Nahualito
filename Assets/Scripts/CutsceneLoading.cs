@@ -8,23 +8,37 @@ public class CutsceneLoading : MonoBehaviour {
 
 	public Text LoadingText;
 	public Text ProgressText;
-	public Text ContinueText;
+	public Image logo;
+
+	public float rate = 1;
+	public float logoAlpha = 255;
+	private bool reverse = true;
 
 	private AsyncOperation ao;
 
 	// Use this for initialization
 	void Start () {
-		ContinueText.gameObject.SetActive (false);
-		StartCoroutine (LoadNextLevel ());
+		//StartCoroutine (LoadNextLevel ());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (ContinueText.gameObject.activeSelf)
+
+		logoAlpha = (reverse ? logoAlpha - rate : logoAlpha + rate);
+			
+		if(logoAlpha < 0)
 		{
-			if (Input.anyKeyDown)
-				ao.allowSceneActivation = true;
+			logoAlpha = 0;
+			reverse = false;
 		}
+
+		if(logoAlpha > 255)
+		{
+			logoAlpha = 255;
+			reverse = true;
+		}
+
+		logo.color = new Color(1f,1f,1f, logoAlpha/255);
 	}
 
 	IEnumerator LoadNextLevel()
@@ -33,12 +47,14 @@ public class CutsceneLoading : MonoBehaviour {
 
 		Application.backgroundLoadingPriority = ThreadPriority.Low;
 
-		ao = SceneManager.LoadSceneAsync ("LVL2VS Chris");
+		ao = SceneManager.LoadSceneAsync (GameManager.instance.levelToLoad);
 
 		while (!ao.isDone) 
 		{
-			if (ao.progress != 0.9f)
+			if (ao.progress < 0.9f)
 				ProgressText.text = Mathf.RoundToInt ((ao.progress / 0.9f) * 100) + "%";
+			else
+				ProgressText.text = "100%";
 
 			yield return null;
 

@@ -5,15 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	public static GameManager instance = null; // Allows us to access this from other scripts
+	private static GameManager _instance; // Allows us to access this from other scripts
 	public bool isMovementLocked = false; // Should this be somewhere else?
+
+	public string levelToLoad;
+
+	public static GameManager instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = new GameObject("GameManager").AddComponent<GameManager>();
+			}
+			return _instance;
+		}
+	}
 
 	void Awake()
 	{
-		if (instance == null)
-			instance = this;
-		else if (instance != this)
+		if (_instance == null)
+			_instance = this;
+		else if (_instance != this)
 			Destroy(gameObject);
+
 		DontDestroyOnLoad(gameObject);
 	}
 	
@@ -30,6 +45,12 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		DynamicGI.UpdateEnvironment();
+	}
+
+	public void loadLevel(string sceneName)
+	{
+		levelToLoad = sceneName;
+		SceneManager.LoadScene ("LoadingScreen");
 	}
 	
 	public void exitGame()
