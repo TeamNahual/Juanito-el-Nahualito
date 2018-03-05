@@ -18,7 +18,7 @@ public class CutsceneLoading : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//StartCoroutine (LoadNextLevel ());
+		StartCoroutine (LoadNextLevel ());
 	}
 	
 	// Update is called once per frame
