@@ -1,39 +1,41 @@
 fileFormatVersion: 2
-guid: a7ff6253dfdcd6e41988c687ad9fe2bd
-timeCreated: 1519880544
+guid: 1b8e06f166ec0f9499b27a0d4176272a
+timeCreated: 1520223363
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Full_Butterfly
-    100004: Wing_01
-    100006: Wing_02
-    100008: Wing_03
-    100010: Wing_04
+    100002: Center
+    100004: Cube
+    100006: Cube_001
+    100008: Cube_002
+    100010: Cube_003
     400000: //RootNode
-    400002: Full_Butterfly
-    400004: Wing_01
-    400006: Wing_02
-    400008: Wing_03
-    400010: Wing_04
-    2100000: Material.001
+    400002: Center
+    400004: Cube
+    400006: Cube_001
+    400008: Cube_002
+    400010: Cube_003
+    2100000: Material_001
     2100002: Material
-    2300000: Full_Butterfly
-    2300002: Wing_01
-    2300004: Wing_02
-    2300006: Wing_03
-    2300008: Wing_04
-    3300000: Full_Butterfly
-    3300002: Wing_01
-    3300004: Wing_02
-    3300006: Wing_03
-    3300008: Wing_04
-    4300000: Wing_03
-    4300002: Wing_02
-    4300004: Wing_01
-    4300006: Wing_04
-    4300008: Full_Butterfly
+    2300000: Center
+    2300002: Cube
+    2300004: Cube_001
+    2300006: Cube_002
+    2300008: Cube_003
+    3300000: Center
+    3300002: Cube
+    3300004: Cube_001
+    3300006: Cube_002
+    3300008: Cube_003
+    4300000: Cube_003
+    4300002: Cube_002
+    4300004: Center
+    4300006: Cube_001
+    4300008: Cube
+    7400000: Default Take
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -64,7 +66,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -108,7 +110,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

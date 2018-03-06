@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bedf9edceafb3984d8c197981cfd88ea
-timeCreated: 1519451887
+timeCreated: 1520302778
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -206,7 +206,23 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'QuickRigCharacter_LeftUpLeg'
+      : position error = 8.292023 mm\n\t'QuickRigCharacter_LeftLeg' : position error
+      = 8.808624 mm\n\t'QuickRigCharacter_LeftFoot' : position error = 11.246231 mm\n\t'QuickRigCharacter_LeftToeBase'
+      : position error = 6.095043 mm\n\t'QuickRigCharacter_RightUpLeg' : position
+      error = 8.292023 mm\n\t'QuickRigCharacter_RightLeg' : position error = 8.808486
+      mm\n\t'QuickRigCharacter_RightFoot' : position error = 11.246051 mm\n\t'QuickRigCharacter_RightToeBase'
+      : position error = 6.094667 mm\n\t'QuickRigCharacter_Spine' : position error
+      = 3.022024 mm\n\t'QuickRigCharacter_Spine1' : position error = 3.166631 mm\n\t'QuickRigCharacter_Spine2'
+      : position error = 3.166752 mm\n\t'QuickRigCharacter_LeftShoulder' : position
+      error = 5.036488 mm\n\t'QuickRigCharacter_LeftArm' : position error = 5.400934
+      mm\n\t'QuickRigCharacter_LeftForeArm' : position error = 18.881138 mm\n\t'QuickRigCharacter_LeftHand'
+      : position error = 1.263101 mm\n\t'QuickRigCharacter_RightShoulder' : position
+      error = 5.036467 mm\n\t'QuickRigCharacter_RightArm' : position error = 5.400949
+      mm\n\t'QuickRigCharacter_RightForeArm' : position error = 18.881350 mm\n\t'QuickRigCharacter_RightHand'
+      : position error = 1.263537 mm\n\t'QuickRigCharacter_Neck' : position error
+      = 10.265081 mm\n\t'QuickRigCharacter_Head' : position error = 9.341271 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -309,7 +325,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: QuickRigCharacter_Spine2
+    - boneName: QuickRigCharacter_Spine
       humanName: Spine
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -407,6 +423,22 @@ ModelImporter:
         modified: 0
     - boneName: QuickRigCharacter_LeftHand
       humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: QuickRigCharacter_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: QuickRigCharacter_Spine2
+      humanName: UpperChest
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -619,7 +651,7 @@ ModelImporter:
     - name: QuickRigCharacter_Ctrl_RightKneeEffector
       parentName: QuickRigCharacter_Ctrl_Reference
       position: {x: 0.096432686, y: 0.49550354, z: 0.026154578}
-      rotation: {x: 0.014867788, y: 0.0037485547, z: 0.017544867, w: 0.9997285}
+      rotation: {x: 0.014867789, y: 0.0037485547, z: 0.01754487, w: 0.9997285}
       scale: {x: 1, y: 1, z: 1}
     - name: QuickRigCharacter_Ctrl_RightShoulderEffector
       parentName: QuickRigCharacter_Ctrl_Reference
