@@ -28,11 +28,14 @@ public class TreeEvent : EventObject {
 	IEnumerator RotateTree()
 	{
 		float k = 0;
+		float rate = 1;
 
 		while(k < PUSH_DURATION)
 		{
-			transform.parent.transform.Rotate(Vector3.right * Time.deltaTime * PUSH_DEGREES/PUSH_DURATION);
-			k += Time.deltaTime;
+			transform.parent.transform.Rotate(Vector3.right * Time.deltaTime * rate * PUSH_DEGREES/PUSH_DURATION);
+			k += Time.deltaTime * rate;
+
+			rate += 0.02f;
 			yield return null;
 		}
 	}

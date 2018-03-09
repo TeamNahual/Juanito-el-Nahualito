@@ -48,6 +48,15 @@ public class AnimalFollowController : MonoBehaviour {
 				}
 			}
 		}
+
+		if (following && !Juanito.ins.SpiritState)
+		{
+			currentWaypoint = WayPoints [wayPointCount];
+			aiController.SetTarget (currentWaypoint.transform);
+			wayPointCount = (wayPointCount + 1 > WayPoints.Length - 1? 0 : wayPointCount + 1);
+			traveling = true;
+			following = false;
+		}
 	}
 
 	protected void CheckForPlayer()
@@ -63,6 +72,8 @@ public class AnimalFollowController : MonoBehaviour {
 					// Flee to Waypoint if Juanito is Human
 					if (hit.gameObject == Juanito.ins.JuanitoHuman)
 					{
+						aiController.Agent.enabled = true;
+						aiController.isMoving = false;
 						currentWaypoint = WayPoints [wayPointCount];
 						aiController.SetTarget (currentWaypoint.transform);
 						wayPointCount = (wayPointCount + 1 > WayPoints.Length - 1? 0 : wayPointCount + 1);
@@ -72,10 +83,11 @@ public class AnimalFollowController : MonoBehaviour {
 
 				} else
 				{
-
 					// Follow Juanito if Juanito is Spirit
 					if (hit.gameObject == Juanito.ins.JuanitoSpirit)
 					{
+						aiController.Agent.enabled = true;
+						aiController.isMoving = false;
 						aiController.SetTarget (hit.gameObject.transform);
 						following = true;
 						Juanito.ins.SpiritControl.currentFollower = transform.gameObject;

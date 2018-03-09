@@ -37,6 +37,10 @@ public class ButterflyBody : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.E) && main.isPushing)
+		{
+			main.DetachPlayer();
+			main.isPushing = false;
+		}
 	}
 }

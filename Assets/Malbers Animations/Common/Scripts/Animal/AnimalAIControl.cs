@@ -41,7 +41,7 @@ namespace MalbersAnimations
         /// <summary>
         /// Important for changing Waypoints
         /// </summary>
-        private bool isMoving = false;
+        public bool isMoving = false;
 
         protected float RemainingDistance;
 
