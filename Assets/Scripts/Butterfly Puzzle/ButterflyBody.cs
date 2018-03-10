@@ -16,19 +16,22 @@ public class ButterflyBody : MonoBehaviour {
 	{
 		if(other.gameObject == Juanito.ins.JuanitoHuman)
 		{
-			if(Input.GetKeyDown(KeyCode.E))
+			if(Input.GetKey(KeyCode.E))
 			{
-				if(main.isPushing)
-				{
-					main.DetachPlayer();
-					main.isPushing = false;
-				}
-				else
+				if(!main.isPushing)
 				{
 					main.AttachPlayer();
 					main.isPushing = true;
 					main.directionFlag = directionFlag;
 					main.movementVector = transform.right;
+				}
+			}
+			else
+			{
+				if(main.isPushing)
+				{
+					main.DetachPlayer();
+					main.isPushing = false;
 				}
 			}
 
@@ -37,10 +40,6 @@ public class ButterflyBody : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.E) && main.isPushing)
-		{
-			main.DetachPlayer();
-			main.isPushing = false;
-		}
+		
 	}
 }
