@@ -15,9 +15,6 @@ public class ReloadSceneButton : MonoBehaviour {
 
 	void reloadScene()
 	{
-		if (GameManager.instance != null)
-		{
-			GameManager.instance.reloadScene();
-		}
+		UIManager.instance.reloadScene();
 	}
 }

@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 	public GameObject inGameMenu;
 	private bool menuToggleProtect;
     private bool isMenuOpen;
+	private bool menuOptionProtect;
 	
 	// Dialogue System
 	public GameObject dialogueUI;
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
 			Destroy(gameObject);
 		isMenuOpen = false;
 		menuToggleProtect = false;
+		menuOptionProtect = false;
 		
 		dialogueSystem = new DialogueSystem();
 		dialogueToggleProtect = false;
@@ -75,6 +77,21 @@ public class UIManager : MonoBehaviour
 	public void closeMainMenu()
 	{
 		isMenuOpen = false;
+		GameManager.instance.unlockMovement();
+	}
+	
+	public void reloadScene() {
+		if (GameManager.instance != null)
+		{
+			GameManager.instance.reloadScene();
+		}
+	}
+	
+	public void exitGame() {
+		if (GameManager.instance != null)
+		{
+			GameManager.instance.exitGame();
+		}
 	}
 	
 	public void toggleDialogueBox(bool toggle) {

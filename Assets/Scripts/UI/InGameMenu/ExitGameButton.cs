@@ -15,9 +15,6 @@ public class ExitGameButton : MonoBehaviour {
 
 	void exitGame()
 	{
-		if (GameManager.instance != null)
-		{
-			GameManager.instance.exitGame();
-		}
+		UIManager.instance.exitGame();
 	}
 }
