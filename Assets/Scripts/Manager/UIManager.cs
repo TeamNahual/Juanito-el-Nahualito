@@ -48,24 +48,45 @@ public class UIManager : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetKey(KeyCode.Escape)) {
+		if (Input.GetKey(KeyCode.Escape) || CrossPlatformInputManager.GetButtonDown("Menu-Toggle")) {
 			if (!menuToggleProtect) {
 				isMenuOpen = !isMenuOpen;
+				if (isMenuOpen) {
+					GameManager.instance.lockMovement();
+				} else {
+					GameManager.instance.unlockMovement();
+				}
 			}
 			menuToggleProtect = true;
 		} else if (menuToggleProtect) {
 			menuToggleProtect = false;
 		}
 		
-		if (Input.GetKey(KeyCode.Return) || CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
-			if (!dialogueToggleProtect) {
-				dialogueSystem.doDialogueAction();
+		if (isMenuOpen) {
+			if (CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
+				if (!menuOptionProtect) {
+					reloadScene();
+				}
+				menuOptionProtect = true;
+			} else if (CrossPlatformInputManager.GetButtonDown("Exit-Game")) {
+				if (!menuOptionProtect) {
+					exitGame();
+				}
+				menuOptionProtect = true;
+			} else if (menuOptionProtect) {
+				menuOptionProtect = false;
 			}
-			dialogueToggleProtect = true;
-		} else if (dialogueToggleProtect) {
-			dialogueToggleProtect = false;
+		} else {
+			if (Input.GetKey(KeyCode.Return) || CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
+				if (!dialogueToggleProtect) {
+					dialogueSystem.doDialogueAction();
+				}
+				dialogueToggleProtect = true;
+			} else if (dialogueToggleProtect) {
+				dialogueToggleProtect = false;
+			}
+			dialogueSystem.Update();
 		}
-		dialogueSystem.Update();
 		
 		// Update butteflies
 		updateButterflyUI(Juanito.ins.GetSpiritCount());
