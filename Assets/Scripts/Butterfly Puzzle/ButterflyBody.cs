@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class ButterflyBody : MonoBehaviour {
 
@@ -14,16 +15,16 @@ public class ButterflyBody : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.gameObject == Juanito.ins.JuanitoHuman)
+		if(other.gameObject == Juanito.ins.JuanitoHuman && !main.locked)
 		{
-			if(Input.GetKey(KeyCode.E))
+			if(Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
 			{
 				if(!main.isPushing)
 				{
 					main.AttachPlayer();
 					main.isPushing = true;
 					main.directionFlag = directionFlag;
-					main.movementVector = transform.right;
+					main.movementVector = transform.forward;
 				}
 			}
 			else
@@ -36,6 +37,12 @@ public class ButterflyBody : MonoBehaviour {
 			}
 
 		}
+	}
+
+	void OnTriggerExit(Collider other) 
+	{
+		main.DetachPlayer();
+		main.isPushing = false;
 	}
 	
 	// Update is called once per frame
