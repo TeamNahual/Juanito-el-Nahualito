@@ -17,6 +17,17 @@ public class pulley_manager : MonoBehaviour {
 	}
 	
 	public void MovePlatforms(){
-		
+		float w1 = plat1.GetWeight ();
+		float w2 = plat2.GetWeight ();
+		if (w1 < w2) {
+			plat1.MoveTo (topPos);
+			plat2.MoveTo (bottomPos);
+		} else if (w1 > w2) {
+			plat1.MoveTo (bottomPos);
+			plat2.MoveTo (topPos);
+		} else {
+			plat1.MoveTo (midPos);
+			plat2.MoveTo (midPos);
+		}
 	}
 }

@@ -50,24 +50,43 @@ public class package : MonoBehaviour {
 			}
 
 			//These dimensions might need to change later
+			float hBuffer;
+			if (horizontal > 0) {
+				hBuffer = 0.1f;
+			} else if (horizontal < 0) {
+				hBuffer = -0.1f;
+			} else {
+				hBuffer = 0f;
+			}
+			float vBuffer;
+			if (vertical> 0) {
+				vBuffer = 0.1f;
+			} else if (vertical < 0) {
+				vBuffer = -0.1f;
+			} else {
+				vBuffer = 0f;
+			}
 			if (Physics.Linecast(
-				transform.position + new Vector3(horizontal, 0f, vertical),
-				transform.position + new Vector3(horizontal, -0.6f, vertical)
-			)) {
+					transform.position + new Vector3(horizontal, -0.4f, vertical),
+					transform.position + new Vector3(horizontal, -0.6f, vertical))
+				||
+				Physics.Linecast(
+					transform.position + new Vector3(horizontal+hBuffer, -0.4f, vertical+vBuffer),
+					transform.position + new Vector3(horizontal+hBuffer, -0.6f, vertical+vBuffer))
+			) {
+				print ("linecast hit");
 				rb.velocity = new Vector3 (horizontal, 0f, vertical).normalized * pushSpeed;
 			}
-		}
-	}
-
-	void OnCollisionEnter(Collision other){
-		if (other.gameObject != Juanito.ins.JuanitoHuman) {
-				
-		}
-	}
-
-	void OnCollisionExit(Collision other){
-		if (other.gameObject != Juanito.ins.JuanitoHuman) {
-			
+			Debug.DrawLine (
+				transform.position + new Vector3(horizontal, -0.4f, vertical),
+				transform.position + new Vector3(horizontal, -0.6f, vertical),
+				Color.red
+			);
+			Debug.DrawLine (
+				transform.position + new Vector3(horizontal+hBuffer, -0.4f, vertical+vBuffer),
+				transform.position + new Vector3(horizontal+hBuffer, -0.6f, vertical+vBuffer),
+				Color.red
+			);
 		}
 	}
 
