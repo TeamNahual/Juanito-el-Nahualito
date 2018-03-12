@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
 	private static GameManager _instance; // Allows us to access this from other scripts
 	public bool isMovementLocked = false; // Should this be somewhere else?
+	public int movementLocks = 0;
+	private int unlockCounter;
 
 	public string levelToLoad;
 
@@ -37,9 +39,25 @@ public class GameManager : MonoBehaviour
 		DynamicGI.UpdateEnvironment();
 	}
 	
-	void Update()
-	{
-	}	
+	void Update() {
+		if (movementLocks == 0 && isMovementLocked) {
+			if (--unlockCounter == 0) {
+				isMovementLocked = false;
+			}
+		}
+	}
+	
+	public void lockMovement() {
+		isMovementLocked = true;
+		movementLocks++;
+	}
+	
+	public void unlockMovement() {
+		--movementLocks;
+		if (movementLocks == 0) {
+			unlockCounter = 3;
+		}
+	}
 	
 	public void reloadScene()
 	{

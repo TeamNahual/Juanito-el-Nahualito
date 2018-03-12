@@ -24,10 +24,12 @@ public class DialogueSystem
 	// Dialogue System
 	private Queue dialogueQueue;
 	private int timerEnd;
+	private bool wasMovementLocked;
 
 	public DialogueSystem() {
 		dialogueQueue = new Queue();
 		timerEnd = -1;
+		wasMovementLocked = false;
 	}
 	
 	public void Update()
@@ -42,8 +44,15 @@ public class DialogueSystem
 	{
 		bool isDialogueOpen = dialogueQueue.Count > 0;
 		if (isDialogueOpen) {
+			if (wasMovementLocked) {
+				GameManager.instance.unlockMovement();
+			}
 			Dialogue dialogue = (Dialogue) dialogueQueue.Peek();
-			GameManager.instance.isMovementLocked = dialogue.isMovementLocked;
+			wasMovementLocked = dialogue.isMovementLocked;
+			if (dialogue.isMovementLocked) {
+				wasMovementLocked = true;
+				GameManager.instance.lockMovement();
+			}
 			UIManager.instance.setDialogueBoxText(dialogue.text);
 			if (dialogue.timer > 0) {
 				timerEnd = (int) (Time.time * 1000) + dialogue.timer;
@@ -51,8 +60,9 @@ public class DialogueSystem
 			if (dialogue.audioClip != null) {
 				UIManager.instance.setAndPlayAudioClip(dialogue.audioClip);
 			}
-		} else {
-			GameManager.instance.isMovementLocked = false;
+		} else if (wasMovementLocked) {
+			wasMovementLocked = false;
+			GameManager.instance.unlockMovement();
 		}
 		UIManager.instance.toggleDialogueBox(isDialogueOpen);
 	}

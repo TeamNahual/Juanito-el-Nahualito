@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 	public GameObject inGameMenu;
 	private bool menuToggleProtect;
     private bool isMenuOpen;
+	private bool menuOptionProtect;
 	
 	// Dialogue System
 	public GameObject dialogueUI;
@@ -37,9 +38,10 @@ public class UIManager : MonoBehaviour
 			Destroy(gameObject);
 		isMenuOpen = false;
 		menuToggleProtect = false;
-
+		menuOptionProtect = false;
 		pushHelp.SetActive(false);
 		pushMoveHelp.SetActive(false);
+
 		
 		dialogueSystem = new DialogueSystem();
 		dialogueToggleProtect = false;
@@ -53,24 +55,45 @@ public class UIManager : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetKey(KeyCode.Escape)) {
+		if (Input.GetKey(KeyCode.Escape) || CrossPlatformInputManager.GetButtonDown("Menu-Toggle")) {
 			if (!menuToggleProtect) {
 				isMenuOpen = !isMenuOpen;
+				if (isMenuOpen) {
+					GameManager.instance.lockMovement();
+				} else {
+					GameManager.instance.unlockMovement();
+				}
 			}
 			menuToggleProtect = true;
 		} else if (menuToggleProtect) {
 			menuToggleProtect = false;
 		}
 		
-		if (Input.GetKey(KeyCode.Return) || CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
-			if (!dialogueToggleProtect) {
-				dialogueSystem.doDialogueAction();
+		if (isMenuOpen) {
+			if (CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
+				if (!menuOptionProtect) {
+					reloadScene();
+				}
+				menuOptionProtect = true;
+			} else if (CrossPlatformInputManager.GetButtonDown("Exit-Game")) {
+				if (!menuOptionProtect) {
+					exitGame();
+				}
+				menuOptionProtect = true;
+			} else if (menuOptionProtect) {
+				menuOptionProtect = false;
 			}
-			dialogueToggleProtect = true;
-		} else if (dialogueToggleProtect) {
-			dialogueToggleProtect = false;
+		} else {
+			if (Input.GetKey(KeyCode.Return) || CrossPlatformInputManager.GetButtonDown("Dialogue-Pop")) {
+				if (!dialogueToggleProtect) {
+					dialogueSystem.doDialogueAction();
+				}
+				dialogueToggleProtect = true;
+			} else if (dialogueToggleProtect) {
+				dialogueToggleProtect = false;
+			}
+			dialogueSystem.Update();
 		}
-		dialogueSystem.Update();
 		
 		// Update butteflies
 		updateButterflyUI(Juanito.ins.GetSpiritCount());
@@ -82,6 +105,21 @@ public class UIManager : MonoBehaviour
 	public void closeMainMenu()
 	{
 		isMenuOpen = false;
+		GameManager.instance.unlockMovement();
+	}
+	
+	public void reloadScene() {
+		if (GameManager.instance != null)
+		{
+			GameManager.instance.reloadScene();
+		}
+	}
+	
+	public void exitGame() {
+		if (GameManager.instance != null)
+		{
+			GameManager.instance.exitGame();
+		}
 	}
 	
 	public void toggleDialogueBox(bool toggle) {
