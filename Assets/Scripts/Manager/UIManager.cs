@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
 	// Butterflies
 	public GameObject butterflyUI;
 
+	// Action Messages
+	public GameObject pushHelp;
+	public GameObject pushMoveHelp;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -35,6 +39,9 @@ public class UIManager : MonoBehaviour
 		isMenuOpen = false;
 		menuToggleProtect = false;
 		menuOptionProtect = false;
+		pushHelp.SetActive(false);
+		pushMoveHelp.SetActive(false);
+
 		
 		dialogueSystem = new DialogueSystem();
 		dialogueToggleProtect = false;

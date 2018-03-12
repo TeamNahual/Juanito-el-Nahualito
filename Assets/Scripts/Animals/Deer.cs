@@ -72,7 +72,7 @@ public class Deer : AnimalFollowController {
 	{
 		TreeRollEvent controller = target.GetComponent<TreeRollEvent>();
 
-		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
+		while(Vector3.Distance (transform.position, target.transform.position) > aiController.stoppingDistance + 1.5f)
 		{
 			yield return null;
 		}
@@ -81,9 +81,12 @@ public class Deer : AnimalFollowController {
 
 		controller.pushing = true;
 
-		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
+		while (controller.pushing)
+		{
+			yield return null;
+		}
 
-		yield return new WaitForSeconds (2);
+		FinishTask ();
 
 		runningTask = false;
 	}

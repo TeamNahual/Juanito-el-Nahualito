@@ -17,6 +17,7 @@ public class ButterflyPiece : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		rb.detectCollisions = false;
 	}
 	
 	// Update is called once per frame
@@ -35,6 +36,8 @@ public class ButterflyPiece : MonoBehaviour {
 			vInput = 0;
 		else if (limitBackward && vInput < 0)
 			vInput = 0;
+
+		Juanito.ins.HumanAnim.SetFloat("Forward", vInput);
 
 		transform.Translate(vInput * movementVector * directionFlag * pushSpeed);
 	}
@@ -56,6 +59,8 @@ public class ButterflyPiece : MonoBehaviour {
 
 	public void AttachPlayer()
 	{
+		Juanito.ins.HumanAnim.SetBool("Pushing", true);
+		rb.detectCollisions = true;
 		Juanito.ins.transform.parent = transform;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
@@ -63,6 +68,8 @@ public class ButterflyPiece : MonoBehaviour {
 
 	public void DetachPlayer()
 	{
+		Juanito.ins.HumanAnim.SetBool("Pushing", false);
+		rb.detectCollisions = false;
 		Juanito.ins.transform.parent = null;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;

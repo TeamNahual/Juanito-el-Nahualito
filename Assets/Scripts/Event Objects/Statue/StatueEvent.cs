@@ -23,6 +23,9 @@ public class StatueEvent : EventObject {
 			if(pushing)
 			{
 				pushing = false;
+				UIManager.instance.pushHelp.SetActive(false);
+				UIManager.instance.pushMoveHelp.SetActive(false);
+				Juanito.ins.HumanAnim.SetBool("Pushing", false);
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
@@ -33,23 +36,29 @@ public class StatueEvent : EventObject {
 			return;
 		}
 
-		if(Input.GetKeyDown(KeyCode.E) && CheckPlayerDirection(Juanito.ins.JuanitoHuman))
+		UIManager.instance.pushHelp.SetActive(true);
+
+		if((Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
+			 && CheckPlayerDirection(Juanito.ins.JuanitoHuman))
+		{
+			UIManager.instance.pushHelp.SetActive(false);
+			UIManager.instance.pushMoveHelp.SetActive(true);
+			Juanito.ins.HumanAnim.SetBool("Pushing", true);
+			pushing = true;
+			Juanito.ins.transform.parent = transform.parent;
+			Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
+			Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
+		}
+		else
 		{
 			if(pushing)
 			{
+				Juanito.ins.HumanAnim.SetBool("Pushing", false);
+				UIManager.instance.pushMoveHelp.SetActive(false);
 				pushing = false;
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
-
-
-			}
-			else
-			{
-				pushing = true;
-				Juanito.ins.transform.parent = transform.parent;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
- 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
 			}
 		}
 
@@ -65,8 +74,30 @@ public class StatueEvent : EventObject {
 				v = CrossPlatformInputManager.GetAxis("Vertical-Joystick");
 			}
 
+			Juanito.ins.HumanAnim.SetFloat("Forward", v);
+
             transform.parent.transform.Rotate(v * Vector3.up * rotateFlag * push_strength);
             container.currentRotation += v * rotateFlag * push_strength;
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject == Juanito.ins.JuanitoHuman)
+		{
+			if(pushing)
+			{
+				Juanito.ins.HumanAnim.SetBool("Pushing", false);
+				pushing = false;
+				Juanito.ins.transform.parent = null;
+				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
+ 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
+			}
+
+			UIManager.instance.pushHelp.SetActive(false);
+			UIManager.instance.pushMoveHelp.SetActive(false);
+
+
 		}
 	}
 }

@@ -9,6 +9,7 @@ public class ButterflyMesh : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		main = transform.parent.gameObject.GetComponent<ButterflyPiece>();
+		Physics.IgnoreCollision(Juanito.ins.JuanitoHuman.GetComponent<Collider>(), GetComponent<Collider>());
 	}
 	
 	// Update is called once per frame

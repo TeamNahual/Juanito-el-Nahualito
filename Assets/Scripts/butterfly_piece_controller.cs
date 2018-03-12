@@ -15,7 +15,6 @@ public class butterfly_piece_controller : MonoBehaviour {
 	private bool locked = false;
 	private bool moving = false;
 	private bool rotating = false;
-	private bool colliding = false;
 
 	private Vector3 puzzleCenter;
 	private Vector3 direction;

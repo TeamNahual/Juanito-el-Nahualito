@@ -36,6 +36,8 @@ public class TreeRollEvent : EventObject {
 			k += Time.deltaTime;
 			yield return null;
 		}
+
+		pushing = false;
 	}
 
 	public void TriggerEvent()
