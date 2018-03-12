@@ -6,7 +6,7 @@ public class TreeEvent : EventObject {
 
 	public bool pushing = false;
 
-	int PUSH_DEGREES = -90;
+	int PUSH_DEGREES = -86;
 	int PUSH_DURATION = 3;
 
 	void OnTriggerEnter(Collider other) 
