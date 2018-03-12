@@ -86,16 +86,8 @@ public class Deer : AnimalFollowController {
 			yield return null;
 		}
 
-		if (Juanito.ins.SpiritState)
-		{
-			aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
-		} else
-		{
-			currentWaypoint = WayPoints [wayPointCount];
-			aiController.SetTarget (currentWaypoint.transform);
-			wayPointCount = (wayPointCount + 1 > WayPoints.Length - 1? 0 : wayPointCount + 1);
-			traveling = true;
-		}
+		FinishTask ();
+
 		runningTask = false;
 	}
 

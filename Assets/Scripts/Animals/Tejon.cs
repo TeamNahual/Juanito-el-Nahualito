@@ -55,14 +55,12 @@ public class Tejon : AnimalFollowController {
 
 		controller.pushing = true;
 
-		while(controller.pushing)
+		while(!controller.disabled)
 		{
 			yield return null;
 		}
 			
-		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
-	
-		yield return new WaitForSeconds (2);
+		FinishTask ();
 
 		runningTask = false;
 	}

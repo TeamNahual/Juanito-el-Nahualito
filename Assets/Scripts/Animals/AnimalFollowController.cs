@@ -59,6 +59,20 @@ public class AnimalFollowController : MonoBehaviour {
 		}
 	}
 
+	protected void FinishTask()
+	{
+		if (Juanito.ins.SpiritState)
+		{
+			aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
+		} else
+		{
+			currentWaypoint = WayPoints [wayPointCount];
+			aiController.SetTarget (currentWaypoint.transform);
+			wayPointCount = (wayPointCount + 1 > WayPoints.Length - 1? 0 : wayPointCount + 1);
+			traveling = true;
+		}
+	}
+
 	protected void CheckForPlayer()
 	{
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, CollisionRadius);

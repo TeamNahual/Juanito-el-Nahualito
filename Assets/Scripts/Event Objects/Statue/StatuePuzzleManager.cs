@@ -37,7 +37,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 			}
 		}
 		
-		if(butterfly_puzzle_manager.ins.allActive)
+		if(ButterflyPuzzle.ins.allActive)
 		{
 			UIManager.instance.dialogueSystem.addDialogue("You have completed both puzzles of this build. There will be more puzzles for Juanito in his search for his grandpa. To be continued...");
 		}

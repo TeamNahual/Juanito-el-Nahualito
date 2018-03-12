@@ -5,13 +5,14 @@ using UnityEngine;
 public class RockWallEvent : EventObject {
 
 	public bool pushing = false;
+	public bool disabled = false;
 
 	int DIG_DISTANCE = 10;
 	int DIG_DURATION = 3;
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if(!pushing)
+		if(!pushing && !disabled)
 		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
@@ -35,6 +36,8 @@ public class RockWallEvent : EventObject {
 			k += Time.deltaTime;
 			yield return null;
 		}
+
+		disabled = true;
 	}
 
 	public void TriggerEvent()
