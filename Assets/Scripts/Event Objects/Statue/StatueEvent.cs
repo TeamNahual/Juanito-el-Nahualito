@@ -23,6 +23,8 @@ public class StatueEvent : EventObject {
 			if(pushing)
 			{
 				pushing = false;
+				UIManager.instance.pushHelp.SetActive(false);
+				UIManager.instance.pushMoveHelp.SetActive(false);
 				Juanito.ins.HumanAnim.SetBool("Pushing", false);
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
@@ -34,9 +36,13 @@ public class StatueEvent : EventObject {
 			return;
 		}
 
+		UIManager.instance.pushHelp.SetActive(true);
+
 		if((Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
 			 && CheckPlayerDirection(Juanito.ins.JuanitoHuman))
 		{
+			UIManager.instance.pushHelp.SetActive(false);
+			UIManager.instance.pushMoveHelp.SetActive(true);
 			Juanito.ins.HumanAnim.SetBool("Pushing", true);
 			pushing = true;
 			Juanito.ins.transform.parent = transform.parent;
@@ -48,6 +54,7 @@ public class StatueEvent : EventObject {
 			if(pushing)
 			{
 				Juanito.ins.HumanAnim.SetBool("Pushing", false);
+				UIManager.instance.pushMoveHelp.SetActive(false);
 				pushing = false;
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
@@ -86,6 +93,11 @@ public class StatueEvent : EventObject {
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
 			}
+
+			UIManager.instance.pushHelp.SetActive(false);
+			UIManager.instance.pushMoveHelp.SetActive(false);
+
+
 		}
 	}
 }

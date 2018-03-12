@@ -16,7 +16,7 @@ public class Juanito : MonoBehaviour {
 
 	public bool butterflyRelic = false;
 
-	private float spirit_start_time;
+	//private float spirit_start_time;
 	private float spirit_time_limit = 50;
 	public bool SpiritState = false;
 
@@ -79,7 +79,7 @@ public class Juanito : MonoBehaviour {
 			if(!SpiritState && GetSpiritCount() >= 10)
 			{
 				EnterSpiritState();
-				spirit_start_time = Time.time;
+				//spirit_start_time = Time.time;
 			}
 			else
 			{

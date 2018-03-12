@@ -17,20 +17,22 @@ public class ButterflyBody : MonoBehaviour {
 	{
 		if(other.gameObject == Juanito.ins.JuanitoHuman && !main.locked)
 		{
+			UIManager.instance.pushHelp.SetActive(true);
+
 			if(Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
 			{
-				if(!main.isPushing)
-				{
-					main.AttachPlayer();
-					main.isPushing = true;
-					main.directionFlag = directionFlag;
-					main.movementVector = transform.forward;
-				}
+				UIManager.instance.pushHelp.SetActive(false);
+				UIManager.instance.pushMoveHelp.SetActive(true);
+				main.AttachPlayer();
+				main.isPushing = true;
+				main.directionFlag = directionFlag;
+				main.movementVector = transform.forward;
 			}
 			else
 			{
 				if(main.isPushing)
 				{
+					UIManager.instance.pushMoveHelp.SetActive(false);
 					main.DetachPlayer();
 					main.isPushing = false;
 				}
@@ -43,6 +45,8 @@ public class ButterflyBody : MonoBehaviour {
 	{
 		main.DetachPlayer();
 		main.isPushing = false;
+		UIManager.instance.pushHelp.SetActive(false);
+		UIManager.instance.pushMoveHelp.SetActive(false);
 	}
 	
 	// Update is called once per frame

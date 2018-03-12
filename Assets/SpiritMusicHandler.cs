@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 
 public class SpiritMusicHandler : MonoBehaviour {
 
-	public GameObject JuanitoObject;
+	//public GameObject JuanitoObject;
 	public bool checkSpiritChange;
 	public AudioSource spiritMusic;
 	public AudioSource mainMusic;
@@ -18,7 +18,7 @@ public class SpiritMusicHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		checkSpiritChange = JuanitoObject.GetComponent<Juanito> ().SpiritState;
+		checkSpiritChange = Juanito.ins.SpiritState;
 		//Debug.Log (checkSpiritChange);
 		if (Input.GetKeyDown (KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit")) {
 			if (!checkSpiritChange && Juanito.ins.GetSpiritCount() >= 3) {

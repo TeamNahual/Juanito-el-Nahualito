@@ -8,16 +8,11 @@ using UnityEditor;
 
 public class Butterfly : MonoBehaviour {
 
-	Renderer rend;
-
 	public float DebugRadius = 0;
-
-	float timeout = 3;
-	float timeout_start;
 
 	// Use this for initialization
 	void Start () {
-		rend = GetComponent<Renderer>();
+
 	}
 	
 	// Update is called once per frame
@@ -38,9 +33,7 @@ public class Butterfly : MonoBehaviour {
 		{
 			if(Juanito.ins.AddSpiritCount(Time.deltaTime * 10))
 			{
-//				rend.enabled = false;
-//				isActive = false;
-//				timeout_start = Time.time;
+				// Do Something if able to add spirits
 			}
 		}
 	}
