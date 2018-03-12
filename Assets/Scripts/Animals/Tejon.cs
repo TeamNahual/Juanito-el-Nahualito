@@ -8,7 +8,7 @@ using MalbersAnimations.Utilities;
 using MalbersAnimations;
 
 
-public class Tejon : AIFollowController {
+public class Tejon : AnimalFollowController {
 
 	bool runningTask = false;
 
@@ -19,17 +19,13 @@ public class Tejon : AIFollowController {
         //aiController = GetComponent<AICharacterControl>();
         aiController = GetComponent<AnimalAIControl>();
 
-        animal = AnimalType.Tejon;
-
-		escapeLocation = new GameObject("Escape Location").transform;
-		escapeLocation.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(!runningTask)
 		{
-			CheckForPlayer();
+			UpdateAnimal ();
 		}
 	}
 
@@ -59,14 +55,12 @@ public class Tejon : AIFollowController {
 
 		controller.pushing = true;
 
-		while(controller.pushing)
+		while(!controller.disabled)
 		{
 			yield return null;
 		}
 			
-		aiController.SetTarget (Juanito.ins.JuanitoSpirit.transform);
-	
-		yield return new WaitForSeconds (2);
+		FinishTask ();
 
 		runningTask = false;
 	}

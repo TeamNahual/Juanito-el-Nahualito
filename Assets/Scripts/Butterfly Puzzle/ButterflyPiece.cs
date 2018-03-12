@@ -17,6 +17,7 @@ public class ButterflyPiece : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		rb.detectCollisions = false;
 	}
 	
 	// Update is called once per frame
@@ -56,6 +57,7 @@ public class ButterflyPiece : MonoBehaviour {
 
 	public void AttachPlayer()
 	{
+		rb.detectCollisions = true;
 		Juanito.ins.transform.parent = transform;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
@@ -63,6 +65,7 @@ public class ButterflyPiece : MonoBehaviour {
 
 	public void DetachPlayer()
 	{
+		rb.detectCollisions = false;
 		Juanito.ins.transform.parent = null;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;

@@ -5,13 +5,14 @@ using UnityEngine;
 public class RockWallEvent : EventObject {
 
 	public bool pushing = false;
+	public bool disabled = false;
 
 	int DIG_DISTANCE = 10;
 	int DIG_DURATION = 3;
 
-	void OnTriggerStay(Collider other) 
+	void OnTriggerEnter(Collider other) 
 	{
-		if(Input.GetKeyDown(KeyCode.E) && !pushing)
+		if(!pushing && !disabled)
 		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
@@ -31,10 +32,12 @@ public class RockWallEvent : EventObject {
 
 		while(k < DIG_DURATION)
 		{
-			transform.parent.transform.Translate(Vector3.up * Time.deltaTime * DIG_DISTANCE/DIG_DURATION);
+			transform.parent.transform.Translate(Vector3.down * Time.deltaTime * DIG_DISTANCE/DIG_DURATION);
 			k += Time.deltaTime;
 			yield return null;
 		}
+
+		disabled = true;
 	}
 
 	public void TriggerEvent()
