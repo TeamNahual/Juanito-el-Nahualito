@@ -37,6 +37,8 @@ public class ButterflyPiece : MonoBehaviour {
 		else if (limitBackward && vInput < 0)
 			vInput = 0;
 
+		Juanito.ins.HumanAnim.SetFloat("Forward", vInput);
+
 		transform.Translate(vInput * movementVector * directionFlag * pushSpeed);
 	}
 
