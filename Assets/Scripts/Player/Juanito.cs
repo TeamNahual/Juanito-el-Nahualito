@@ -11,6 +11,9 @@ public class Juanito : MonoBehaviour {
 	public GameObject JuanitoHuman;
 	public GameObject JuanitoSpirit;
 
+	public Animator HumanAnim;
+	public Animator SpiritAnim;
+
 	public bool butterflyRelic = false;
 
 	private float spirit_start_time;

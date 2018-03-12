@@ -57,6 +57,7 @@ public class ButterflyPiece : MonoBehaviour {
 
 	public void AttachPlayer()
 	{
+		Juanito.ins.HumanAnim.SetBool("Pushing", true);
 		rb.detectCollisions = true;
 		Juanito.ins.transform.parent = transform;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
@@ -65,6 +66,7 @@ public class ButterflyPiece : MonoBehaviour {
 
 	public void DetachPlayer()
 	{
+		Juanito.ins.HumanAnim.SetBool("Pushing", false);
 		rb.detectCollisions = false;
 		Juanito.ins.transform.parent = null;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
