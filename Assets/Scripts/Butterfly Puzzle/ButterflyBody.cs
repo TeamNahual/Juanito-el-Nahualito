@@ -15,7 +15,7 @@ public class ButterflyBody : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.gameObject == Juanito.ins.JuanitoHuman && !main.locked)
+		if(other.gameObject == Juanito.ins.JuanitoHuman && !main.locked && Juanito.ins.CheckFacingObjects(main.meshes))
 		{
 			UIManager.instance.pushHelp.SetActive(true);
 
@@ -38,6 +38,10 @@ public class ButterflyBody : MonoBehaviour {
 				}
 			}
 
+		}
+		else
+		{
+			UIManager.instance.pushHelp.SetActive(false);
 		}
 	}
 

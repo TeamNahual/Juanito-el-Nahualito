@@ -15,6 +15,7 @@ public class Juanito : MonoBehaviour {
 	public Animator SpiritAnim;
 
 	public bool butterflyRelic = false;
+	public bool statueRelic = false;
 
 	//private float spirit_start_time;
 	private float spirit_time_limit = 50;
@@ -107,4 +108,28 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;
  	}
+
+ 	public bool CheckFacingObjects(GameObject[] targetObjects)
+	{
+		Vector3 fwd = JuanitoHuman.transform.TransformDirection(Vector3.forward);
+		Ray ray = new Ray(JuanitoHuman.transform.position /* + Vector3.up*/, fwd);
+		RaycastHit hit;
+
+		Debug.DrawRay(JuanitoHuman.transform.position /*+ Vector3.up */, fwd, Color.green);
+
+		if(Physics.Raycast(ray, out hit, 1))
+		{
+			Debug.Log(hit.transform.gameObject);
+
+			foreach(GameObject obj in targetObjects)
+			{
+				if(obj == hit.transform.gameObject)
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }

@@ -13,6 +13,8 @@ public class ButterflyPiece : MonoBehaviour {
 	public Rigidbody rb;
 	public bool locked;
 
+	public GameObject[] meshes;
+
 	public float pushSpeed = 0.01f;
 
 	// Use this for initialization
