@@ -10,6 +10,8 @@ public class ButterflyMesh : MonoBehaviour {
 	void Start () {
 		main = transform.parent.gameObject.GetComponent<ButterflyPiece>();
 		Physics.IgnoreCollision(Juanito.ins.JuanitoHuman.GetComponent<Collider>(), GetComponent<Collider>());
+		Physics.IgnoreCollision(Juanito.ins.JuanitoSpirit.GetComponent<Collider>(), GetComponent<Collider>());
+
 	}
 	
 	// Update is called once per frame
@@ -19,13 +21,20 @@ public class ButterflyMesh : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.GetComponent<ButterflyMesh> ()) 
+		// Debug.Log(collision.gameObject.name);
+		if (collision.gameObject.GetComponent<ButterflyMesh> () || 
+			collision.gameObject.GetComponent<ButterflyBoundary> ()  ) 
 		{
-			float vInput = main.GetPlayerInput () [1];
+			float[] input = main.GetPlayerInput();
 
-			if (vInput > 0)
+			if (input[0] > 0)
+				main.limitRight = true;
+			else if (input[0] < 0)
+				main.limitLeft = true;
+
+			if (input[1] > 0)
 				main.limitForward = true;
-			else if (vInput < 0)
+			else if (input[1] < 0)
 				main.limitBackward = true;
 		}
 	}
@@ -34,5 +43,7 @@ public class ButterflyMesh : MonoBehaviour {
 	{
 		main.limitForward = false;
 		main.limitBackward = false;
+		main.limitRight = false;
+		main.limitLeft = false;
 	}
 }

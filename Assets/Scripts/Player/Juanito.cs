@@ -109,18 +109,19 @@ public class Juanito : MonoBehaviour {
  		SpiritState = false;
  	}
 
- 	public bool CheckFacingObjects(GameObject[] targetObjects)
+ 	public bool CheckFacingObjects(GameObject[] targetObjects, int layerMask = -1)
 	{
+		if(layerMask == -1) layerMask = LayerMask.GetMask("Default");
+
 		Vector3 fwd = JuanitoHuman.transform.TransformDirection(Vector3.forward);
-		Ray ray = new Ray(JuanitoHuman.transform.position /* + Vector3.up*/, fwd);
+		Ray ray = new Ray(JuanitoHuman.transform.position, fwd);
 		RaycastHit hit;
 
-		Debug.DrawRay(JuanitoHuman.transform.position /*+ Vector3.up */, fwd, Color.green);
+		Debug.DrawRay(JuanitoHuman.transform.position, fwd, Color.green);
 
-		if(Physics.Raycast(ray, out hit, 1))
+		if(Physics.Raycast(ray, out hit, 1, layerMask))
 		{
-			Debug.Log(hit.transform.gameObject);
-
+			Debug.Log(hit.transform.gameObject.name);
 			foreach(GameObject obj in targetObjects)
 			{
 				if(obj == hit.transform.gameObject)
