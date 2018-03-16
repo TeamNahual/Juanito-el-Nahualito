@@ -15,6 +15,6 @@ public class ReloadSceneButton : MonoBehaviour {
 
 	void reloadScene()
 	{
-		UIManager.instance.reloadScene();
+		// UIManager.instance.reloadScene();
 	}
 }
