@@ -31,7 +31,7 @@ public class StartGameButton : MonoBehaviour {
 
     public void StartScene()
     {
-		GameManager.instance.loadLevel ("Lvl2VS Chris");
+		GameManager.instance.loadLevel ("Level 2 FinalSlice");
     }
 
 	IEnumerator SetText()
