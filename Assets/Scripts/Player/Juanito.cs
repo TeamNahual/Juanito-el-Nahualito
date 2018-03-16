@@ -121,7 +121,7 @@ public class Juanito : MonoBehaviour {
 
 		if(Physics.Raycast(ray, out hit, 1, layerMask))
 		{
-			Debug.Log(hit.transform.gameObject.name);
+			//Debug.Log(hit.transform.gameObject.name);
 			foreach(GameObject obj in targetObjects)
 			{
 				if(obj == hit.transform.gameObject)

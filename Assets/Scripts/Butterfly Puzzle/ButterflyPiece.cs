@@ -79,9 +79,8 @@ public class ButterflyPiece : MonoBehaviour {
 	public void DetachPlayer()
 	{
 		Juanito.ins.HumanAnim.SetBool("Pushing", false);
-		UIManager.instance.pushHelp.SetActive(false);
-		UIManager.instance.pushMoveHelp.SetActive(false);
 		//rb.detectCollisions = false;
+		UIManager.instance.TooltipDisable();
 		Juanito.ins.transform.parent = null;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;

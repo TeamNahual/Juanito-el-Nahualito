@@ -47,20 +47,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 		else
 			UIManager.instance.dialogueSystem.addDialogue("You have completed the statue puzzle.");
 
-		StartCoroutine(RaisePedestal());
+		StartCoroutine(relic.RaisePedestal());
 		return true;
-	}
-
-	IEnumerator RaisePedestal()
-	{
-		float k = 0;
-
-		while (k < 1) 
-		{
-			relic.transform.localPosition = Vector3.Lerp (relic.beginningPosistion, relic.finalPosition, k);
-
-			k += Time.deltaTime * Random.Range(0.2f,0.5f);
-			yield return null;
-		}
 	}
 }

@@ -81,19 +81,6 @@ public class ButterflyPuzzle : MonoBehaviour {
 		butterflyOutline.gameObject.SetActive (false);
 
 
-		StartCoroutine (RaisePedestal ());
-	}
-
-	IEnumerator RaisePedestal()
-	{
-		float k = 0;
-
-		while (k < 1) 
-		{
-			relic.transform.localPosition = Vector3.Lerp (relic.beginningPosistion, relic.finalPosition, k);
-
-			k += Time.deltaTime * Random.Range(0.2f,0.5f);
-			yield return null;
-		}
+		StartCoroutine (relic.RaisePedestal ());
 	}
 }

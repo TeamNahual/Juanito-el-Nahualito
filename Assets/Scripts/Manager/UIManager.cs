@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.Audio;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
 	// Action Messages
 	public GameObject pushHelp;
 	public GameObject pushMoveHelp;
+	public TextMeshProUGUI tooltip; 
 
 	void Awake()
 	{
@@ -41,6 +43,7 @@ public class UIManager : MonoBehaviour
 		menuOptionProtect = false;
 		pushHelp.SetActive(false);
 		pushMoveHelp.SetActive(false);
+		tooltip.gameObject.SetActive(false);
 
 		
 		dialogueSystem = new DialogueSystem();
@@ -102,6 +105,23 @@ public class UIManager : MonoBehaviour
 		dialogueUI.gameObject.SetActive(isDialogueOpen);
 	}
 	
+	public void TooltipDisplay(string tip)
+	{
+		tooltip.gameObject.SetActive(true);
+		tooltip.text = tip;
+	}
+
+	public void TooltipDisable()
+	{
+		tooltip.gameObject.SetActive(false);
+	}
+
+	public void TooltipInteract()
+	{
+		tooltip.gameObject.SetActive(true);
+		tooltip.text = "Press <sprite=0> to Interact";
+	}
+
 	public void closeMainMenu()
 	{
 		isMenuOpen = false;

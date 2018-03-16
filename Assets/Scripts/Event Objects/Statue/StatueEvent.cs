@@ -23,8 +23,7 @@ public class StatueEvent : EventObject {
 			if(pushing)
 			{
 				pushing = false;
-				UIManager.instance.pushHelp.SetActive(false);
-				UIManager.instance.pushMoveHelp.SetActive(false);
+				UIManager.instance.TooltipDisable();
 				Juanito.ins.HumanAnim.SetBool("Pushing", false);
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
@@ -36,13 +35,12 @@ public class StatueEvent : EventObject {
 			return;
 		}
 
-		UIManager.instance.pushHelp.SetActive(true);
+		UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
 
 		if((Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
 			 && CheckPlayerDirection(Juanito.ins.JuanitoHuman))
 		{
-			UIManager.instance.pushHelp.SetActive(false);
-			UIManager.instance.pushMoveHelp.SetActive(true);
+			UIManager.instance.TooltipDisplay("Use <sprite=6> to Push/Pull");
 			Juanito.ins.HumanAnim.SetBool("Pushing", true);
 			pushing = true;
 			Juanito.ins.transform.parent = transform.parent;
@@ -54,7 +52,7 @@ public class StatueEvent : EventObject {
 			if(pushing)
 			{
 				Juanito.ins.HumanAnim.SetBool("Pushing", false);
-				UIManager.instance.pushMoveHelp.SetActive(false);
+				UIManager.instance.TooltipDisable();
 				pushing = false;
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
@@ -94,8 +92,7 @@ public class StatueEvent : EventObject {
  				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
 			}
 
-			UIManager.instance.pushHelp.SetActive(false);
-			UIManager.instance.pushMoveHelp.SetActive(false);
+			UIManager.instance.TooltipDisable();
 
 
 		}

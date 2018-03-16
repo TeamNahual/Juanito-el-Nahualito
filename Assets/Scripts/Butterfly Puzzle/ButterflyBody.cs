@@ -23,12 +23,11 @@ public class ButterflyBody : MonoBehaviour {
 		{
 			if(Juanito.ins.CheckFacingObjects(main.meshes, layerMask))
 			{
-				UIManager.instance.pushHelp.SetActive(true);
+				UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
 
 				if(Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
 				{
-					UIManager.instance.pushHelp.SetActive(false);
-					UIManager.instance.pushMoveHelp.SetActive(true);
+					UIManager.instance.TooltipDisplay("Use <sprite=4> to Move Piece");
 					main.AttachPlayer();
 					main.isPushing = true;
 					main.directionFlag = directionFlag;
@@ -39,7 +38,7 @@ public class ButterflyBody : MonoBehaviour {
 				{
 					if(main.isPushing)
 					{
-						UIManager.instance.pushMoveHelp.SetActive(false);
+						UIManager.instance.TooltipDisable();
 						main.DetachPlayer();
 						main.isPushing = false;
 					}
@@ -47,7 +46,7 @@ public class ButterflyBody : MonoBehaviour {
 			}
 			else
 			{
-				UIManager.instance.pushHelp.SetActive(false);
+				UIManager.instance.TooltipDisable();
 			}
 		}
 	}
@@ -56,8 +55,7 @@ public class ButterflyBody : MonoBehaviour {
 	{
 		main.DetachPlayer();
 		main.isPushing = false;
-		UIManager.instance.pushHelp.SetActive(false);
-		UIManager.instance.pushMoveHelp.SetActive(false);
+		UIManager.instance.TooltipDisable();
 	}
 	
 	// Update is called once per frame
