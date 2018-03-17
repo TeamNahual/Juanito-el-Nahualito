@@ -7,7 +7,7 @@
 	SubShader
 	{
 		// No culling or depth
-		Cull Off ZWrite Off ZTest Always
+		Cull Off ZWrite On ZTest Always
 		Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass
@@ -34,11 +34,13 @@
 			{
 				v2f o;
 				
-				float time = (_Time.w + v.uv.y * 0.75) * 1;
+				float scale = 0.03;
+				float time = (_Time.y * 3 + v.uv.y * 0.75) * 1;
 				float sintime = (sin(time) * sin(time)) * 2 - 1;
 				float dy = abs(0.5 - v.uv.x) * -10 * sintime;
-				v.vertex.x += (abs(dy) / 5) * 3 * ((v.uv.x > 0.5)? 1: -1);
-				v.vertex.y += dy;
+				float dx = (abs(dy) / 5) * 3 * ((v.uv.x > 0.5)? 1: -1);
+				v.vertex.x += dx * scale;
+				v.vertex.y += dy * scale;
 				
 				o.uv = v.uv;
 				o.vertex = UnityObjectToClipPos(v.vertex);
