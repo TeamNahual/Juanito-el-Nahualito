@@ -15,6 +15,10 @@ public class DialogueTrigger : MonoBehaviour {
 	}
 	
     void OnTriggerEnter(Collider other) {
+
+    	if(other.gameObject != Juanito.ins.JuanitoHuman)
+    		return;
+    	
 		UIManager.instance.dialogueSystem.addDialogue(
 			messages, timers, audioClips, locksMovement);
 		if (deleteOnEnter) {

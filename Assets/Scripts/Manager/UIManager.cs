@@ -126,6 +126,10 @@ public class UIManager : MonoBehaviour
 				controllerDown = false;
 			}
 		}
+		else
+		{
+			
+		}
 
 		if( Input.GetAxis("Mouse X") != 0 &&  Input.GetAxis("Mouse Y") != 0)
 		{
