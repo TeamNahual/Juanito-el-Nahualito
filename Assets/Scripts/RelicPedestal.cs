@@ -44,7 +44,7 @@ public class RelicPedestal : MonoBehaviour {
 					if(ButterflyRelic) Juanito.ins.butterflyRelic = true;
 					if(StatueRelic) Juanito.ins.statueRelic = true;
 					StartCoroutine(LowerPedestal());
-					UIManager.instance.dialogueSystem.addDialogue("You picked up a relic.");
+					//UIManager.instance.dialogueSystem.addDialogue("You picked up a relic.");
 					active = false;
 				}		
 			}

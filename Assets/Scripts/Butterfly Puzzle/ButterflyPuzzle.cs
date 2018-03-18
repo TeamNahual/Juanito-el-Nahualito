@@ -44,7 +44,7 @@ public class ButterflyPuzzle : MonoBehaviour {
 
 		StartCoroutine (GlowOutline ());
 		allActive = true;
-		UIManager.instance.dialogueSystem.addDialogue("You have completed the butterfly puzzle.");
+		//UIManager.instance.dialogueSystem.addDialogue("You have completed the butterfly puzzle.");
 		return true;
 	}
 

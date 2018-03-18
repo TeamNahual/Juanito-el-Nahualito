@@ -28,7 +28,7 @@ public class StatueEvent : EventObject {
 				Juanito.ins.transform.parent = null;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
- 				UIManager.instance.dialogueSystem.addDialogue("The statue locks in place and refuses to budge.");
+ 				//UIManager.instance.dialogueSystem.addDialogue("The statue locks in place and refuses to budge.");
  				StatuePuzzleManager.ins.CheckStatueRotations();
 			}
 
