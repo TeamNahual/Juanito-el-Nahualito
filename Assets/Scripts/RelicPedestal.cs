@@ -18,8 +18,9 @@ public class RelicPedestal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		finalPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
-		beginningPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y - 0.457f, transform.localPosition.z);
+		beginningPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y - 1f, transform.localPosition.z);
 
+		GetComponent<Collider>().enabled = false;
 		transform.localPosition = beginningPosition;
 	}
 	
@@ -76,6 +77,8 @@ public class RelicPedestal : MonoBehaviour {
 			k += Time.deltaTime * Random.Range(0.2f,0.5f);
 			yield return null;
 		}
+
+		GetComponent<Collider>().enabled = true;
 	}
 
 	IEnumerator LowerPedestal()
