@@ -9,6 +9,7 @@ using UnityEditor;
 public class Butterfly : MonoBehaviour {
 
 	public float DebugRadius = 0;
+	public bool tutorial = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,14 @@ public class Butterfly : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(tutorial)
+		{
+			if(Juanito.ins.SpiritState)
+			{
+				UIManager.instance.TooltipDisable();
+				tutorial = false;
+			}
+		}
 	}
 
 	#if UNITY_EDITOR
@@ -34,6 +43,14 @@ public class Butterfly : MonoBehaviour {
 			if(Juanito.ins.AddSpiritCount(Time.deltaTime * 10))
 			{
 				// Do Something if able to add spirits
+
+				if(tutorial)
+				{
+					if(Juanito.ins.GetSpiritCount() > 30)
+					{
+						UIManager.instance.TooltipDisplay("Press <sprite=3> to Enter Spirit Mode");
+					}
+				}
 			}
 		}
 	}

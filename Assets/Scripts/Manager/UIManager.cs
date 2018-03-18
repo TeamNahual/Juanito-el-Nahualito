@@ -29,9 +29,15 @@ public class UIManager : MonoBehaviour
 
 	// Controller Related
 	private int buttonIndex = 0;
+	private int controlIndex = 0;
 	private GameObject[] buttons;
 	private bool controllerDown = false;
-	
+	[SerializeField]
+	private GameObject KeyboardButton, ControllerButton, ControlPanel;
+	[SerializeField]
+	private Sprite defaultButton, pressedButton;
+
+
 	// Dialogue System
 	public GameObject dialogueUI;
 	public DialogueSystem dialogueSystem;
@@ -142,6 +148,21 @@ public class UIManager : MonoBehaviour
 
 	void Update()
 	{
+		if(controlsOpen)
+		{
+			if(CrossPlatformInputManager.GetButtonDown("Menu-LB"))
+			{
+				switchControls(0);
+			}
+
+			if(CrossPlatformInputManager.GetButtonDown("Menu-RB"))
+			{
+				switchControls(1);
+			}
+		}
+
+
+
 		if (Input.GetKey(KeyCode.Escape) || CrossPlatformInputManager.GetButtonDown("Menu-Toggle")) 
 		{
 			if (!menuToggleProtect) 
@@ -163,6 +184,7 @@ public class UIManager : MonoBehaviour
 				} 
 				else 
 				{
+					CloseControls();
 					GameManager.instance.unlockMovement();
 					Cursor.visible = false;
 					Cursor.lockState = CursorLockMode.Locked;
@@ -319,5 +341,42 @@ public class UIManager : MonoBehaviour
 		controlsOpen = true;
 		controlMenu.SetActive(true);
 		StartCoroutine(SelectGameObjectLater(buttonCloseControls));
+
+		if(CheckControllers())
+		{
+			controlIndex = 1;
+			controlMenu.transform.GetChild(0).gameObject.SetActive(true);
+		}
+		else
+		{
+			controlIndex = 0;
+			controlMenu.transform.GetChild(0).gameObject.SetActive(false);
+		}
+
+		SetControlIndex();
+	}
+
+	public void switchControls(int index)
+	{
+		controlIndex = index;
+		SetControlIndex();
+	}
+
+	void SetControlIndex()
+	{
+		ControlPanel.transform.GetChild(0).gameObject.SetActive(false);
+		ControlPanel.transform.GetChild(1).gameObject.SetActive(false);
+		ControlPanel.transform.GetChild(controlIndex).gameObject.SetActive(true);
+
+		if(controlIndex == 0)
+		{
+			KeyboardButton.GetComponent<Image>().sprite = pressedButton;
+			ControllerButton.GetComponent<Image>().sprite = defaultButton;
+		}
+		else
+		{
+			KeyboardButton.GetComponent<Image>().sprite = defaultButton;
+			ControllerButton.GetComponent<Image>().sprite = pressedButton;
+		}
 	}
 }
