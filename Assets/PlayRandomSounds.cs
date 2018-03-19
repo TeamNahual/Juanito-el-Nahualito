@@ -48,7 +48,7 @@ public class PlayRandomSounds : MonoBehaviour {
 		currentVolume = (volume + UnityEngine.Random.Range (-volumeVariance, volumeVariance));
 		pitch = (1.0f + Random.Range (-pitchVariance, pitchVariance));
 		mySound.pitch = pitch;
-		Debug.Log ("Played Grass Sound");
+		//Debug.Log ("Played Grass Sound");
 
 		if (frog.Length > 0) {
 				mySound.PlayOneShot (frog [Random.Range (0, frog.Length)], currentVolume);

@@ -86,12 +86,13 @@ public class AltarPiece : MonoBehaviour {
 				DisablePiece();
 				transform.GetChild (0).gameObject.SetActive (true);
 				main.NecklaceRelic = true;
+
+				UIManager.instance.dialogueSystem.addDialogue("To be continued....");
 			}
 		}
 		else
 		{
 			UIManager.instance.TooltipDisable();
-			GetComponent<Collider>().enabled = false;
 		}
 	}
 

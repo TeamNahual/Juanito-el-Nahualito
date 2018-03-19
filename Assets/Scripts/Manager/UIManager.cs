@@ -152,7 +152,7 @@ public class UIManager : MonoBehaviour
 
 	void Update()
 	{
-		Debug.Log ("Is the Menu Open: " + isMenuOpen);
+		//Debug.Log ("Is the Menu Open: " + isMenuOpen);
 		if (isMenuOpen) {
 			paused.TransitionTo (.01f);
 		}
