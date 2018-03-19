@@ -126,6 +126,7 @@ public class Juanito : MonoBehaviour {
 			{
 				if(obj == hit.transform.gameObject)
 				{
+					//Debug.Log(obj.name);
 					return true;
 				}
 			}

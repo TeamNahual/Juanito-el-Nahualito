@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Audio;
 
 public class RelicPedestal : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class RelicPedestal : MonoBehaviour {
 	public bool StatueRelic;
 
 	public bool active = true;
+
+	public AudioMixerSnapshot someRhythm;
 
 	// Use this for initialization
 	void Start () {
@@ -66,6 +69,7 @@ public class RelicPedestal : MonoBehaviour {
 
 	public IEnumerator RaisePedestal()
 	{
+		someRhythm.TransitionTo (.5f);
 		float k = 0;
 
 		while (k < 1) 
