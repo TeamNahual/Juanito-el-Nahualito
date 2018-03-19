@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics
+  m_OutputGroup: {fileID: 243800630623111776, guid: 5da74169273634b54868e4df926dc731,
+    type: 2}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  - {fileID: 245367725664628496}
+  - {fileID: 245061828154260042}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews:
+  - guids:
+    - fd8013441dc6c46ec80427ea215d4efe
+    - 05db1ede890fc444b8167939dbd97c7a
+    - c58479d29f7ab496e906ecce011f0bbd
+    - da29f73b89391420e99e8fe1e68f9191
+    - 2c9e42b6276d64b34a7697facb8285e2
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 245061828154260042}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fd8013441dc6c46ec80427ea215d4efe
+  m_Children:
+  - {fileID: 243022460938261984}
+  - {fileID: 243046968148268360}
+  - {fileID: 243325724034821498}
+  - {fileID: 243637820752366022}
+  m_Volume: 5db6c97cd95414ef5af1836d54454408
+  m_Pitch: 9ddbaa8fc254a4604a215c9190114c92
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 26af23d332af64cd485736c908e9f258
+  m_EffectName: Attenuation
+  m_MixLevel: 9a1e0f358c02a47b4a94cca072fdaede
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Default
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 757ec6989be084fa080ff78fe8ed1268
+  m_FloatValues:
+    0a297492207fe4b7dbb8a9ae98e32d44: -80
+    6c19b5e5f7a9c4d2c9f5d8cb327d5552: -80
+    01498ef7e796748c3943a68bd2899865: -80
+    3e051e1845c154fc8804d36e64d1df26: -80
+  m_TransitionOverrides: {}
+--- !u!243 &243022460938261984
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Guitar
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 05db1ede890fc444b8167939dbd97c7a
+  m_Children: []
+  m_Volume: 01498ef7e796748c3943a68bd2899865
+  m_Pitch: 923dc656ab6d149608bfa526e1de436f
+  m_Effects:
+  - {fileID: 244275622369992658}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243046968148268360
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Stick
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 2c9e42b6276d64b34a7697facb8285e2
+  m_Children: []
+  m_Volume: 3e051e1845c154fc8804d36e64d1df26
+  m_Pitch: ae6663ba8e47c40ea8303fa34b8724db
+  m_Effects:
+  - {fileID: 244164720643741584}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243325724034821498
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Kick
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: c58479d29f7ab496e906ecce011f0bbd
+  m_Children: []
+  m_Volume: 0a297492207fe4b7dbb8a9ae98e32d44
+  m_Pitch: e72c14e4678d0421cbc619b0c8b94e09
+  m_Effects:
+  - {fileID: 244914985103798112}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &243637820752366022
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Horse Jaw
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: da29f73b89391420e99e8fe1e68f9191
+  m_Children: []
+  m_Volume: 6c19b5e5f7a9c4d2c9f5d8cb327d5552
+  m_Pitch: eedb1663b1b414dfe865f510a9b121b7
+  m_Effects:
+  - {fileID: 244123380702012714}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244123380702012714
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: bb62916b2734242e191f8c100ddfcec5
+  m_EffectName: Attenuation
+  m_MixLevel: a5f53384f8c6c4b0686ba5701a067327
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244164720643741584
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0b9e734f4f8744181bbfbc2834b5ad1d
+  m_EffectName: Attenuation
+  m_MixLevel: 6a6d4a24d33ea4e1cb4d73583bcdf1fe
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244275622369992658
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: c15a3bb80b52c4f15aa4fbcf31773b2b
+  m_EffectName: Attenuation
+  m_MixLevel: ff60a9c8cb500487984ec13bf9af8eeb
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244914985103798112
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 9fa18bc052b6f4dd0ba6b07480d0ce41
+  m_EffectName: Attenuation
+  m_MixLevel: e8bf40f44181049dab504bfb91a217b0
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &245061828154260042
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Percussion
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 49edd3d414ccd4bfebf76f66ba6413fc
+  m_FloatValues:
+    0a297492207fe4b7dbb8a9ae98e32d44: 0
+    6c19b5e5f7a9c4d2c9f5d8cb327d5552: 0
+    01498ef7e796748c3943a68bd2899865: 0
+    3e051e1845c154fc8804d36e64d1df26: 0
+  m_TransitionOverrides: {}
+--- !u!245 &245367725664628496
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Harmonics Guitar
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 2d787941a290d46679f2ca410c87feb3
+  m_FloatValues:
+    0a297492207fe4b7dbb8a9ae98e32d44: -80
+    6c19b5e5f7a9c4d2c9f5d8cb327d5552: -80
+    01498ef7e796748c3943a68bd2899865: 0
+    3e051e1845c154fc8804d36e64d1df26: -80
+  m_TransitionOverrides: {}

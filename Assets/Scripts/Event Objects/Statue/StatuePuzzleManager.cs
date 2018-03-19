@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class StatuePuzzleManager : MonoBehaviour {
 
 	public RelicPedestal relic;
-
 
 	private static StatuePuzzleManager statuePuzzleManagerinstance;
 
@@ -28,6 +28,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 	{
 		statuePuzzleManagerinstance = this;
 		statues = new List<StatueContainer> ();
+
 	}
 
 	public bool CheckStatueRotations()

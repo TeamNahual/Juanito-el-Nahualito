@@ -54,6 +54,10 @@ public class UIManager : MonoBehaviour
 	public GameObject pushMoveHelp;
 	public TextMeshProUGUI tooltip; 
 
+	//Audio Snapshots When Pausing
+	public AudioMixerSnapshot paused;
+	public AudioMixerSnapshot unpaused;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -148,6 +152,13 @@ public class UIManager : MonoBehaviour
 
 	void Update()
 	{
+		Debug.Log ("Is the Menu Open: " + isMenuOpen);
+		if (isMenuOpen) {
+			paused.TransitionTo (.01f);
+		}
+		if (!isMenuOpen) {
+			unpaused.TransitionTo (.01f);
+		}
 		if(controlsOpen)
 		{
 			if(CrossPlatformInputManager.GetButtonDown("Menu-LB"))
@@ -377,6 +388,15 @@ public class UIManager : MonoBehaviour
 		{
 			KeyboardButton.GetComponent<Image>().sprite = defaultButton;
 			ControllerButton.GetComponent<Image>().sprite = pressedButton;
+		}
+	}
+
+	public void pauseMixer(){
+		if (Time.timeScale == 0){
+			paused.TransitionTo (.25f);
+		}
+		else {
+			unpaused.TransitionTo(.25f);
 		}
 	}
 }
