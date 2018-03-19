@@ -295,7 +295,8 @@ public class UIManager : MonoBehaviour
 	{
 		if (GameManager.instance != null)
 		{
-			SceneManager.LoadScene("MainMenu");
+			//SceneManager.LoadScene("MainMenu");
+			GameManager.instance.loadLevel("MainMenu");
 		}
 	}
 	
