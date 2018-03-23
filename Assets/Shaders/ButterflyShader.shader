@@ -29,13 +29,16 @@
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
 			};
-
+			
+			float _AnimOffset;
+			
 			v2f vert (appdata v)
 			{
 				v2f o;
 				
-				float scale = 0.03;
-				float time = (_Time.y * 3 + v.uv.y * 0.75) * 1;
+				float animOff = (_AnimOffset)? _AnimOffset: 0.0;
+				float scale = 1.00;
+				float time = (_Time.y + animOff) * 3 + v.uv.y * 0.75;
 				float sintime = (sin(time) * sin(time)) * 2 - 1;
 				float dy = abs(0.5 - v.uv.x) * -10 * sintime;
 				float dx = (abs(dy) / 5) * 3 * ((v.uv.x > 0.5)? 1: -1);
