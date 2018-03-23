@@ -308,7 +308,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114398716597908864, guid: d135856137d854a4faf7528d8e8ed9a4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d135856137d854a4faf7528d8e8ed9a4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1244075645
@@ -397,3 +402,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1995948757 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1662350293392884, guid: d135856137d854a4faf7528d8e8ed9a4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1124891464}
+--- !u!114 &1995948759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995948757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35be6a48978e54983ad3ed65735111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butterflyPrefab: {fileID: 1405962911181570, guid: 9bddb0cfc552fe5408589ae5e45b034b,
+    type: 2}
+  spawnCount: 10
+  spawnRadius: 4
+  velocity: 10
+  velocityVariation: 0.5

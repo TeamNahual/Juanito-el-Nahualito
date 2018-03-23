@@ -593,8 +593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4950465601104562}
   - component: {fileID: 23795459667038030}
-  - component: {fileID: 114553001347698854}
-  - component: {fileID: 114824604690199048}
+  - component: {fileID: 114398716597908864}
   - component: {fileID: 136885526985676736}
   m_Layer: 9
   m_Name: Butterfly
@@ -4485,39 +4484,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114553001347698854
+--- !u!114 &114398716597908864
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662350293392884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2ed1132d133db4aa920cdd81712aac, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a35be6a48978e54983ad3ed65735111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugRadius: 1.98
---- !u!114 &114824604690199048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1662350293392884}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 817cfad0b56cf40568294a8cb77335e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boidPrefab: {fileID: 1405962911181570, guid: 5b3d2b6f6bc89fb409f0b389d8fc88b3, type: 2}
+  butterflyPrefab: {fileID: 1405962911181570, guid: 9bddb0cfc552fe5408589ae5e45b034b,
+    type: 2}
   spawnCount: 10
   spawnRadius: 1
-  velocity: 0.49
-  velocityVariation: 0.574
-  rotationCoeff: 3.42
-  neighborDist: 1.7
-  searchLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  velocity: 10
+  velocityVariation: 0.5
 --- !u!136 &136885526985676736
 CapsuleCollider:
   m_ObjectHideFlags: 1
