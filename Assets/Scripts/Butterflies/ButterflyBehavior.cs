@@ -23,7 +23,6 @@ public class ButterflyBehavior : MonoBehaviour
         randOffset = Random.value * 50.0f;
 		
 		randVel = Random.Range(velBase - velVariation, velBase + velVariation);
-		Debug.Log(randVel);
 		
 		Renderer rend = GetComponent<Renderer>();
         rend.material.SetFloat("_AnimOffset", Random.value * 10.0f);
