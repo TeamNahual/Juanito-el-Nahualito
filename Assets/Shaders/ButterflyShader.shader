@@ -7,7 +7,7 @@
 	SubShader
 	{
 		// No culling or depth
-		Cull Off ZWrite On ZTest Always
+		Cull Off ZWrite On ZTest LEqual
 		Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass
