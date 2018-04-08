@@ -86,6 +86,12 @@
 
 		//if enabled add some fog - forward rendering only
 		UNITY_APPLY_FOG(o.fogCoord, mkts.Color_Out);
+		
+		float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
+		float gz = 1 - min(1, distance(_WorldSpaceCameraPos, o.posWorld) / 100);
+		mkts.Color_Out.r = (mkts.Color_Out.r * gz) + (gs * (1 - gz));
+		mkts.Color_Out.g = (mkts.Color_Out.g * gz) + (gs * (1 - gz));
+		mkts.Color_Out.b = (mkts.Color_Out.b * gz) + (gs * (1 - gz));
 
 		return mkts.Color_Out;
 	}
