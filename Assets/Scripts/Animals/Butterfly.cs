@@ -10,10 +10,11 @@ public class Butterfly : MonoBehaviour {
 
 	public float DebugRadius = 0;
 	public bool tutorial = false;
+	public GameObject sphereContainer;
 
 	// Use this for initialization
 	void Start () {
-
+		sphereContainer.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -35,23 +36,36 @@ public class Butterfly : MonoBehaviour {
 	}
 	#endif
 
-	void OnTriggerStay(Collider other) {
-		// Debug.Log(other.gameObject);
-
-        if(other.gameObject == Juanito.ins.JuanitoHuman && !Juanito.ins.SpiritState)
-		{
-			if(Juanito.ins.AddSpiritCount(Time.deltaTime * 10))
+	void OnTriggerStay(Collider other) 
+	{
+        if(other.gameObject == Juanito.ins.JuanitoHuman)
+        {
+	        if(!Juanito.ins.SpiritState)
 			{
-				// Do Something if able to add spirits
-
 				if(tutorial)
 				{
-					if(Juanito.ins.GetSpiritCount() > 30)
-					{
-						UIManager.instance.TooltipDisplay("Press <sprite=3> to Enter Spirit Mode");
-					}
+					UIManager.instance.TooltipDisplay("Press <sprite=3> to Enter Spirit Mode");
 				}
 			}
-		}
+
+			if(Juanito.ins.SpiritState)
+			{
+				sphereContainer.SetActive(true);
+			}
+			else
+			{
+				sphereContainer.SetActive(false);
+			}
+		}	
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		Juanito.ins.inButterflyZone = true;
+	}
+
+	void OnTriggerLeave(Collider other)
+	{
+		Juanito.ins.inButterflyZone = false;
 	}
 }
