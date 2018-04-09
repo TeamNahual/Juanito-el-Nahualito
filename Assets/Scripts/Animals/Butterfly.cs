@@ -11,10 +11,15 @@ public class Butterfly : MonoBehaviour {
 	public float DebugRadius = 0;
 	public bool tutorial = false;
 	public GameObject sphereContainer;
+	public GameObject containerLighting;
+
+	private Color mBackgroundColor;
 
 	// Use this for initialization
 	void Start () {
 		sphereContainer.SetActive(false);
+		containerLighting.SetActive(false);
+		mBackgroundColor = Camera.main.backgroundColor;
 	}
 	
 	// Update is called once per frame
@@ -51,21 +56,33 @@ public class Butterfly : MonoBehaviour {
 			if(Juanito.ins.SpiritState)
 			{
 				sphereContainer.SetActive(true);
+				containerLighting.SetActive(true);
+				Camera.main.backgroundColor = new Color(0,0,0,1);
+				LightManager.ins.DisableLights();
 			}
 			else
 			{
 				sphereContainer.SetActive(false);
+				containerLighting.SetActive(false);
+				Camera.main.backgroundColor = mBackgroundColor;
+				LightManager.ins.EnableLights();
 			}
 		}	
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-		Juanito.ins.inButterflyZone = true;
+		if(other.gameObject == Juanito.ins.JuanitoHuman)
+        {
+			Juanito.ins.inButterflyZone = true;
+		}
 	}
 
 	void OnTriggerLeave(Collider other)
 	{
-		Juanito.ins.inButterflyZone = false;
+		if(other.gameObject == Juanito.ins.JuanitoHuman)
+        {
+			Juanito.ins.inButterflyZone = false;
+		}
 	}
 }

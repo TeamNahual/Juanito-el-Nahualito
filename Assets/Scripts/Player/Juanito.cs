@@ -22,6 +22,8 @@ public class Juanito : MonoBehaviour {
 	public bool SpiritState = false;
 	public bool inButterflyZone = false;
 
+	private Vector3 lockedSpiritPosition;
+
 	[HideInInspector]
 	public SpiritController SpiritControl;
 
@@ -82,12 +84,18 @@ public class Juanito : MonoBehaviour {
 			{
 				if(!SpiritState)
 				{
+					lockedSpiritPosition = JuanitoHuman.transform.position;
 					EnterSpiritState();
 				}
 				else
 				{
 					EndSpiritState();
 				}
+			}
+
+			if(SpiritState)
+			{
+				JuanitoHuman.transform.position = lockedSpiritPosition;
 			}
 		}
  	}
