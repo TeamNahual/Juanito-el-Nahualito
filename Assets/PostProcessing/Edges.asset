@@ -71,11 +71,11 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 1
     m_Settings:
-      focusDistance: 4
-      aperture: 6
-      focalLength: 75
+      focusDistance: 8
+      aperture: 4
+      focalLength: 80
       useCameraFov: 0
-      kernelSize: 2
+      kernelSize: 3
   motionBlur:
     m_Enabled: 0
     m_Settings:
@@ -120,12 +120,12 @@ MonoBehaviour:
         neutralWhiteLevel: 7.44
         neutralWhiteClip: 8.5
       basic:
-        postExposure: 0.1
+        postExposure: 0.5
         temperature: 7.1
         tint: 0.5
         hueShift: 0
-        saturation: 0.912
-        contrast: 1.208
+        saturation: 1.12
+        contrast: 0.9
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -286,24 +286,24 @@ MonoBehaviour:
       spectralTexture: {fileID: 2800000, guid: 318cbcd94840f1d48aca4d86234dc2e7, type: 3}
       intensity: 0.211
   grain:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      colored: 0
+      colored: 1
       intensity: 0.064
-      size: 1.437
-      luminanceContribution: 0.169
+      size: 0.59
+      luminanceContribution: 0.067
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.77463615, g: 0.78676474, b: 0.5669334, a: 1}
+      color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.087
-      smoothness: 0.44
+      intensity: 0.234
+      smoothness: 0.352
       roundness: 1
       mask: {fileID: 0}
       opacity: 1
-      rounded: 0
+      rounded: 1
   dithering:
     m_Enabled: 0
   monitors:
