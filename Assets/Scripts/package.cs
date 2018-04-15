@@ -12,12 +12,14 @@ public class package : MonoBehaviour {
 	private bool pushing = false;
 	private float horizontal = 0, vertical = 0;
 	private bool collidingJuanito = false;
+	private Transform camera;
+	private Vector3 camera_forward;
 
-	// Use this for initialization
-	void Start () {
+	void Awake(){
 		rb = GetComponent <Rigidbody> ();
+		camera = Camera.main.transform;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.E)) {
@@ -67,15 +69,17 @@ public class package : MonoBehaviour {
 				vBuffer = 0f;
 			}
 			if (Physics.Linecast(
-					transform.position + new Vector3(horizontal, -0.4f, vertical),
-					transform.position + new Vector3(horizontal, -0.6f, vertical))
+				transform.position + new Vector3(horizontal, -0.4f, vertical),
+				transform.position + new Vector3(horizontal, -0.6f, vertical))
 				||
 				Physics.Linecast(
 					transform.position + new Vector3(horizontal+hBuffer, -0.4f, vertical+vBuffer),
 					transform.position + new Vector3(horizontal+hBuffer, -0.6f, vertical+vBuffer))
 			) {
 				print ("linecast hit");
-				rb.velocity = new Vector3 (horizontal, 0f, vertical).normalized * pushSpeed;
+				camera_forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
+				Vector3 move = vertical * camera_forward + horizontal * camera.right;
+				rb.velocity = move * pushSpeed;
 			}
 			Debug.DrawLine (
 				transform.position + new Vector3(horizontal, -0.4f, vertical),
