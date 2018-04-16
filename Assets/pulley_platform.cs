@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class pulley_platform : MonoBehaviour {
 
-	private float weight = 0f;
+	public BoxCollider stationaryCollider;
+	public float start_weight = 0f;
+
+	private float weight;
 	private pulley_manager manager;
 	private bool moving = false;
 	private Vector3 target;
 	private Vector3 direction;
-	private Dictionary<string, float> weights = new Dictionary<string, float>{ {"medicine", 1f} };
+	private Dictionary<string, float> weights = new Dictionary<string, float>{ {"medicine", 1f}, {"dog", 3f} };
 
 	void Awake(){
 		manager = GetComponentInParent <pulley_manager> ();
+		weight = start_weight;
 	}
 	
 	public float GetWeight(){
@@ -20,6 +24,7 @@ public class pulley_platform : MonoBehaviour {
 	}
 
 	public void MoveTo(Vector3 pos){
+		stationaryCollider.gameObject.SetActive (false);
 		if (pos.y < transform.position.y) {
 			print ("going down");
 			target = pos;
@@ -36,7 +41,7 @@ public class pulley_platform : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (other.GetComponent<package> ()) {
 			weight += weights ["medicine"];
-			manager.MovePlatforms ();
+			//manager.MovePlatforms ();
 			other.gameObject.transform.parent = transform.parent;
 		}
 	}
@@ -44,7 +49,7 @@ public class pulley_platform : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		if (other.GetComponent<package> ()) {
 			weight -= weights ["medicine"];
-			manager.MovePlatforms ();
+			//manager.MovePlatforms ();
 			other.gameObject.transform.parent = null;
 		}
 	}
@@ -57,6 +62,7 @@ public class pulley_platform : MonoBehaviour {
 			if (Mathf.Abs (posY - targetY) < 0.1f) {
 				transform.parent.position = new Vector3(transform.parent.position.x, targetY, transform.parent.position.z);
 				moving = false;
+				stationaryCollider.gameObject.SetActive (true);
 			}
 		}
 	}

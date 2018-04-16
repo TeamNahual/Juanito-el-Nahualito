@@ -80,6 +80,11 @@ public class MainMenu : MonoBehaviour {
 		GameManager.instance.loadLevel ("Act2Cutscene");
 	}
 
+	public void ToAct1()
+	{
+		GameManager.instance.loadLevel("Act 1");
+	}
+
 	public void EndGame()
 	{
 		Application.Quit();
