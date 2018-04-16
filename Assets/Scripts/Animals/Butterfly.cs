@@ -55,17 +55,11 @@ public class Butterfly : MonoBehaviour {
 
 			if(Juanito.ins.SpiritState)
 			{
-				sphereContainer.SetActive(true);
-				containerLighting.SetActive(true);
-				Camera.main.backgroundColor = new Color(0,0,0,1);
-				LightManager.ins.DisableLights();
+				EnterSpiritMode();
 			}
 			else
 			{
-				sphereContainer.SetActive(false);
-				containerLighting.SetActive(false);
-				Camera.main.backgroundColor = mBackgroundColor;
-				LightManager.ins.EnableLights();
+				ExitSpiritMode();
 			}
 		}	
 	}
@@ -78,11 +72,29 @@ public class Butterfly : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerLeave(Collider other)
+	void OnTriggerExit(Collider other)
 	{
 		if(other.gameObject == Juanito.ins.JuanitoHuman)
         {
 			Juanito.ins.inButterflyZone = false;
 		}
+	}
+
+	public void EnterSpiritMode()
+	{
+		Juanito.ins.HumanAnim.SetBool("Kneeling", true);
+		sphereContainer.SetActive(true);
+		containerLighting.SetActive(true);
+		Camera.main.backgroundColor = new Color(0,0,0,1);
+		LightManager.ins.DisableLights();
+	}
+
+	public void ExitSpiritMode()
+	{
+		Juanito.ins.HumanAnim.SetBool("Kneeling", false);
+		sphereContainer.SetActive(false);
+		containerLighting.SetActive(false);
+		Camera.main.backgroundColor = mBackgroundColor;
+		LightManager.ins.EnableLights();
 	}
 }

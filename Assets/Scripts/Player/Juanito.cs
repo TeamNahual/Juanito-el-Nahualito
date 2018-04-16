@@ -100,7 +100,7 @@ public class Juanito : MonoBehaviour {
 		}
  	}
 
- 	private void EndSpiritState()
+ 	public void EndSpiritState()
  	{
  		SpiritControl.currentFollower = null;
  		JuanitoSpirit.SetActive(false);
