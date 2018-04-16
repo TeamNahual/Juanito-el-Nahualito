@@ -22,15 +22,22 @@ public class package : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKey(KeyCode.E)) 
+		{
 			print ("key down");
-			if (!pushing && collidingJuanito) {
+			if (collidingJuanito) 
+			{
 				print ("Pushing");
 				pushing = true;
 				Juanito.ins.transform.parent = this.transform;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
-			} else if(pushing) {
+			}
+		} 
+		else
+		{
+			if(pushing) 
+			{
 				print ("Letting go");
 				pushing = false;
 				Juanito.ins.transform.parent = null;
