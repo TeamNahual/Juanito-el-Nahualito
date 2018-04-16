@@ -17,9 +17,12 @@ public class Juanito : MonoBehaviour {
 	public bool butterflyRelic = false;
 	public bool statueRelic = false;
 
-	//private float spirit_start_time;
+	
 	private float spirit_time_limit = 50;
 	public bool SpiritState = false;
+	public bool inButterflyZone = false;
+
+	private Vector3 lockedSpiritPosition;
 
 	[HideInInspector]
 	public SpiritController SpiritControl;
@@ -74,32 +77,30 @@ public class Juanito : MonoBehaviour {
  	}
 
  	private void SpiritHandler()
- 	{
- 		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
-		{
-			if(!SpiritState && GetSpiritCount() >= 10)
+ 	{	
+ 		if(inButterflyZone)
+ 		{
+	 		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
 			{
-				EnterSpiritState();
-				//spirit_start_time = Time.time;
+				if(!SpiritState)
+				{
+					lockedSpiritPosition = JuanitoHuman.transform.position;
+					EnterSpiritState();
+				}
+				else
+				{
+					EndSpiritState();
+				}
 			}
-			else
-			{
-				EndSpiritState();
-			}
-		}
 
-		if (SpiritState) 
-		{
-			DelSpiritCount ((Time.deltaTime * 100) / spirit_time_limit);
-
-			if(GetSpiritCount() <= 0)
+			if(SpiritState)
 			{
-				EndSpiritState ();
+				JuanitoHuman.transform.position = lockedSpiritPosition;
 			}
 		}
  	}
 
- 	private void EndSpiritState()
+ 	public void EndSpiritState()
  	{
  		SpiritControl.currentFollower = null;
  		JuanitoSpirit.SetActive(false);
