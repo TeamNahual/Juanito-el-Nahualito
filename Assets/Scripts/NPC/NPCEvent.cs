@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityStandardAssets.CrossPlatformInput;
-using UnityStandardAssets.Characters.ThirdPerson;
+﻿using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 
 public class NPCEvent : EventObject {
@@ -12,13 +9,14 @@ public class NPCEvent : EventObject {
     public string firstDia = "You talked to the guy."; // first thing npc says
     public string secondDia = "You talked to the guy again."; //thing npc says after talked to once
     public string thirdDia = "You talked to the guy thrice."; //thing npc says after completed task
-    public bool dirFlag = false;
 
     void OnTriggerStay(Collider other)//if an object is in the box around the old man
     {
         if (other.gameObject != Juanito.ins.JuanitoHuman) //if it is not Juanito do nothing.
+        {
             return;
-        
+        }
+
         Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
         Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
         bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
@@ -39,6 +37,7 @@ public class NPCEvent : EventObject {
             switch (dialogueState)//handles the state of the dialogue
             {
                 case 0: // state when player hasn't talked to NPC
+                    UIManager.instance.dialogueSystem.doDialogueAction();
                     UIManager.instance.dialogueSystem.addDialogue(firstDia); //calls the UI manager to print the dialogue
                     dialogueState = 1; //player has talked to NPC
                     break;
@@ -55,8 +54,9 @@ public class NPCEvent : EventObject {
                     break;
             }
         }
+        /**
         //for testing purposes only, remove from final code.
-        /**if (Input.GetKeyDown(KeyCode.R)) // used for testing to check if state 2 works.
+        if (Input.GetKeyDown(KeyCode.R)) // used for testing to check if state 2 works.
         {
             if (dialogueState != 2)// sets dialogue to 2 to test if possible to switch the dialogue state.
             {
@@ -68,9 +68,10 @@ public class NPCEvent : EventObject {
                 setDialogue(0);
                 Debug.Log("Reset Dialogue state");
             }
+            
         }**/
-
     }
+
     //Periodically a couple of bugs if the player is too close to the edge of the collider
     void OnTriggerExit(Collider other) //when an object moves out of box
     {
@@ -81,6 +82,7 @@ public class NPCEvent : EventObject {
             //closes the dialogue box
         }
     }
+
     public void setDialogue(int x) //used to change the dialogue state
     {
         dialogueState = x;
