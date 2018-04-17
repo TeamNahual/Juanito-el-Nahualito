@@ -118,6 +118,11 @@ public class AnimalFollowController : MonoBehaviour {
 		//following = false;
 		//aiController.SetTarget(null);
 
-	} 
+	}
+
+	public string getWaypoint()
+	{
+		return WayPoints[wayPointCount].tag;
+	}
 
 }

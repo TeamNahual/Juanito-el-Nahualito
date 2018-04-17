@@ -1,54 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MalbersAnimations;
+
+
 
 public class WayPointBehavior : StateMachineBehaviour {
-	public string parameter;
-	public GameObject deer;
+	//Parameter to set on the animator
+	private string parameter = "IDInt";
+
+	//Struct for mapping waypoint tags to IDs of animations
+	[System.Serializable]
+	public struct AnimationTagMap
+	{
+		public string tag;
+		public int[] animIds;
+		public AnimationTagMap(string t, int[] ids){
+			this.tag = t;
+			this.animIds = ids;
+		}
+	}
+	//Array of mappings from tags to animations
+	//Untagged waypoints will have random behavior
+	public List<AnimationTagMap> waypointTagMap =
+		new List<AnimationTagMap>(new AnimationTagMap[] {new AnimationTagMap("Untagged", new int[4]{1,2,3,4})});
 
 	override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
 	{
+		//AnimalFollowController animalBody = animator.gameObject;
+		//Default ID is 2
+		int id = 2;
 
-		int waypoint = deer.GetComponent<Deer>().getWaypoint();
-		animator.SetInteger(parameter, waypoint);
-		// int newParam = Random.Range(1, Range + 1);
-		// animator.SetInteger(Parameter, newParam);
+		//get tag of waypoint
+		string tag = animator.gameObject.GetComponent<AnimalFollowController>().getWaypoint();
 
-		// Animal animal = animator.GetComponent<Animal>();
-		// if (animal) animal.SetIntID(newParam);
+		//Choose random idle id to play for the tag
+		foreach(AnimationTagMap m in waypointTagMap){
+			if(m.tag ==  tag){
+				id = (m.animIds[Random.Range(0, m.animIds.Length)]) +  6; //must add 6 because of trasnition conditions in the animatior
+				break;
+			}
+		}
+
+		Debug.Log(id);
+
+		//Make all necessary changes with the new animation ID
+		animator.SetInteger(parameter, id);
+		Animal animal = animator.GetComponent<Animal>();
+		if (animal) animal.SetIntID(id);
 	}
-    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateExit is called before OnStateExit is called on any state inside this state machine
-	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateMove is called before OnStateMove is called on any state inside this state machine
-	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateIK is called before OnStateIK is called on any state inside this state machine
-	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
-
-	// OnStateMachineEnter is called when entering a statemachine via its Entry Node
-	//override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash){
-	//
-	//}
-
-	// OnStateMachineExit is called when exiting a statemachine via its Exit Node
-	//override public void OnStateMachineExit(Animator animator, int stateMachinePathHash) {
-	//
-	//}
 }
