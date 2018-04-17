@@ -33,6 +33,7 @@ public class WayPointBehavior : StateMachineBehaviour {
 
 		//get tag of waypoint
 		string tag = animator.gameObject.GetComponent<AnimalFollowController>().getWaypoint();
+		Debug.Log(tag);
 
 		//Choose random idle id to play for the tag
 		foreach(AnimationTagMap m in waypointTagMap){
@@ -43,6 +44,7 @@ public class WayPointBehavior : StateMachineBehaviour {
 		}
 
 		Debug.Log(id);
+		Debug.Log("");
 
 		//Make all necessary changes with the new animation ID
 		animator.SetInteger(parameter, id);
