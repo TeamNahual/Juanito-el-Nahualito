@@ -137,12 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db49532b8c2a923458279d51ee541647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReqAnimal: 0
+  ReqAnimal: 5
   targetObjects: []
   firstDia: You talked to the guy.
   secondDia: You talked to the guy again.
   thirdDia: You talked to the guy thrice.
-  dirFlag: 0
 --- !u!136 &136522451529325532
 CapsuleCollider:
   m_ObjectHideFlags: 1
