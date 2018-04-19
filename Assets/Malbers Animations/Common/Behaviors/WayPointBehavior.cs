@@ -23,7 +23,7 @@ public class WayPointBehavior : StateMachineBehaviour {
 	//Array of mappings from tags to animations
 	//Untagged waypoints will have random behavior
 	public List<AnimationTagMap> waypointTagMap =
-		new List<AnimationTagMap>(new AnimationTagMap[] {new AnimationTagMap("Untagged", new int[4]{1,2,3,4})});
+		new List<AnimationTagMap>(new AnimationTagMap[] {new AnimationTagMap("Default", new int[4]{1,2,3,4})});
 
 	override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
 	{

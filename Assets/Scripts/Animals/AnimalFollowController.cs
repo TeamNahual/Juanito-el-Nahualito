@@ -122,7 +122,7 @@ public class AnimalFollowController : MonoBehaviour {
 
 	public string getWaypoint()
 	{
-		return WayPoints[(wayPointCount == 0 ? WayPoints.Length-1 : wayPointCount -1)].tag;
+		return WayPoints[(wayPointCount == 0 ? WayPoints.Length-1 : wayPointCount -1)].GetComponent<Waypoint>().AnimationTag;
 	}
 
 }
