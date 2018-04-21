@@ -37,7 +37,7 @@ public class FancyCam : MonoBehaviour {
     
 	void FixedUpdate ()
     {
-        /*// required var for smooth damping
+        // required var for smooth damping
         float velocity = 0;
         // get a "forward vector" for each rotation
         Vector3 forwardA = camHold.rotation * Vector3.forward;
@@ -62,15 +62,15 @@ public class FancyCam : MonoBehaviour {
         {
             camWidth = Mathf.SmoothDamp(camHold.localPosition.x, 0f, ref velocity, 1.4f * Time.fixedDeltaTime);
             camHold.localPosition = Vector3.Lerp(camHold.localPosition, new Vector3(camWidth, camHold.localPosition.y, camHold.localPosition.z) , 1.4f * Time.fixedDeltaTime);
-        }*/
+        }
         // move camera pilot to player
-        transform.position = player.position;
+        //transform.position = player.position;
         //transform.rotation = player.rotation;
         //Heading.LookAt(targetObjective);
-        //Vector3 velocity3 = Vector3.zero;
-        //transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.1f);
+        Vector3 velocity3 = Vector3.zero;
+        transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.1f);
         // set horizontal rotation on camera pivot
-        /*if(Input.GetAxis("Mouse X") != 0f)
+        if(Input.GetAxis("Mouse X") != 0f)
         {
             xAxisCon = Input.GetAxis("Mouse X");
         }
@@ -100,6 +100,6 @@ public class FancyCam : MonoBehaviour {
         // lock vertical rotation to avoid 'camera flipping'
         xRot = Mathf.Clamp(xRot, vertRotMin, vertRotMax);
         // set camera holder rotation
-        camHold.localEulerAngles = new Vector3(xRot, camHold.localEulerAngles.y, camHold.localEulerAngles.z);*/
+        camHold.localEulerAngles = new Vector3(xRot, camHold.localEulerAngles.y, camHold.localEulerAngles.z);
     }
 }
