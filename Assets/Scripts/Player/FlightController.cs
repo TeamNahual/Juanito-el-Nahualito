@@ -7,12 +7,14 @@ using UnityStandardAssets.CrossPlatformInput;
 public class FlightController : MonoBehaviour {
 
 	float smooth = 5.0f;
-	float angle = 30.0f;
+	float angle = 45.0f;
 	Vector3 spot;
+	Animator controller;
 
 	// Use this for initialization
 	void Start () {
 		spot = transform.localPosition;
+		controller = GetComponentInChildren<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -48,22 +50,31 @@ public class FlightController : MonoBehaviour {
 		//Move around the screen with inputs, bounded at the edges
 		spot.x += (h/10);
 		spot.y += (v/10);
-		if (spot.x > 4f) 
+		if (spot.x > 8f) 
 		{
-			spot.x = 4f;
+			spot.x = 8f;
+			Debug.Log ("right");
 		}
-		if (spot.x < -4f) 
+		if (spot.x < -8f) 
 		{
-			spot.x = -4f;
+			spot.x = -8f;
+			Debug.Log ("left");
 		}
-		if (spot.y > 1.2f) 
+		if (spot.y > 3f) 
 		{
-			spot.y = 1.2f;
+			spot.y = 3f;
+			Debug.Log ("up");
 		}
-		if (spot.y < -1.2f) 
+		if (spot.y < -4f) 
 		{
-			spot.y = -1.2f;
+			spot.y = -4f;
+			Debug.Log ("down");
 		}
 		transform.localPosition = spot;
+		if (v == 0) 
+		{
+			v = -1;
+		}
+		controller.SetFloat ("Vertical", v);
 	}
 }
