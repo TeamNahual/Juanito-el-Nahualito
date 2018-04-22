@@ -7,94 +7,106 @@ using UnityStandardAssets.CrossPlatformInput;
 public class package : MonoBehaviour {
 
 	public float pushSpeed;
+	public float checkingDistance = 1.5f;
+	public float xExtent = 1f, yExtent = 0.25f, zExtent = 1f;
 
-	private Rigidbody rb;
 	private bool pushing = false;
 	private float horizontal = 0, vertical = 0;
 	private bool collidingJuanito = false;
 	private Transform camera;
 	private Vector3 camera_forward;
+	private Vector3 offset;
+	private RaycastHit hit;
+	private BoxCollider localCollider;
+	private Vector3 extents;
+	private Rigidbody rb;
+	private RigidbodyConstraints moving, still;
+	private Juanito juanito;
 
 	void Awake(){
-		rb = GetComponent <Rigidbody> ();
 		camera = Camera.main.transform;
+		localCollider = GetComponent <BoxCollider>();
+		extents = new Vector3 (xExtent, yExtent, zExtent);
+		rb = GetComponent <Rigidbody> ();
+		moving = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+		still = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+		rb.constraints = still;
+	}
+
+	void Start(){
+		juanito = Juanito.ins;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.E)) {
-			print ("key down");
-			if (!pushing && collidingJuanito) {
-				print ("Pushing");
-				pushing = true;
-				Juanito.ins.transform.parent = this.transform;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
-			} else if(pushing) {
-				print ("Letting go");
-				pushing = false;
-				Juanito.ins.transform.parent = null;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
-			}
+		if (Input.GetKeyDown (KeyCode.E) && collidingJuanito) {
+			Debug.Log ("pushing");
+			pushing = true;
+
+			juanito.transform.parent = this.transform;
+			juanito.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
+			juanito.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
+
+			rb.constraints = moving;
+
+			juanito.HumanAnim.SetBool ("Pushing", true);
+		// this might cause problems when the package is in scene but not being interacted with
+		} else if (Input.GetKeyUp (KeyCode.E)) {
+			Debug.Log ("stopped pushing");
+			pushing = false;
+
+			juanito.transform.parent = null;
+			juanito.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
+			juanito.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
+
+			rb.constraints = still;
+
+			juanito.HumanAnim.SetBool ("Pushing", false);
 		}
 
-		if(pushing)
-		{
-			horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-			vertical = CrossPlatformInputManager.GetAxis("Vertical");
-			bool keyboard = !(Mathf.Abs(horizontal) < 0.1f && Mathf.Abs(vertical) < 0.1f);
+		if (pushing) {
+			
+			horizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
+			vertical = CrossPlatformInputManager.GetAxis ("Vertical");
+			bool keyboard = !(Mathf.Abs (horizontal) < 0.1f && Mathf.Abs (vertical) < 0.1f);
 
-			if (!keyboard)
-			{
-				horizontal = CrossPlatformInputManager.GetAxis("Horizontal-Joystick");
-				vertical = CrossPlatformInputManager.GetAxis("Vertical-Joystick");
+			if (!keyboard) {
+				horizontal = CrossPlatformInputManager.GetAxis ("Horizontal-Joystick");
+				vertical = CrossPlatformInputManager.GetAxis ("Vertical-Joystick");
 			}
 
-			//These dimensions might need to change later
-			float hBuffer;
-			if (horizontal > 0) {
-				hBuffer = 0.1f;
-			} else if (horizontal < 0) {
-				hBuffer = -0.1f;
-			} else {
-				hBuffer = 0f;
+			camera_forward = Vector3.Scale (camera.forward, new Vector3 (1, 0, 1)).normalized;
+			Vector3 move = vertical * camera_forward + horizontal * camera.right;
+
+			bool hitcheck = Physics.BoxCast(localCollider.bounds.center, extents, move, out hit, transform.rotation, checkingDistance, 13);
+			if (hitcheck && !hit.collider.isTrigger) {
+				Debug.Log ("Hit : " + hit.transform.gameObject + " with half extents " + extents);
+				move = Vector3.zero;
 			}
-			float vBuffer;
-			if (vertical> 0) {
-				vBuffer = 0.1f;
-			} else if (vertical < 0) {
-				vBuffer = -0.1f;
-			} else {
-				vBuffer = 0f;
+				
+			Vector3 diff = juanito.JuanitoHuman.transform.position - transform.position;
+			diff = new Vector3 (diff.x, 0f, diff.z);
+			float animForward = vertical;
+			float angleDiff = Vector3.Angle (camera_forward, diff);
+			if (angleDiff < 90f) {
+				animForward *= -1;
 			}
-			if (Physics.Linecast(
-				transform.position + new Vector3(horizontal, -0.4f, vertical),
-				transform.position + new Vector3(horizontal, -0.6f, vertical))
-				||
-				Physics.Linecast(
-					transform.position + new Vector3(horizontal+hBuffer, -0.4f, vertical+vBuffer),
-					transform.position + new Vector3(horizontal+hBuffer, -0.6f, vertical+vBuffer))
-			) {
-				print ("linecast hit");
-				camera_forward = Vector3.Scale(camera.forward, new Vector3(1, 0, 1)).normalized;
-				Vector3 move = vertical * camera_forward + horizontal * camera.right;
-				rb.velocity = move * pushSpeed;
-			}
-			Debug.DrawLine (
-				transform.position + new Vector3(horizontal, -0.4f, vertical),
-				transform.position + new Vector3(horizontal, -0.6f, vertical),
-				Color.red
-			);
-			Debug.DrawLine (
-				transform.position + new Vector3(horizontal+hBuffer, -0.4f, vertical+vBuffer),
-				transform.position + new Vector3(horizontal+hBuffer, -0.6f, vertical+vBuffer),
-				Color.red
-			);
+			Juanito.ins.HumanAnim.SetFloat ("Forward", animForward);
+
+			transform.Translate (move * pushSpeed * Time.deltaTime);
+		}
+
+	}
+
+	void OnCollisionEnter(Collision other){
+		if (other.gameObject == juanito.JuanitoHuman) {
+			collidingJuanito = true;
 		}
 	}
 
-	void OnCollisionStay(Collision other){
-		collidingJuanito = (other.gameObject == Juanito.ins.JuanitoHuman);
+	void OnCollisionExit(Collision other){
+		if (other.gameObject == juanito.JuanitoHuman) {
+			collidingJuanito = false;
+		}
 	}
 }
