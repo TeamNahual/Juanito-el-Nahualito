@@ -120,6 +120,32 @@ public class Juanito : MonoBehaviour {
 
 		Debug.DrawRay(JuanitoHuman.transform.position, fwd, Color.green);
 
+		if(Physics.Raycast(ray, out hit, 1.5f, layerMask))
+		{
+			Debug.Log(hit.transform.gameObject.name);
+			foreach(GameObject obj in targetObjects)
+			{
+				if(obj == hit.transform.gameObject)
+				{
+					//Debug.Log(obj.name);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public bool CheckFacingObjectsSpirit(GameObject[] targetObjects, int layerMask = -1)
+	{
+		if(layerMask == -1) layerMask = LayerMask.GetMask("Default");
+
+		Vector3 fwd = JuanitoSpirit.transform.TransformDirection(Vector3.forward);
+		Ray ray = new Ray(JuanitoSpirit.transform.position, fwd);
+		RaycastHit hit;
+
+		Debug.DrawRay(JuanitoSpirit.transform.position, fwd, Color.green);
+
 		if(Physics.Raycast(ray, out hit, 1, layerMask))
 		{
 			//Debug.Log(hit.transform.gameObject.name);

@@ -6,7 +6,6 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 
 	public List<GameObject> pieces;
 	public List<GameObject> piecesStatic;
-	public GameObject puzzleBlockSpawn;
 
 	private bool ShowBlocks = true;
 
@@ -36,16 +35,7 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 
 		piecesStatic.Add(currPiece);
 
-		Debug.Log(randomIndex);
-
 		pieces.RemoveAt(randomIndex);
-
-		currPiece.transform.position = new Vector3
-		(
-			puzzleBlockSpawn.transform.position.x,
-			currPiece.transform.position.y,
-			puzzleBlockSpawn.transform.position.z
-		);
 		
 		currPiece.SetActive(true);
 	}
