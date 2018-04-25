@@ -10,10 +10,16 @@ public class Butterfly : MonoBehaviour {
 
 	public float DebugRadius = 0;
 	public bool tutorial = false;
+	public GameObject sphereContainer;
+	public GameObject containerLighting;
+
+	private Color mBackgroundColor;
 
 	// Use this for initialization
 	void Start () {
-
+		sphereContainer.SetActive(false);
+		containerLighting.SetActive(false);
+		mBackgroundColor = Camera.main.backgroundColor;
 	}
 	
 	// Update is called once per frame
@@ -35,23 +41,60 @@ public class Butterfly : MonoBehaviour {
 	}
 	#endif
 
-	void OnTriggerStay(Collider other) {
-		// Debug.Log(other.gameObject);
-
-        if(other.gameObject == Juanito.ins.JuanitoHuman && !Juanito.ins.SpiritState)
-		{
-			if(Juanito.ins.AddSpiritCount(Time.deltaTime * 10))
+	void OnTriggerStay(Collider other) 
+	{
+        if(other.gameObject == Juanito.ins.JuanitoHuman)
+        {
+	        if(!Juanito.ins.SpiritState)
 			{
-				// Do Something if able to add spirits
-
 				if(tutorial)
 				{
-					if(Juanito.ins.GetSpiritCount() > 30)
-					{
-						UIManager.instance.TooltipDisplay("Press <sprite=3> to Enter Spirit Mode");
-					}
+					UIManager.instance.TooltipDisplay("Press <sprite=3> to Enter Spirit Mode");
 				}
 			}
+
+			if(Juanito.ins.SpiritState)
+			{
+				EnterSpiritMode();
+			}
+			else
+			{
+				ExitSpiritMode();
+			}
+		}	
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject == Juanito.ins.JuanitoHuman)
+        {
+			Juanito.ins.inButterflyZone = true;
 		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject == Juanito.ins.JuanitoHuman)
+        {
+			Juanito.ins.inButterflyZone = false;
+		}
+	}
+
+	public void EnterSpiritMode()
+	{
+		Juanito.ins.HumanAnim.SetBool("Kneeling", true);
+		sphereContainer.SetActive(true);
+		containerLighting.SetActive(true);
+		Camera.main.backgroundColor = new Color(0,0,0,1);
+		LightManager.ins.DisableLights();
+	}
+
+	public void ExitSpiritMode()
+	{
+		Juanito.ins.HumanAnim.SetBool("Kneeling", false);
+		sphereContainer.SetActive(false);
+		containerLighting.SetActive(false);
+		Camera.main.backgroundColor = mBackgroundColor;
+		LightManager.ins.EnableLights();
 	}
 }

@@ -20,7 +20,7 @@ public class DialogueTrigger : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
 
 		voiceOver.TransitionTo (.25f);
-		Debug.Log ("Should have Transitioned");
+		//Debug.Log ("Should have Transitioned");
 
     	if(other.gameObject != Juanito.ins.JuanitoHuman)
     		return;
