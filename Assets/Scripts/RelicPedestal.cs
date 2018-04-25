@@ -34,15 +34,16 @@ public class RelicPedestal : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject == Juanito.ins.JuanitoHuman && active) 
+		if (other.gameObject == Juanito.ins.JuanitoSpirit && active) 
 		{
-			if(Juanito.ins.CheckFacingObjects(targetObjects))
+			if(Juanito.ins.CheckFacingObjectsSpirit(targetObjects))
 			{
 
 				UIManager.instance.TooltipInteract();
 
 				if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown ("Action")) 
 				{
+					// Juanito.ins.SpiritAnim.SetTrigger("Pickup");
 					UIManager.instance.TooltipDisable();
 					transform.GetChild (0).gameObject.SetActive (false);
 					if(ButterflyRelic) Juanito.ins.butterflyRelic = true;
@@ -61,7 +62,7 @@ public class RelicPedestal : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject == Juanito.ins.JuanitoHuman)
+		if (other.gameObject == Juanito.ins.JuanitoSpirit)
 		{
 			UIManager.instance.TooltipDisable();
 		}
@@ -78,7 +79,7 @@ public class RelicPedestal : MonoBehaviour {
 
 			transform.Rotate(Vector3.up * Time.deltaTime * 100f);
 
-			k += Time.deltaTime * Random.Range(0.2f,0.5f);
+			k += Time.deltaTime * Random.Range(0.5f,1f);
 			yield return null;
 		}
 

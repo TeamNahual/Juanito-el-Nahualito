@@ -70,7 +70,8 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
  		FancyCam.ins.player = JuanitoSpirit.transform;
- 		JuanitoSpirit.transform.position = JuanitoHuman.transform.position;
+ 		JuanitoSpirit.transform.position = JuanitoHuman.transform.position + JuanitoHuman.transform.forward;
+ 		JuanitoSpirit.transform.rotation = JuanitoHuman.transform.rotation;
  		JuanitoSpirit.SetActive(true);
  		SpiritState = true;
 
@@ -108,6 +109,7 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;
+		UIManager.instance.TooltipDisable();
  	}
 
  	public bool CheckFacingObjects(GameObject[] targetObjects, int layerMask = -1)

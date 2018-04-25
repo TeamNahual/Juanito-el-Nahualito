@@ -12,6 +12,9 @@ public class Butterfly : MonoBehaviour {
 	public bool tutorial = false;
 	public GameObject sphereContainer;
 	public GameObject containerLighting;
+	public Vector3 initialPosition;
+
+	bool currState = false;
 
 	private Color mBackgroundColor;
 
@@ -30,6 +33,7 @@ public class Butterfly : MonoBehaviour {
 			{
 				UIManager.instance.TooltipDisable();
 				tutorial = false;
+				Juanito.ins.JuanitoHuman.transform.position = initialPosition;
 			}
 		}
 	}
@@ -53,13 +57,18 @@ public class Butterfly : MonoBehaviour {
 				}
 			}
 
-			if(Juanito.ins.SpiritState)
+			if(Juanito.ins.SpiritState != currState)
 			{
-				EnterSpiritMode();
-			}
-			else
-			{
-				ExitSpiritMode();
+				if(Juanito.ins.SpiritState)
+				{
+					EnterSpiritMode();
+				}
+				else
+				{
+					ExitSpiritMode();
+				}
+
+				currState = Juanito.ins.SpiritState;
 			}
 		}	
 	}
@@ -77,14 +86,17 @@ public class Butterfly : MonoBehaviour {
 		if(other.gameObject == Juanito.ins.JuanitoHuman)
         {
 			Juanito.ins.inButterflyZone = false;
+			UIManager.instance.TooltipDisable();
 		}
 	}
 
 	public void EnterSpiritMode()
 	{
+		initialPosition = Juanito.ins.JuanitoHuman.transform.position;
 		Juanito.ins.HumanAnim.SetBool("Kneeling", true);
 		sphereContainer.SetActive(true);
 		containerLighting.SetActive(true);
+		mBackgroundColor = Camera.main.backgroundColor;
 		Camera.main.backgroundColor = new Color(0,0,0,1);
 		LightManager.ins.DisableLights();
 	}

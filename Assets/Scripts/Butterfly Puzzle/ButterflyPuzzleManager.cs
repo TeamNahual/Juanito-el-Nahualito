@@ -7,6 +7,7 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 	public List<GameObject> pieces;
 	public List<GameObject> piecesStatic;
 	public bool allActive = false;
+	public RelicPedestal relic;
 
 	public static ButterflyPuzzleManager ins;
 
@@ -35,6 +36,7 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 		if(pieces.Count == 0)
 		{
 			Debug.Log ("You have completed the Butterfly Puzzle");
+			StartCoroutine(relic.RaisePedestal());
 		}
 		else
 		{

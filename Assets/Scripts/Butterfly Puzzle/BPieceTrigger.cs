@@ -15,7 +15,7 @@ public class BPieceTrigger : MonoBehaviour {
 	void OnTriggerStay(Collider other)
 	{
 		if(main.locked) return;
-		
+
 		if(Juanito.ins.CheckFacingObjectsSpirit(main.allObjects, main.layerMask))
 		{
 			UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
@@ -23,8 +23,12 @@ public class BPieceTrigger : MonoBehaviour {
 
 			if(Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
 			{
+				UIManager.instance.TooltipDisplay("Use <sprite=4> to Move Piece");
 				if(!main.pushing)
+				{
+					// UIManager.instance.TooltipDisplay("Use <sprite=4> to Move Piece");
 					main.AttachPlayer();
+				}
 			}
 			else
 			{

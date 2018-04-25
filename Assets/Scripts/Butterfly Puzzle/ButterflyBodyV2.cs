@@ -47,10 +47,12 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		{
 			float horizontal = GetPlayerInput()[0];
 			float vertical = GetPlayerInput()[1];
+
 			// Debug.Log(Juanito.ins.JuanitoSpirit.transform.forward * vertical);
 			rb.velocity = ((Juanito.ins.JuanitoSpirit.transform.forward * vertical) + 
 						(Juanito.ins.JuanitoSpirit.transform.right * horizontal)) * speed;
 			// Juanito.ins.JuanitoSpirit.transform.localPosition = initialPosition;
+			Juanito.ins.SpiritAnim.SetFloat("Forward", (vertical >= horizontal ? vertical : horizontal));
 		}
 	}
 
@@ -71,7 +73,7 @@ public class ButterflyBodyV2 : MonoBehaviour {
 
 	public void AttachPlayer()
 	{
-		// Juanito.ins.HumanAnim.SetBool("Pushing", true);
+		Juanito.ins.SpiritAnim.SetBool("Pushing", true);
 		//rb.detectCollisions = true;
 		pushing = true;
 		ToggleColliders(true);
@@ -85,7 +87,7 @@ public class ButterflyBodyV2 : MonoBehaviour {
 
 	public void DetachPlayer()
 	{
-		// Juanito.ins.HumanAnim.SetBool("Pushing", false);
+		Juanito.ins.SpiritAnim.SetBool("Pushing", false);
 		//rb.detectCollisions = false;
 		pushing = false;
 		ToggleColliders(false);
