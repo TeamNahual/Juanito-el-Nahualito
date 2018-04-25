@@ -20,6 +20,8 @@ public class ButterflyBodyV2 : MonoBehaviour {
 
 	public Collider[] colliders;
 
+	public PhysicMaterial physMaterial;
+
 	Rigidbody rb;
 
 	void Start()
@@ -27,6 +29,11 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 
 		colliders = transform.Find("Colliders").gameObject.GetComponents<Collider>();
+
+		foreach(Collider col in colliders)
+		{
+			col.material = physMaterial;
+		}
 
 		allObjects = new GameObject[1 + transform.childCount];
 
