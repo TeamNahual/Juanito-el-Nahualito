@@ -6,14 +6,14 @@ public class SpiritZonePerimeter : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if(other.gameObject == Juanito.ins.JuanitoSpirit)
-		{
-			Debug.Log("EXIT");
+		// if(other.gameObject == Juanito.ins.JuanitoSpirit)
+		// {
+		// 	Debug.Log("EXIT");
 
-			Butterfly main = GetComponentInParent(typeof(Butterfly)) as Butterfly;
+		// 	Butterfly main = GetComponentInParent(typeof(Butterfly)) as Butterfly;
 
-			main.ExitSpiritMode();
-			Juanito.ins.EndSpiritState();
-		}
+		// 	main.ExitSpiritMode();
+		// 	Juanito.ins.EndSpiritState();
+		// }
 	}
 }

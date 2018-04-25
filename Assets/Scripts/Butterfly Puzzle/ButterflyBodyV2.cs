@@ -7,9 +7,10 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class ButterflyBodyV2 : MonoBehaviour {
 
 	public float speed = 5.0f;
-	public bool collidingJuanito = false;
 
 	public bool pushing = false;
+
+	public bool locked = false;
 
 	public LayerMask layerMask;
 
@@ -17,68 +18,39 @@ public class ButterflyBodyV2 : MonoBehaviour {
 
 	public Vector3 initialPosition;
 
+	public Collider[] colliders;
+
 	Rigidbody rb;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 
-	}
+		colliders = transform.Find("Colliders").gameObject.GetComponents<Collider>();
 
-	void OnCollisionEnter(Collision other)
-	{
-		if(other.gameObject == Juanito.ins.JuanitoSpirit)
-		{
-			// Debug.Log("Juanito Enter");
-			collidingJuanito = true;
-		}
-	}
+		allObjects = new GameObject[1 + transform.childCount];
 
-	void OnCollisionExit(Collision other)
-	{
-		if(other.gameObject == Juanito.ins.JuanitoSpirit)
+		allObjects[0] = gameObject;
+
+		for(int i = 0; i < transform.childCount; i++)
 		{
-			// Debug.Log("Juanito Leave");
-			collidingJuanito = false;
+			allObjects[i + 1] = transform.GetChild(i).gameObject;
 		}
 	}
 
 	void FixedUpdate()
 	{
+		if(locked)
+			pushing = false;
+
 		if(pushing)
-			collidingJuanito = true;
-
-		if(true)//Juanito.ins.CheckFacingObjectsSpirit(allObjects, layerMask))
 		{
-			UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
-
-
-			if(Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
-			{
-				if(!pushing)
-					AttachPlayer();
-			}
-			else
-			{
-				if(pushing)
-					DetachPlayer();
-			}
-
-			if(pushing)
-			{
-				float horizontal = GetPlayerInput()[0];
-				float vertical = GetPlayerInput()[1];
-
-				Juanito.ins.JuanitoSpirit.transform.localPosition = initialPosition;
-				// Debug.Log(Juanito.ins.JuanitoSpirit.transform.forward * vertical);
-				rb.velocity = ((Juanito.ins.JuanitoSpirit.transform.forward * vertical) + 
-							(Juanito.ins.JuanitoSpirit.transform.right * horizontal)) * speed;
-			}
-		}
-		else
-		{
-			UIManager.instance.TooltipDisable();
-			DetachPlayer();
+			float horizontal = GetPlayerInput()[0];
+			float vertical = GetPlayerInput()[1];
+			// Debug.Log(Juanito.ins.JuanitoSpirit.transform.forward * vertical);
+			rb.velocity = ((Juanito.ins.JuanitoSpirit.transform.forward * vertical) + 
+						(Juanito.ins.JuanitoSpirit.transform.right * horizontal)) * speed;
+			// Juanito.ins.JuanitoSpirit.transform.localPosition = initialPosition;
 		}
 	}
 
@@ -102,11 +74,12 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		// Juanito.ins.HumanAnim.SetBool("Pushing", true);
 		//rb.detectCollisions = true;
 		pushing = true;
-		Physics.IgnoreCollision(GetComponentInChildren<Collider>(), Juanito.ins.JuanitoSpirit.GetComponent<Collider>());
+		ToggleColliders(true);
 		rb.constraints = RigidbodyConstraints.FreezeRotation;
 		Juanito.ins.JuanitoSpirit.transform.parent = transform;
 		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = false;
  		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = false;
+ 		Juanito.ins.JuanitoSpirit.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
  		initialPosition = Juanito.ins.JuanitoSpirit.transform.localPosition;
 	}
 
@@ -115,12 +88,22 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		// Juanito.ins.HumanAnim.SetBool("Pushing", false);
 		//rb.detectCollisions = false;
 		pushing = false;
-		Physics.IgnoreCollision(GetComponentInChildren<Collider>(), Juanito.ins.JuanitoSpirit.GetComponent<Collider>(), false);
+		ToggleColliders(false);
 		rb.constraints = RigidbodyConstraints.FreezeAll;
 		UIManager.instance.TooltipDisable();
 		Juanito.ins.JuanitoSpirit.transform.parent = Juanito.ins.transform;
 		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = true;
  		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = true;
+ 		Juanito.ins.JuanitoSpirit.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
+	}
+
+	void ToggleColliders(bool ignore)
+	{
+		for(int i = 0; i < colliders.Length; i++)
+		{
+			Physics.IgnoreCollision(colliders[i], Juanito.ins.JuanitoSpirit.GetComponent<Collider>(), ignore);
+		}
 	}
 }
 

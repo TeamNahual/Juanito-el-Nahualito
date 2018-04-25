@@ -6,13 +6,16 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 
 	public List<GameObject> pieces;
 	public List<GameObject> piecesStatic;
+	public bool allActive = false;
+
+	public static ButterflyPuzzleManager ins;
 
 	private bool ShowBlocks = true;
 
 	// Use this for initialization
 	void Start () {
 
-		// piecesStatic = pieces;
+		ins = this;
 
 		foreach(GameObject piece in pieces)
 		{
@@ -27,11 +30,32 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 		ManageBlockSpiritState();
 	}
 
+	public void CheckPieces()
+	{
+		if(pieces.Count == 0)
+		{
+			Debug.Log ("You have completed the Butterfly Puzzle");
+		}
+		else
+		{
+			NextPiece();
+		}
+	}
+
 	void NextPiece()
 	{
 		int randomIndex = Random.Range(0, pieces.Count);
 
 		GameObject currPiece = pieces[randomIndex];
+
+		if((currPiece.name == "Piece_TopLeft" 
+				&& piecesStatic.Find(obj => obj.name == "Piece_MiddleLeft") == null)
+			|| (currPiece.name == "Piece_TopRight" 
+				&& piecesStatic.Find(obj => obj.name == "Piece_MiddleRight") == null))
+		{
+			NextPiece();
+			return;
+		}
 
 		piecesStatic.Add(currPiece);
 

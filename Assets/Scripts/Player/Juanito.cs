@@ -141,7 +141,7 @@ public class Juanito : MonoBehaviour {
 		if(layerMask == -1) layerMask = LayerMask.GetMask("Default");
 
 		Vector3 fwd = JuanitoSpirit.transform.TransformDirection(Vector3.forward);
-		Ray ray = new Ray(JuanitoSpirit.transform.position, fwd);
+		Ray ray = new Ray(JuanitoSpirit.transform.position + Vector3.up * 0.5f, fwd);
 		RaycastHit hit;
 
 		Debug.DrawRay(JuanitoSpirit.transform.position, fwd, Color.green);
