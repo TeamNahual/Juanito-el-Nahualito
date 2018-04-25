@@ -9,7 +9,7 @@ Material:
   m_Name: Deer Skin Common 2
   m_Shader: {fileID: 4800000, guid: 9c6ece3d5ef8bb84db19471daaf6c788, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
-  m_LightmapFlags: 1
+  m_LightmapFlags: 5
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ad3622b22db5bad4baeb1674386ccb5a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3a0a998e4c33c61418a55111d433f83e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -81,9 +81,9 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineSize: 0
     - _Parallax: 0.02
-    - _RimIntensity: 0.179
-    - _RimSize: 1.5
-    - _RimSmoothness: 0.5
+    - _RimIntensity: 0.064
+    - _RimSize: 1.69
+    - _RimSmoothness: 0.583
     - _ShadowIntensity: 1
     - _Shininess: 0.032
     - _SmoothnessTextureChannel: 0
@@ -93,10 +93,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.99264705, g: 0.91845024, b: 0.5036224, a: 0.647}
-    - _EmissionColor: {r: 0.42647058, g: 0.040765557, b: 0.040765557, a: 1}
+    - _Color: {r: 0.8088235, g: 0.727449, b: 0.6244593, a: 0.647}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 0.80689657, b: 0, a: 1}
+    - _RimColor: {r: 0.9117647, g: 0.4910214, b: 0.30168685, a: 1}
     - _ShadowColor: {r: 0.25, g: 0.25, b: 0.25, a: 0.5}
-    - _SpecColor: {r: 0.9705882, g: 0.89892614, b: 0.32115054, a: 0.5}
+    - _SpecColor: {r: 0.9705882, g: 0.46895358, b: 0.32115054, a: 0.5}
