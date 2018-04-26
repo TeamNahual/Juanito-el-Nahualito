@@ -23,6 +23,7 @@ public class pulley_switch_manager : MonoBehaviour {
 
 	void Update(){
 		if (overlap && Input.GetKeyDown (KeyCode.E)) {
+			Debug.Log ("Switch hit");
 			manager.MovePlatforms ();
 		}
 	}

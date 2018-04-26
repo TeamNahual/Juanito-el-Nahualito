@@ -4,6 +4,8 @@ using System.Collections;
 public class FancyCam : MonoBehaviour {
 
     public Transform camHold;
+    public Transform Heading;
+    public Transform targetObjective;
     public float rotationSpeed = 200f;
     public float verticalSpeed = 180f;
 	public Transform player;
@@ -63,6 +65,8 @@ public class FancyCam : MonoBehaviour {
         }
         // move camera pilot to player
         //transform.position = player.position;
+        //transform.rotation = player.rotation;
+        //Heading.LookAt(targetObjective);
         Vector3 velocity3 = Vector3.zero;
         transform.position = Vector3.SmoothDamp(transform.position, player.position, ref velocity3, 0.1f);
         // set horizontal rotation on camera pivot

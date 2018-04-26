@@ -69,7 +69,8 @@ public class Juanito : MonoBehaviour {
  	{
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
- 		FancyCam.ins.player = JuanitoSpirit.transform;
+        if (FancyCam.ins) FancyCam.ins.player = JuanitoSpirit.transform;
+        if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoSpirit.transform;
  		JuanitoSpirit.transform.position = JuanitoHuman.transform.position;
  		JuanitoSpirit.SetActive(true);
  		SpiritState = true;
@@ -104,7 +105,8 @@ public class Juanito : MonoBehaviour {
  	{
  		SpiritControl.currentFollower = null;
  		JuanitoSpirit.SetActive(false);
- 		FancyCam.ins.player = JuanitoHuman.transform;
+        if (FancyCam.ins) FancyCam.ins.player = JuanitoHuman.transform;
+        if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoHuman.transform;
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;
