@@ -22,6 +22,8 @@ public class ButterflyBodyV2 : MonoBehaviour {
 
 	public PhysicMaterial physMaterial;
 
+	public GameObject capsuleCol;
+
 	Rigidbody rb;
 
 	void Start()
@@ -42,6 +44,11 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		for(int i = 0; i < transform.childCount; i++)
 		{
 			allObjects[i + 1] = transform.GetChild(i).gameObject;
+		}
+
+		if(capsuleCol != null)
+		{
+			Physics.IgnoreCollision(capsuleCol.GetComponent<Collider>(), Juanito.ins.JuanitoSpirit.GetComponent<Collider>(), true);
 		}
 	}
 
@@ -90,6 +97,15 @@ public class ButterflyBodyV2 : MonoBehaviour {
  		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = false;
  		Juanito.ins.JuanitoSpirit.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
  		initialPosition = Juanito.ins.JuanitoSpirit.transform.localPosition;
+
+ 		if(capsuleCol != null)
+ 		{	
+ 			capsuleCol.SetActive(true);
+ 			capsuleCol.transform.localPosition = new Vector3(
+ 				initialPosition.x,
+ 				capsuleCol.transform.localPosition.y,
+ 				initialPosition.z);
+ 		}
 	}
 
 	public void DetachPlayer()
@@ -104,6 +120,11 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = true;
  		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = true;
  		Juanito.ins.JuanitoSpirit.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+ 		
+ 		if(capsuleCol != null)
+ 		{	
+ 			capsuleCol.SetActive(false);
+ 		}
 
 	}
 
