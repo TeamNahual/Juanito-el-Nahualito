@@ -62,11 +62,22 @@ public class ButterflyBodyV2 : MonoBehaviour {
 			float horizontal = GetPlayerInput()[0];
 			float vertical = GetPlayerInput()[1];
 
+			Vector3 camera_forward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
+
 			// Debug.Log(Juanito.ins.JuanitoSpirit.transform.forward * vertical);
-			rb.velocity = ((Juanito.ins.JuanitoSpirit.transform.forward * vertical) + 
-						(Juanito.ins.JuanitoSpirit.transform.right * horizontal)) * speed;
+			rb.velocity = ((vertical * camera_forward) + 
+						(horizontal * Camera.main.transform.right)) * speed;
 			// Juanito.ins.JuanitoSpirit.transform.localPosition = initialPosition;
-			Juanito.ins.SpiritAnim.SetFloat("Forward", (vertical >= horizontal ? vertical : horizontal));
+
+			Vector3 diff = Juanito.ins.JuanitoSpirit.transform.position - transform.position;
+			diff = new Vector3 (diff.x, 0f, diff.z);
+			float animForward = vertical;
+			float angleDiff = Vector3.Angle (camera_forward, diff);
+			if (angleDiff < 90f) {
+				animForward *= -1;
+			}
+
+			Juanito.ins.SpiritAnim.SetFloat("Forward", animForward);
 		}
 	}
 
