@@ -24,6 +24,8 @@ public class LightManager : MonoBehaviour {
 		{
 			light.SetActive(false);
 		}
+
+		DynamicGI.UpdateEnvironment();
 	}
 
 	public void EnableLights()
@@ -32,5 +34,7 @@ public class LightManager : MonoBehaviour {
 		{
 			light.SetActive(true);
 		}
+
+		DynamicGI.UpdateEnvironment();
 	}
 }
