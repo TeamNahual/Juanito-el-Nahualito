@@ -2903,7 +2903,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236567732808136}
   m_LocalRotation: {x: -0, y: 0.9141125, z: -0, w: 0.40546066}
-  m_LocalPosition: {x: -0.84, y: 0.2, z: -37.6}
+  m_LocalPosition: {x: 614.45, y: 249.18, z: 482.68}
   m_LocalScale: {x: 2.033635, y: 2, z: 2.033635}
   m_Children:
   - {fileID: 4100600776935988}
@@ -5600,6 +5600,8 @@ MonoBehaviour:
   m_RunCycleLegOffset: 0.1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 1
+  dynamicPhysMat: {fileID: 13400000, guid: 1fe71756c77c57744a5026e0d550c4c2, type: 2}
+  staticPhysMat: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
   m_ForwardAmount: 0
   movementSpeed: 7
 --- !u!114 &114897681696393166
@@ -5659,6 +5661,8 @@ MonoBehaviour:
   m_RunCycleLegOffset: 0.1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 1
+  dynamicPhysMat: {fileID: 13400000, guid: 1fe71756c77c57744a5026e0d550c4c2, type: 2}
+  staticPhysMat: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
   m_ForwardAmount: 0
   movementSpeed: 7
 --- !u!136 &136736632071027982
@@ -5667,7 +5671,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389939264584480}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
@@ -5680,7 +5684,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1673784785864008}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3

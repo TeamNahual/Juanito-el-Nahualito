@@ -34,28 +34,50 @@ public class RelicPedestal : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		if (other.gameObject == Juanito.ins.JuanitoSpirit && active) 
+		if(active)
 		{
-			if(Juanito.ins.CheckFacingObjectsSpirit(targetObjects))
+			if (other.gameObject == Juanito.ins.JuanitoHuman) 
 			{
-
-				UIManager.instance.TooltipInteract();
-
-				if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown ("Action")) 
+				if(Juanito.ins.CheckFacingObjects(targetObjects))
 				{
-					// Juanito.ins.SpiritAnim.SetTrigger("Pickup");
+
+					UIManager.instance.TooltipInteract();
+
+					if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown ("Action")) 
+					{
+						// Juanito.ins.SpiritAnim.SetTrigger("Pickup");
+						UIManager.instance.TooltipDisable();
+						transform.GetChild (0).gameObject.SetActive (false);
+						if(ButterflyRelic) Juanito.ins.butterflyRelic = true;
+						if(StatueRelic) Juanito.ins.statueRelic = true;
+						StartCoroutine(LowerPedestal());
+						//UIManager.instance.dialogueSystem.addDialogue("You picked up a relic.");
+						active = false;
+					}		
+				}
+				else
+				{
 					UIManager.instance.TooltipDisable();
-					transform.GetChild (0).gameObject.SetActive (false);
-					if(ButterflyRelic) Juanito.ins.butterflyRelic = true;
-					if(StatueRelic) Juanito.ins.statueRelic = true;
-					StartCoroutine(LowerPedestal());
-					//UIManager.instance.dialogueSystem.addDialogue("You picked up a relic.");
-					active = false;
-				}		
+				}
 			}
-			else
+
+			// Can't pickup object in spirit mode
+			if (other.gameObject == Juanito.ins.JuanitoSpirit) 
 			{
-				UIManager.instance.TooltipDisable();
+				if(Juanito.ins.CheckFacingObjectsSpirit(targetObjects))
+				{
+					UIManager.instance.TooltipInteract();
+
+					if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown ("Action")) 
+					{
+						Juanito.ins.SpiritAnim.SetTrigger("Pickup");
+						UIManager.instance.TooltipDisable();
+					}		
+				}
+				else
+				{
+					UIManager.instance.TooltipDisable();
+				}
 			}
 		}
 	}

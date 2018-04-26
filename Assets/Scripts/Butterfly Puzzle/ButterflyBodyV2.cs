@@ -50,6 +50,11 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		{
 			Physics.IgnoreCollision(capsuleCol.GetComponent<Collider>(), Juanito.ins.JuanitoSpirit.GetComponent<Collider>(), true);
 		}
+
+		for(int i = 0; i < colliders.Length; i++)
+		{
+			Physics.IgnoreCollision(colliders[i], Juanito.ins.JuanitoHuman.GetComponent<Collider>(), true);
+		}
 	}
 
 	void FixedUpdate()
