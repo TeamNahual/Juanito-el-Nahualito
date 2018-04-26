@@ -10,12 +10,14 @@ public class pulley_manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (plat1.transform.position.y < plat2.transform.position.y) {
-			topPos = plat2.transform.position;
-			bottomPos = plat1.transform.position;
+		Vector3 p1 = plat1.GetPosition ();
+		Vector3 p2 = plat2.GetPosition ();
+		if (p1.y < p2.y) {
+			topPos = p2;
+			bottomPos = p1;
 		} else {
-			topPos = plat1.transform.position;
-			bottomPos = plat2.transform.position;
+			topPos = p1;
+			bottomPos = p2;
 		}
 	}
 	
