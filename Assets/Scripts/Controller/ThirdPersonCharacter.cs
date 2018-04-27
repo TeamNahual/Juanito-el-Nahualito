@@ -16,7 +16,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
 
+		[SerializeField] PhysicMaterial dynamicPhysMat;
+		[SerializeField] PhysicMaterial staticPhysMat;
 
+		bool isStaticPhys = true;
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
@@ -72,14 +75,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (m_IsGrounded)
 			{
 				HandleGroundedMovement(crouch, jump);
+
+				// Handles sliding of juanito when airborne
+				if(m_IsGrounded != isStaticPhys)
+				{
+					m_Capsule.material = staticPhysMat;
+					isStaticPhys = m_IsGrounded;
+				}
 			}
 			else
 			{
 				HandleAirborneMovement();
+
+				if(m_IsGrounded != isStaticPhys)
+				{
+					m_Capsule.material = dynamicPhysMat;
+					isStaticPhys = m_IsGrounded;
+				}
 			}
 
-			ScaleCapsuleForCrouching(crouch);
-			PreventStandingInLowHeadroom();
+			// ScaleCapsuleForCrouching(crouch);
+			// PreventStandingInLowHeadroom();
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);

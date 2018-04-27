@@ -16,7 +16,7 @@ public class BPieceTrigger : MonoBehaviour {
 	{
 		if(main.locked) return;
 
-		if(Juanito.ins.CheckFacingObjectsSpirit(main.allObjects, main.layerMask))
+		if(Juanito.ins.CheckFacingObjectsSpirit(main.allObjects, main.layerMask) || main.pushing)
 		{
 			UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
 
