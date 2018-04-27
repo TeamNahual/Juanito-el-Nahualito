@@ -22,6 +22,8 @@ public class ButterflyBodyV2 : MonoBehaviour {
 
 	public PhysicMaterial physMaterial;
 
+	public GameObject capsuleCol;
+
 	Rigidbody rb;
 
 	void Start()
@@ -43,6 +45,16 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		{
 			allObjects[i + 1] = transform.GetChild(i).gameObject;
 		}
+
+		if(capsuleCol != null)
+		{
+			Physics.IgnoreCollision(capsuleCol.GetComponent<Collider>(), Juanito.ins.JuanitoSpirit.GetComponent<Collider>(), true);
+		}
+
+		for(int i = 0; i < colliders.Length; i++)
+		{
+			Physics.IgnoreCollision(colliders[i], Juanito.ins.JuanitoHuman.GetComponent<Collider>(), true);
+		}
 	}
 
 	void FixedUpdate()
@@ -55,11 +67,22 @@ public class ButterflyBodyV2 : MonoBehaviour {
 			float horizontal = GetPlayerInput()[0];
 			float vertical = GetPlayerInput()[1];
 
+			Vector3 camera_forward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
+
 			// Debug.Log(Juanito.ins.JuanitoSpirit.transform.forward * vertical);
-			rb.velocity = ((Juanito.ins.JuanitoSpirit.transform.forward * vertical) + 
-						(Juanito.ins.JuanitoSpirit.transform.right * horizontal)) * speed;
+			rb.velocity = ((vertical * camera_forward) + 
+						(horizontal * Camera.main.transform.right)) * speed;
 			// Juanito.ins.JuanitoSpirit.transform.localPosition = initialPosition;
-			Juanito.ins.SpiritAnim.SetFloat("Forward", (vertical >= horizontal ? vertical : horizontal));
+
+			Vector3 diff = Juanito.ins.JuanitoSpirit.transform.position - transform.position;
+			diff = new Vector3 (diff.x, 0f, diff.z);
+			float animForward = vertical;
+			float angleDiff = Vector3.Angle (camera_forward, diff);
+			if (angleDiff < 90f) {
+				animForward *= -1;
+			}
+
+			Juanito.ins.SpiritAnim.SetFloat("Forward", animForward);
 		}
 	}
 
@@ -90,6 +113,15 @@ public class ButterflyBodyV2 : MonoBehaviour {
  		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = false;
  		Juanito.ins.JuanitoSpirit.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
  		initialPosition = Juanito.ins.JuanitoSpirit.transform.localPosition;
+
+ 		if(capsuleCol != null)
+ 		{	
+ 			capsuleCol.SetActive(true);
+ 			capsuleCol.transform.localPosition = new Vector3(
+ 				initialPosition.x,
+ 				capsuleCol.transform.localPosition.y,
+ 				initialPosition.z);
+ 		}
 	}
 
 	public void DetachPlayer()
@@ -104,6 +136,11 @@ public class ButterflyBodyV2 : MonoBehaviour {
 		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = true;
  		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = true;
  		Juanito.ins.JuanitoSpirit.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+ 		
+ 		if(capsuleCol != null)
+ 		{	
+ 			capsuleCol.SetActive(false);
+ 		}
 
 	}
 

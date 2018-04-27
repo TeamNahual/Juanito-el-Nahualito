@@ -70,14 +70,15 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
 
-    if (FancyCam.ins) FancyCam.ins.player = JuanitoSpirit.transform;
-    if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoSpirit.transform;
-    
-    JuanitoSpirit.transform.position = JuanitoHuman.transform.position + JuanitoHuman.transform.forward;
- 		JuanitoSpirit.transform.rotation = JuanitoHuman.transform.rotation;
- 		JuanitoSpirit.SetActive(true);
- 		SpiritState = true;
+	    if (FancyCam.ins) FancyCam.ins.player = JuanitoSpirit.transform;
+	    if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoSpirit.transform;
+	    
+	    JuanitoSpirit.transform.position = JuanitoHuman.transform.position + JuanitoHuman.transform.forward;
+		JuanitoSpirit.transform.rotation = JuanitoHuman.transform.rotation;
+		JuanitoSpirit.SetActive(true);
+		SpiritState = true;
 
+		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
  	}
 
  	private void SpiritHandler()
@@ -88,7 +89,7 @@ public class Juanito : MonoBehaviour {
 			{
 				if(!SpiritState)
 				{
-					lockedSpiritPosition = JuanitoHuman.transform.position;
+					// lockedSpiritPosition = JuanitoHuman.transform.position;
 					EnterSpiritState();
 				}
 				else
@@ -99,7 +100,7 @@ public class Juanito : MonoBehaviour {
 
 			if(SpiritState)
 			{
-				JuanitoHuman.transform.position = lockedSpiritPosition;
+				// JuanitoHuman.transform.position = lockedSpiritPosition;
 			}
 		}
  	}
@@ -114,6 +115,8 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;
 		UIManager.instance.TooltipDisable();
+		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
  	}
 
  	public bool CheckFacingObjects(GameObject[] targetObjects, int layerMask = -1)

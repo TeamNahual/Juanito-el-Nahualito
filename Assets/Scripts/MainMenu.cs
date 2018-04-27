@@ -86,6 +86,11 @@ public class MainMenu : MonoBehaviour {
 		GameManager.instance.loadLevel("Act 1");
 	}
 
+	public void ToAct3()
+	{
+		GameManager.instance.loadLevel("FlightTest");
+	}
+
 	public void EndGame()
 	{
 		Application.Quit();

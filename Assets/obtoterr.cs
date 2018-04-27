@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
  
 public class Object2Terrain : EditorWindow {
@@ -129,3 +131,5 @@ public class Object2Terrain : EditorWindow {
 		EditorUtility.DisplayProgressBar("Creating Terrain...", Mathf.RoundToInt(p * 100f)+ " %", p);
 	}
 }
+
+#endif
