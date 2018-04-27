@@ -249,7 +249,7 @@ public class UIManager : MonoBehaviour
 		}
 		
 		// Update butteflies
-		updateButterflyUI(Juanito.ins.GetSpiritCount());
+		// updateButterflyUI(Juanito.ins.GetSpiritCount());
 		
 		inGameMenu.gameObject.SetActive(isMenuOpen);
 		dialogueUI.gameObject.SetActive(isDialogueOpen);

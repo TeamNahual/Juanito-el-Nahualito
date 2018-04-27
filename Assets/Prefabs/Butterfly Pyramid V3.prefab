@@ -3478,9 +3478,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306977322265344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0}
-  m_LocalScale: {x: 0.5337878, y: 0.5337878, z: 0.5337878}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.19350658, z: -0}
+  m_LocalScale: {x: 0.17507043, y: 0.1750704, z: 0.17507046}
   m_Children:
   - {fileID: 4267256060305782}
   - {fileID: 4371964698596930}
@@ -4610,9 +4610,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1132481924364170}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -23.2, y: 54.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.70710677, y: 0.000000029802315, z: -0.000000029802315, w: 0.70710677}
+  m_LocalPosition: {x: -7.6090775, y: 17.80918, z: -0}
+  m_LocalScale: {x: 0.3279776, y: 0.32797813, z: 0.32797796}
   m_Children: []
   m_Father: {fileID: 4714901445555876}
   m_RootOrder: 2
@@ -4662,9 +4662,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214079454131332}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.7, y: 0, z: -0}
-  m_LocalScale: {x: -91.4884, y: -91.48851, z: -91.48851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.101045, y: 0, z: -0}
+  m_LocalScale: {x: -30.00615, y: -30.006174, z: -30.00619}
   m_Children:
   - {fileID: 4504926524817994}
   m_Father: {fileID: 4714901445555876}
@@ -4717,7 +4717,7 @@ Transform:
   m_GameObject: {fileID: 1168994370897708}
   m_LocalRotation: {x: -0, y: 0.7205813, z: -0, w: 0.6933705}
   m_LocalPosition: {x: -0.06, y: 2.47, z: -1.61}
-  m_LocalScale: {x: 0.070291094, y: 0.0702911, z: 0.070291035}
+  m_LocalScale: {x: 0.21431683, y: 0.21431683, z: 0.2143166}
   m_Children:
   - {fileID: 4005192814523238}
   - {fileID: 4677471709609126}
@@ -25117,7 +25117,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 4.73
+  m_Radius: 1.56
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

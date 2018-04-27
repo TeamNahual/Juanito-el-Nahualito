@@ -62,23 +62,23 @@ public class RelicPedestal : MonoBehaviour {
 			}
 
 			// Can't pickup object in spirit mode
-			if (other.gameObject == Juanito.ins.JuanitoSpirit) 
-			{
-				if(Juanito.ins.CheckFacingObjectsSpirit(targetObjects))
-				{
-					UIManager.instance.TooltipInteract();
+			// if (other.gameObject == Juanito.ins.JuanitoSpirit) 
+			// {
+			// 	if(Juanito.ins.CheckFacingObjectsSpirit(targetObjects))
+			// 	{
+			// 		UIManager.instance.TooltipInteract();
 
-					if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown ("Action")) 
-					{
-						Juanito.ins.SpiritAnim.SetTrigger("Pickup");
-						UIManager.instance.TooltipDisable();
-					}		
-				}
-				else
-				{
-					UIManager.instance.TooltipDisable();
-				}
-			}
+			// 		if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown ("Action")) 
+			// 		{
+			// 			Juanito.ins.SpiritAnim.SetTrigger("Pickup");
+			// 			UIManager.instance.TooltipDisable();
+			// 		}		
+			// 	}
+			// 	else
+			// 	{
+			// 		UIManager.instance.TooltipDisable();
+			// 	}
+			// }
 		}
 	}
 
