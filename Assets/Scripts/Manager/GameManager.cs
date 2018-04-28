@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 	private static GameManager _instance; // Allows us to access this from other scripts
 	public bool isMovementLocked = false; // Should this be somewhere else?
+	public Texture stylisticFog, desaturationGradient;
 	public int movementLocks = 0;
 	private int unlockCounter;
 
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
 	
     void Start()
     {
+		Shader.SetGlobalTexture("_MK_FOG_DESATURATE", desaturationGradient);
+		Shader.SetGlobalTexture("_MK_FOG_STYLISTIC", stylisticFog);
 		DynamicGI.UpdateEnvironment();
 	}
 	

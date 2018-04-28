@@ -3,7 +3,7 @@
 //vertex and fragment shader
 #ifndef MK_TOON_FORWARD
 	#define MK_TOON_FORWARD
-
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// VERTEX SHADER
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,11 +14,19 @@
 		UNITY_INITIALIZE_OUTPUT(VertexOutputForward, o);
 		UNITY_TRANSFER_INSTANCE_ID(v,o);
 		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-
+		
+		float4 vert = v.vertex;
+		#ifdef GRASS_SHADER
+			float scaleFactor = (v.vertex * v.vertex * v.vertex) / 10;
+			float offset = scaleFactor * sin(_Time.y * 3);
+			vert.x += offset;
+			vert.y -= offset / 2;
+		#endif
+		
 		//vertex positions
-		o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-		o.pos =  UnityObjectToClipPos(v.vertex);
-
+		o.posWorld = mul(unity_ObjectToWorld, vert);
+		o.pos =  UnityObjectToClipPos(vert);
+		
 		//texcoords
 		o.uv_Main = TRANSFORM_TEX(v.texcoord0, _MainTex);
 		
@@ -63,6 +71,9 @@
 		return o;
 	}
 
+	uniform sampler2D _MK_FOG_DESATURATE;
+	uniform sampler2D _MK_FOG_STYLISTIC;
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// FRAGMENT SHADER
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,11 +98,21 @@
 		//if enabled add some fog - forward rendering only
 		UNITY_APPLY_FOG(o.fogCoord, mkts.Color_Out);
 		
+		// Fog shenanigans
+		float fogScale = min(1.0, distance(_WorldSpaceCameraPos, o.posWorld) / 1000);
+		float alpha = mkts.Color_Out.a;
+		
+		// Stylistic
+		fixed4 sCol = tex2D(_MK_FOG_STYLISTIC, float2(fogScale, 0));
+		mkts.Color_Out = lerp(mkts.Color_Out, sCol, sCol.a);
+		mkts.Color_Out.a = alpha;
+		
+		// Desaturation
 		float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
-		float gz = 1 - min(1, distance(_WorldSpaceCameraPos, o.posWorld) / 100);
-		mkts.Color_Out.r = (mkts.Color_Out.r * gz) + (gs * (1 - gz));
-		mkts.Color_Out.g = (mkts.Color_Out.g * gz) + (gs * (1 - gz));
-		mkts.Color_Out.b = (mkts.Color_Out.b * gz) + (gs * (1 - gz));
+		float gz = tex2D(_MK_FOG_DESATURATE, float2(fogScale, 0)).a;
+		mkts.Color_Out = lerp(mkts.Color_Out, float4(gs, gs, gs, gz), gz);
+		
+		mkts.Color_Out.a = alpha;
 
 		return mkts.Color_Out;
 	}
