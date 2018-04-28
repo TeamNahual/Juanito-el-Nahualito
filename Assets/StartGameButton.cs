@@ -31,7 +31,7 @@ public class StartGameButton : MonoBehaviour {
 
     public void StartScene()
     {
-		GameManager.instance.loadLevel ("Level 2 FinalSlice");
+		GameManager.instance.loadLevel ("l2_zonetest");
     }
 
 	IEnumerator SetText()
