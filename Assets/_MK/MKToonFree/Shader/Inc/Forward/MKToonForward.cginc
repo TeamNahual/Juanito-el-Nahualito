@@ -71,8 +71,8 @@
 		return o;
 	}
 
-	uniform sampler2D _MK_FOG_DESATURATE;
 	uniform sampler2D _MK_FOG_STYLISTIC;
+	uniform sampler2D _MK_FOG_DESATURATE;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// FRAGMENT SHADER
