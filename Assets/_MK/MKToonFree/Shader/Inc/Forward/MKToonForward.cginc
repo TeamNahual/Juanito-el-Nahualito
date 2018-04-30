@@ -74,6 +74,11 @@
 	uniform sampler2D _MK_FOG_STYLISTIC;
 	uniform sampler2D _MK_FOG_DESATURATE;
 	
+	uniform int       _MK_FOG_SPIRIT_MODE_ENABLED;
+	uniform sampler2D _MK_FOG_SPIRIT_MODE_GRADIENT;
+	uniform float     _MK_FOG_SPIRIT_MODE_RADIUS;
+	uniform float3    _MK_FOG_SPIRIT_MODE_ORIGIN;
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// FRAGMENT SHADER
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,19 +104,31 @@
 		UNITY_APPLY_FOG(o.fogCoord, mkts.Color_Out);
 		
 		// Fog shenanigans
-		float fogScale = min(1.0, distance(_WorldSpaceCameraPos, o.posWorld) / 1000);
 		float alpha = mkts.Color_Out.a;
-		
-		// Stylistic
-		fixed4 sCol = tex2D(_MK_FOG_STYLISTIC, float2(fogScale, 0));
-		mkts.Color_Out = lerp(mkts.Color_Out, sCol, sCol.a);
-		mkts.Color_Out.a = alpha;
-		
-		// Desaturation
-		float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
-		float gz = tex2D(_MK_FOG_DESATURATE, float2(fogScale, 0)).a;
-		mkts.Color_Out = lerp(mkts.Color_Out, float4(gs, gs, gs, gz), gz);
-		
+		if (_MK_FOG_SPIRIT_MODE_ENABLED) {
+			// Spirit Mode Shader
+			float spiritScale = min(0.99, distance(_MK_FOG_SPIRIT_MODE_ORIGIN, o.posWorld) / _MK_FOG_SPIRIT_MODE_RADIUS);
+			float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
+			float gz = (1 - spiritScale * spiritScale) * -5;
+			mkts.Color_Out.r = (mkts.Color_Out.r * gz) + (gs * (1 - gz));
+			mkts.Color_Out.g = (mkts.Color_Out.g * gz) + (gs * (1 - gz));
+			mkts.Color_Out.b = (mkts.Color_Out.b * gz) + (gs * (1 - gz));
+			mkts.Color_Out = lerp(mkts.Color_Out, tex2D(_MK_FOG_SPIRIT_MODE_GRADIENT, float2(spiritScale, 0)), spiritScale);
+		} else {
+			// Stylistic and Desaturated fog effects
+			float fogScale = min(0.99, distance(_WorldSpaceCameraPos, o.posWorld) / 1000);
+			
+			// Stylistic
+			fixed4 sCol = tex2D(_MK_FOG_STYLISTIC, float2(fogScale, 0));
+			mkts.Color_Out = lerp(mkts.Color_Out, sCol, sCol.a);
+			mkts.Color_Out.a = alpha;
+			
+			// Desaturation
+			float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
+			float gz = tex2D(_MK_FOG_DESATURATE, float2(fogScale, 0)).a;
+			mkts.Color_Out = lerp(mkts.Color_Out, float4(gs, gs, gs, gz), gz);	
+		}
+
 		mkts.Color_Out.a = alpha;
 
 		return mkts.Color_Out;
