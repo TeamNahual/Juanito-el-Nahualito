@@ -30,14 +30,14 @@
 				float4 vertex : SV_POSITION;
 			};
 			
-			float _AnimOff = 0.0;
+			float _AnimOffset = 0.0;
 			
 			v2f vert (appdata v)
 			{
 				v2f o;
 				
 				float scale = 1.00;
-				float time = (_Time.y + _AnimOff) * 3 + v.uv.y * 0.75;
+				float time = (_Time.y + _AnimOffset) * 3 + v.uv.y * 0.75;
 				float sintime = sin(time);
 				sintime = (sintime * sintime) * 2 - 1;
 				float dy = abs(0.5 - v.uv.x) * -10 * sintime;

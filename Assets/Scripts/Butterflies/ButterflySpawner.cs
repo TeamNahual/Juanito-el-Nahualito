@@ -7,7 +7,7 @@ public class ButterflySpawner : MonoBehaviour
 
     public int spawnCount = 10;
 
-    public float spawnRadius = 4.0f;
+    public float spawnRadius = 6.0f;
 
     [Range(0.1f, 20.0f)]
     public float velocity = 10.0f;

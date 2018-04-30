@@ -27,21 +27,24 @@ public class ButterflyBehavior : MonoBehaviour
 		Renderer rend = GetComponent<Renderer>();
         rend.material.SetFloat("_AnimOffset", Random.value * 10.0f);
 		
+		float lowerBound = 10.0f;
+		float upperBound = 15.0f;
+		
 		randVector = new Vector3(
-			(Random.value > 0.5)? Random.Range(2.5f, 5.0f): Random.Range(-5.0f, -2.5f),
-			(Random.value > 0.5)? Random.Range(2.5f, 5.0f): Random.Range(-5.0f, -2.5f),
-			(Random.value > 0.5)? Random.Range(2.5f, 5.0f): Random.Range(-5.0f, -2.5f)
+			(Random.value > 0.5)? Random.Range(lowerBound, upperBound): Random.Range(-upperBound, -lowerBound),
+			(Random.value > 0.5)? Random.Range(lowerBound, upperBound): Random.Range(-upperBound, -lowerBound),
+			(Random.value > 0.5)? Random.Range(lowerBound, upperBound): Random.Range(-upperBound, -lowerBound)
 		);
     }
 
     void Update()
     {
 		// Calculate next position
-		var time = Time.time / randVel + randOffset;
-		var nextPosition = new Vector3(
-			Mathf.Sin( (origin.x + randVector.x) * time ),
-			Mathf.Cos( (origin.y + randVector.y) * time ) + 1,
-			Mathf.Cos( (origin.z + randVector.z) * time )
+		float time = (Time.time / randVel + randOffset) / 50.0f;
+		Vector3 nextPosition = new Vector3(
+			origin.x + Mathf.Sin( (origin.x + randVector.x) * time ),
+			origin.y + Mathf.Cos( (origin.y + randVector.y) * time ) + 2,
+			origin.z + Mathf.Cos( (origin.z + randVector.z) * time )
 		);
 
         // Move and Rotate butterflies

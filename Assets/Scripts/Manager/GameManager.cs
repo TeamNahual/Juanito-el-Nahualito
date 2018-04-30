@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 		Shader.SetGlobalTexture("_MK_FOG_SPIRIT_MODE_GRADIENT", spiritModeGradient);
 		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", spiritModeOrigin);
 		Shader.SetGlobalFloat("_MK_FOG_SPIRIT_MODE_RADIUS", spiritModeRadius);
-		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 1);
+		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);
 		DynamicGI.UpdateEnvironment();
 	}
 	
