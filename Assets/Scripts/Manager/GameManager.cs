@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 	{
 		resetMovement();
 		levelToLoad = sceneName;
-		SceneManager.LoadScene ("LoadingScreen");
+		SceneManager.LoadScene (sceneName);
 	}
 	
 	public void exitGame()
