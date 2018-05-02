@@ -102,6 +102,7 @@ public class Butterfly : MonoBehaviour {
 		//mBackgroundColor = Camera.main.backgroundColor;
 		//Camera.main.backgroundColor = new Color(0,0,0,1);
 		//LightManager.ins.DisableLights();
+		GetComponent<ButterflySpawner>().OnSpiritModeStart();
 	}
 
 	public void ExitSpiritMode()
@@ -111,5 +112,6 @@ public class Butterfly : MonoBehaviour {
 		//containerLighting.SetActive(false);
 		//Camera.main.backgroundColor = mBackgroundColor;
 		//LightManager.ins.EnableLights();
+		GetComponent<ButterflySpawner>().OnSpiritModeEnd();
 	}
 }

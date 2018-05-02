@@ -9,6 +9,7 @@ public class ButterflyBehavior : MonoBehaviour
 	// Origin of orbit
 	public Vector3 origin;
 	public float spawnRadius = 6.0f;
+	public bool followJuanito = false;
 	
 	// Velocity
 	public float velBase = 5.0f;
@@ -40,12 +41,17 @@ public class ButterflyBehavior : MonoBehaviour
 
     void Update()
     {
+		Vector3 center = (!followJuanito)? origin:
+			Juanito.ins.JuanitoSpirit.transform.position;
+			
+		float speedDiv = (followJuanito)? 100.0f: 200.0f;
+		
 		// Calculate next position
-		float time = (Time.time / randVel + randOffset) / 200.0f;
+		float time = (Time.time / randVel + randOffset) / speedDiv;
 		Vector3 nextPosition = new Vector3(
-			origin.x +  Mathf.Sin( (origin.x + randVector.x) * time ) * spawnRadius,
-			origin.y + (Mathf.Cos( (origin.y + randVector.y) * time ) + 2) * spawnRadius / 2,
-			origin.z +  Mathf.Cos( (origin.z + randVector.z) * time ) * spawnRadius
+			center.x +  Mathf.Sin( (origin.x + randVector.x) * time ) * spawnRadius,
+			center.y + (Mathf.Cos( (origin.y + randVector.y) * time ) + 2) * spawnRadius / 2,
+			center.z +  Mathf.Cos( (origin.z + randVector.z) * time ) * spawnRadius
 		);
 
         // Move and Rotate butterflies

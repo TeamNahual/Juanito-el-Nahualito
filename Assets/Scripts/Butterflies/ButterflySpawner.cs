@@ -14,10 +14,13 @@ public class ButterflySpawner : MonoBehaviour
 
     [Range(0.0f, 1.0f)]
     public float velocityVariation = 0.5f;
+	
+	private GameObject[] butterflies;
 
     void Start()
     {
-        for (var i = 0; i < spawnCount; i++) Spawn();
+		butterflies = new GameObject[spawnCount];
+        for (var i = 0; i < spawnCount; i++) butterflies[i] = Spawn();
     }
 
     public GameObject Spawn()
@@ -32,4 +35,14 @@ public class ButterflySpawner : MonoBehaviour
 		butterfly.GetComponent<ButterflyBehavior>().spawnRadius = spawnRadius;
         return butterfly;
     }
+	
+	public void OnSpiritModeStart() {
+		for (var i = 0; i < butterflies.Length / 2; i++)
+			butterflies[i].GetComponent<ButterflyBehavior>().followJuanito = true;
+	}
+	
+	public void OnSpiritModeEnd() {
+		for (var i = 0; i < butterflies.Length; i++)
+			butterflies[i].GetComponent<ButterflyBehavior>().followJuanito = false;
+	}
 }
