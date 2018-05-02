@@ -53,6 +53,17 @@ public class DebugManager : MonoBehaviour {
 			manager.loadLevel ("l2_zonetest");
 			this.StartCoroutine (pause("Debug Marker 4"));
 		}
+		if (Input.GetKeyDown (KeyCode.F9)) //Load level 3
+		{
+			manager.loadLevel ("FlightTest");
+		}
+		if (Input.GetKeyDown (KeyCode.F11)) //Nudge Juanito, for when he gets stuck
+		{ 
+			Rigidbody rb = GameObject.Find ("ThirdPersonController").GetComponent<Rigidbody> ();
+			float xForce = Random.Range (-10, 10);
+			float zForce = Random.Range (-10, 10);
+			rb.AddForce (xForce, 10, zForce, ForceMode.Impulse);
+		}
 	}
 
 	public IEnumerator pause(string marker)
