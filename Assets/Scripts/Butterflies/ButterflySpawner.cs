@@ -29,6 +29,7 @@ public class ButterflySpawner : MonoBehaviour
 		butterfly.GetComponent<ButterflyBehavior>().origin = transform.position;
 		butterfly.GetComponent<ButterflyBehavior>().velBase = velocity;
 		butterfly.GetComponent<ButterflyBehavior>().velVariation = velocity * velocityVariation;
+		butterfly.GetComponent<ButterflyBehavior>().spawnRadius = spawnRadius;
         return butterfly;
     }
 }

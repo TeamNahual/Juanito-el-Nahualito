@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4591494956250468}
   - component: {fileID: 33142448812583952}
   - component: {fileID: 23239322270389330}
-  - component: {fileID: 114767241572538538}
   - component: {fileID: 135979544448636710}
+  - component: {fileID: 114968544750558946}
   m_Layer: 9
   m_Name: ButterflyImage
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405962911181570}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114767241572538538
+--- !u!114 &114968544750558946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   origin: {x: 0, y: 0, z: 0}
   velBase: 10
-  velVariation: 5
+  velVariation: 10
 --- !u!135 &135979544448636710
 SphereCollider:
   m_ObjectHideFlags: 1
