@@ -21,6 +21,7 @@ public class Juanito : MonoBehaviour {
 	private float spirit_time_limit = 50;
 	public bool SpiritState = false;
 	public bool inButterflyZone = false;
+	public Vector3 butterflyZoneOrigin;
 
 	private Vector3 lockedSpiritPosition;
 
@@ -79,6 +80,11 @@ public class Juanito : MonoBehaviour {
 		SpiritState = true;
 
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+		
+		// Shader related
+		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", butterflyZoneOrigin);
+		//Shader.SetGlobalFloat("_MK_FOG_SPIRIT_MODE_RADIUS", spiritModeRadius);
+		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 1);
  	}
 
  	private void SpiritHandler()
@@ -116,6 +122,9 @@ public class Juanito : MonoBehaviour {
  		SpiritState = false;
 		UIManager.instance.TooltipDisable();
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+		
+		// Shader related
+		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);
 
  	}
 

@@ -109,7 +109,7 @@
 			// Spirit Mode Shader
 			float spiritScale = min(0.99, distance(_MK_FOG_SPIRIT_MODE_ORIGIN, o.posWorld) / _MK_FOG_SPIRIT_MODE_RADIUS);
 			float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
-			float gz = (1 - spiritScale * spiritScale) * -5;
+			float gz = (1 - spiritScale * spiritScale) * -25 + ( sin(_Time.y) * sin(_Time.y) * 10);
 			mkts.Color_Out.r = (mkts.Color_Out.r * gz) + (gs * (1 - gz));
 			mkts.Color_Out.g = (mkts.Color_Out.g * gz) + (gs * (1 - gz));
 			mkts.Color_Out.b = (mkts.Color_Out.b * gz) + (gs * (1 - gz));
