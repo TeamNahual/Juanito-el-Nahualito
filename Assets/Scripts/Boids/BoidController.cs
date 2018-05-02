@@ -59,7 +59,7 @@ public class BoidController : MonoBehaviour
     public GameObject Spawn(Vector3 position)
     {
         var rotation = Quaternion.Slerp(transform.rotation, Random.rotation, 0.3f);
-        var boid = Instantiate(boidPrefab, position, rotation) as GameObject;
+        var boid = Instantiate(boidPrefab, position, rotation, transform) as GameObject;
         boid.GetComponent<BoidBehaviour>().controller = this;
         return boid;
     }

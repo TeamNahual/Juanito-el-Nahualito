@@ -8,8 +8,12 @@ public class SpiritMusicHandler : MonoBehaviour {
 
 	//public GameObject JuanitoObject;
 	public bool checkSpiritChange;
-	public AudioSource spiritMusic;
-	public AudioSource mainMusic;
+
+	public AudioMixerSnapshot spiritMusic;
+	public AudioMixerSnapshot mainMusic;
+
+	//public AudioMixer mainMusic;
+	//public AudioMixer spiritMusic;
 
 	// Use this for initialization
 	//void Start () {
@@ -21,15 +25,17 @@ public class SpiritMusicHandler : MonoBehaviour {
 		checkSpiritChange = Juanito.ins.SpiritState;
 		//Debug.Log (checkSpiritChange);
 		if (Input.GetKeyDown (KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit")) {
-			if (!checkSpiritChange && Juanito.ins.GetSpiritCount() >= 3) {
+			if (!checkSpiritChange && Juanito.ins.GetSpiritCount() >= 1) {
 				//Debug.Log (checkSpiritChange);
-				mainMusic.Stop();
-				spiritMusic.Play ();
+				spiritMusic.TransitionTo(.25f);
+				//spiritMusic.Play ();
 			}
 			if (checkSpiritChange) {
-				spiritMusic.Stop ();
-				mainMusic.Play ();
+				mainMusic.TransitionTo (.25f);
 			}
+		}
+		if (Juanito.ins.GetSpiritCount() <= 0) {
+			mainMusic.TransitionTo (.25f);
 		}
 	}
 }

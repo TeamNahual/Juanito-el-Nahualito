@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: d55e5d8917826894e9a6b2e3e31aa067
+timeCreated: 1524342575
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.002
+    100004: Armature.003
+    100006: body
+    100008: body.001
+    100010: body.002
+    100012: Bone
+    100014: Bone 1
+    100016: Bone.001
+    100018: Bone.001 1
+    100020: Bone.002
+    100022: Bone.002 1
+    100024: Bone.003
+    100026: Bone.003 1
+    100028: Bone.004
+    100030: Bone.004 1
+    100032: Bone.004_end
+    100034: Bone.004_end 1
+    100036: Bone.005
+    100038: Bone.005 1
+    100040: Bone.006
+    100042: Bone.006 1
+    100044: Bone.007
+    100046: Bone.007 1
+    100048: Bone.008
+    100050: Bone.008 1
+    100052: Bone.009
+    100054: Bone.009 1
+    100056: Bone.009_end
+    100058: Bone.009_end 1
+    100060: Bone.010
+    100062: Bone.010 1
+    100064: Bone.010 2
+    100066: Bone.011
+    100068: Bone.011 1
+    100070: Bone.013
+    100072: Bone.013 1
+    100074: Bone.013_end
+    100076: Bone.013_end 1
+    100078: Bone.014
+    100080: Bone.014 1
+    100082: Bone.014_end
+    100084: Bone.014_end 1
+    100086: Bone.015
+    100088: Bone.015 1
+    100090: Bone.015_end
+    100092: Bone.015_end 1
+    100094: Cylinder
+    100096: Cylinder.002
+    100098: Cylinder.003
+    100100: head
+    100102: head_end
+    100104: mid1Feather1_L.001
+    100106: mid1Feather1_R
+    100108: mid2Feather2_L.001
+    100110: mid2Feather2_R
+    100112: mid3Feather3_L.001
+    100114: mid3Feather3_R
+    100116: neck
+    100118: //RootNode
+    100120: shoulder3_L.001
+    100122: shoulder3_R
+    100124: shoulder4_L.001
+    100126: shoulder4_L.001_end
+    100128: shoulder4_R
+    100130: shoulder4_R_end
+    100132: shoulder_L.001
+    100134: shoulder_R
+    100136: shuolder1_L.001
+    100138: shuolder1_R
+    100140: shuolder2_L.001
+    100142: shuolder2_R
+    100144: tailBotFeather1_L.001
+    100146: tailBotFeather1_R
+    100148: tailBotFeather2_L.001
+    100150: tailBotFeather2_L.001_end
+    100152: tailBotFeather2_R
+    100154: tailBotFeather2_R_end
+    100156: tailFeather1_L.001
+    100158: tailFeather1_R
+    100160: tailFeather2_L.001
+    100162: tailFeather2_R
+    100164: tailFeather3_L.001
+    100166: tailFeather3_L.001_end
+    100168: tailFeather3_R
+    100170: tailFeather3_R_end
+    100172: tailLastBotFeather_L.001
+    100174: tailLastBotFeather_L.001_end
+    100176: tailLastBotFeather_R
+    100178: tailLastBotFeather_R_end
+    400000: Armature
+    400002: Armature.002
+    400004: Armature.003
+    400006: body
+    400008: body.001
+    400010: body.002
+    400012: Bone
+    400014: Bone 1
+    400016: Bone.001
+    400018: Bone.001 1
+    400020: Bone.002
+    400022: Bone.002 1
+    400024: Bone.003
+    400026: Bone.003 1
+    400028: Bone.004
+    400030: Bone.004 1
+    400032: Bone.004_end
+    400034: Bone.004_end 1
+    400036: Bone.005
+    400038: Bone.005 1
+    400040: Bone.006
+    400042: Bone.006 1
+    400044: Bone.007
+    400046: Bone.007 1
+    400048: Bone.008
+    400050: Bone.008 1
+    400052: Bone.009
+    400054: Bone.009 1
+    400056: Bone.009_end
+    400058: Bone.009_end 1
+    400060: Bone.010
+    400062: Bone.010 1
+    400064: Bone.010 2
+    400066: Bone.011
+    400068: Bone.011 1
+    400070: Bone.013
+    400072: Bone.013 1
+    400074: Bone.013_end
+    400076: Bone.013_end 1
+    400078: Bone.014
+    400080: Bone.014 1
+    400082: Bone.014_end
+    400084: Bone.014_end 1
+    400086: Bone.015
+    400088: Bone.015 1
+    400090: Bone.015_end
+    400092: Bone.015_end 1
+    400094: Cylinder
+    400096: Cylinder.002
+    400098: Cylinder.003
+    400100: head
+    400102: head_end
+    400104: mid1Feather1_L.001
+    400106: mid1Feather1_R
+    400108: mid2Feather2_L.001
+    400110: mid2Feather2_R
+    400112: mid3Feather3_L.001
+    400114: mid3Feather3_R
+    400116: neck
+    400118: //RootNode
+    400120: shoulder3_L.001
+    400122: shoulder3_R
+    400124: shoulder4_L.001
+    400126: shoulder4_L.001_end
+    400128: shoulder4_R
+    400130: shoulder4_R_end
+    400132: shoulder_L.001
+    400134: shoulder_R
+    400136: shuolder1_L.001
+    400138: shuolder1_R
+    400140: shuolder2_L.001
+    400142: shuolder2_R
+    400144: tailBotFeather1_L.001
+    400146: tailBotFeather1_R
+    400148: tailBotFeather2_L.001
+    400150: tailBotFeather2_L.001_end
+    400152: tailBotFeather2_R
+    400154: tailBotFeather2_R_end
+    400156: tailFeather1_L.001
+    400158: tailFeather1_R
+    400160: tailFeather2_L.001
+    400162: tailFeather2_R
+    400164: tailFeather3_L.001
+    400166: tailFeather3_L.001_end
+    400168: tailFeather3_R
+    400170: tailFeather3_R_end
+    400172: tailLastBotFeather_L.001
+    400174: tailLastBotFeather_L.001_end
+    400176: tailLastBotFeather_R
+    400178: tailLastBotFeather_R_end
+    2100000: No Name
+    2300000: Cylinder
+    2300002: Cylinder.003
+    3300000: Cylinder
+    3300002: Cylinder.003
+    4300000: Cylinder
+    4300002: Cylinder.002
+    4300004: Cylinder.003
+    7400000: Armature.002|Armature.001Action
+    7400002: Armature.002|Default
+    7400004: Armature.002|Flap
+    7400006: Armature.002|Flap2Failed
+    7400008: Armature.002|Flap3
+    7400010: Armature.002|Fly
+    7400012: Armature.002|Glide
+    7400014: Armature.002|Glide2
+    7400016: Armature.002|Glide2Backup1
+    7400018: Armature.002|Glide3
+    7400020: Armature.002|Glide3Backup1
+    7400022: Armature.002|GlideFailed
+    7400024: Armature.002|TransformFailed
+    7400026: Armature.002|TurnLeft
+    7400028: Armature.002|TurnLeftFailed
+    7400030: Armature.002|TurnRight
+    7400032: Armature.002|TurnRightFailed
+    9500000: //RootNode
+    13700000: Cylinder.002
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class StatuePuzzleManager : MonoBehaviour {
 
 	public RelicPedestal relic;
-
 
 	private static StatuePuzzleManager statuePuzzleManagerinstance;
 
@@ -28,6 +28,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 	{
 		statuePuzzleManagerinstance = this;
 		statues = new List<StatueContainer> ();
+
 	}
 
 	public bool CheckStatueRotations()
@@ -42,10 +43,12 @@ public class StatuePuzzleManager : MonoBehaviour {
 		
 		if(ButterflyPuzzle.ins.allActive)
 		{
-			UIManager.instance.dialogueSystem.addDialogue("You have completed both puzzles of this build. There will be more puzzles for Juanito in his search for his grandpa. To be continued...");
+			// UIManager.instance.dialogueSystem.addDialogue("You have completed both puzzles of this build. There will be more puzzles for Juanito in his search for his grandpa. To be continued...");
 		}
 		else
-			UIManager.instance.dialogueSystem.addDialogue("You have completed the statue puzzle.");
+		{
+			//UIManager.instance.dialogueSystem.addDialogue("You have completed the statue puzzle.");
+		}
 
 		StartCoroutine(relic.RaisePedestal());
 		return true;

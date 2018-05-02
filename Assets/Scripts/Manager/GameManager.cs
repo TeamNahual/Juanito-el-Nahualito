@@ -69,15 +69,24 @@ public class GameManager : MonoBehaviour
 			unlockCounter = 3;
 		}
 	}
+
+	void resetMovement()
+	{
+		movementLocks = 0;
+		unlockCounter = 0;
+		isMovementLocked = false;
+	}
 	
 	public void reloadScene()
 	{
+		resetMovement();
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		DynamicGI.UpdateEnvironment();
 	}
 
 	public void loadLevel(string sceneName)
 	{
+		resetMovement();
 		levelToLoad = sceneName;
 		SceneManager.LoadScene ("LoadingScreen");
 	}

@@ -17,4 +17,9 @@ public class Altar : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public void TriggerAltar()
+	{
+		
+	}
 }

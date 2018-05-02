@@ -17,9 +17,12 @@ public class Juanito : MonoBehaviour {
 	public bool butterflyRelic = false;
 	public bool statueRelic = false;
 
-	//private float spirit_start_time;
+	
 	private float spirit_time_limit = 50;
 	public bool SpiritState = false;
+	public bool inButterflyZone = false;
+
+	private Vector3 lockedSpiritPosition;
 
 	[HideInInspector]
 	public SpiritController SpiritControl;
@@ -66,47 +69,54 @@ public class Juanito : MonoBehaviour {
  	{
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
- 		FancyCam.ins.player = JuanitoSpirit.transform;
- 		JuanitoSpirit.transform.position = JuanitoHuman.transform.position;
- 		JuanitoSpirit.SetActive(true);
- 		SpiritState = true;
 
+	    if (FancyCam.ins) FancyCam.ins.player = JuanitoSpirit.transform;
+	    if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoSpirit.transform;
+	    
+	    JuanitoSpirit.transform.position = JuanitoHuman.transform.position + JuanitoHuman.transform.forward;
+		JuanitoSpirit.transform.rotation = JuanitoHuman.transform.rotation;
+		JuanitoSpirit.SetActive(true);
+		SpiritState = true;
+
+		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
  	}
 
  	private void SpiritHandler()
- 	{
- 		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
-		{
-			if(!SpiritState && GetSpiritCount() >= 10)
+ 	{	
+ 		if(inButterflyZone)
+ 		{
+	 		if(Input.GetKeyDown(KeyCode.Q) || CrossPlatformInputManager.GetButtonDown("Toggle-Spirit"))
 			{
-				EnterSpiritState();
-				//spirit_start_time = Time.time;
+				if(!SpiritState)
+				{
+					// lockedSpiritPosition = JuanitoHuman.transform.position;
+					EnterSpiritState();
+				}
+				else
+				{
+					EndSpiritState();
+				}
 			}
-			else
-			{
-				EndSpiritState();
-			}
-		}
 
-		if (SpiritState) 
-		{
-			DelSpiritCount ((Time.deltaTime * 100) / spirit_time_limit);
-
-			if(GetSpiritCount() <= 0)
+			if(SpiritState)
 			{
-				EndSpiritState ();
+				// JuanitoHuman.transform.position = lockedSpiritPosition;
 			}
 		}
  	}
 
- 	private void EndSpiritState()
+ 	public void EndSpiritState()
  	{
  		SpiritControl.currentFollower = null;
  		JuanitoSpirit.SetActive(false);
- 		FancyCam.ins.player = JuanitoHuman.transform;
+        if (FancyCam.ins) FancyCam.ins.player = JuanitoHuman.transform;
+        if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoHuman.transform;
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;
+		UIManager.instance.TooltipDisable();
+		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
  	}
 
  	public bool CheckFacingObjects(GameObject[] targetObjects, int layerMask = -1)
@@ -119,6 +129,32 @@ public class Juanito : MonoBehaviour {
 
 		Debug.DrawRay(JuanitoHuman.transform.position, fwd, Color.green);
 
+		if(Physics.Raycast(ray, out hit, 1.5f, layerMask))
+		{
+			Debug.Log(hit.transform.gameObject.name);
+			foreach(GameObject obj in targetObjects)
+			{
+				if(obj == hit.transform.gameObject)
+				{
+					//Debug.Log(obj.name);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public bool CheckFacingObjectsSpirit(GameObject[] targetObjects, int layerMask = -1)
+	{
+		if(layerMask == -1) layerMask = LayerMask.GetMask("Default");
+
+		Vector3 fwd = JuanitoSpirit.transform.TransformDirection(Vector3.forward);
+		Ray ray = new Ray(JuanitoSpirit.transform.position + Vector3.up * 0.5f, fwd);
+		RaycastHit hit;
+
+		Debug.DrawRay(JuanitoSpirit.transform.position, fwd, Color.green);
+
 		if(Physics.Raycast(ray, out hit, 1, layerMask))
 		{
 			//Debug.Log(hit.transform.gameObject.name);
@@ -126,6 +162,7 @@ public class Juanito : MonoBehaviour {
 			{
 				if(obj == hit.transform.gameObject)
 				{
+					//Debug.Log(obj.name);
 					return true;
 				}
 			}

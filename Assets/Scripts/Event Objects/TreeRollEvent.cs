@@ -6,8 +6,14 @@ public class TreeRollEvent : EventObject {
 
 	public bool pushing = false;
 
+	public AudioSource treeBreak;
+
 	public int PUSH_DISTANCE = -90;
 	int PUSH_DURATION = 3;
+
+	void Start(){
+		treeBreak = gameObject.GetComponent<AudioSource> ();
+	}
 
 	void OnTriggerEnter(Collider other) 
 	{
@@ -36,6 +42,7 @@ public class TreeRollEvent : EventObject {
 			k += Time.deltaTime;
 			yield return null;
 		}
+		treeBreak.Play ();
 
 		pushing = false;
 	}
