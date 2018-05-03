@@ -8,7 +8,7 @@ public class ButterflyBehavior : MonoBehaviour
 
 	// Origin of orbit
 	public Vector3 origin;
-	public float spawnRadius = 6.0f;
+	public float spawnRadius = 2.0f;
 	public bool followJuanito = false;
 	
 	// Velocity
