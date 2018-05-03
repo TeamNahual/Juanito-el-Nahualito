@@ -109,10 +109,11 @@
 			// Spirit Mode Shader
 			float spiritScale = min(0.99, distance(_MK_FOG_SPIRIT_MODE_ORIGIN, o.posWorld) / _MK_FOG_SPIRIT_MODE_RADIUS);
 			float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
-			float gz = (1 - spiritScale * spiritScale) * -25 + ( sin(_Time.y) * sin(_Time.y) * 10);
-			mkts.Color_Out.r = (mkts.Color_Out.r * gz) + (gs * (1 - gz));
-			mkts.Color_Out.g = (mkts.Color_Out.g * gz) + (gs * (1 - gz));
-			mkts.Color_Out.b = (mkts.Color_Out.b * gz) + (gs * (1 - gz));
+			float gz = (1 - spiritScale * spiritScale) * -2;// + ( sin(_Time.y) * sin(_Time.y) * 10);
+			float realWorld = 0.1 * sin(_Time.y) + 0.5;
+			mkts.Color_Out.r = mkts.Color_Out.r * realWorld + ((mkts.Color_Out.r * gz) + (gs * (1 - gz))) * (1 - realWorld);
+			mkts.Color_Out.g = mkts.Color_Out.g * realWorld + ((mkts.Color_Out.g * gz) + (gs * (1 - gz))) * (1 - realWorld);
+			mkts.Color_Out.b = mkts.Color_Out.b * realWorld + ((mkts.Color_Out.b * gz) + (gs * (1 - gz))) * (1 - realWorld);
 			mkts.Color_Out = lerp(mkts.Color_Out, tex2D(_MK_FOG_SPIRIT_MODE_GRADIENT, float2(spiritScale, 0)), spiritScale);
 		} else {
 			// Stylistic and Desaturated fog effects
