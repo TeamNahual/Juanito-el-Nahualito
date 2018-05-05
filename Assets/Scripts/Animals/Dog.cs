@@ -134,9 +134,9 @@ public class Dog : AnimalFollowController
             yield return null;
         }
 
-        //FinishTask();
+        FinishTask();
 
-        //runningTask = false;
+        runningTask = false;
     }
 
 

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Playables;
 
 public class PullyEvent : EventObject {
 
     public bool moving = false;
     public bool disabled = false;
+	public PlayableDirector timelineDirector;
 
     void OnTriggerStay(Collider other)
     {
@@ -30,6 +32,7 @@ public class PullyEvent : EventObject {
 
     public void TriggerEvent()
     {
+		timelineDirector.Play ();
         Debug.Log("Dog jumps in basket");
         //disabled = true;
     }
