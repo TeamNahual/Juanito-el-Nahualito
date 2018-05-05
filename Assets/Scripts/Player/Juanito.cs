@@ -14,6 +14,8 @@ public class Juanito : MonoBehaviour {
 	public Animator HumanAnim;
 	public Animator SpiritAnim;
 
+    public bool hasFood = false;
+
 	public bool butterflyRelic = false;
 	public bool statueRelic = false;
 

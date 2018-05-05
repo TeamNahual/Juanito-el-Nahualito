@@ -52,7 +52,7 @@ public class package : MonoBehaviour {
 			juanito.HumanAnim.SetBool ("Pushing", true);
 		// this might cause problems when the package is in scene but not being interacted with
 		} else if (Input.GetKeyUp (KeyCode.E)) {
-			Debug.Log ("stopped pushing");
+			//Debug.Log ("stopped pushing");
 			pushing = false;
 
 			juanito.transform.parent = null;
