@@ -77,8 +77,8 @@ public class MainMenu : MonoBehaviour {
 
 	public void ToAct2()
 	{
-		//GameManager.instance.loadLevel ("Act2Cutscene");
-		GameManager.instance.loadLevel("l2_zonetest");
+		GameManager.instance.loadLevel ("Act2Cutscene");
+		// GameManager.instance.loadLevel("l2_zonetest");
 	}
 
 	public void ToAct1()

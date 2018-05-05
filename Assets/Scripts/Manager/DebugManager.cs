@@ -68,7 +68,7 @@ public class DebugManager : MonoBehaviour {
 
 	public IEnumerator pause(string marker)
 	{
-		yield return new WaitForSeconds (1f);
+		yield return null;
 		juanito = GameObject.Find ("JuanitoPlayerPattern").GetComponent<Juanito> ();
 		placement = juanito.JuanitoHuman;
 		//Debug.Log (placement.name);
