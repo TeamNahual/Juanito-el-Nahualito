@@ -13,6 +13,7 @@ public class Deer : AnimalFollowController {
 
 	public Transform targetObject;
     
+	int i = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +24,7 @@ public class Deer : AnimalFollowController {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(!runningTask)
+	void Update () {if(!runningTask)
 		{
 			UpdateAnimal ();
 		}
@@ -72,10 +72,13 @@ public class Deer : AnimalFollowController {
 	{
 		TreeRollEvent controller = target.GetComponent<TreeRollEvent>();
 
-		while(Vector3.Distance (transform.position, target.transform.position) > aiController.stoppingDistance + 1.5f)
+		while(Vector3.Distance (transform.position, target.transform.position) > aiController.stoppingDistance + 3)
 		{
 			yield return null;
 		}
+
+		gameObject.GetComponent<Animal>().SetAttack(3);
+		yield return new WaitForSeconds(1);
 
 		controller.TriggerEvent();
 
