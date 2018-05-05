@@ -24,7 +24,7 @@ public class AnimalAttack : MonoBehaviour {
 	//Animations are {AttackBackKick, AttackHornDown, AttackHornUp, AttackRearUp},
 	//	with the default being AttackRearUp
 	//NOTE: Object must also have Animal script attached
-	void Attack(string index = "AttackRearUp")
+	public void Attack(string index = "AttackRearUp")
 	{
 		gameObject.GetComponent<Animal>().SetAttack(map[index]);
 	}

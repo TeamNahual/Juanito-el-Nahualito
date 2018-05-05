@@ -57,6 +57,9 @@ public class Deer : AnimalFollowController {
 			yield return null;
 		}
 
+		//gameObject.GetComponent<AnimalAttack>().Attack("AttackHornDown");
+		//yield return new WaitForSeconds(1);
+
 		controller.TriggerEvent();
 
 		controller.pushing = true;
@@ -77,7 +80,7 @@ public class Deer : AnimalFollowController {
 			yield return null;
 		}
 
-		gameObject.GetComponent<Animal>().SetAttack(3);
+		gameObject.GetComponent<AnimalAttack>().Attack("AttackHornDown");
 		yield return new WaitForSeconds(1);
 
 		controller.TriggerEvent();
