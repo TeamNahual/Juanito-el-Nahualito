@@ -51,6 +51,8 @@ public class Tejon : AnimalFollowController {
 			yield return null;
 		}
 
+		gameObject.GetComponent<Animal>().SetAttack(3);
+
 		controller.TriggerEvent();
 
 		controller.pushing = true;
