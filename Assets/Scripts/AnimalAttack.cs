@@ -7,25 +7,27 @@ using MalbersAnimations.Utilities;
 using MalbersAnimations;
 
 public class AnimalAttack : MonoBehaviour {
-	Dictionary<string, int> map;
-	string four = "AttackBackKick";
-	string three = "AttackHornDown";
-	string two  = "AttackHornUp";
-	string one = "AttackRearUp";
-	void Start(){
-		map = new Dictionary<string, int>();
-		map.Add(one, 1);
-		map.Add(two, 2);
-		map.Add(three, 3);
-		map.Add(four, 4);
-	}
 
 	//Use this function to call an attack animation
 	//Animations are {AttackBackKick, AttackHornDown, AttackHornUp, AttackRearUp},
 	//	with the default being AttackRearUp
 	//NOTE: Object must also have Animal script attached
-	public void Attack(string index = "AttackRearUp")
+	public void Attack(string attack)
 	{
-		gameObject.GetComponent<Animal>().SetAttack(map[index]);
+
+		Debug.Log(attack);
+		if(attack == "AttackRearUp"){
+			Debug.Log("wow");
+			gameObject.GetComponent<Animal>().SetAttack(1);
+		}
+		else if(attack == "AttackHornUp"){
+			gameObject.GetComponent<Animal>().SetAttack(2);
+		}
+		else if(attack == "AttackHornUp"){
+			gameObject.GetComponent<Animal>().SetAttack(3);
+		}
+		else if(attack == "AttackBackKick"){
+			gameObject.GetComponent<Animal>().SetAttack(4);
+		}
 	}
 }
