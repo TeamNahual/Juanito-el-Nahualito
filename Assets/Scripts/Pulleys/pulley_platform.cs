@@ -43,17 +43,28 @@ public class pulley_platform : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.GetComponent<package> ()) {
+        Debug.Log("2");
+		if (other.GetComponent<package> ())
+        {
 			weight += weights ["medicine"];
 			other.gameObject.transform.parent = transform.parent;
 		}
+        else
+        {
+            weight += weights["dog"];
+        }
 	}
 
 	void OnTriggerExit(Collider other){
-		if (other.GetComponent<package> ()) {
+		if (other.GetComponent<package> ())
+        {
 			weight -= weights ["medicine"];
 			other.gameObject.transform.parent = null;
 		}
+        else
+        {
+            weight -= weights["dog"];
+        }
 	}
 
 	void Update(){
