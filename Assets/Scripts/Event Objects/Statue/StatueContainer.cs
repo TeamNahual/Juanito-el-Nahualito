@@ -11,7 +11,7 @@ public class StatueContainer : MonoBehaviour {
 
 	void Start()
 	{
-		StatuePuzzleManager.ins.statues.Add (this);
+		// StatuePuzzleManager.ins.statues.Add (this);
 	}
 
 	void Update()
