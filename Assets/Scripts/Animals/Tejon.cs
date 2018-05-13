@@ -34,7 +34,7 @@ public class Tejon : AnimalFollowController {
 		if(target.gameObject.GetComponent<RockWallEvent>())
 		{
 			runningTask = true;
-			aiController.SetTarget(target); //follow or go to a specifc point, then set target to null when it's done following
+			aiController.SetTarget(target);
 			StartCoroutine(DigRock(target.gameObject));
 		}
 
@@ -46,16 +46,16 @@ public class Tejon : AnimalFollowController {
 
 		transform.LookAt (controller.gameObject.transform);
 
-		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)//wait until it has reached its target
+		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
 		{
-			yield return null; //keeps running this in background until the above is satisfied
+			yield return null;
 		}
 
-		controller.TriggerEvent(); //triggers the event
+		controller.TriggerEvent();
 
 		controller.pushing = true;
 
-		while(!controller.disabled) //wait for the thing to finish, then finish up the task
+		while(!controller.disabled)
 		{
 			yield return null;
 		}

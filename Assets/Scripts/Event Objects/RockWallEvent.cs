@@ -13,7 +13,7 @@ public class RockWallEvent : EventObject {
 	void OnTriggerEnter(Collider other) 
 	{
 		if(!pushing && !disabled)
-		{//if juanito is in spirit mode and has a follower which is a badger then run task
+		{
 			if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower)
 			{
 				Tejon tejonController = Juanito.ins.SpiritControl.currentFollower.GetComponent<Tejon> ();
@@ -26,7 +26,7 @@ public class RockWallEvent : EventObject {
 		}
 	}
 
-	IEnumerator Event() //just makes it go into the ground, more unique based on what you want it to do
+	IEnumerator Event()
 	{
 		float k = 0;
 
@@ -42,6 +42,6 @@ public class RockWallEvent : EventObject {
 
 	public void TriggerEvent()
 	{
-		StartCoroutine(Event()); //starts the above routine
+		StartCoroutine(Event());
 	}
 }

@@ -52,11 +52,7 @@ public class Dog : AnimalFollowController
         //if the dog is following a target
         if (following)
         {
-            if (aiController.target.name == "food")//if the target is food eventually eat the food
-            {
-                Debug.Log("Dog is going to food");
-            }
-            else if (!Juanito.ins.hasFood)//if the target is Juanito and he no longer has food, stop following him.
+            if (!Juanito.ins.hasFood)//if the target is Juanito and he no longer has food, stop following him.
             {
                 currentWaypoint = WayPoints[wayPointCount];
                 aiController.SetTarget(currentWaypoint.transform);
@@ -117,7 +113,6 @@ public class Dog : AnimalFollowController
     IEnumerator MoveTo(GameObject target)
     {
         PullyEvent controller = target.GetComponent<PullyEvent>();
-
         transform.LookAt(controller.gameObject.transform);
 
         while (aiController.agent.remainingDistance > aiController.agent.stoppingDistance)//wait until it has reached its target
