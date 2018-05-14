@@ -23,39 +23,39 @@ public class DebugManager : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.F1)) //Load level 1
 		{
-			manager.loadLevel ("Act 1");
+			manager.forceLoadLevel ("Act 1");
 		}
 		if (Input.GetKeyDown (KeyCode.F2)) //Load Cutscene between levels 1 and 2
 		{
-			manager.loadLevel ("Act2Cutscene");
+			manager.forceLoadLevel ("Act2Cutscene");
 		}
 		if (Input.GetKeyDown (KeyCode.F3)) //Load Level 2
 		{
-			manager.loadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("l2_zonetest");
 		}
 		if (Input.GetKeyDown (KeyCode.F4)) //Level 2 pyramid 1
 		{
-			manager.loadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("l2_zonetest");
 			this.StartCoroutine (pause("Debug Marker 1"));
 		}
 		if (Input.GetKeyDown (KeyCode.F5)) //Level 2 deer 2
 		{
-			manager.loadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("l2_zonetest");
 			this.StartCoroutine (pause("Debug Marker 2"));
 		}
 		if (Input.GetKeyDown (KeyCode.F6)) // Level 2 foxes
 		{
-			manager.loadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("l2_zonetest");
 			this.StartCoroutine (pause("Debug Marker 3"));
 		}
 		if (Input.GetKeyDown (KeyCode.F7)) //Level 2 pyramid 2
 		{
-			manager.loadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("l2_zonetest");
 			this.StartCoroutine (pause("Debug Marker 4"));
 		}
 		if (Input.GetKeyDown (KeyCode.F9)) //Load level 3
 		{
-			manager.loadLevel ("FlightTest");
+			manager.forceLoadLevel ("FlightTest");
 		}
 		if (Input.GetKeyDown (KeyCode.F11)) //Nudge Juanito, for when he gets stuck
 		{ 
@@ -66,8 +66,15 @@ public class DebugManager : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator pause(string marker)
+	public IEnumerator pause(string marker, string sceneName = "l2_zonetest")
 	{
+		yield return null;
+		// Check if in correct scene
+		while(SceneManager.GetActiveScene().name != sceneName)
+		{
+			yield return null;
+		}
+
 		yield return null;
 		juanito = GameObject.Find ("JuanitoPlayerPattern").GetComponent<Juanito> ();
 		placement = juanito.JuanitoHuman;
