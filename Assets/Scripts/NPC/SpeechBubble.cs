@@ -12,6 +12,7 @@ public class SpeechBubble : MonoBehaviour {
 	string tip = "Press <sprite=0> to talk";
 
 	//use the setDialogue function to change this value.
+	[SerializeField]
 	private int dialogueState = 0; //0 is never talked to, 1 is talked to once, 2 is talked to and done quest
 
 	//dialogue for NPC, public so we can tweak it without going into code.
