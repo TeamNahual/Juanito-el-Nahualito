@@ -40,55 +40,83 @@ public class package : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if ((Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown("Action")) && collidingJuanito && active) {
-			//Debug.Log ("pushing");
-			pushing = true;
 
-			juanito.transform.parent = this.transform;
-			juanito.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
-			juanito.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
+		if(active && collidingJuanito)
+		{
+			Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
+	        Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
+			bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
 
-			rb.constraints = moving;
+			if (dirCheck)//if player is facing the person, turn on the tool tip.
+	        {
+	            UIManager.instance.TooltipDisplay("Hold <sprite=0> to interact"); //displays message saying press X to talk
+	        }
+	        if (!dirCheck) //if player is not facing the person, turn off the tool tip.
+	        {
+	            UIManager.instance.TooltipDisable(); //turns off the tooltips
+	            UIManager.instance.toggleDialogueBox(false);
+	        }
 
-			juanito.HumanAnim.SetBool ("Pushing", true);
-		// this might cause problems when the package is in scene but not being interacted with
-		} else if (Input.GetKeyUp (KeyCode.E) || CrossPlatformInputManager.GetButtonUp("Action")) {
-			//Debug.Log ("stopped pushing");
-			Release_Juanito ();
+			if (Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown("Action")) 
+			{
+				//Debug.Log ("pushing");
+				pushing = true;
+
+				juanito.transform.parent = this.transform;
+				juanito.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
+				juanito.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
+
+				rb.constraints = moving;
+
+				juanito.HumanAnim.SetBool ("Pushing", true);
+			// this might cause problems when the package is in scene but not being interacted with
+			} 
+			else if (Input.GetKeyUp (KeyCode.E) || CrossPlatformInputManager.GetButtonUp("Action")) 
+			{
+				//Debug.Log ("stopped pushing");
+				Release_Juanito ();
+			}
 		}
 
 		if (pushing) {
 			
-			horizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
-			vertical = CrossPlatformInputManager.GetAxis ("Vertical");
-			bool keyboard = !(Mathf.Abs (horizontal) < 0.1f && Mathf.Abs (vertical) < 0.1f);
-
-			if (!keyboard) {
-				horizontal = CrossPlatformInputManager.GetAxis ("Horizontal-Joystick");
-				vertical = CrossPlatformInputManager.GetAxis ("Vertical-Joystick");
-			}
-
-			camera_forward = Vector3.Scale (camera.forward, new Vector3 (1, 0, 1)).normalized;
-			Vector3 move = vertical * camera_forward + horizontal * camera.right;
-
-			bool hitcheck = Physics.BoxCast(localCollider.bounds.center, extents, move, out hit, transform.rotation, checkingDistance, 13);
-			if (hitcheck && !hit.collider.isTrigger) {
-				Debug.Log ("Hit : " + hit.transform.gameObject + " with half extents " + extents);
-				move = Vector3.zero;
-			}
-				
-			Vector3 diff = juanito.JuanitoHuman.transform.position - transform.position;
-			diff = new Vector3 (diff.x, 0f, diff.z);
-			float animForward = vertical;
-			float angleDiff = Vector3.Angle (camera_forward, diff);
-			if (angleDiff < 90f) {
-				animForward *= -1;
-			}
-			Juanito.ins.HumanAnim.SetFloat ("Forward", animForward);
-
-			transform.Translate (move * pushSpeed * Time.deltaTime);
+			HandlePushing();
 		}
 
+	}
+
+	void HandlePushing()
+	{
+		UIManager.instance.TooltipDisplay("Use <sprite=4> to Move Piece");
+
+		horizontal = CrossPlatformInputManager.GetAxis ("Horizontal");
+		vertical = CrossPlatformInputManager.GetAxis ("Vertical");
+		bool keyboard = !(Mathf.Abs (horizontal) < 0.1f && Mathf.Abs (vertical) < 0.1f);
+
+		if (!keyboard) {
+			horizontal = CrossPlatformInputManager.GetAxis ("Horizontal-Joystick");
+			vertical = CrossPlatformInputManager.GetAxis ("Vertical-Joystick");
+		}
+
+		camera_forward = Vector3.Scale (camera.forward, new Vector3 (1, 0, 1)).normalized;
+		Vector3 move = vertical * camera_forward + horizontal * camera.right;
+
+		bool hitcheck = Physics.BoxCast(localCollider.bounds.center, extents, move, out hit, transform.rotation, checkingDistance, 13);
+		if (hitcheck && !hit.collider.isTrigger) {
+			Debug.Log ("Hit : " + hit.transform.gameObject + " with half extents " + extents);
+			move = Vector3.zero;
+		}
+			
+		Vector3 diff = juanito.JuanitoHuman.transform.position - transform.position;
+		diff = new Vector3 (diff.x, 0f, diff.z);
+		float animForward = vertical;
+		float angleDiff = Vector3.Angle (camera_forward, diff);
+		if (angleDiff < 90f) {
+			animForward *= -1;
+		}
+		Juanito.ins.HumanAnim.SetFloat ("Forward", animForward);
+
+		transform.Translate (move * pushSpeed * Time.deltaTime);
 	}
 
 	void OnCollisionEnter(Collision other){
@@ -119,6 +147,7 @@ public class package : MonoBehaviour {
 		rb.constraints = still;
 
 		juanito.HumanAnim.SetBool ("Pushing", false);
+		UIManager.instance.TooltipDisable();
 	}
 
 	public void Activate(){
