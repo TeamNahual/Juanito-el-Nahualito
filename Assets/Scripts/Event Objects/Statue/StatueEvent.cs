@@ -12,6 +12,7 @@ public class StatueEvent : EventObject {
 	public int rotateFlag = 1;
 
 	public StatueContainer container; 
+	public GameObject collider;
 
 	public AudioSource rotatingStones;
 
@@ -22,21 +23,17 @@ public class StatueEvent : EventObject {
 	}
 
 	void OnTriggerStay(Collider other) {
-		if(other.gameObject != Juanito.ins.JuanitoHuman)
+		if(other.gameObject != Juanito.ins.JuanitoSpirit)
 			return;
 
 		if(container.disabled)
 		{
 			if(pushing)
 			{
-				pushing = false;
-				UIManager.instance.TooltipDisable();
-				Juanito.ins.HumanAnim.SetBool("Pushing", false);
-				Juanito.ins.transform.parent = null;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
- 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
+				Dettach();
  				//UIManager.instance.dialogueSystem.addDialogue("The statue locks in place and refuses to budge.");
  				StatuePuzzleManager.ins.CheckStatueRotations();
+ 				collider.SetActive(false);
 
 				//Stop playing sound effect
 				rotatingStones.Stop ();
@@ -48,86 +45,89 @@ public class StatueEvent : EventObject {
 		UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
 
 		if((Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
-			 && CheckPlayerDirection(Juanito.ins.JuanitoHuman))
+			 && CheckPlayerDirection(Juanito.ins.JuanitoSpirit))
 		{
 			UIManager.instance.TooltipDisplay("Use <sprite=6> to Push/Pull");
-			Juanito.ins.HumanAnim.SetBool("Pushing", true);
-			pushing = true;
-			Juanito.ins.transform.parent = transform.parent;
-			Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
-			Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
+			
+			if(!pushing)
+			{
+				Attach();
+			}
 		}
 		else
 		{
 			if(pushing)
 			{
-				Juanito.ins.HumanAnim.SetBool("Pushing", false);
 				UIManager.instance.TooltipDisable();
-				pushing = false;
-				Juanito.ins.transform.parent = null;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
- 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
-
-				// Stop playing sound
-				rotatingStones.Stop();
+				Dettach();
 			}
 		}
 
 		if(pushing)
 		{
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
-			bool keyboard = !(Mathf.Abs(h) < 0.1f && Mathf.Abs(v) < 0.1f);
-
-			Debug.Log("Pushing " + keyboard);
-
-			if (!keyboard)
-			{
-				h = CrossPlatformInputManager.GetAxis("Horizontal-Joystick");
-				v = CrossPlatformInputManager.GetAxis("Vertical-Joystick");
-			}
-
-			Juanito.ins.HumanAnim.SetFloat("Forward", v);
-
-            transform.parent.transform.Rotate(v * Vector3.up * rotateFlag * push_strength);
-            container.currentRotation += v * rotateFlag * push_strength;
-
-			// Play Rotating Stone Sound Effect * test using controllers
-			if (keyboard) {
-				if (!rotatingStones.isPlaying) {
-					rotatingStones.Play ();
-				} 
-			}
-			if (!keyboard) {
-				rotatingStones.Stop ();
-			}
-			/*if (rotatingStones.isPlaying){
-				if (!Input.GetKey(KeyCode.E) || !CrossPlatformInputManager.GetButton("Action")){
-					rotatingStones.Stop();
-				}
-			}*/
+            HandlePush();
 		}
 	}
 
+	void HandlePush()
+	{
+		float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        float v = CrossPlatformInputManager.GetAxis("Vertical");
+		bool keyboard = !(Mathf.Abs(h) < 0.1f && Mathf.Abs(v) < 0.1f);
+
+		// Debug.Log("Pushing " + keyboard);
+
+		if (!keyboard)
+		{
+			h = CrossPlatformInputManager.GetAxis("Horizontal-Joystick");
+			v = CrossPlatformInputManager.GetAxis("Vertical-Joystick");
+		}
+
+		Juanito.ins.SpiritAnim.SetFloat("Forward", v);
+
+        transform.parent.transform.Rotate(v * Vector3.up * rotateFlag * push_strength);
+        container.currentRotation += v * rotateFlag * push_strength;
+
+		// Play Rotating Stone Sound Effect * test using controllers
+		if (keyboard) {
+			if (!rotatingStones.isPlaying) {
+				rotatingStones.Play ();
+			} 
+		}
+		if (!keyboard) {
+			rotatingStones.Stop ();
+		}
+	}
+
+	void Attach()
+	{
+		Juanito.ins.SpiritAnim.SetBool("Pushing", true);
+		pushing = true;
+		Juanito.ins.JuanitoSpirit.transform.parent = transform.parent;
+		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = false;
+		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = false;
+	}
+
+	void Dettach()
+	{
+		Juanito.ins.SpiritAnim.SetBool("Pushing", false);
+		pushing = false;
+		Juanito.ins.JuanitoSpirit.transform.parent = Juanito.ins.transform;
+		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = true;
+		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = true;
+
+		// Stop playing sound
+		rotatingStones.Stop();
+	}
 
 	void OnTriggerExit(Collider other)
 	{
-		if(other.gameObject == Juanito.ins.JuanitoHuman)
+		if(other.gameObject == Juanito.ins.JuanitoSpirit)
 		{
 			if(pushing)
 			{
-				Juanito.ins.HumanAnim.SetBool("Pushing", false);
-				pushing = false;
-				Juanito.ins.transform.parent = null;
-				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
- 				Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
-
-				if (rotatingStones.isPlaying) {
-					rotatingStones.Stop ();
-				}
+				Dettach();
 			}
-
-			UIManager.instance.TooltipDisable();
 		}
 		if (rotatingStones.isPlaying) {
 			rotatingStones.Stop ();

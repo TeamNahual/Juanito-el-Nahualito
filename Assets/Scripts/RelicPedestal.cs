@@ -84,7 +84,7 @@ public class RelicPedestal : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject == Juanito.ins.JuanitoSpirit)
+		if (other.gameObject == Juanito.ins.JuanitoHuman)
 		{
 			UIManager.instance.TooltipDisable();
 		}
