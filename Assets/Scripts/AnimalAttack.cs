@@ -16,17 +16,17 @@ public class AnimalAttack : MonoBehaviour {
 	{
 
 		Debug.Log(attack);
-		if(attack == "AttackRearUp"){
+		if(attack == "AttackRearUp" || attack == "AttackBiteL"){
 			Debug.Log("wow");
 			gameObject.GetComponent<Animal>().SetAttack(1);
 		}
-		else if(attack == "AttackHornUp"){
+		else if(attack == "AttackHornUp" || attack == "AttackBiteR"){
 			gameObject.GetComponent<Animal>().SetAttack(2);
 		}
-		else if(attack == "AttackHornUp"){
+		else if(attack == "AttackHornDown" || attack == "AttackPaws"){
 			gameObject.GetComponent<Animal>().SetAttack(3);
 		}
-		else if(attack == "AttackBackKick"){
+		else if(attack == "AttackBackKick" || attack == "AttackJump"){
 			gameObject.GetComponent<Animal>().SetAttack(4);
 		}
 	}

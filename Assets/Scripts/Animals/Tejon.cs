@@ -51,7 +51,8 @@ public class Tejon : AnimalFollowController {
 			yield return null;
 		}
 
-		gameObject.GetComponent<Animal>().SetAttack(3);
+		gameObject.GetComponent<AnimalAttack>().Attack("AttackPaws");
+		yield return new WaitForSeconds(1);
 
 		controller.TriggerEvent();
 

@@ -52,13 +52,13 @@ public class Deer : AnimalFollowController {
 
 		transform.LookAt( controller.gameObject.transform);
 
-		while(aiController.agent.remainingDistance > aiController.agent.stoppingDistance)
+		while(aiController.agent.remainingDistance  > aiController.agent.stoppingDistance + 0.6)
 		{
 			yield return null;
 		}
 
 		gameObject.GetComponent<AnimalAttack>().Attack("AttackRearUp");
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1);
 
 		controller.TriggerEvent();
 
