@@ -57,6 +57,8 @@ public class Deer : AnimalFollowController {
 			yield return null;
 		}
 
+		aiController.SetTarget(null);
+
 		gameObject.GetComponent<AnimalAttack>().Attack("AttackRearUp");
 		yield return new WaitForSeconds(1);
 
@@ -75,13 +77,15 @@ public class Deer : AnimalFollowController {
 	{
 		TreeRollEvent controller = target.GetComponent<TreeRollEvent>();
 
-		while(Vector3.Distance (transform.position, target.transform.position) > aiController.stoppingDistance + 3)
+		while(Vector3.Distance (transform.position, target.transform.position) > aiController.stoppingDistance + 3.5f)
 		{
 			yield return null;
 		}
 
 		gameObject.GetComponent<AnimalAttack>().Attack("AttackHornDown");
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(1f);
+		aiController.SetTarget(Juanito.ins.JuanitoSpirit.transform);
+		yield return new WaitForSeconds(1f);
 
 		controller.TriggerEvent();
 
@@ -91,6 +95,8 @@ public class Deer : AnimalFollowController {
 		{
 			yield return null;
 		}
+
+		aiController.enabled = true;
 
 		FinishTask ();
 
