@@ -5,21 +5,25 @@ using UnityEngine;
 public class pulley_platform : MonoBehaviour {
 
 	//public BoxCollider stationaryCollider;
-	public float start_weight = 0f;
+	//public float start_weight = 0f;
 
-	private float weight;
+	//private float weight;
 	private pulley_manager manager;
-	private bool moving = false;
+	/*private bool moving = false;
 	private Vector3 target;
 	private Vector3 direction;
-	private Dictionary<string, float> weights = new Dictionary<string, float>{ {"medicine", 1f}, {"dog", 3f} };
+	private Dictionary<string, float> weights = new Dictionary<string, float>{ {"medicine", 1f}, {"dog", 3f} };*/
+	private Transform obj = null;
+	public bool ready = false;
+	private package pack = null;
+	private Transform release = null;
 
 	void Awake(){
 		manager = GetComponentInParent <pulley_manager> ();
-		weight = start_weight;
+		//weight = start_weight;
 	}
 	
-	public float GetWeight(){
+	/*public float GetWeight(){
 		return weight;
 	}
 
@@ -65,6 +69,40 @@ public class pulley_platform : MonoBehaviour {
 				moving = false;
 			}
 		}
+	}*/
+
+	public void Activate(Transform t){
+		if (obj != null) {
+			Debug.LogError ("Pulley platform child already assigned in Activate");
+		}
+		obj = t;
+		obj.parent = transform;
+		Debug.Log ("obj is now " + obj);
+		ready = true;
+	}
+
+	public void Activate(Transform t, package p, Transform r){
+		pack = p;
+		release = r;
+		Activate (t);
+	}
+
+	public void Release(){
+		if (!ready) {
+			Debug.LogError ("Release called on pulley platform without platform being ready");
+		}
+		obj.parent = null;
+		if (pack != null) {
+			Debug.Log ("reactivating packag");
+			pack.Activate ();
+			pack.transform.position = release.position;
+			pack = null;
+			release = null;
+		}
+	}
+
+	public bool Check(){
+		return ready;
 	}
 		
 }

@@ -79,6 +79,13 @@ public class GameManager : MonoBehaviour
 		levelToLoad = sceneName;
 		SceneManager.LoadScene ("LoadingScreen");
 	}
+
+	public void forceLoadLevel(string sceneName)
+	{
+		resetMovement();
+		levelToLoad = sceneName;
+		SceneManager.LoadScene (sceneName);
+	}
 	
 	public void exitGame()
 	{
