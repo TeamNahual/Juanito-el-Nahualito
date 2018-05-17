@@ -27,30 +27,58 @@ public class StatuePuzzleManager : MonoBehaviour {
 	void Awake()
 	{
 		statuePuzzleManagerinstance = this;
-		statues = new List<StatueContainer> ();
 
 	}
 
-	public bool CheckStatueRotations()
+	void FixedUpdate()
 	{
-		foreach (StatueContainer statue in statues)
-		{
-			if (!statue.disabled)
-			{
-				return false;
-			}
-		}
-		
-		if(ButterflyPuzzle.ins.allActive)
-		{
-			// UIManager.instance.dialogueSystem.addDialogue("You have completed both puzzles of this build. There will be more puzzles for Juanito in his search for his grandpa. To be continued...");
-		}
-		else
-		{
-			//UIManager.instance.dialogueSystem.addDialogue("You have completed the statue puzzle.");
-		}
+		HandleSpirit();
+	}
 
-		StartCoroutine(relic.RaisePedestal());
+	void HandleSpirit()
+	{
+		transform.GetChild(0).gameObject.SetActive(Juanito.ins.SpiritState);
+
+	}
+
+	bool NextStatue()
+	{
+		statues.RemoveAt(0);
+
+		if(statues.Count == 0)
+			return false;
+
+		GameObject statue = statues[0].gameObject;
+
+		float yIncrement = statue.transform.GetChild(0).gameObject.GetComponent<Renderer>().bounds.size.y;
+
+		statue.SetActive(true);
+		// statue.transform.parent.Translate(0, Mathf.Abs(yIncrement), 0);
+		StartCoroutine(RaiseStatue(statue.transform, yIncrement));
+
 		return true;
+	}
+
+	IEnumerator RaiseStatue(Transform statueTrans, float increment)
+	{
+		float k = 0;
+
+		Vector3 beginningPosition = statueTrans.parent.position;
+		Vector3 finalPosition = beginningPosition + new Vector3(0, increment, 0); 
+		while (k < 1) 
+		{
+			statueTrans.parent.position = Vector3.Lerp (beginningPosition, finalPosition, k);
+
+			k += Time.deltaTime;
+			yield return null;
+		}
+	}
+
+	public void CheckStatueRotations()
+	{
+		if(!NextStatue())
+		{
+			StartCoroutine(relic.RaisePedestal());
+		}
 	}
 }
