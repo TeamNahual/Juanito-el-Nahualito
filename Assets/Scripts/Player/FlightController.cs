@@ -46,7 +46,7 @@ public class FlightController : MonoBehaviour {
 		//Applying inputs to rotations
 		Quaternion target = Quaternion.Euler(-v*angle,0,-h*angle);
 		//Return to resting rotation when not pressing buttons
-		transform.rotation = Quaternion.Slerp (transform.rotation, target, Time.deltaTime * smooth);
+		transform.localRotation = Quaternion.Slerp (transform.localRotation, target, Time.deltaTime * smooth);
 		//Move around the screen with inputs, bounded at the edges
 		spot.x += (h/10);
 		spot.y += (v/10);
