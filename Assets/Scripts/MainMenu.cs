@@ -88,7 +88,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void ToAct3()
 	{
-		GameManager.instance.loadLevel("FlightTest");
+		GameManager.instance.loadLevel("Lvl 3");
 	}
 
 	public void EndGame()
