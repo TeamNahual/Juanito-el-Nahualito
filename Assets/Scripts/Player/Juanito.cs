@@ -23,6 +23,7 @@ public class Juanito : MonoBehaviour {
 	public bool SpiritState = false;
 	public bool inButterflyZone = false;
 	public Vector3 butterflyZoneOrigin;
+	public bool spiritCanWalkIntoBodyFlag = false;
 
 	private Vector3 lockedSpiritPosition;
 
@@ -79,6 +80,7 @@ public class Juanito : MonoBehaviour {
 		JuanitoSpirit.transform.rotation = JuanitoHuman.transform.rotation;
 		JuanitoSpirit.SetActive(true);
 		SpiritState = true;
+		spiritCanWalkIntoBodyFlag = false;
 
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 		
@@ -105,9 +107,25 @@ public class Juanito : MonoBehaviour {
 				}
 			}
 
-			if(SpiritState)
+			/*if(SpiritState)
 			{
 				// JuanitoHuman.transform.position = lockedSpiritPosition;
+			}*/
+		}
+		if (SpiritState) {
+			float dist = Vector3.Distance(JuanitoHuman.transform.position, JuanitoSpirit.transform.position);
+			
+			if (spiritCanWalkIntoBodyFlag)
+			{
+				if (dist < 2)
+				{
+					EndSpiritState();
+				}
+			} else {
+				if (dist > 4)
+				{
+					spiritCanWalkIntoBodyFlag = true;
+				}
 			}
 		}
  	}
