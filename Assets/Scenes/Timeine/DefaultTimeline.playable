@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 114525654128236670}
   m_FixedDuration: 0
   m_EditorSettings:
-    fps: 60
+    m_Framerate: 60
   m_DurationMode: 0
 --- !u!74 &74481482440317600
 AnimationClip:
@@ -95,7 +95,7 @@ AnimationClip:
       attribute: 4
       script: {fileID: 0}
       typeID: 4
-      customType: 14
+      customType: 4
       isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
@@ -496,7 +496,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: DefaultVirtualCam
+    m_DisplayName: DefaultVirtualCam_pharm
     m_Version: 1
 --- !u!114 &114525654128236670
 MonoBehaviour:
