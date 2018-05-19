@@ -3,7 +3,7 @@
 //vertex and fragment shader
 #ifndef MK_TOON_FORWARD
 	#define MK_TOON_FORWARD
-
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// VERTEX SHADER
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,11 +14,19 @@
 		UNITY_INITIALIZE_OUTPUT(VertexOutputForward, o);
 		UNITY_TRANSFER_INSTANCE_ID(v,o);
 		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-
+		
+		float4 vert = v.vertex;
+		#ifdef GRASS_SHADER
+			float scaleFactor = (v.vertex * v.vertex * v.vertex) / 10;
+			float offset = scaleFactor * sin(_Time.y * 3);
+			vert.x += offset;
+			vert.y -= offset / 2;
+		#endif
+		
 		//vertex positions
-		o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-		o.pos =  UnityObjectToClipPos(v.vertex);
-
+		o.posWorld = mul(unity_ObjectToWorld, vert);
+		o.pos =  UnityObjectToClipPos(vert);
+		
 		//texcoords
 		o.uv_Main = TRANSFORM_TEX(v.texcoord0, _MainTex);
 		
@@ -63,6 +71,14 @@
 		return o;
 	}
 
+	uniform sampler2D _MK_FOG_STYLISTIC;
+	uniform sampler2D _MK_FOG_DESATURATE;
+	
+	uniform int       _MK_FOG_SPIRIT_MODE_ENABLED;
+	uniform sampler2D _MK_FOG_SPIRIT_MODE_GRADIENT;
+	uniform float     _MK_FOG_SPIRIT_MODE_RADIUS;
+	uniform float3    _MK_FOG_SPIRIT_MODE_ORIGIN;
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	// FRAGMENT SHADER
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,6 +102,35 @@
 
 		//if enabled add some fog - forward rendering only
 		UNITY_APPLY_FOG(o.fogCoord, mkts.Color_Out);
+		
+		// Fog shenanigans
+		float alpha = mkts.Color_Out.a;
+		if (_MK_FOG_SPIRIT_MODE_ENABLED) {
+			// Spirit Mode Shader
+			float spiritScale = min(0.99, distance(_MK_FOG_SPIRIT_MODE_ORIGIN, o.posWorld) / _MK_FOG_SPIRIT_MODE_RADIUS);
+			float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
+			float gz = (1 - spiritScale * spiritScale) * -2;// + ( sin(_Time.y) * sin(_Time.y) * 10);
+			float realWorld = 0.1 * sin(_Time.y / 2) * sin(_Time.y / 2) + 0.5;
+			mkts.Color_Out.r = mkts.Color_Out.r * realWorld + ((mkts.Color_Out.r * gz) + (gs * (1 - gz))) * (1 - realWorld);
+			mkts.Color_Out.g = mkts.Color_Out.g * realWorld + ((mkts.Color_Out.g * gz) + (gs * (1 - gz))) * (1 - realWorld);
+			mkts.Color_Out.b = mkts.Color_Out.b * realWorld + ((mkts.Color_Out.b * gz) + (gs * (1 - gz))) * (1 - realWorld);
+			mkts.Color_Out = lerp(mkts.Color_Out, tex2D(_MK_FOG_SPIRIT_MODE_GRADIENT, float2(spiritScale, 0)), spiritScale);
+		} else {
+			// Stylistic and Desaturated fog effects
+			float fogScale = min(0.99, distance(_WorldSpaceCameraPos, o.posWorld) / 1000);
+			
+			// Stylistic
+			fixed4 sCol = tex2D(_MK_FOG_STYLISTIC, float2(fogScale, 0));
+			mkts.Color_Out = lerp(mkts.Color_Out, sCol, sCol.a);
+			mkts.Color_Out.a = alpha;
+			
+			// Desaturation
+			float gs = (mkts.Color_Out.r + mkts.Color_Out.g + mkts.Color_Out.b) / 3;
+			float gz = tex2D(_MK_FOG_DESATURATE, float2(fogScale, 0)).a;
+			mkts.Color_Out = lerp(mkts.Color_Out, float4(gs, gs, gs, gz), gz);	
+		}
+
+		mkts.Color_Out.a = alpha;
 
 		return mkts.Color_Out;
 	}

@@ -28,6 +28,10 @@
 			pos = UnityClipSpaceShadowCasterPos(v.vertex.xyz, v.normal);
 			pos = UnityApplyLinearShadowBias(pos);
 		#endif
+		
+		#ifdef GRASS_SHADER
+			pos.x += 0;
+		#endif
 	}
 
 	#if (defined(SHADER_API_D3D9) || defined(SHADER_API_PSP2)) && defined(SHADER_STAGE_FRAGMENT) && SHADER_TARGET >= 30

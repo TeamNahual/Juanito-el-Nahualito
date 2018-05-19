@@ -547,7 +547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4045532818247604}
   - component: {fileID: 95127497288635338}
-  - component: {fileID: 54064781873660372}
+  - component: {fileID: 143242316655833112}
   - component: {fileID: 136592660611163806}
   - component: {fileID: 114345790614323200}
   - component: {fileID: 114174982934495670}
@@ -5339,21 +5339,6 @@ Transform:
   m_Father: {fileID: 4222572077961914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54064781873660372
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1209546215734332}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!54 &54678306928926292
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -5547,7 +5532,10 @@ MonoBehaviour:
   SpiritAnim: {fileID: 95803194552133262}
   butterflyRelic: 0
   statueRelic: 0
+  hasFood: 0
   SpiritState: 0
+  inButterflyZone: 0
+  butterflyZoneOrigin: {x: 0, y: 0, z: 0}
   SpiritControl: {fileID: 0}
 --- !u!114 &114156194136856428
 MonoBehaviour:
@@ -5567,6 +5555,8 @@ MonoBehaviour:
   m_RunCycleLegOffset: 0.2
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+  dynamicPhysMat: {fileID: 0}
+  staticPhysMat: {fileID: 0}
   m_ForwardAmount: 0
   movementSpeed: 5
 --- !u!114 &114174982934495670
@@ -5587,6 +5577,8 @@ MonoBehaviour:
   m_RunCycleLegOffset: 0.1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+  dynamicPhysMat: {fileID: 0}
+  staticPhysMat: {fileID: 0}
   m_ForwardAmount: 0
   movementSpeed: 6
 --- !u!114 &114345790614323200
@@ -5685,6 +5677,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5700,6 +5693,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -5751,6 +5745,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5768,6 +5763,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -5810,3 +5806,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.073789656, y: -0.0048983023, z: 0.00000008940697}
     m_Extent: {x: 0.9621865, y: 0.23317862, z: 0.88559115}
   m_DirtyAABB: 0
+--- !u!143 &143242316655833112
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209546215734332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

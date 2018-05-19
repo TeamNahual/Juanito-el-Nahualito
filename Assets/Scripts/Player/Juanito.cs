@@ -22,6 +22,9 @@ public class Juanito : MonoBehaviour {
 	private float spirit_time_limit = 50;
 	public bool SpiritState = false;
 	public bool inButterflyZone = false;
+	public Vector3 butterflyZoneOrigin;
+	public float butterflyZoneRadius;
+	public bool spiritCanWalkIntoBodyFlag = false;
 
 	private Vector3 lockedSpiritPosition;
 
@@ -78,8 +81,14 @@ public class Juanito : MonoBehaviour {
 		JuanitoSpirit.transform.rotation = JuanitoHuman.transform.rotation;
 		JuanitoSpirit.SetActive(true);
 		SpiritState = true;
+		spiritCanWalkIntoBodyFlag = false;
 
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+		
+		// Shader related
+		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", butterflyZoneOrigin);
+		Shader.SetGlobalFloat("_MK_FOG_SPIRIT_MODE_RADIUS", butterflyZoneRadius);
+		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 1);
  	}
 
  	private void SpiritHandler()
@@ -99,9 +108,25 @@ public class Juanito : MonoBehaviour {
 				}
 			}
 
-			if(SpiritState)
+			/*if(SpiritState)
 			{
 				// JuanitoHuman.transform.position = lockedSpiritPosition;
+			}*/
+		}
+		if (SpiritState && JuanitoSpirit.transform.hasChanged) {
+			float dist = Vector3.Distance(JuanitoHuman.transform.position, JuanitoSpirit.transform.position);
+			
+			if (spiritCanWalkIntoBodyFlag)
+			{
+				if (dist < 2)
+				{
+					EndSpiritState();
+				}
+			} else {
+				if (dist > 4)
+				{
+					spiritCanWalkIntoBodyFlag = true;
+				}
 			}
 		}
  	}
@@ -117,6 +142,9 @@ public class Juanito : MonoBehaviour {
  		SpiritState = false;
 		UIManager.instance.TooltipDisable();
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+		
+		// Shader related
+		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);
 
  	}
 
