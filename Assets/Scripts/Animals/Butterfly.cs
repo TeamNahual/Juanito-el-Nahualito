@@ -80,6 +80,7 @@ public class Butterfly : MonoBehaviour {
         {
 			Juanito.ins.inButterflyZone = true;
 			Juanito.ins.butterflyZoneOrigin = sphereContainer.transform.position;
+			Juanito.ins.butterflyZoneRadius = 50 * transform.localScale.magnitude;
 		}
 	}
 

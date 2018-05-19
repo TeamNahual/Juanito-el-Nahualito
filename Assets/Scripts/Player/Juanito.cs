@@ -23,6 +23,7 @@ public class Juanito : MonoBehaviour {
 	public bool SpiritState = false;
 	public bool inButterflyZone = false;
 	public Vector3 butterflyZoneOrigin;
+	public float butterflyZoneRadius;
 	public bool spiritCanWalkIntoBodyFlag = false;
 
 	private Vector3 lockedSpiritPosition;
@@ -86,7 +87,7 @@ public class Juanito : MonoBehaviour {
 		
 		// Shader related
 		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", butterflyZoneOrigin);
-		//Shader.SetGlobalFloat("_MK_FOG_SPIRIT_MODE_RADIUS", spiritModeRadius);
+		Shader.SetGlobalFloat("_MK_FOG_SPIRIT_MODE_RADIUS", butterflyZoneRadius);
 		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 1);
  	}
 
@@ -112,7 +113,7 @@ public class Juanito : MonoBehaviour {
 				// JuanitoHuman.transform.position = lockedSpiritPosition;
 			}*/
 		}
-		if (SpiritState) {
+		if (SpiritState && JuanitoSpirit.transform.hasChanged) {
 			float dist = Vector3.Distance(JuanitoHuman.transform.position, JuanitoSpirit.transform.position);
 			
 			if (spiritCanWalkIntoBodyFlag)
