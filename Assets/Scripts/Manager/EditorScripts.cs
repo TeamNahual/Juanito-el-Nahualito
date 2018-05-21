@@ -8,6 +8,7 @@ public class EditorScripts : MonoBehaviour
 
 	void Awake()
 	{
+		#if UNITY_EDITOR
 		if (!UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode) {
 			Debug.Log("Clearing Fog Shaders");
 			Shader.SetGlobalTexture("_MK_FOG_DESATURATE", emptyGradient);
@@ -15,5 +16,6 @@ public class EditorScripts : MonoBehaviour
 			Shader.SetGlobalTexture("_MK_FOG_SPIRIT_MODE_GRADIENT", emptyGradient);
 			Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", worldOrigin);Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);
 		}
+		#endif
 	}
 }
