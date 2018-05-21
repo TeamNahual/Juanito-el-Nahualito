@@ -70,9 +70,5 @@ public class PullyEvent : EventObject {
         {
             Debug.Log("You broke it");
         }
-        
-        Debug.Log("Play transform");
-        //timelineDirector.Play ();
-        //disabled = true;
     }
 }
