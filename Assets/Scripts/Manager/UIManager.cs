@@ -50,8 +50,6 @@ public class UIManager : MonoBehaviour
 	private Color uiColor;
 
 	// Action Messages
-	public GameObject pushHelp;
-	public GameObject pushMoveHelp;
 	public TextMeshProUGUI tooltip; 
 
 	//Audio Snapshots When Pausing
@@ -67,8 +65,6 @@ public class UIManager : MonoBehaviour
 		isMenuOpen = false;
 		menuToggleProtect = false;
 		menuOptionProtect = false;
-		pushHelp.SetActive(false);
-		pushMoveHelp.SetActive(false);
 		tooltip.gameObject.SetActive(false);
 		uiColor = butterflyUI.GetComponent<Image>().color;
 		Cursor.lockState = CursorLockMode.Locked;
