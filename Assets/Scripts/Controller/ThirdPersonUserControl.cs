@@ -49,7 +49,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
 			bool keyboard = !(Mathf.Abs(h) < 0.1f && Mathf.Abs(v) < 0.1f);
-			bool crouch = Input.GetKey(KeyCode.C);
 			
 			if (!keyboard)
 			{
@@ -61,7 +60,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (GameManager.instance.isMovementLocked) {
 				h = 0.0f;
 				v = 0.0f;
-				crouch = false;
 				m_Jump = false;
 			}
 
@@ -87,9 +85,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			
             // pass all parameters to the character control script
-            m_Character.Move(m_Move, crouch, false);
+            m_Character.Move(m_Move, false);
 			// Uncomment the below for jumping (also delete the above line);
-            // m_Character.Move(m_Move, crouch, m_Jump);
+            // m_Character.Move(m_Move, m_Jump);
             m_Jump = false;
         }
     }

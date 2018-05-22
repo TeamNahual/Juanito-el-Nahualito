@@ -1876,7 +1876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4154441897351414}
   - component: {fileID: 95124206141894882}
-  - component: {fileID: 54397124393142632}
+  - component: {fileID: 143527634080896770}
   - component: {fileID: 136975526498911970}
   - component: {fileID: 114106149745991902}
   - component: {fileID: 114864401445985600}
@@ -5369,21 +5369,6 @@ Transform:
   m_Father: {fileID: 4884904165389340}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54397124393142632
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1673784785864008}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!54 &54825914866359334
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -5542,8 +5527,12 @@ MonoBehaviour:
   SpiritAnim: {fileID: 95486549733462620}
   butterflyRelic: 0
   statueRelic: 0
+  hasFood: 0
   SpiritState: 0
   inButterflyZone: 0
+  butterflyZoneOrigin: {x: 0, y: 0, z: 0}
+  butterflyZoneRadius: 0
+  spiritCanWalkIntoBodyFlag: 0
   SpiritControl: {fileID: 0}
 --- !u!114 &114709039924949450
 MonoBehaviour:
@@ -5828,6 +5817,23 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.096711606, y: 0.020388879, z: 0.00000047683716}
     m_Extent: {x: 0.99114645, y: 0.21275175, z: 0.7991277}
   m_DirtyAABB: 0
+--- !u!143 &143527634080896770
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1673784785864008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!198 &198035897070515410
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -6341,11 +6347,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 2
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 4300000, guid: ca9537025e4ff4b43a14b02995feb816, type: 3}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 1
@@ -7061,47 +7067,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -8499,7 +8464,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 1
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -8544,14 +8508,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0

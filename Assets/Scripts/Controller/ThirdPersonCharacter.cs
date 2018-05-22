@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
-	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(CharacterController))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
@@ -14,15 +14,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		//[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
-		[SerializeField] float m_GroundCheckDistance = 0.1f;
+		[SerializeField] float m_GroundCheckDistance = 0.25f;
 
 		[SerializeField] PhysicMaterial dynamicPhysMat;
 		[SerializeField] PhysicMaterial staticPhysMat;
 
-		bool isStaticPhys = true;
-		Rigidbody m_Rigidbody;
+		CharacterController m_Controller;
 		Animator m_Animator;
-		bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
@@ -31,112 +29,61 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		float m_CapsuleHeight;
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
-		bool m_Crouching;
 		//Vector3 m_CamOffset = new Vector3(10,10,-10);
 		Vector3 m_Move = new Vector3(0,0,0);
+		Vector3 m_LastPosition;
+		Collider m_LastHit = null;
 
 		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
-			m_Rigidbody = GetComponent<Rigidbody>();
+			m_Controller = GetComponent<CharacterController>();
 			m_Capsule = GetComponent<CapsuleCollider>();
 			m_CapsuleHeight = m_Capsule.height;
 			m_CapsuleCenter = m_Capsule.center;
 
-			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
-			
-			// Set game camera to player
-			/*if (Camera.main != null && !m_isAI)
-            {	
-				// Vector3 target = transform.position + m_CamOffset;
-				//Camera.main.transform.position = target;
-            }*/
+			m_LastPosition = transform.position;
 		}
 
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+		public void Move(Vector3 move, bool jump)
 		{
-
-			// convert the world relative moveInput vector into a local-relative
-			// turn amount and forward amount required to head in the desired
-			// direction.
-			m_Move = move;
+			m_Move = move * 0.25f;
 			if (move.magnitude > 1f) move.Normalize();
 			move = transform.InverseTransformDirection(move);
-			CheckGroundStatus();
+			m_Move.y = -5;
+			
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			m_TurnAmount = Mathf.Atan2(move.x, move.z);
 			m_ForwardAmount = move.z;
 
 			ApplyExtraTurnRotation();
 
-			// control and velocity handling is different when grounded and airborne:
-			if (m_IsGrounded)
-			{
-				HandleGroundedMovement(crouch, jump);
-
-				// Handles sliding of juanito when airborne
-				if(m_IsGrounded != isStaticPhys)
-				{
-					m_Capsule.material = staticPhysMat;
-					isStaticPhys = m_IsGrounded;
-				}
-			}
-			else
-			{
-				HandleAirborneMovement();
-
-				if(m_IsGrounded != isStaticPhys)
-				{
-					m_Capsule.material = dynamicPhysMat;
-					isStaticPhys = m_IsGrounded;
-				}
-			}
-
-			// ScaleCapsuleForCrouching(crouch);
-			// PreventStandingInLowHeadroom();
-
 			// send input and other state parameters to the animator
+			m_LastPosition = transform.position;
+			m_Controller.Move(m_Move);
 			UpdateAnimator(move);
-		}
-
-
-		void ScaleCapsuleForCrouching(bool crouch)
-		{
-			if (m_IsGrounded && crouch)
-			{
-				if (m_Crouching) return;
-				m_Capsule.height = m_Capsule.height / 2f;
-				m_Capsule.center = m_Capsule.center / 2f;
-				m_Crouching = true;
+			
+			RaycastHit groundRaycast;
+			bool grounded = CheckGroundStatus(transform.position, out groundRaycast);
+			if (grounded) {
+				m_GroundNormal = groundRaycast.normal;
+				m_LastHit = groundRaycast.collider;
+				//m_Animator.applyRootMotion = true;
 			}
 			else
 			{
-				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-				{
-					m_Crouching = true;
-					return;
+				if (m_LastHit != null) {
+					Vector3 correctedPosition = new Vector3(transform.position.x,
+						m_LastPosition.y, transform.position.z);
+					
+					
+					transform.position = m_LastHit.ClosestPointOnBounds(correctedPosition);
+				} else {
+					//transform.position = m_LastPosition;
 				}
-				m_Capsule.height = m_CapsuleHeight;
-				m_Capsule.center = m_CapsuleCenter;
-				m_Crouching = false;
-			}
-		}
-
-		void PreventStandingInLowHeadroom()
-		{
-			// prevent standing up in crouch-only zones
-			if (!m_Crouching)
-			{
-				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
-				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-				{
-					m_Crouching = true;
-				}
+				//m_GroundNormal = Vector3.up;
 			}
 		}
 
@@ -146,13 +93,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// update the animator parameters
 			m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 			m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-			m_Animator.SetBool("Crouch", m_Crouching);
-			m_Animator.SetBool("OnGround", m_IsGrounded);
-			if (!m_IsGrounded)
-			{
-				m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-			}
-
+			m_Animator.SetBool("OnGround", true);
+			
 			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 			// (This code is reliant on the specific run cycle offset in our animations,
 			// and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
@@ -160,14 +102,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				Mathf.Repeat(
 					m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
 			float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
-			if (m_IsGrounded)
+			if (m_Controller.isGrounded)
 			{
 				m_Animator.SetFloat("JumpLeg", jumpLeg);
 			}
 
 			// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 			// which affects the movement speed because of the root motion.
-			if (m_IsGrounded && move.magnitude > 0)
+			if (m_Controller.isGrounded && move.magnitude > 0)
 			{
 				m_Animator.speed = m_AnimSpeedMultiplier;
 			}
@@ -175,45 +117,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				// don't use that while airborne
 				m_Animator.speed = 1;
-			}
-			
-			// Set game camera to player
-			/*if (Camera.main != null && !m_isAI)
-            {	
-				// Make the camera movement smoother and delayed
-				Vector3 cam = Camera.main.transform.position;
-				Vector3 target = transform.position + m_CamOffset;
-				float dist = (target - cam).magnitude;
-				if (dist < 0.05f) {
-					Camera.main.transform.position = target;
-				} else {
-					Vector3 dir = (target - cam) / dist;
-					Camera.main.transform.position = cam + (dir * dist / 50);
-				}
-            }*/
-		}
-
-
-		void HandleAirborneMovement()
-		{
-			// apply extra gravity from multiplier:
-			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-			m_Rigidbody.AddForce(extraGravityForce);
-
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
-		}
-
-
-		void HandleGroundedMovement(bool crouch, bool jump)
-		{
-			// check whether conditions are right to allow a jump:
-			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
-			{
-				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
-				m_IsGrounded = false;
-				m_Animator.applyRootMotion = false;
-				m_GroundCheckDistance = 0.1f;
 			}
 		}
 
@@ -229,42 +132,28 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		{
 			// we implement this function to override the default root motion.
 			// this allows us to modify the positional speed before it's applied.
-			if (m_IsGrounded && Time.deltaTime > 0)
+			if (m_Controller.isGrounded && Time.deltaTime > 0)
 			{
-				//Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
 				float multiplier = movementSpeed;
 				m_Move.x *= multiplier;
 				m_Move.z *= multiplier;
-
-				// we preserve the existing y part of the current velocity.
-				m_Move.y = m_Rigidbody.velocity.y;
-				m_Rigidbody.velocity = m_Move;
 			}
 		}
-
-
-		void CheckGroundStatus()
+		
+		bool CheckGroundStatus(Vector3 pos, out RaycastHit hitInfo)
 		{
-			RaycastHit hitInfo;
-#if UNITY_EDITOR
-			// helper to visualise the ground check ray in the scene view
-			Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * m_GroundCheckDistance), Color.green);
-#endif
-			// 0.1f is a small offset to start the ray from inside the character
-			// it is also good to note that the transform position in the sample assets is at the base of the character
-			if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
-			//if (Physics.SphereCast(transform.position + (Vector3.up * 0.1f), 0.1f, Vector3.down, out hitInfo, m_GroundCheckDistance))
+			bool raycastCheck = Physics.Raycast(pos + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance);
+			/*if (raycastCheck)
 			{
 				m_GroundNormal = hitInfo.normal;
-				m_IsGrounded = true;
 				m_Animator.applyRootMotion = true;
 			}
 			else
 			{
-				m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
-			}
+			}*/
+			return raycastCheck;
 		}
 	}
 }
