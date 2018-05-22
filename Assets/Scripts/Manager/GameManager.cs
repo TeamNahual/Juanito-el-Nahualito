@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
 	public bool isMovementLocked = false; // Should this be somewhere else?
 	public int movementLocks = 0;
 	private int unlockCounter;
+	
+	// Shader Related
+	public Texture emptyGradient, stylisticFog, desaturationGradient, spiritModeGradient;
+	public Vector3 spiritModeOrigin;
+	public float spiritModeRadius;
 
 	public string levelToLoad;
 
@@ -36,6 +41,12 @@ public class GameManager : MonoBehaviour
 	
     void Start()
     {
+		Shader.SetGlobalTexture("_MK_FOG_DESATURATE", desaturationGradient);
+		Shader.SetGlobalTexture("_MK_FOG_STYLISTIC", stylisticFog);
+		Shader.SetGlobalTexture("_MK_FOG_SPIRIT_MODE_GRADIENT", spiritModeGradient);
+		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", spiritModeOrigin);
+		Shader.SetGlobalFloat("_MK_FOG_SPIRIT_MODE_RADIUS", spiritModeRadius);
+		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);
 		DynamicGI.UpdateEnvironment();
 	}
 	

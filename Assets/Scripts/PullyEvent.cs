@@ -61,6 +61,7 @@ public class PullyEvent : EventObject {
     {
         //Test this to make sure dog is getting on platform and Juanito is out of way.
         Juanito.ins.SpiritControl.currentFollower.transform.position = connection.transform.position;
+        Juanito.ins.hasFood = false;
         if(connection.GetComponent<pulley_platform>())
         {
             connection.GetComponent<pulley_platform>().Activate(Juanito.ins.SpiritControl.currentFollower.transform);
@@ -69,9 +70,5 @@ public class PullyEvent : EventObject {
         {
             Debug.Log("You broke it");
         }
-        
-        Debug.Log("Play transform");
-        //timelineDirector.Play ();
-        //disabled = true;
     }
 }
