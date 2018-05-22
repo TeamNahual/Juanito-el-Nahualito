@@ -7,9 +7,11 @@ public class pulley_switch_manager : MonoBehaviour {
 
 	private pulley_manager manager;
 	private bool overlap = false;
+	private Animator animator;
 
 	void Awake(){
 		manager = GetComponentInParent <pulley_manager> ();
+		animator = GetComponentInParent <Animator> ();
 	}
 	
 	void OnTriggerEnter(Collider other){
@@ -42,6 +44,7 @@ public class pulley_switch_manager : MonoBehaviour {
 			if(Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown("Action"))
 			{
 				Debug.Log ("Switch hit");
+				animator.SetBool ("pulled", true);
 				manager.MovePlatforms ();
 			}
 		}
