@@ -2702,6 +2702,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 320548673598868386, guid: 9a3a24b581f2dd541969a98a5ac4e507,
+        type: 2}
+      propertyPath: m_SceneBindings.Array.data[2].value
+      value: 
+      objectReference: {fileID: 467665468}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a3a24b581f2dd541969a98a5ac4e507, type: 2}
   m_IsPrefabParent: 0
@@ -5683,6 +5688,11 @@ Transform:
   m_Father: {fileID: 1699765852}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &467665468 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1408744128847402, guid: 3d8f3579447ba7945b53567c7a1615a7,
+    type: 2}
+  m_PrefabInternal: {fileID: 926359603}
 --- !u!1 &473537597
 GameObject:
   m_ObjectHideFlags: 0
