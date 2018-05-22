@@ -44,14 +44,8 @@ public class UIManager : MonoBehaviour
 	private bool dialogueToggleProtect;
     private bool isDialogueOpen;
 	public AudioSource dialogueAudioSource;
-	
-	// Butterflies
-	public GameObject butterflyUI;
-	private Color uiColor;
 
 	// Action Messages
-	public GameObject pushHelp;
-	public GameObject pushMoveHelp;
 	public TextMeshProUGUI tooltip; 
 
 	//Audio Snapshots When Pausing
@@ -67,10 +61,7 @@ public class UIManager : MonoBehaviour
 		isMenuOpen = false;
 		menuToggleProtect = false;
 		menuOptionProtect = false;
-		pushHelp.SetActive(false);
-		pushMoveHelp.SetActive(false);
 		tooltip.gameObject.SetActive(false);
-		uiColor = butterflyUI.GetComponent<Image>().color;
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		dialogueSystem = new DialogueSystem();
@@ -248,9 +239,6 @@ public class UIManager : MonoBehaviour
 			dialogueSystem.Update();
 		}
 		
-		// Update butteflies
-		// updateButterflyUI(Juanito.ins.GetSpiritCount());
-		
 		inGameMenu.gameObject.SetActive(isMenuOpen);
 		dialogueUI.gameObject.SetActive(isDialogueOpen);
 	}
@@ -318,21 +306,6 @@ public class UIManager : MonoBehaviour
 	public void setAndPlayAudioClip(AudioClip clip) {
 		dialogueAudioSource.clip = clip;
 		dialogueAudioSource.Play();
-	}
-	
-	private void updateButterflyUI(float count) {
-		//string text = (count < 100)? "Butterflies: " + Mathf.RoundToInt(count) + " / 100": "Spirit form ready!";
-
-		if(count < 10)
-		{
-			butterflyUI.GetComponent<Image>().color = new Color(1,0,0,1);
-		}
-		else
-		{
-			butterflyUI.GetComponent<Image>().color = uiColor;
-		}
-
-		butterflyUI.GetComponent<Image>().fillAmount = count/100;
 	}
 
 	public bool CheckControllers()

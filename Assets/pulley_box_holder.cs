@@ -18,9 +18,9 @@ public class pulley_box_holder : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (!used && other.gameObject.tag == "package") {
-			package p = other.gameObject.GetComponent <package> ();
+			PackageRB p = other.gameObject.GetComponent <PackageRB> ();
 			platform.Activate (other.transform, p, release_object.transform);
-			p.Deactivate ();
+			p.Deactivate();
 			p.gameObject.transform.position = lock_position;
 			used = true;
 		}
