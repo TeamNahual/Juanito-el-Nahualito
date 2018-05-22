@@ -47,10 +47,13 @@ public class PackageTrigger : MonoBehaviour {
 
 	}
 
-	// void OnTriggerExit(Collider other)
-	// {
-	// 	main.DetachPlayer();
-	// 	UIManager.instance.TooltipDisable();
+	void OnTriggerExit(Collider other)
+	{	
+		if(other.gameObject != Juanito.ins.JuanitoHuman || !main.active)
+			return;
+		
+		main.DetachPlayer();
+		UIManager.instance.TooltipDisable();
 
-	// }
+	}
 }
