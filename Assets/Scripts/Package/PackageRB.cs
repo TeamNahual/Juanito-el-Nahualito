@@ -29,7 +29,9 @@ public class PackageRB : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(!active)
+		{
 			pushing = false;
+		}
 
 		if(pushing)
 		{
@@ -39,8 +41,12 @@ public class PackageRB : MonoBehaviour {
 			Vector3 camera_forward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
 
 			// Debug.Log(Juanito.ins.JuanitoHuman.transform.forward * vertical);
-			rb.velocity = ((vertical * camera_forward) + 
+			Vector3 velocity = ((vertical * camera_forward) + 
 						(horizontal * Camera.main.transform.right)) * speed;
+
+			velocity.y = rb.velocity.y;
+
+			rb.velocity = velocity;
 			// Juanito.ins.JuanitoHuman.transform.localPosition = initialPosition;
 
 			Vector3 diff = Juanito.ins.JuanitoHuman.transform.position - transform.position;
@@ -114,11 +120,13 @@ public class PackageRB : MonoBehaviour {
 	public void Activate(){
 		Debug.Log ("package activate");
 		active = true;
+		rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 	}
 
 	public void Deactivate(){
 		Debug.Log ("package deactivate");
 		active = false;
 		DetachPlayer ();
+		rb.constraints = RigidbodyConstraints.FreezeAll;
 	}
 }

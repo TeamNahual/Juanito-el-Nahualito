@@ -14,7 +14,7 @@ public class PackageTrigger : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other)
 	{
-		if(other.gameObject != Juanito.ins.JuanitoHuman)
+		if(other.gameObject != Juanito.ins.JuanitoHuman || !main.active)
 			return;
 
 		Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
@@ -47,12 +47,10 @@ public class PackageTrigger : MonoBehaviour {
 
 	}
 
-	void OnTriggerExit(Collider other)
-	{
-		if(main.pushing)
-		{
-			main.DetachPlayer();
-			UIManager.instance.TooltipDisable();
-		}
-	}
+	// void OnTriggerExit(Collider other)
+	// {
+	// 	main.DetachPlayer();
+	// 	UIManager.instance.TooltipDisable();
+
+	// }
 }

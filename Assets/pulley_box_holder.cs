@@ -20,7 +20,7 @@ public class pulley_box_holder : MonoBehaviour {
 		if (!used && other.gameObject.tag == "package") {
 			PackageRB p = other.gameObject.GetComponent <PackageRB> ();
 			platform.Activate (other.transform, p, release_object.transform);
-			p.DetachPlayer ();
+			p.Deactivate();
 			p.gameObject.transform.position = lock_position;
 			used = true;
 		}
