@@ -38,6 +38,7 @@ public class AnimalEventTrigger : MonoBehaviour {
 				myManager.unlockMovement();
 				lockMovement = false;
 				animal.GetComponent<Deer>().runningTask = false;
+				animal.GetComponent<Tejon>().runningTask = false;
 			}
 		}
 	}
@@ -46,15 +47,22 @@ public class AnimalEventTrigger : MonoBehaviour {
 	{
 		animal = Juanito.ins.SpiritControl.currentFollower;
 
-		if(other.gameObject == Juanito.ins.JuanitoSpirit && !activated && animal.GetComponent<Deer>())
+		if(other.gameObject == Juanito.ins.JuanitoSpirit && !activated)
 		{
-			if(lockMovement) myManager.lockMovement();
-
-			animal.GetComponent<Deer>().runningTask = true;
-
-			StartCoroutine(DeerEvent(animal));
-			
-			activated = true;
+			if(animal.GetComponent<Deer>())
+			{
+				if(lockMovement) myManager.lockMovement();
+				animal.GetComponent<Deer>().runningTask = true;
+				StartCoroutine(DeerEvent(animal));
+				activated = true;
+			}
+			else if(animal.GetComponent<Tejon>())
+			{
+				if(lockMovement) myManager.lockMovement();
+				animal.GetComponent<Tejon>().runningTask = true;
+				StartCoroutine(TejonEvent(animal));
+				activated = true;
+			}
 		}
 	}
 
@@ -64,6 +72,27 @@ public class AnimalEventTrigger : MonoBehaviour {
 		
 		ai.SetTarget(transform);
 		deer.transform.LookAt(transform);
+		
+		float dist = ai.agent.stoppingDistance;
+		ai.agent.stoppingDistance = stopDist;
+
+		while(ai.agent.remainingDistance > ai.agent.stoppingDistance)
+		{
+			Debug.Log(ai.agent.remainingDistance + ", " + ai.agent.stoppingDistance);
+			yield return null;
+		}
+
+		timeline.Play();
+		
+		ai.agent.stoppingDistance = dist;
+	}
+
+	IEnumerator TejonEvent(GameObject tejon)
+	{
+		AnimalAIControl ai = tejon.GetComponent<AnimalAIControl>();
+
+		ai.SetTarget(transform);
+		tejon.transform.LookAt(transform);
 		
 		float dist = ai.agent.stoppingDistance;
 		ai.agent.stoppingDistance = stopDist;
