@@ -28,12 +28,12 @@ public class Quest
 
 	}
 
-	public ActivateQuest()
+	public void ActivateQuest()
 	{
 
 	}
 
-	public CompleteQuest()
+	public void CompleteQuest()
 	{
 		
 	}
