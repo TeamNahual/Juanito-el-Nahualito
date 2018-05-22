@@ -9,7 +9,7 @@ using MalbersAnimations;
 
 public class Deer : AnimalFollowController {
 
-	bool runningTask = false;
+	public bool runningTask = false;
 
 	public Transform targetObject;
     
@@ -68,28 +68,5 @@ public class Deer : AnimalFollowController {
 		runningTask = false;
 	}
 
-	IEnumerator PushTree(GameObject target)
-	{
-		TreeRollEvent controller = target.GetComponent<TreeRollEvent>();
-
-		while(Vector3.Distance (transform.position, target.transform.position) > aiController.stoppingDistance + 1.5f)
-		{
-			yield return null;
-		}
-
-		controller.TriggerEvent();
-
-		controller.pushing = true;
-
-		while (controller.pushing)
-		{
-			yield return null;
-		}
-
-		FinishTask ();
-
-		runningTask = false;
-	}
-
-
+	IEnumerator PushTree(GameObject target) { yield return null; }
 }
