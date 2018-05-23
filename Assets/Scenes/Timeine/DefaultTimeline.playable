@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Muted: 0
   m_CustomPlayableFullTypename: 
   m_AnimClip: {fileID: 0}
-  m_Parent: {fileID: 11400000}
+  m_Parent: {fileID: 11400000, guid: f06d3e0c4c1ab41b6ba62e8863131669, type: 2}
   m_Children:
   - {fileID: 114448080005640692}
   - {fileID: 114092533145262104}
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: DefaultVirtualCam
+    m_DisplayName: DefaultVirtualCam_pharm
     m_Version: 1
 --- !u!114 &114892466415102440
 MonoBehaviour:
