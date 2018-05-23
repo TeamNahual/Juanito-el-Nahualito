@@ -1117,8 +1117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4100600776935988}
   - component: {fileID: 95486549733462620}
-  - component: {fileID: 54825914866359334}
-  - component: {fileID: 136736632071027982}
+  - component: {fileID: 143327611382347380}
   - component: {fileID: 114775689094514600}
   - component: {fileID: 114959274310961486}
   - component: {fileID: 114709039924949450}
@@ -1877,7 +1876,6 @@ GameObject:
   - component: {fileID: 4154441897351414}
   - component: {fileID: 95124206141894882}
   - component: {fileID: 143527634080896770}
-  - component: {fileID: 136975526498911970}
   - component: {fileID: 114106149745991902}
   - component: {fileID: 114864401445985600}
   - component: {fileID: 114897681696393166}
@@ -5369,21 +5367,6 @@ Transform:
   m_Father: {fileID: 4884904165389340}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54825914866359334
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389939264584480}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 2
 --- !u!82 &82610522717561384
 AudioSource:
   m_ObjectHideFlags: 1
@@ -5584,15 +5567,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.1
+  m_MoveSpeedMultiplier: 5
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 1
-  dynamicPhysMat: {fileID: 13400000, guid: 1fe71756c77c57744a5026e0d550c4c2, type: 2}
-  staticPhysMat: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
   m_ForwardAmount: 0
-  movementSpeed: 7
 --- !u!114 &114897681696393166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5645,41 +5623,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.1
+  m_MoveSpeedMultiplier: 5
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 1
-  dynamicPhysMat: {fileID: 13400000, guid: 1fe71756c77c57744a5026e0d550c4c2, type: 2}
-  staticPhysMat: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
   m_ForwardAmount: 0
-  movementSpeed: 7
---- !u!136 &136736632071027982
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389939264584480}
-  m_Material: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.6
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
---- !u!136 &136975526498911970
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1673784785864008}
-  m_Material: {fileID: 13400000, guid: cff7a93300e113b4e9e3b09b2716e400, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.6
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!137 &137029043303441224
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -5817,6 +5764,23 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.096711606, y: 0.020388879, z: 0.00000047683716}
     m_Extent: {x: 0.99114645, y: 0.21275175, z: 0.7991277}
   m_DirtyAABB: 0
+--- !u!143 &143327611382347380
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1389939264584480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!143 &143527634080896770
 CharacterController:
   m_ObjectHideFlags: 1

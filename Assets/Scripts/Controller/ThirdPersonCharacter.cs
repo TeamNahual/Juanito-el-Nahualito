@@ -36,13 +36,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Move = move * 0.25f;
 			if (move.magnitude > 1f) move.Normalize();
 			move = transform.InverseTransformDirection(move);
-			m_Move.y = -5; // Forces it to the ground
+			m_Move.y = -1f; // Forces it to the ground
 			
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			m_TurnAmount = Mathf.Atan2(move.x, move.z);
 			m_ForwardAmount = move.z;
 			ApplyExtraTurnRotation();
-			
 
 			m_LastPosition = transform.position;
 			m_Controller.Move(m_Move);
@@ -58,11 +57,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			else
 			{
 				if (m_LastHit != null) {
-					Vector3 correctedPosition = new Vector3(transform.position.x,
+					Vector3 pointA = new Vector3(transform.position.x,
 						m_LastPosition.y, transform.position.z);
-					
-					
-					transform.position = m_LastHit.ClosestPointOnBounds(correctedPosition);
+					Vector3 pointB = m_LastPosition + (m_LastPosition - pointA) * 0.25f;
+					RaycastHit ray;
+					Physics.Linecast(pointA, pointB, out ray);
+					if (ray.collider) {
+						transform.position = ray.point;	
+					} else {
+						transform.position = m_LastPosition;
+					}
 				}
 			}
 		}
@@ -97,8 +101,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		
 		bool CheckGroundStatus(Vector3 pos, out RaycastHit hitInfo)
 		{
-			bool raycastCheck = Physics.Raycast(pos + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance);
-			return raycastCheck;
+			return Physics.Raycast(pos + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance, 2047);
 		}
 	}
 }

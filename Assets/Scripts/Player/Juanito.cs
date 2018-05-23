@@ -82,8 +82,6 @@ public class Juanito : MonoBehaviour {
 		JuanitoSpirit.SetActive(true);
 		SpiritState = true;
 		spiritCanWalkIntoBodyFlag = false;
-
-		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 		
 		// Shader related
 		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", butterflyZoneOrigin);
@@ -141,7 +139,6 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = true;
  		SpiritState = false;
 		UIManager.instance.TooltipDisable();
-		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 		
 		// Shader related
 		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);
