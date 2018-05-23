@@ -35,6 +35,9 @@ public class PackageRB : MonoBehaviour {
 
 		if(pushing)
 		{
+			//Added to Use in another Sound Script
+			Juanito.ins.isPushing = true;
+
 			float horizontal = GetPlayerInput()[0];
 			float vertical = GetPlayerInput()[1];
 
