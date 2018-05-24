@@ -12,96 +12,84 @@ public class AnimalTimelineTrigger : MonoBehaviour {
 	[SerializeField] private PlayableDirector timeline;
 	[SerializeField] private Transform start;
 	[SerializeField] private Transform play;
+	[SerializeField] private float Distance = 3.5f;
 
-	private float timeLineCurrent;
-	private float timeLineDuration;
 	
-	private bool playTimeline = true;
-	private bool next = false;
-	private bool lockPlayerMovement = true;
+	private bool update = false;
+	private int state = 0;
 
-	private float stopDist;
+	private AnimalAIControl animal;
 
-	[SerializeField] private AnimalAIControl animal;
-
-	private Dictionary<int, System.Action> phases = new Dictionary<int, System.Action>();
-	private int phase = 0;
-
-	// Use this for initialization
-	void Start () {
-		timeLineDuration = Mathf.Round ((float)timeline.duration);
-		Debug.Log ("Timeline Duration: " + timeLineDuration);
-
-		phases.Add(0, GetStart);
-		phases.Add(1, GetPlay);
-	}
+	void Start () {}
 
 	void Update(){
-		if(next)
+		if(update)
 		{
-			GetPlay();
-			next = false;
+			if(state == 0)
+				StartCoroutine(GoTo(start, 0.1f));
+			else if(state == 1)
+				StartCoroutine(GoTo(play, Distance));
+			else if(state == 2)
+				StartCoroutine(PlayTimeline());
+
+			state++;
+			update = false;
 		}
 	}
 
 	//Is called when trigger area is entered
 	void OnTriggerEnter(Collider other){
-		if(playTimeline && other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower != null)
+		if(other.gameObject == Juanito.ins.JuanitoSpirit && Juanito.ins.SpiritControl.currentFollower != null)
 		{
-			GetStart();
+			StartCoroutine(PlayCamera());
+			animal = Juanito.ins.SpiritControl.currentFollower.GetComponent<AnimalAIControl>();
+			update = true;
 		}
 	}
 
-	private void GetStart()
+	IEnumerator GoTo(Transform target, float dist)
 	{
-		cameraTimeline.Play();
-		GameManager.instance.lockMovement();
-		GetComponent<Collider>().enabled = false;
-
-		Debug.Log("Start");
-		animal.GetComponent<Deer>().runningTask = true;
-		animal.target = start;
-		animal.transform.LookAt(start);
-		animal.Agent.stoppingDistance = 0.1f;
-		StartCoroutine(FindStart());
-	}
-
-	IEnumerator FindStart(){
-
-		while(animal.Agent.remainingDistance > animal.Agent.stoppingDistance)
-		{
-			animal.Agent.stoppingDistance = 0.1f;
-			yield return null;
-		}
-		
-		animal.GetComponent<Deer>().runningTask = false;
-		next = true;
-	}
-
-	private void GetPlay()
-	{
-		Debug.Log("###############-- Play --###############");
-		animal.GetComponent<Deer>().runningTask = true;
-		animal.target = play;
-		animal.Agent.stoppingDistance = 0.1f;
-		StartCoroutine(FindPlay());
-	}
-
-	IEnumerator FindPlay(){
+		SetTask(true);
+		animal.target = target;
+		animal.Agent.stoppingDistance = dist;
 		yield return null;
-		Debug.Log(animal.Agent.remainingDistance);
 
 		while(animal.Agent.remainingDistance > animal.Agent.stoppingDistance)
 		{
-			animal.Agent.stoppingDistance = 4f;
+			animal.agent.stoppingDistance = dist;
 			yield return null;
 		}
-		Debug.Log(animal.transform.position);
-		Debug.Log(animal.transform.rotation.eulerAngles);
-		
+
+		SetTask(false);
+		update = true;
+	}
+
+	IEnumerator PlayTimeline()
+	{
+		SetTask(true);
+		animal.GetComponent<Transform>().LookAt(play);
 		timeline.Play();
+
 		yield return new WaitForSeconds((float)timeline.duration);
-		animal.GetComponent<Deer>().runningTask = false;
-		GameManager.instance.unlockMovement ();
+		SetTask(false);
+	}
+
+	IEnumerator PlayCamera()
+	{
+		GetComponent<Collider>().enabled = false;
+		GameManager.instance.lockMovement();
+		cameraTimeline.Play();
+
+		yield return new WaitForSeconds((float)cameraTimeline.duration);
+		GameManager.instance.unlockMovement();
+		enabled = false;
+	}
+
+	private void SetTask(bool b)
+	{
+		if(type == AnimalType.Deer)
+			animal.GetComponent<Deer>().runningTask = b;
+		else if(type == AnimalType.Tejon)
+			animal.GetComponent<Tejon>().runningTask = b;
 	}
 }
