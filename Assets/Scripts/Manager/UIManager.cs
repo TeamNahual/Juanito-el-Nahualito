@@ -52,6 +52,10 @@ public class UIManager : MonoBehaviour
 	public AudioMixerSnapshot paused;
 	public AudioMixerSnapshot unpaused;
 
+	//Fade Manager
+	public Image fadeImage;
+	public float fadeDuration = 2f;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -75,6 +79,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
 		DynamicGI.UpdateEnvironment(); // Get rid of this eventually
+		FadeIn(fadeDuration);
 	}
 	
 	public void CloseControls()
@@ -141,7 +146,38 @@ public class UIManager : MonoBehaviour
 
 	}
 
-	void Update()
+	public void FadeIn(float duration = 1)
+	{
+		StartCoroutine(FadeInRoutine(duration));
+	}
+
+	IEnumerator FadeInRoutine(float duration)
+	{
+		Color color = fadeImage.color;
+
+		float k = 0;
+
+		while(k < duration)
+		{
+			color.a = 1 - k/duration;
+
+			fadeImage.color = color;
+
+			k += Time.deltaTime;
+			yield return null;
+		}
+
+		color.a = 0;
+
+		fadeImage.color = color;
+	}
+
+	public void FadeOut()
+	{
+
+	}
+
+	void FixedUpdate()
 	{
 		//Debug.Log ("Is the Menu Open: " + isMenuOpen);
 		if (isMenuOpen) {
