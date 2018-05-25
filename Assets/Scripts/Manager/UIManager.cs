@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
 		DynamicGI.UpdateEnvironment(); // Get rid of this eventually
-		FadeIn(fadeDuration);
+		FadeIn();
 	}
 	
 	public void CloseControls()
@@ -146,12 +146,12 @@ public class UIManager : MonoBehaviour
 
 	}
 
-	public void FadeIn(float duration = 1)
+	public void FadeIn()
 	{
-		StartCoroutine(FadeInRoutine(duration));
+		StartCoroutine(FadeRoutine(fadeDuration, true));
 	}
 
-	IEnumerator FadeInRoutine(float duration)
+	IEnumerator FadeRoutine(float duration, bool fadeIn)
 	{
 		Color color = fadeImage.color;
 
@@ -159,7 +159,10 @@ public class UIManager : MonoBehaviour
 
 		while(k < duration)
 		{
-			color.a = 1 - k/duration;
+			if(fadeIn)
+				color.a = 1 - k/duration;
+			else
+				color.a = k/duration;
 
 			fadeImage.color = color;
 
@@ -167,14 +170,17 @@ public class UIManager : MonoBehaviour
 			yield return null;
 		}
 
-		color.a = 0;
+		if(fadeIn)
+			color.a = 0;
+		else
+			color.a = 1;
 
 		fadeImage.color = color;
 	}
 
 	public void FadeOut()
 	{
-
+		StartCoroutine(FadeRoutine(fadeDuration, false));
 	}
 
 	void FixedUpdate()
