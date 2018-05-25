@@ -7,6 +7,8 @@ using TMPro;
 
 public class SpeechBubble : MonoBehaviour {
 
+	public GameObject package;
+
 	GameManager manager;
 	int counter = 0;
 	string tip = "Press <sprite=0> to talk";
@@ -21,6 +23,10 @@ public class SpeechBubble : MonoBehaviour {
 	public string[] thirdDia; //thing npc says after completed task
 
 	public TextMeshProUGUI speech;
+
+	void Awake(){
+		package.SetActive (false);
+	}
 
 	void OnTriggerStay(Collider other)//if an object is in the box around the old man
 	{
@@ -67,6 +73,7 @@ public class SpeechBubble : MonoBehaviour {
 				}
 				break;
 			case 1: //state when player has talked to NPC once, haven't completed quest yet
+				package.SetActive (true);
 				manager.isMovementLocked = true;
 				if(counter <secondDia.Length)
 				{
