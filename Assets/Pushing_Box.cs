@@ -18,8 +18,9 @@ public class Pushing_Box : MonoBehaviour {
 		if (Juanito.ins.isPushing == true) {
 			pushingBox.UnPause ();
 		}
-		if (Juanito.ins.isPushing == false) {
+		if (Juanito.ins.isPushing == false && pushingBox.isPlaying) {
 			pushingBox.Pause ();
+			//Debug.Log ("Paused?");
 		}
 	}
 }

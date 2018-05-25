@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00066218036, g: 0.0010743715, b: 0.42007422, a: 1}
+  m_IndirectSpecularColor: {r: 0.00064659276, g: 0.0010574549, b: 0.4200629, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -11460,6 +11460,8 @@ MonoBehaviour:
   volume: 1
   volumeVariance: 0.04
   pitchVariance: 0.08
+  minTime: 0
+  maxTime: 0
   dogWhimper:
   - {fileID: 8300000, guid: 9cb86e42049f34ddebac111e8504e4bb, type: 3}
   - {fileID: 8300000, guid: c209f8ceba7d442bca59c357ad7ee804, type: 3}
@@ -11477,6 +11479,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d3ef84f787b50437ab0bfc3027f82d3d, type: 3}
   - {fileID: 8300000, guid: 9dd38c2ef5f2946b9b6602682ae65f86, type: 3}
   - {fileID: 8300000, guid: 009b4e2355a014926bf3272cbe88a44f, type: 3}
+  dogBreathing: []
+  dogMix:
+  - {fileID: 8300000, guid: 9cb86e42049f34ddebac111e8504e4bb, type: 3}
+  - {fileID: 8300000, guid: c209f8ceba7d442bca59c357ad7ee804, type: 3}
+  - {fileID: 8300000, guid: 4d6339a8658e8434197f2ce3de140825, type: 3}
+  - {fileID: 8300000, guid: ca841015353ed4de290e22ef18dbe8a3, type: 3}
+  - {fileID: 8300000, guid: b40adf17b550947ebb7f076cfe7f2f0c, type: 3}
+  - {fileID: 8300000, guid: 6c4ddb9d1ed294240bf7e7b7ec786cb6, type: 3}
+  - {fileID: 8300000, guid: f3d4f7d384ecd488a8bf790c84a07877, type: 3}
+  - {fileID: 8300000, guid: 26d9006333eff4c6da116c5a6094473d, type: 3}
+  - {fileID: 8300000, guid: f23accee97d9540f380618bdd03c6a09, type: 3}
+  - {fileID: 8300000, guid: c955cf7e02f4746609cc823d79debcfe, type: 3}
+  - {fileID: 8300000, guid: f79b5a6cd64b84150aad9c7bde9ee191, type: 3}
+  - {fileID: 8300000, guid: 897876881c90540eaa03e4979af3915f, type: 3}
+  - {fileID: 8300000, guid: d3ef84f787b50437ab0bfc3027f82d3d, type: 3}
 --- !u!82 &705324405
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11498,7 +11515,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 95
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -15844,7 +15861,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910013171}
-  m_LocalRotation: {x: 0.055232465, y: 0.43698055, z: -0.02689664, w: 0.8973705}
+  m_LocalRotation: {x: 0.055232584, y: 0.43698037, z: -0.026896764, w: 0.8973707}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22287,13 +22304,14 @@ GameObject:
   - component: {fileID: 1277020346}
   - component: {fileID: 1277020345}
   - component: {fileID: 1277020344}
+  - component: {fileID: 1277020347}
   m_Layer: 20
   m_Name: Dog_Sound 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1277020343
 Transform:
   m_ObjectHideFlags: 0
@@ -22322,6 +22340,8 @@ MonoBehaviour:
   volume: 1
   volumeVariance: 0.04
   pitchVariance: 0.08
+  minTime: 0
+  maxTime: 0
   dogWhimper:
   - {fileID: 8300000, guid: 9cb86e42049f34ddebac111e8504e4bb, type: 3}
   - {fileID: 8300000, guid: c209f8ceba7d442bca59c357ad7ee804, type: 3}
@@ -22339,6 +22359,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d3ef84f787b50437ab0bfc3027f82d3d, type: 3}
   - {fileID: 8300000, guid: 9dd38c2ef5f2946b9b6602682ae65f86, type: 3}
   - {fileID: 8300000, guid: 009b4e2355a014926bf3272cbe88a44f, type: 3}
+  dogBreathing: []
+  dogMix: []
 --- !u!82 &1277020345
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22358,9 +22380,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 95
+  MaxDistance: 40
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -22401,7 +22423,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.15277778
+      value: 0.030555556
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -22432,6 +22454,33 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1277020347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1277020342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734ee6fd258a848618fda39813aa90e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySound: {fileID: 1277020345}
+  volume: 1
+  volumeVariance: 0.04
+  pitchVariance: 0.08
+  ambientSound:
+  - {fileID: 8300000, guid: 9cb86e42049f34ddebac111e8504e4bb, type: 3}
+  - {fileID: 8300000, guid: c209f8ceba7d442bca59c357ad7ee804, type: 3}
+  - {fileID: 8300000, guid: 4d6339a8658e8434197f2ce3de140825, type: 3}
+  - {fileID: 8300000, guid: ca841015353ed4de290e22ef18dbe8a3, type: 3}
+  - {fileID: 8300000, guid: b40adf17b550947ebb7f076cfe7f2f0c, type: 3}
+  - {fileID: 8300000, guid: 6c4ddb9d1ed294240bf7e7b7ec786cb6, type: 3}
+  - {fileID: 8300000, guid: f3d4f7d384ecd488a8bf790c84a07877, type: 3}
+  - {fileID: 8300000, guid: 26d9006333eff4c6da116c5a6094473d, type: 3}
+  - {fileID: 8300000, guid: f23accee97d9540f380618bdd03c6a09, type: 3}
+  minTime: 0
+  maxTime: 0
 --- !u!1 &1277220291 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 102068, guid: b9af4c4eae4b1624db7045c1afd2c0ff, type: 3}
@@ -31564,7 +31613,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799237338}
-  m_LocalRotation: {x: 0.02867632, y: -0.40528587, z: -0.01272071, w: -0.9136516}
+  m_LocalRotation: {x: 0.02867633, y: -0.4052858, z: -0.012720733, w: -0.91365165}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -36740,7 +36789,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2114218090}
-  m_LocalRotation: {x: -0.002191218, y: 0.9974761, z: -0.061394274, w: -0.03560083}
+  m_LocalRotation: {x: -0.0021912227, y: 0.99747604, z: -0.0613944, w: -0.035600826}
   m_LocalPosition: {x: 56.54842, y: 125.9, z: 216.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

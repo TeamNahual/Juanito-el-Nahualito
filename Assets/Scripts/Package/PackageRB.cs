@@ -28,18 +28,24 @@ public class PackageRB : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(!active)
-		{
+		if (!active) {
 			pushing = false;
-		}
+			Juanito.ins.isPushing = false;
+		} else
+			Juanito.ins.isPushing = false;
 
 		if(pushing)
 		{
 			//Added to Use in another Sound Script
-			Juanito.ins.isPushing = true;
+			//Juanito.ins.isPushing = true;
 
 			float horizontal = GetPlayerInput()[0];
 			float vertical = GetPlayerInput()[1];
+
+			if (horizontal > 0 || horizontal < 0 || vertical > 0 || vertical < 0) {
+				Juanito.ins.isPushing = true;
+			}// else
+				//Juanito.ins.isPushing = false;
 
 			Vector3 camera_forward = Vector3.Scale (Camera.main.transform.forward, new Vector3 (1, 0, 1)).normalized;
 
