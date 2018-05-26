@@ -131,6 +131,9 @@ public class SpeechBubble : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (speech.enabled) 
+		{
+			speech.transform.LookAt (Camera.main.transform);
+		}
 	}
 }
