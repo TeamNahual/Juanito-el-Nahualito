@@ -29,7 +29,7 @@ public class TimelineTrigger : MonoBehaviour {
 			timeLineCurrent = Mathf.Round ((float)timeline.time);
 			///Debug.Log ("Timeline Time: " + timeLineCurrent);
 
-			if (timeLineCurrent == timeLineDuration) {
+			if (timeLineCurrent >= timeLineDuration) {
 				myManager.unlockMovement ();
 				lockPlayerMovement = false;
 				//Debug.Log ("Called Unlocking");
@@ -51,10 +51,10 @@ public class TimelineTrigger : MonoBehaviour {
 			timeline.Play ();
 
 			// Boolean Controls calls the Respective function on whether to lock movement
-			if (lockPlayerMovement == true) {
+			/*if (lockPlayerMovement == true) {
 				myManager.lockMovement ();
 			}
-			/*if (lockPlayerMovement == false) {
+			if (lockPlayerMovement == false) {
 				myManager.unlockMovement ();
 			}*/
 
@@ -69,10 +69,10 @@ public class TimelineTrigger : MonoBehaviour {
 			timeline.Play ();
 
 			// Boolean Controls calls the Respective function on whether to lock movement
-			if (lockPlayerMovement == true) {
+			/*if (lockPlayerMovement == true) {
 				myManager.lockMovement ();
 			}
-			/*if (lockPlayerMovement == false) {
+			if (lockPlayerMovement == false) {
 				myManager.unlockMovement ();
 			}*/
 
