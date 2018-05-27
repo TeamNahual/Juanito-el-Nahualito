@@ -15,7 +15,7 @@ public class pulley_platform : MonoBehaviour {
 	private Dictionary<string, float> weights = new Dictionary<string, float>{ {"medicine", 1f}, {"dog", 3f} };*/
 	private Transform obj = null;
 	public bool ready = false;
-	private package pack = null;
+	private PackageRB pack = null;
 	private Transform release = null;
 
 	void Awake(){
@@ -81,7 +81,7 @@ public class pulley_platform : MonoBehaviour {
 		ready = true;
 	}
 
-	public void Activate(Transform t, package p, Transform r){
+	public void Activate(Transform t, PackageRB p, Transform r){
 		pack = p;
 		release = r;
 		Activate (t);

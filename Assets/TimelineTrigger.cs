@@ -8,6 +8,7 @@ public class TimelineTrigger : MonoBehaviour {
 	public PlayableDirector timeline;
 	public bool playTimeline = true;
 	public bool lockPlayerMovement = false;
+	public PlayerType playerType;
 	private GameManager myManager;
 	private float timeLineCurrent;
 	private float timeLineDuration;
@@ -38,7 +39,14 @@ public class TimelineTrigger : MonoBehaviour {
 
 	//Is called when trigger area is entered
 	void OnTriggerEnter(Collider other){
-		//Other is the Juanito Player Object
+		if (playerType == PlayerType.Human)
+			PlayHumanTimeline (other);
+		else if (playerType == PlayerType.Spirit)
+			PlaySpiritTimeline(other);
+	}
+
+	void PlayHumanTimeline(Collider other)
+	{
 		if (other.gameObject == Juanito.ins.JuanitoHuman && playTimeline) {
 			timeline.Play ();
 
@@ -54,4 +62,28 @@ public class TimelineTrigger : MonoBehaviour {
 			playTimeline = false;
 		}
 	}
+
+	void PlaySpiritTimeline(Collider other)
+	{
+		if (other.gameObject == Juanito.ins.JuanitoSpirit && playTimeline) {
+			timeline.Play ();
+
+			// Boolean Controls calls the Respective function on whether to lock movement
+			if (lockPlayerMovement == true) {
+				myManager.lockMovement ();
+			}
+			/*if (lockPlayerMovement == false) {
+				myManager.unlockMovement ();
+			}*/
+
+			// Disables the calling the cutscene again
+			playTimeline = false;
+		}
+	}
+}
+	
+public enum PlayerType
+{
+	Human,
+	Spirit
 }

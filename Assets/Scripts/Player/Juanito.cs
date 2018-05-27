@@ -17,6 +17,7 @@ public class Juanito : MonoBehaviour {
 	public bool butterflyRelic = false;
 	public bool statueRelic = false;
     public bool hasFood = false;
+	public bool isPushing = false;
 
 	
 	private float spirit_time_limit = 50;
