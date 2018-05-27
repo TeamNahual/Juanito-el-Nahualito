@@ -11,8 +11,7 @@ public class StatueEvent : EventObject {
 	public bool pushing = false;
 	public int rotateFlag = 1;
 
-	public StatueContainer container; 
-	public GameObject collider;
+	public StatueContainer container;
 
 	public AudioSource rotatingStones;
 
@@ -33,7 +32,6 @@ public class StatueEvent : EventObject {
 				Dettach();
  				//UIManager.instance.dialogueSystem.addDialogue("The statue locks in place and refuses to budge.");
  				StatuePuzzleManager.ins.CheckStatueRotations();
- 				collider.SetActive(false);
 
 				//Stop playing sound effect
 				rotatingStones.Stop ();

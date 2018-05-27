@@ -8,6 +8,7 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 	public List<GameObject> piecesStatic;
 	public bool allActive = false;
 	public RelicPedestal relic;
+	public GameObject VisibleInSpiritMode;
 
 	public static ButterflyPuzzleManager ins;
 
@@ -74,6 +75,8 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 			{
 				ShowBlocks = true;
 
+				VisibleInSpiritMode.SetActive(true);
+
 				foreach(GameObject piece in piecesStatic)
 				{
 					piece.SetActive(true);
@@ -85,6 +88,8 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 			if(ShowBlocks)
 			{
 				ShowBlocks = false;
+
+				VisibleInSpiritMode.SetActive(false);
 
 				foreach(GameObject piece in piecesStatic)
 				{
