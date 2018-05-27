@@ -51,12 +51,10 @@ public class TimelineTrigger : MonoBehaviour {
 			timeline.Play ();
 
 			// Boolean Controls calls the Respective function on whether to lock movement
-			/*if (lockPlayerMovement == true) {
+			if (lockPlayerMovement == true) {
 				myManager.lockMovement ();
 			}
-			if (lockPlayerMovement == false) {
-				myManager.unlockMovement ();
-			}*/
+
 
 			// Disables the calling the cutscene again
 			playTimeline = false;
@@ -69,12 +67,9 @@ public class TimelineTrigger : MonoBehaviour {
 			timeline.Play ();
 
 			// Boolean Controls calls the Respective function on whether to lock movement
-			/*if (lockPlayerMovement == true) {
+			if (lockPlayerMovement == true) {
 				myManager.lockMovement ();
 			}
-			if (lockPlayerMovement == false) {
-				myManager.unlockMovement ();
-			}*/
 
 			// Disables the calling the cutscene again
 			playTimeline = false;
