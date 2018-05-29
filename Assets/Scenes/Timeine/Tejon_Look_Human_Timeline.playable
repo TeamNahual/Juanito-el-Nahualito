@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 337831424, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
-  m_Name: Camera_Pan_Timeline_Short
+  m_Name: Tejon_Look_Human_Timeline
   m_EditorClassIdentifier: 
   m_NextId: 0
   m_Tracks:
-  - {fileID: 114822554108568720}
+  - {fileID: 114859143986876518}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 0
---- !u!114 &114815982680028232
+--- !u!114 &114003714737935282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -30,9 +30,9 @@ MonoBehaviour:
   m_Name: CinemachineShot
   m_EditorClassIdentifier: 
   VirtualCamera:
-    exposedName: 78044c33fbe19194f8a75d3d95433988
+    exposedName: b20adf88a28f5e748aebef8b13a1d8fc
     defaultValue: {fileID: 0}
---- !u!114 &114822554108568720
+--- !u!114 &114859143986876518
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -52,12 +52,12 @@ MonoBehaviour:
   m_Clips:
   - m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 114815982680028232}
-    m_UnderlyingAsset: {fileID: 0}
+    m_Asset: {fileID: 114003714737935282}
+    m_UnderlyingAsset: {fileID: 114003714737935282}
     m_Duration: 5
     m_TimeScale: 1
-    m_ParentTrack: {fileID: 114822554108568720}
-    m_EaseInDuration: 1
+    m_ParentTrack: {fileID: 114859143986876518}
+    m_EaseInDuration: 1.2
     m_EaseOutDuration: 1
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
@@ -106,5 +106,5 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: AnimalTimelineCamera
+    m_DisplayName: CM vcam2
     m_Version: 1
