@@ -19,7 +19,7 @@ public class PackageTrigger : MonoBehaviour {
 		if (!active || other.gameObject != Juanito.ins.JuanitoHuman || !main.active)
 			return;
 
-		print ("continuing with active: " + active);
+		// print ("continuing with active: " + active);
 
 		Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
         Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
