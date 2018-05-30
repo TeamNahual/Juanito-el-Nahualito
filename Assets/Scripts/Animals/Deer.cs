@@ -9,7 +9,7 @@ using MalbersAnimations;
 
 public class Deer : AnimalFollowController {
 
-	bool runningTask = false;
+	public bool runningTask = false;
 
 	public Transform targetObject;
     
