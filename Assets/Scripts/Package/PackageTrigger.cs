@@ -7,6 +7,8 @@ public class PackageTrigger : MonoBehaviour {
 
 	public PackageRB main;
 
+	private bool active = true;
+
 	// Use this for initialization
 	void Start () {
 		main = transform.parent.GetComponent<PackageRB>();
@@ -14,8 +16,10 @@ public class PackageTrigger : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other)
 	{
-		if(other.gameObject != Juanito.ins.JuanitoHuman || !main.active)
+		if (!active || other.gameObject != Juanito.ins.JuanitoHuman || !main.active)
 			return;
+
+		// print ("continuing with active: " + active);
 
 		Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
         Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
@@ -55,5 +59,10 @@ public class PackageTrigger : MonoBehaviour {
 		main.DetachPlayer();
 		UIManager.instance.TooltipDisable();
 
+	}
+
+	public void deactivate(){
+		print ("deactivating triger");
+		active = false;
 	}
 }

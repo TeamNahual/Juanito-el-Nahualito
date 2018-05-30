@@ -55,7 +55,7 @@ public class Randomize_Locations : MonoBehaviour {
 
 		gameObject.GetComponent<Transform> ().position = sndLocation [randomPoint];
 
-		Debug.Log ("Position of Object: " + gameObject.GetComponent<Transform> ().position);
+		// Debug.Log ("Position of Object: " + gameObject.GetComponent<Transform> ().position);
 		//gameObject.GetComponent<Transform>().
 	}
 }

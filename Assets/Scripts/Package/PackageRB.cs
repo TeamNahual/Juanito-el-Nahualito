@@ -16,6 +16,8 @@ public class PackageRB : MonoBehaviour {
 
 	public Rigidbody rb;
 
+	private RigidbodyConstraints moving, still;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -24,6 +26,8 @@ public class PackageRB : MonoBehaviour {
 			Physics.IgnoreCollision(capsuleCol.GetComponent<Collider>(), Juanito.ins.JuanitoHuman.GetComponent<Collider>(), true);
 			Physics.IgnoreCollision(GetComponent<Collider>(), capsuleCol.GetComponent<Collider>());
 		}
+		moving = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+		still = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 	}
 	
 	// Update is called once per frame
@@ -91,6 +95,7 @@ public class PackageRB : MonoBehaviour {
 		//rb.detectCollisions = true;
 		pushing = true;
 		rb.constraints = RigidbodyConstraints.FreezeRotation;
+		//rb.constraints = moving;
 		Juanito.ins.JuanitoHuman.transform.parent = transform;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
@@ -113,6 +118,7 @@ public class PackageRB : MonoBehaviour {
 		//rb.detectCollisions = false;
 		pushing = false;
 		rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+		//rb.constraints = still;
 		UIManager.instance.TooltipDisable();
 		Juanito.ins.JuanitoHuman.transform.parent = Juanito.ins.transform;
 		Juanito.ins.JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = true;
@@ -137,5 +143,12 @@ public class PackageRB : MonoBehaviour {
 		active = false;
 		DetachPlayer ();
 		rb.constraints = RigidbodyConstraints.FreezeAll;
+	}
+
+	public void Disable(){
+		Deactivate ();
+		PackageTrigger trigger = gameObject.GetComponentInChildren <PackageTrigger> ();
+		print ("trigger is " + trigger);
+		trigger.deactivate ();
 	}
 }
