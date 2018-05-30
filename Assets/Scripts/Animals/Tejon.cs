@@ -10,7 +10,7 @@ using MalbersAnimations;
 
 public class Tejon : AnimalFollowController {
 
-	bool runningTask = false;
+	public bool runningTask = false;
 
 	Transform targetObject;
 
