@@ -13,6 +13,7 @@ AudioMixerController:
   - {fileID: 24500006}
   - {fileID: 245232423703000364}
   - {fileID: 245741345380234888}
+  - {fileID: 245730176859758028}
   m_StartSnapshot: {fileID: 245232423703000364}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -27,7 +28,7 @@ AudioMixerController:
     - eb87077cf783e42d6abcd105f9ee2520
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 245741345380234888}
+  m_TargetSnapshot: {fileID: 245730176859758028}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ AudioMixerEffectController:
     m_GUID: d10bd165fe5984f0286915440d45ff85
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
-  m_Bypass: 1
+  m_Bypass: 0
 --- !u!244 &244286888359623056
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -255,6 +256,17 @@ AudioMixerSnapshotController:
   m_SnapshotID: f0c6785e7d3fa4a399a5217ecd500d92
   m_FloatValues:
     dc5a82746fbc84fc083dbff51632e6d0: -0.037667945
+  m_TransitionOverrides: {}
+--- !u!245 &245730176859758028
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Act 1 - Dog Breathing
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: acfeb14bc04bc4ed48ee02c15a99eccc
+  m_FloatValues:
+    dc5a82746fbc84fc083dbff51632e6d0: 7.833429
   m_TransitionOverrides: {}
 --- !u!245 &245741345380234888
 AudioMixerSnapshotController:
