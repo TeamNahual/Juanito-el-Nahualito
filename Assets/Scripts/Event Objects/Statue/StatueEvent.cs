@@ -40,25 +40,35 @@ public class StatueEvent : EventObject {
 			return;
 		}
 
-		UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
+		Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
+        Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
+		bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
 
-		if((Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action"))
-			 && CheckPlayerDirection(Juanito.ins.JuanitoSpirit))
+		if(dirCheck)
 		{
-			UIManager.instance.TooltipDisplay("Use <sprite=6> to Push/Pull");
-			
-			if(!pushing)
+			UIManager.instance.TooltipDisplay("Hold <sprite=0> to Interact");
+
+			if((Input.GetKey(KeyCode.E) || CrossPlatformInputManager.GetButton("Action")))
 			{
-				Attach();
+				UIManager.instance.TooltipDisplay("Use <sprite=6> to Push/Pull");
+				
+				if(!pushing)
+				{
+					Attach();
+				}
+			}
+			else
+			{
+				if(pushing)
+				{
+					UIManager.instance.TooltipDisable();
+					Dettach();
+				}
 			}
 		}
 		else
 		{
-			if(pushing)
-			{
-				UIManager.instance.TooltipDisable();
-				Dettach();
-			}
+			UIManager.instance.TooltipDisable();
 		}
 
 		if(pushing)
