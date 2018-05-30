@@ -29,7 +29,7 @@ public class TimelineTrigger : MonoBehaviour {
 			timeLineCurrent = Mathf.Round ((float)timeline.time);
 			///Debug.Log ("Timeline Time: " + timeLineCurrent);
 
-			if (timeLineCurrent == timeLineDuration) {
+			if (timeLineCurrent >= timeLineDuration) {
 				myManager.unlockMovement ();
 				lockPlayerMovement = false;
 				//Debug.Log ("Called Unlocking");
@@ -54,9 +54,7 @@ public class TimelineTrigger : MonoBehaviour {
 			if (lockPlayerMovement == true) {
 				myManager.lockMovement ();
 			}
-			/*if (lockPlayerMovement == false) {
-				myManager.unlockMovement ();
-			}*/
+
 
 			// Disables the calling the cutscene again
 			playTimeline = false;
@@ -72,9 +70,6 @@ public class TimelineTrigger : MonoBehaviour {
 			if (lockPlayerMovement == true) {
 				myManager.lockMovement ();
 			}
-			/*if (lockPlayerMovement == false) {
-				myManager.unlockMovement ();
-			}*/
 
 			// Disables the calling the cutscene again
 			playTimeline = false;

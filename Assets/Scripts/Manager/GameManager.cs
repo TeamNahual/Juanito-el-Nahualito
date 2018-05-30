@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour
 	
 	public void unlockMovement() {
 		--movementLocks;
-		if (movementLocks == 0) {
+		if (movementLocks <= 0) {
+			movementLocks = 0;
 			unlockCounter = 3;
 		}
 	}

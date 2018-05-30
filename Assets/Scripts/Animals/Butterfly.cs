@@ -112,7 +112,6 @@ public class Butterfly : MonoBehaviour {
 		// sphereContainer.SetActive(false);
 		//containerLighting.SetActive(false);
 		//Camera.main.backgroundColor = mBackgroundColor;
-		// LightManager.ins.EnableLights();
 		GetComponent<ButterflySpawner>().OnSpiritModeEnd();
 	}
 }
