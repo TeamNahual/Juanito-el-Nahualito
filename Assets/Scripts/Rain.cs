@@ -18,6 +18,8 @@ public class Rain : MonoBehaviour {
 	{
 		Debug.Log ("collision");
 		this.StartCoroutine (storm());
+		Renderer show = GetComponent<Renderer> ();
+		show.enabled = false;
 	}
 
 	IEnumerator storm()
@@ -25,7 +27,9 @@ public class Rain : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 		cloud.GetComponent<MeshRenderer> ().material = gray;
 		yield return new WaitForSeconds (2);
-		while (grass.transform.position.y < -86.7) 
+		Vector3 grow = grass.transform.position;
+		grow.y += 10;
+		while (grass.transform.position.y < grow.y) 
 		{
 			spot.y += 1;
 			grass.transform.position = spot;

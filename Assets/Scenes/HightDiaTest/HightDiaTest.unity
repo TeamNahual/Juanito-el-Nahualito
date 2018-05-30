@@ -4416,7 +4416,7 @@ Transform:
   m_LocalScale: {x: 4.5, y: 6, z: 4.5}
   m_Children: []
   m_Father: {fileID: 1556339221}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &302796472
 MonoBehaviour:
@@ -8830,8 +8830,8 @@ Transform:
   m_LocalPosition: {x: 20.59, y: 54.99, z: -10.228684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 234791039}
   - {fileID: 302796471}
+  - {fileID: 234791039}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -10457,6 +10457,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224742668717348724, guid: c0f3fdf4d4cc7bd4c8273072f6015e93,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0f3fdf4d4cc7bd4c8273072f6015e93, type: 2}
   m_IsPrefabParent: 0
@@ -10498,6 +10503,9 @@ MonoBehaviour:
   hasFood: 0
   SpiritState: 0
   inButterflyZone: 0
+  butterflyZoneOrigin: {x: 0, y: 0, z: 0}
+  butterflyZoneRadius: 0
+  spiritCanWalkIntoBodyFlag: 0
   SpiritControl: {fileID: 0}
 --- !u!4 &1945473516
 Transform:
