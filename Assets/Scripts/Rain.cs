@@ -31,7 +31,7 @@ public class Rain : MonoBehaviour {
 		grow.y += 10;
 		while (grass.transform.position.y < grow.y) 
 		{
-			spot.y += 1;
+			spot.y += .5f;
 			grass.transform.position = spot;
 			yield return new WaitForEndOfFrame ();
 		}
