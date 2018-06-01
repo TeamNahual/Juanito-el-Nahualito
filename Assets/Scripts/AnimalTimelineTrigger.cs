@@ -26,7 +26,7 @@ public class AnimalTimelineTrigger : MonoBehaviour {
 		if(update)
 		{
 			if(state == 0)
-				StartCoroutine(GoTo(start, 0.1f));
+				StartCoroutine(GoTo(start, 0.2f));
 			else if(state == 1)
 				StartCoroutine(GoTo(play, Distance));
 			else if(state == 2)
@@ -67,7 +67,7 @@ public class AnimalTimelineTrigger : MonoBehaviour {
 	IEnumerator PlayTimeline()
 	{
 		SetTask(true);
-		animal.GetComponent<Transform>().LookAt(play);
+		animal.target = play;
 		timeline.Play();
 
 		yield return new WaitForSeconds((float)timeline.duration);
