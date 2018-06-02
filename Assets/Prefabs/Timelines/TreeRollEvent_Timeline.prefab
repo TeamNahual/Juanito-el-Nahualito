@@ -165,8 +165,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100589495064472}
   m_LocalRotation: {x: 0.029658588, y: -0.022727508, z: 0.00067452766, w: 0.99930143}
-  m_LocalPosition: {x: 10.63, y: -1.3, z: -24.37}
-  m_LocalScale: {x: 1.2848603, y: 1.28485, z: 1.28485}
+  m_LocalPosition: {x: 21.53, y: -0.22, z: -24.11}
+  m_LocalScale: {x: 1.284855, y: 1.2848545, z: 1.2848544}
   m_Children:
   - {fileID: 4080125105782384}
   - {fileID: 4874495038756410}
@@ -415,7 +415,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 8
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -453,7 +453,7 @@ MonoBehaviour:
   timeline: {fileID: 320350201091248928}
   start: {fileID: 4497401920375102}
   play: {fileID: 4241003113149644}
-  Distance: 3.5
+  Distance: 3.8
 --- !u!114 &114774971395281772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,10 +475,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 5
+  m_Radius: 1
+  m_Height: 7
   m_Direction: 0
-  m_Center: {x: 0.2, y: 0, z: 1}
+  m_Center: {x: 0.1, y: 0, z: 1}
 --- !u!320 &320350201091248928
 PlayableDirector:
   m_ObjectHideFlags: 1
