@@ -23,6 +23,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
+		bool m_IsGroundedTemp = true;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
@@ -93,7 +94,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 					isStaticPhys = m_IsGrounded;
 				}
 			}
-
+			
 			// ScaleCapsuleForCrouching(crouch);
 			// PreventStandingInLowHeadroom();
 
@@ -210,6 +211,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 			{
 				// jump!
+				
 				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
@@ -237,7 +239,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Move.z *= multiplier;
 
 				// we preserve the existing y part of the current velocity.
-				m_Move.y = m_Rigidbody.velocity.y;
+				m_Move.y = m_Rigidbody.velocity.y - ((m_IsGroundedTemp)? 0.0f: 2.0f);
 				m_Rigidbody.velocity = m_Move;
 			}
 		}
@@ -257,11 +259,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				m_GroundNormal = hitInfo.normal;
 				m_IsGrounded = true;
+				m_IsGroundedTemp = true;
 				m_Animator.applyRootMotion = true;
 			}
 			else
 			{
-				m_IsGrounded = false;
+				//m_IsGrounded = false;
+				m_IsGroundedTemp = false;
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
 			}
