@@ -40,8 +40,8 @@ public class StatueEvent : EventObject {
 			return;
 		}
 
-		Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
-        Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
+		Vector3 fwd = Juanito.ins.JuanitoSpirit.transform.TransformDirection(Vector3.forward);
+        Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoSpirit.transform.position);
 		bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
 
 		if(dirCheck)
@@ -123,7 +123,7 @@ public class StatueEvent : EventObject {
 		Juanito.ins.JuanitoSpirit.transform.parent = Juanito.ins.transform;
 		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonUserControl>().enabled = true;
 		Juanito.ins.JuanitoSpirit.GetComponent<ThirdPersonCharacter>().enabled = true;
-
+		UIManager.instance.TooltipDisable();
 		// Stop playing sound
 		rotatingStones.Stop();
 	}
