@@ -2115,6 +2115,7 @@ GameObject:
   - component: {fileID: 114820317019620138}
   - component: {fileID: 136005414109016226}
   - component: {fileID: 114560519742576788}
+  - component: {fileID: 114939598043691888}
   m_Layer: 9
   m_Name: Butterfly (2)
   m_TagString: Untagged
@@ -2605,8 +2606,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1336146658871454}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 76.1, y: -21.4, z: -35.2}
+  m_LocalRotation: {x: -0, y: 0.5964058, z: -0, w: 0.80268306}
+  m_LocalPosition: {x: 489.4, y: 224.2, z: 217}
   m_LocalScale: {x: 12.907849, y: 12.907846, z: 12.907846}
   m_Children:
   - {fileID: 4009395079208170}
@@ -2618,7 +2619,7 @@ Transform:
   - {fileID: 4133230899709760}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 100.004005, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 73.226006, z: 0}
 --- !u!4 &4166506508077050
 Transform:
   m_ObjectHideFlags: 1
@@ -9699,6 +9700,23 @@ MonoBehaviour:
   rotateFlag: 1
   container: {fileID: 114492023957030426}
   rotatingStones: {fileID: 0}
+--- !u!114 &114939598043691888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1970153907221664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35be6a48978e54983ad3ed65735111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  butterflyPrefab: {fileID: 1405962911181570, guid: 9bddb0cfc552fe5408589ae5e45b034b,
+    type: 2}
+  spawnCount: 10
+  spawnRadius: 2
+  velocity: 10
+  velocityVariation: 0.5
 --- !u!114 &114970274828707242
 MonoBehaviour:
   m_ObjectHideFlags: 1
