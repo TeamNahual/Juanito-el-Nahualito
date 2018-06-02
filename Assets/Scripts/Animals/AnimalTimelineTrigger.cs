@@ -54,9 +54,11 @@ public class AnimalTimelineTrigger : MonoBehaviour {
 		animal.Agent.stoppingDistance = dist;
 		yield return null;
 
-		while(animal.Agent.remainingDistance > animal.Agent.stoppingDistance)
+		int count = 0;
+		while(animal.Agent.remainingDistance > animal.Agent.stoppingDistance && count <= 200)
 		{
 			animal.agent.stoppingDistance = dist;
+			count++;
 			yield return null;
 		}
 
