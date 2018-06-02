@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 136878585599361826}
   - component: {fileID: 114492003803498622}
   - component: {fileID: 114859387152994066}
+  - component: {fileID: 114622637106897744}
   m_Layer: 0
   m_Name: TimelinePrefab
   m_TagString: Untagged
@@ -582,6 +583,18 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4631834734506782}
+--- !u!114 &114622637106897744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816973281996190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02e0c439a657e7479482152fec3aa9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeline: {fileID: 320782263043627108}
 --- !u!114 &114778739949152888
 MonoBehaviour:
   m_ObjectHideFlags: 1
