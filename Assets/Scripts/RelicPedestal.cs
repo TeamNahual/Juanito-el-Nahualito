@@ -95,7 +95,7 @@ public class RelicPedestal : MonoBehaviour {
 		someRhythm.TransitionTo (.5f);
 		float k = 0;
 
-		while (k < 1) 
+		while (k < 2) 
 		{
 			transform.localPosition = Vector3.Lerp (beginningPosition, finalPosition, k);
 
