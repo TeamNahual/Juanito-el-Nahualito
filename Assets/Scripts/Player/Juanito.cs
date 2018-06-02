@@ -14,6 +14,8 @@ public class Juanito : MonoBehaviour {
 	public Animator HumanAnim;
 	public Animator SpiritAnim;
 
+	public ParticleSystem energy;
+
 	public bool butterflyRelic = false;
 	public bool statueRelic = false;
     public bool hasFood = false;
@@ -74,6 +76,9 @@ public class Juanito : MonoBehaviour {
  	{
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
+
+		//Energy particle effect
+		energy.Play();
 
 	    if (FancyCam.ins) FancyCam.ins.player = JuanitoSpirit.transform;
 	    if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoSpirit.transform;
