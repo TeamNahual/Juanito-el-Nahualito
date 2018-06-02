@@ -101,7 +101,11 @@ public class AltarPiece : MonoBehaviour {
 	{
 		if(other.gameObject == Juanito.ins.JuanitoHuman)
 		{
-			if(Juanito.ins.CheckFacingObjects(new GameObject[] {transform.parent.gameObject, gameObject}))
+			Debug.Log(other.gameObject.name);
+			Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
+			Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
+			bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
+			if(true)
 			{
 				if(SeashellRelic)
 				{
