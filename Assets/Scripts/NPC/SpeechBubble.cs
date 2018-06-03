@@ -88,7 +88,7 @@ public class SpeechBubble : MonoBehaviour {
 					speech.enabled = false;
 					counter = 0;
 					tip = "Press <sprite=0> to talk";
-                        Juanito.ins.JuanitoHuman.transform.position = new Vector3(177.8f, 90.45f, 272.97f);
+                        Juanito.ins.JuanitoHuman.transform.position = new Vector3(173.5135f, 90.44999f, 262.44f);
 				}
 				break;
 			case 2: //player has completed quest

@@ -87,7 +87,7 @@ public class AltarPiece : MonoBehaviour {
 				transform.GetChild (0).gameObject.SetActive (true);
 				main.NecklaceRelic = true;
 
-				UIManager.instance.dialogueSystem.addDialogue("To be continued....");
+				// UIManager.instance.dialogueSystem.addDialogue("To be continued....");
 			}
 		}
 		else
