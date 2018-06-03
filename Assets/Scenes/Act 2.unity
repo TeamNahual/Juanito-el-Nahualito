@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: e4e1a0e001b16384fbf7281df1768155,
     type: 2}
   m_UseShadowmask: 1
@@ -741,11 +740,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 3, y: 3, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -1461,47 +1460,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2899,7 +2857,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -2944,14 +2901,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -5330,9 +5285,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!4 &81380126 stripped
@@ -6812,9 +6767,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!4 &138674470 stripped
@@ -7903,9 +7858,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7c0bd023c065f9348be101c48adf50cb, type: 3}
 --- !u!1 &173027861
@@ -9695,9 +9650,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1d048fd83b1b21a4882cfbd815d9c02f, type: 3}
 --- !u!1001 &250966290
@@ -9908,7 +9863,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 251240086}
-  m_LocalRotation: {x: -0.002741202, y: 0.7522319, z: 0.003130149, w: 0.65888536}
+  m_LocalRotation: {x: -0.0027253623, y: 0.7554158, z: 0.0031426563, w: 0.65523255}
   m_LocalPosition: {x: -367.1252, y: 29.051926, z: 92.0379}
   m_LocalScale: {x: 1.0000012, y: 1, z: 1.000001}
   m_Children:
@@ -10724,19 +10679,19 @@ Prefab:
       objectReference: {fileID: 880714750}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.069051504
+      value: -0.069140375
       objectReference: {fileID: 0}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.18035828
+      value: -0.15872647
       objectReference: {fileID: 0}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.012694034
+      value: 0.018430592
       objectReference: {fileID: 0}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.98109204
+      value: -0.98472625
       objectReference: {fileID: 0}
     - target: {fileID: 320546999084416784, guid: c49bf2bb38e0648369f31c4e558867bd,
         type: 2}
@@ -11351,9 +11306,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1 &281703478
@@ -11953,11 +11908,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 3, y: 3, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -12673,47 +12628,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -14111,7 +14025,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -14156,14 +14069,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -15662,9 +15573,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!4 &312534731 stripped
@@ -15714,9 +15625,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1 &315835367
@@ -17585,11 +17496,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 3, y: 3, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -18305,47 +18216,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -19743,7 +19613,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -19788,14 +19657,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -21130,9 +20997,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1 &373350501
@@ -21375,8 +21242,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 381092875}
-  m_LocalRotation: {x: 0.050313056, y: 0.94458425, z: -0.17331621, w: 0.2742093}
-  m_LocalPosition: {x: 612.081, y: 255.18, z: 485.51654}
+  m_LocalRotation: {x: 0.035118006, y: -0.75526136, z: 0.040603787, w: 0.65322155}
+  m_LocalPosition: {x: 621.41565, y: 255.18, z: 483.3728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1824669317}
@@ -21474,7 +21341,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -22185,9 +22051,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1 &390511382
@@ -22934,9 +22800,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!4 &409233698 stripped
@@ -23560,9 +23426,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!4 &427936577 stripped
@@ -23617,9 +23483,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!4 &432300604 stripped
@@ -24248,9 +24114,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1 &455934054
@@ -25008,7 +24874,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 481507161}
   m_LocalRotation: {x: -0, y: 0.9141125, z: -0, w: 0.4054607}
-  m_LocalPosition: {x: 609.2611, y: 255.18, z: 487.37842}
+  m_LocalPosition: {x: 621.41565, y: 255.18, z: 483.3728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1732983795}
@@ -25366,6 +25232,11 @@ Prefab:
       propertyPath: audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 551
@@ -25422,10 +25293,10 @@ Prefab:
     - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
         type: 2}
       propertyPath: messages.Array.data[0]
-      value: "El dios Quetzalcoatl [ ke-tza-ku-a-tlo ],the feathered serpent, was
+      value: "El dios Quetzalcoatl [ ke-tza-ku-a-tlo ], the feathered serpent, was
         the god of all knowledge, el m\xE1s sab\xEDo. Los sacerdotes, the priests
         would go to the temple to learn from the great God himself, iban a aprender
-        del gran Dios.  "
+        del gran Dios."
       objectReference: {fileID: 0}
     - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
         type: 2}
@@ -25478,6 +25349,24 @@ Prefab:
       value: 
       objectReference: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
         type: 2}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[0]
+      value: "El dios Quetzalcoatl [ ke-tza-ku-a-tlo ], el m\xE1s sab\xEDo. Los sacerdotes,
+        iban a aprender del gran Dios."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[1]
+      value: "Despu\xE9s que los guerreros rescataron al pueblo, los sacerdotes mijo,
+        construyeron estatuas que representaban a cada guerrero."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[2]
+      value: "Sus gu\xEDas espirituales, mientras est\xE9n de cara a la monta\xF1a,
+        el templo estar\xE1 a salvo."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
   m_IsPrefabParent: 0
@@ -25495,12 +25384,12 @@ Prefab:
     - target: {fileID: 224753261810747678, guid: 8b1550e6d785a4d47b03a5831ac1be82,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 401.5
       objectReference: {fileID: 0}
     - target: {fileID: 224753261810747678, guid: 8b1550e6d785a4d47b03a5831ac1be82,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 268
       objectReference: {fileID: 0}
     - target: {fileID: 224753261810747678, guid: 8b1550e6d785a4d47b03a5831ac1be82,
         type: 2}
@@ -26832,9 +26721,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!4 &547890649 stripped
@@ -30003,7 +29892,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653938953}
-  m_LocalRotation: {x: 0.23432508, y: 0.18585397, z: -0.04569184, w: 0.95313287}
+  m_LocalRotation: {x: 0.049723286, y: 0.8901101, z: -0.1001773, w: 0.44181}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -30809,6 +30698,11 @@ Prefab:
       propertyPath: audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 654.69
@@ -30889,6 +30783,11 @@ Prefab:
     - target: {fileID: 1681208707753628, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[0]
+      value: "Cuando entres en el mundo del los esp\xEDritus, puedes regresar Juanito."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
@@ -31631,11 +31530,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 3, y: 3, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -32351,47 +32250,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -33789,7 +33647,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -33834,14 +33691,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -35023,6 +34878,11 @@ Prefab:
       propertyPath: audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 633
@@ -35074,7 +34934,7 @@ Prefab:
       value: "El Templo de las Mil Columnas, the Temple of the Thousand Columns mijo,
         was built by the priest of the village as a meeting hall to discuss concerns
         and problems within the village, era el lugar donde los sacerdotes resolv\xEDan
-        problemas del pueblo.   "
+        problemas del pueblo."
       objectReference: {fileID: 0}
     - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
         type: 2}
@@ -35124,7 +34984,7 @@ Prefab:
     - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
         type: 2}
       propertyPath: messages.Array.data[4]
-      value: rebuild the butterfly, reconstruye la mariposa.
+      value: Rebuild the butterfly, reconstruye la mariposa.
       objectReference: {fileID: 0}
     - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
         type: 2}
@@ -35145,6 +35005,37 @@ Prefab:
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 21.299002
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[4]
+      value: reconstruye la mariposa.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[3]
+      value: "Y la mariposa, se rompi\xF3. Y el guerrero no pudo seguir protegiendo
+        al pueblo ni a la monta\xF1a."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[2]
+      value: "Desafortunadamente el templo, fue abandonado, pues murieron muchas personas
+        intentando obtener m\xE1s poder. y lo \xFAnico que qued\xF3 eran las columnas
+        y ruinas."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[1]
+      value: "Cuando el pueblo ya estaba a salvo, El sacerdote construy\xF3 una estatua
+        que representaba al guerrero y una mariposa que lo ayudar\xEDa a proteger
+        el pueblo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[0]
+      value: "El Templo de las Mil Columnas, era el lugar donde los sacerdotes resolv\xEDan
+        problemas del pueblo."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
@@ -35535,9 +35426,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 25edf012e278c71429cc2a98d85fd7d9, type: 3}
 --- !u!1 &722865023
@@ -36070,7 +35961,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739934787}
-  m_LocalRotation: {x: 0.005816422, y: 0.79151064, z: -0.007528014, w: 0.6110814}
+  m_LocalRotation: {x: 0.0058443076, y: 0.78920686, z: -0.0075055924, w: 0.61405385}
   m_LocalPosition: {x: -358.1152, y: 29.051926, z: 95.44513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -37676,9 +37567,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1 &802785999
@@ -38477,7 +38368,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 842321219}
-  m_LocalRotation: {x: 0.0075189383, y: -0.37878677, z: 0.0030818, w: 0.9254483}
+  m_LocalRotation: {x: 0.0075253565, y: -0.37713543, z: 0.0030687621, w: 0.9261225}
   m_LocalPosition: {x: -9.244942, y: 3.901926, z: 90.79057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -40250,11 +40141,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 3, y: 3, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -40970,47 +40861,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -42408,7 +42258,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -42453,14 +42302,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -43847,9 +43694,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a7144b7200644d240a12e3eedc6525df, type: 3}
 --- !u!1001 &906436044
@@ -45211,7 +45058,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 948259868}
-  m_LocalRotation: {x: 0.0070396257, y: -0.6049705, z: 0.00533366, w: 0.79619896}
+  m_LocalRotation: {x: 0.0069878614, y: -0.6126511, z: 0.0054017315, w: 0.7903042}
   m_LocalPosition: {x: -15.510986, y: 26.61731, z: 29.819214}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000002}
   m_Children:
@@ -45339,9 +45186,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1 &952076652
@@ -45610,9 +45457,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 9bc53a7ffba408642b52e98fdba3972f, type: 3}
 --- !u!23 &961061260
@@ -46848,9 +46695,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bc055441cb4ef024985ebaf4b847d0ac, type: 3}
 --- !u!1001 &1002882885
@@ -48916,9 +48763,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 25edf012e278c71429cc2a98d85fd7d9, type: 3}
 --- !u!1 &1097320034
@@ -50256,9 +50103,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1 &1150955843
@@ -50692,19 +50539,19 @@ Prefab:
       objectReference: {fileID: 1459297921}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.0023215069
+      value: 0.0023311074
       objectReference: {fileID: 0}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.42589757
+      value: 0.42140427
       objectReference: {fileID: 0}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.0010932843
+      value: -0.0010837092
       objectReference: {fileID: 0}
     - target: {fileID: 4413965385748070, guid: c49bf2bb38e0648369f31c4e558867bd, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9047678
+      value: 0.9068693
       objectReference: {fileID: 0}
     - target: {fileID: 114358484868152402, guid: c49bf2bb38e0648369f31c4e558867bd,
         type: 2}
@@ -50870,7 +50717,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165618938}
-  m_LocalRotation: {x: 0.17883044, y: 0.13233358, z: -0.024281055, w: 0.9746374}
+  m_LocalRotation: {x: 0.022877453, y: 0.9033468, z: -0.048564963, w: 0.42553818}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -51889,9 +51736,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1001 &1212576922
@@ -57295,9 +57142,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e708cf6c7cac156488e9c47ec3b6d5ce, type: 2}
 --- !u!114 &1417219002
@@ -58198,9 +58045,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1446983815
@@ -59749,9 +59596,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1d048fd83b1b21a4882cfbd815d9c02f, type: 3}
 --- !u!1 &1502456029
@@ -61184,9 +61031,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1 &1549021324
@@ -61541,9 +61388,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1 &1565444619
@@ -61748,9 +61595,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!4 &1577346278 stripped
@@ -62756,9 +62603,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1001 &1623531119
@@ -63213,9 +63060,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e708cf6c7cac156488e9c47ec3b6d5ce, type: 2}
 --- !u!114 &1636774803
@@ -64233,6 +64080,11 @@ Prefab:
       propertyPath: audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 638.35
@@ -64302,7 +64154,7 @@ Prefab:
         type: 2}
       propertyPath: messages.Array.data[1]
       value: Yo he visto con mis propios ojos, a venados empujando troncos, con sus
-        cuernos gigantes,I have seen them pushing tree trunks, with my own eyes.
+        cuernos gigantes, I have seen them pushing tree trunks, with my own eyes.
       objectReference: {fileID: 0}
     - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
         type: 2}
@@ -64310,6 +64162,17 @@ Prefab:
       value: 
       objectReference: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
         type: 2}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[0]
+      value: 'Si pones atencion, '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[1]
+      value: Yo he visto con mis propios ojos, a venados empujando troncos, con sus
+        cuernos gigantes,
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
   m_IsPrefabParent: 0
@@ -64585,9 +64448,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d47b4eab5743784cb48ad028945a96d, type: 3}
 --- !u!1 &1676709224 stripped
@@ -65808,7 +65671,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1732983794}
-  m_LocalRotation: {x: 0.09090302, y: 0.07420114, z: -0.0067925174, w: 0.99306834}
+  m_LocalRotation: {x: -0.012720378, y: 0.9136626, z: 0.028677294, w: 0.40526116}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -69253,9 +69116,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 25edf012e278c71429cc2a98d85fd7d9, type: 3}
 --- !u!1 &1844154247
@@ -69538,9 +69401,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!4 &1853068547 stripped
@@ -69772,7 +69635,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -0
+    Value: 0
     m_MaxSpeed: 300
     m_AccelTime: 2
     m_DecelTime: 1
@@ -69841,9 +69704,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d4d117e4364cfa4283340ecb6d4d938, type: 3}
 --- !u!1001 &1862228751
@@ -70744,11 +70607,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 2
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 4300000, guid: ca9537025e4ff4b43a14b02995feb816, type: 3}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 1
@@ -71464,47 +71327,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -72902,7 +72724,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 1
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -72947,14 +72768,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -74015,7 +73834,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -0
+    Value: 0
     m_MaxSpeed: 300
     m_AccelTime: 2
     m_DecelTime: 1
@@ -74406,6 +74225,11 @@ Prefab:
       propertyPath: audioClips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 429.14
@@ -74491,6 +74315,16 @@ Prefab:
     - target: {fileID: 4937340524278600, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -16.327002
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[0]
+      value: No te asustes mijito, Los tejones son animales que son buenos,
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350949554796280, guid: e8559c073f5db0448a41dbcae3fa39d3,
+        type: 2}
+      propertyPath: colorCoded.Array.data[1]
+      value: "te ayudar\xE1n a excavar si se los pides,"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8559c073f5db0448a41dbcae3fa39d3, type: 2}
@@ -74629,7 +74463,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -0
+    Value: 0
     m_MaxSpeed: 300
     m_AccelTime: 2
     m_DecelTime: 1
@@ -74680,9 +74514,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1ac7d33b621d77b4aaf7c524adf8e7c2, type: 3}
 --- !u!23 &1901586453
@@ -75476,11 +75310,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -76241,47 +76075,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -77679,7 +77472,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -77724,14 +77516,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -79040,7 +78830,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -0
+    Value: 0
     m_MaxSpeed: 300
     m_AccelTime: 2
     m_DecelTime: 1
@@ -79187,7 +78977,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1938725927}
-  m_LocalRotation: {x: 0.004109987, y: -0.5835694, z: 0.0029461265, w: 0.81204754}
+  m_LocalRotation: {x: 0.00419549, y: -0.55906624, z: 0.0028216948, w: 0.82910764}
   m_LocalPosition: {x: 9.130798, y: 26.61731, z: 7.3285522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -81527,9 +81317,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7c0bd023c065f9348be101c48adf50cb, type: 3}
 --- !u!4 &1980173626 stripped
@@ -81901,7 +81691,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1984147972}
-  m_LocalRotation: {x: 0.0031804482, y: 0.80836785, z: -0.0043681227, w: 0.5886529}
+  m_LocalRotation: {x: 0.0032155495, y: 0.8036065, z: -0.004342489, w: 0.59513646}
   m_LocalPosition: {x: -357.1157, y: 27.551926, z: 95.414}
   m_LocalScale: {x: 1.0000012, y: 1, z: 1.000001}
   m_Children:
@@ -85190,7 +84980,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2068746417}
-  m_LocalRotation: {x: -0.0038730414, y: -0.669661, z: -0.0034859679, w: 0.74264866}
+  m_LocalRotation: {x: -0.003886054, y: -0.6676719, z: -0.0034789105, w: 0.74443746}
   m_LocalPosition: {x: 2.734436, y: 26.61731, z: 30.615845}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_Children:
@@ -85342,9 +85132,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300004, guid: 1ac7d33b621d77b4aaf7c524adf8e7c2, type: 3}
 --- !u!23 &2070626163
@@ -85512,9 +85302,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d47b4eab5743784cb48ad028945a96d, type: 3}
 --- !u!1001 &2078595119
@@ -86016,9 +85806,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1d048fd83b1b21a4882cfbd815d9c02f, type: 3}
 --- !u!1001 &2095395424
@@ -86109,9 +85899,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8edccc3d2a70f4345a242ca995d9fcff, type: 3}
 --- !u!1001 &2099735179
@@ -86975,11 +86765,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 2
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 4300000, guid: ca9537025e4ff4b43a14b02995feb816, type: 3}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 1
@@ -87695,47 +87485,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -89133,7 +88882,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 1
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -89178,14 +88926,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -90434,7 +90180,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -0
+    Value: 0
     m_MaxSpeed: 300
     m_AccelTime: 2
     m_DecelTime: 1
