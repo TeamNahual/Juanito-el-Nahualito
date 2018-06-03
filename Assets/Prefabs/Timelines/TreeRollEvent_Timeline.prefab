@@ -468,7 +468,7 @@ MonoBehaviour:
   timeline: {fileID: 320350201091248928}
   start: {fileID: 4497401920375102}
   play: {fileID: 4241003113149644}
-  Distance: 3.5
+  Distance: 3.8
 --- !u!114 &114774971395281772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,10 +490,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.7
-  m_Height: 5
+  m_Radius: 1
+  m_Height: 7
   m_Direction: 0
-  m_Center: {x: 0.2, y: 0, z: 1}
+  m_Center: {x: 0.1, y: 0, z: 1}
 --- !u!320 &320350201091248928
 PlayableDirector:
   m_ObjectHideFlags: 1

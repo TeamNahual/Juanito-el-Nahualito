@@ -9,6 +9,10 @@ public class StartGameButton : MonoBehaviour {
 	private bool state = false;
 	private bool interactable = false;
 
+	public bool toAct1 = false;
+	public bool toAct2 = true;
+	public bool toAct3 = false;
+
 	// Use this for initialization
 	void Start () {
 		KeyText.SetActive (false);
@@ -25,7 +29,14 @@ public class StartGameButton : MonoBehaviour {
 				KeyText.SetActive (true);
 			}
 			else
-				StartScene ();
+			{
+				if(toAct1)
+					StartAct1();
+				else if(toAct2)
+					StartScene ();
+				else if(toAct3)
+					StartAct3();
+			}
 		}
 	}
 
@@ -45,5 +56,15 @@ public class StartGameButton : MonoBehaviour {
 		state = true;
 		KeyText.SetActive (true);
 
+	}
+
+	public void StartAct1()
+	{
+		GameManager.instance.loadLevel("Lvl 1");
+	}
+
+	public void StartAct3()
+	{
+		GameManager.instance.loadLevel("Lvl 3");
 	}
 }
