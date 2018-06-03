@@ -19,7 +19,8 @@ public class DialogueTrigger : MonoBehaviour {
 	}
 	
 	string colorCodeString(string message, string colorCode) {
-		string START_COLOR = "<color=#facadeff>";
+		string START_SPANISH = "<color=#60c5acff>";
+		string START_ENGLISH = "<color=#cfb76fff>";
 		string END_COLOR = "</color>";
 		
 		string output = "";
@@ -28,26 +29,35 @@ public class DialogueTrigger : MonoBehaviour {
 		string[] colorCodeTokens = colorCode.Split(' ');
 		int c = 0;
 		string space = "";
-		bool color = false;
+		bool spanish = false;
 		
 		for (int i = 0; i < messageTokens.Length; ++i) {
 			string code = "";
 			if (c < colorCodeTokens.Length && messageTokens[i] == colorCodeTokens[c]) {
-				if (!color) {
-					color = true;
-					code = START_COLOR;
+				if (!spanish) {
+					spanish = true;
+					if (space == "") {
+						code = START_SPANISH;
+					} else {
+						code = END_COLOR + START_SPANISH;
+					}
 				}
 				++c;
 			} else {
-				if (color) {
-					color = false;
-					code = END_COLOR;
+				if (spanish) {
+					spanish = false;
+					code = END_COLOR + START_ENGLISH;
 				}
+			}
+			
+			// In case the first string isn't in Spanish
+			if (space == "" && !spanish) {
+				space = "" + START_ENGLISH;
 			}
 			output += space + code + messageTokens[i];
 			space = " ";
 		}
-		return output;
+		return output + END_COLOR;
 	}
 	
     void OnTriggerEnter(Collider other) {
