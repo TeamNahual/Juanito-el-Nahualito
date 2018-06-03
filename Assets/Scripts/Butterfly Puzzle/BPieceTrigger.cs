@@ -14,6 +14,7 @@ public class BPieceTrigger : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
+		if(other.gameObject != Juanito.ins.JuanitoSpirit && !main.pushing) return;
 		if(main.locked) return;
 
 		if(Juanito.ins.CheckFacingObjectsSpirit(main.allObjects, main.layerMask) || main.pushing)

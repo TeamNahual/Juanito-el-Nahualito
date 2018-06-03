@@ -8,6 +8,7 @@ public class pulley_switch_manager : MonoBehaviour {
 	private pulley_manager manager;
 	private bool overlap = false;
 	private Animator animator;
+	private bool problemFlag = false;
 
 	void Awake(){
 		manager = GetComponentInParent <pulley_manager> ();
@@ -20,8 +21,10 @@ public class pulley_switch_manager : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider other){
-		if (other.gameObject == Juanito.ins.JuanitoHuman)
+		if (other.gameObject == Juanito.ins.JuanitoHuman) {
 			overlap = false;
+			problemFlag = false;
+		}
 	}
 
 	void Update(){
@@ -31,7 +34,7 @@ public class pulley_switch_manager : MonoBehaviour {
 	        Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
 			bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
 
-			if (dirCheck)//if player is facing the person, turn on the tool tip.
+			if (dirCheck && !problemFlag)//if player is facing the person, turn on the tool tip.
 	        {
 	            UIManager.instance.TooltipDisplay("Press <sprite=0> to use pulley"); //displays message saying press X to talk
 	        }
@@ -44,8 +47,13 @@ public class pulley_switch_manager : MonoBehaviour {
 			if(Input.GetKeyDown (KeyCode.E) || CrossPlatformInputManager.GetButtonDown("Action"))
 			{
 				Debug.Log ("Switch hit");
-				animator.SetBool ("pulled", true);
-				manager.MovePlatforms ();
+
+				if (manager.MovePlatforms ()) {
+					animator.SetBool ("pulled", true);
+				} else {
+					UIManager.instance.dialogueSystem.addDialogue("The pulley must be loaded before it can be used", 2500, null, false);
+					problemFlag = true;
+				}
 			}
 		}
 	}

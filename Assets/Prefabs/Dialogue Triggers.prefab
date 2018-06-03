@@ -1,0 +1,655 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1661860334658748}
+  m_IsPrefabParent: 1
+--- !u!1 &1178543099658946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4321461521256992}
+  - component: {fileID: 33280072426171610}
+  - component: {fileID: 65288168699988234}
+  - component: {fileID: 23195556478168274}
+  - component: {fileID: 114205510033507366}
+  m_Layer: 8
+  m_Name: DialogueEvent
+  m_TagString: Trigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1435186095705296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4035144319404324}
+  - component: {fileID: 33341472418312694}
+  - component: {fileID: 65516419688004258}
+  - component: {fileID: 23513322139362006}
+  - component: {fileID: 114793031466773552}
+  - component: {fileID: 114650097402727020}
+  m_Layer: 8
+  m_Name: DialogueEvent (3)
+  m_TagString: Trigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1494994417006902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4075775911644118}
+  - component: {fileID: 33507751803144062}
+  - component: {fileID: 65186675100085450}
+  - component: {fileID: 23896280356074554}
+  - component: {fileID: 114827913003874328}
+  - component: {fileID: 114676710925085242}
+  m_Layer: 8
+  m_Name: DialogueEvent (2)
+  m_TagString: Trigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1524290857545406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4246853118790968}
+  - component: {fileID: 33799220394808122}
+  - component: {fileID: 65085003770475350}
+  - component: {fileID: 23352184557774054}
+  - component: {fileID: 114568379843860140}
+  m_Layer: 8
+  m_Name: DialogueEvent (1)
+  m_TagString: Trigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
+  m_IsActive: 1
+--- !u!1 &1661860334658748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4387790808984458}
+  m_Layer: 0
+  m_Name: Dialogue Triggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1729004113832746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4592623082444336}
+  - component: {fileID: 33716097316495424}
+  - component: {fileID: 65576852475877446}
+  - component: {fileID: 23906596766365302}
+  - component: {fileID: 114114407899944546}
+  m_Layer: 8
+  m_Name: DialogueEvent (4)
+  m_TagString: Trigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4035144319404324
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435186095705296}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 551, y: 250.4, z: 258.6}
+  m_LocalScale: {x: 8.065702, y: 8.065709, z: 8.065709}
+  m_Children: []
+  m_Father: {fileID: 4387790808984458}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4075775911644118
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494994417006902}
+  m_LocalRotation: {x: -0, y: 0.18480438, z: -0, w: 0.9827754}
+  m_LocalPosition: {x: 633, y: 249.23, z: 346.3}
+  m_LocalScale: {x: 32.225113, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 4387790808984458}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 21.299002, z: 0}
+--- !u!4 &4246853118790968
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524290857545406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 654.69, y: 249.56, z: 420.64}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 4387790808984458}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4321461521256992
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178543099658946}
+  m_LocalRotation: {x: -0, y: -0.15557669, z: -0, w: 0.98782384}
+  m_LocalPosition: {x: 638.35, y: 252, z: 485.19}
+  m_LocalScale: {x: 47.466995, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 4387790808984458}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -17.900002, z: 0}
+--- !u!4 &4387790808984458
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661860334658748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4592623082444336}
+  - {fileID: 4035144319404324}
+  - {fileID: 4075775911644118}
+  - {fileID: 4246853118790968}
+  - {fileID: 4321461521256992}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4592623082444336
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729004113832746}
+  m_LocalRotation: {x: -0, y: -0.14199804, z: -0, w: 0.989867}
+  m_LocalPosition: {x: 429.14, y: 251.10495, z: 260.77}
+  m_LocalScale: {x: 5, y: 5, z: 28.274546}
+  m_Children: []
+  m_Father: {fileID: 4387790808984458}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -16.327002, z: 0}
+--- !u!23 &23195556478168274
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178543099658946}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7305e4fcb0af5954fb2fd3c7dd97ecc9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23352184557774054
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524290857545406}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7305e4fcb0af5954fb2fd3c7dd97ecc9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23513322139362006
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435186095705296}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7305e4fcb0af5954fb2fd3c7dd97ecc9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23896280356074554
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494994417006902}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7305e4fcb0af5954fb2fd3c7dd97ecc9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23906596766365302
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729004113832746}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7305e4fcb0af5954fb2fd3c7dd97ecc9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33280072426171610
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178543099658946}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33341472418312694
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435186095705296}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33507751803144062
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494994417006902}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33716097316495424
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729004113832746}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33799220394808122
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524290857545406}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65085003770475350
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524290857545406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65186675100085450
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494994417006902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65288168699988234
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178543099658946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65516419688004258
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435186095705296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65576852475877446
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729004113832746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114114407899944546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729004113832746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7e20a95bfa63642b95dbe14fd19372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deleteOnEnter: 1
+  messages:
+  - "No te asustes mijito, don\u2019t be afraid. Los tejones son animales que son
+    buenos, they are nice."
+  - "Although I have heard if you ask nicely, te ayudar\xE1n a excavar si se los pides,
+    they can help with digging rocks. "
+  colorCoded:
+  - No te asustes mijito, Los tejones son animales que son buenos,
+  - "te ayudar\xE1n a excavar si se los pides,"
+  timers: 10270000581b0000
+  audioClips:
+  - {fileID: 8300000, guid: 6301c2f2930b13043a97573d7b6ff3f8, type: 3}
+  locksMovement: 
+  voiceOver: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
+    type: 2}
+--- !u!114 &114205510033507366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178543099658946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7e20a95bfa63642b95dbe14fd19372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deleteOnEnter: 1
+  messages:
+  - Si pones atencion, you can see its strong legs and antlers.
+  - Yo he visto con mis propios ojos, a venados empujando troncos, con sus cuernos
+    gigantes, I have seen them pushing tree trunks, with my own eyes.
+  colorCoded:
+  - 'Si pones atencion, '
+  - Yo he visto con mis propios ojos, a venados empujando troncos, con sus cuernos
+    gigantes,
+  timers: a00f0000c8320000
+  audioClips:
+  - {fileID: 8300000, guid: 494c4ba158858db4786658b8f6d98941, type: 3}
+  locksMovement: 
+  voiceOver: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
+    type: 2}
+--- !u!114 &114568379843860140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524290857545406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7e20a95bfa63642b95dbe14fd19372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deleteOnEnter: 1
+  messages:
+  - "Cuando entres en el mundo del los esp\xEDritus, remember you can always come
+    back from the spirit world, puedes regresar Juanito."
+  colorCoded:
+  - "Cuando entres en el mundo del los esp\xEDritus, puedes regresar Juanito."
+  timers: 10270000
+  audioClips:
+  - {fileID: 8300000, guid: b396b356234a9d540a6170e22f7b9db3, type: 3}
+  locksMovement: 
+  voiceOver: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
+    type: 2}
+--- !u!114 &114650097402727020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435186095705296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b2d0ade8bf64b73b9c443405212c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templesVo: {fileID: 245690567328818322, guid: 199db2a6adcb24e509bfe9d4fc5ec246,
+    type: 2}
+--- !u!114 &114676710925085242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494994417006902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2485b82ead2614d77b63c30410d9bcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templesVo: {fileID: 245419727030360608, guid: 199db2a6adcb24e509bfe9d4fc5ec246,
+    type: 2}
+--- !u!114 &114793031466773552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435186095705296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7e20a95bfa63642b95dbe14fd19372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deleteOnEnter: 1
+  messages:
+  - "El dios Quetzalcoatl [ ke-tza-ku-a-tlo ], the feathered serpent, was the god
+    of all knowledge, el m\xE1s sab\xEDo. Los sacerdotes, the priests would go to
+    the temple to learn from the great God himself, iban a aprender del gran Dios."
+  - "Despu\xE9s que los guerreros rescataron al pueblo, after the warriors saved the
+    village; the priests, los sacerdotes mijo, carved statues representing each guerrero\u2019s
+    nahualli, construyeron estatuas que representaban a cada guerrero."
+  - "Sus gu\xEDas espirituales, their spirit animals must always face the mountain,
+    mientras est\xE9n de cara a la monta\xF1a, the temple will be safe Juanito, el
+    templo estar\xE1 a salvo."
+  colorCoded:
+  - "El dios Quetzalcoatl [ ke-tza-ku-a-tlo ], el m\xE1s sab\xEDo. Los sacerdotes,
+    iban a aprender del gran Dios."
+  - "Despu\xE9s que los guerreros rescataron al pueblo, los sacerdotes mijo, construyeron
+    estatuas que representaban a cada guerrero."
+  - "Sus gu\xEDas espirituales, mientras est\xE9n de cara a la monta\xF1a, el templo
+    estar\xE1 a salvo."
+  timers: 803e0000b0360000b0360000
+  audioClips:
+  - {fileID: 8300000, guid: d250466ac87523849a2bdc90992f2dca, type: 3}
+  locksMovement: 
+  voiceOver: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
+    type: 2}
+--- !u!114 &114827913003874328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494994417006902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7e20a95bfa63642b95dbe14fd19372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deleteOnEnter: 1
+  messages:
+  - "El Templo de las Mil Columnas, the Temple of the Thousand Columns mijo, was built
+    by the priest of the village as a meeting hall to discuss concerns and problems
+    within the village, era el lugar donde los sacerdotes resolv\xEDan problemas del
+    pueblo."
+  - "Cuando el pueblo ya estaba a salvo, after the village was saved, the head priest
+    sculpted the noble warrior on top of the temple. El sacerdote construy\xF3 una
+    estatua que representaba al guerrero y una mariposa que lo ayudar\xEDa a proteger
+    el pueblo. A  butterfly would help the warrior to to protect the village and the
+    source of their water, the mountain."
+  - "Desafortunadamente el templo, unfortunately, after the death of many who attempted
+    to gain higher power, fue abandonado, pues murieron muchas personas intentando
+    obtener m\xE1s poder. The abandoned temple began to crumble, y lo \xFAnico que
+    qued\xF3 eran las columnas y ruinas. Only the columns and ruins were left standing. "
+  - "Y la mariposa, the butterfly, se rompi\xF3. It could no longer help the noble
+    warrior protect the village or the mountain after its abandonment. Y el guerrero
+    no pudo seguir protegiendo al pueblo ni a la monta\xF1a."
+  - Rebuild the butterfly, reconstruye la mariposa.
+  colorCoded:
+  - "El Templo de las Mil Columnas, era el lugar donde los sacerdotes resolv\xEDan
+    problemas del pueblo."
+  - "Cuando el pueblo ya estaba a salvo, El sacerdote construy\xF3 una estatua que
+    representaba al guerrero y una mariposa que lo ayudar\xEDa a proteger el pueblo."
+  - "Desafortunadamente el templo, fue abandonado, pues murieron muchas personas intentando
+    obtener m\xE1s poder. y lo \xFAnico que qued\xF3 eran las columnas y ruinas."
+  - "Y la mariposa, se rompi\xF3. Y el guerrero no pudo seguir protegiendo al pueblo
+    ni a la monta\xF1a."
+  - reconstruye la mariposa.
+  timers: c83200009065000090650000803e0000e8030000
+  audioClips:
+  - {fileID: 8300000, guid: 8923a863dee88c8419cbf83b6a1ec0ce, type: 3}
+  locksMovement: 
+  voiceOver: {fileID: 245171355920401740, guid: 8b6e1e7b9434c6941b618d945490f4e4,
+    type: 2}
