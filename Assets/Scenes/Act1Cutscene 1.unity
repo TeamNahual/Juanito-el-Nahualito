@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ Prefab:
         type: 2}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: f47a16717a72c4940a968c4d637ef524,
+      objectReference: {fileID: 32900000, guid: 28415bb2f382038489f0c387cb1af6be,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76f47d2276a72e1449ff93e6a02167ef, type: 2}
@@ -768,6 +768,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyText: {fileID: 551995487}
+  toAct1: 1
+  toAct2: 0
+  toAct3: 0
 --- !u!1 &2018778086
 GameObject:
   m_ObjectHideFlags: 0
