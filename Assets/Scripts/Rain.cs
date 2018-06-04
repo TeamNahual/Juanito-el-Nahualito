@@ -9,6 +9,7 @@ public class Rain : MonoBehaviour {
 	public Material gray;
 
     public ParticleSystem spiritTrails;
+	public AudioSource sound;
 
     public ParticleSystem grassParticles;
     public ParticleSystem foliageParticles;
@@ -34,6 +35,7 @@ public class Rain : MonoBehaviour {
 		yield return new WaitForSeconds (1);
 		//cloud.GetComponent<MeshRenderer> ().material = gray;
 		var col = cloud.colorOverLifetime;
+		sound.Play ();
 		col.enabled = true;
         grassParticles.Play();
         foliageParticles.Play();

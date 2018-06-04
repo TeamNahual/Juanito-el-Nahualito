@@ -28,6 +28,7 @@ AudioMixerController:
     - 045f78b5c19204499b14941b0d16d0e3
     - b9ca76a043ef04de3bc468fae97777aa
     - 8875c9f1d763645009f72ee32ab30e53
+    - 3058c6fcd4c07ae428df35e0a271fb1f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 245827256876980454}
@@ -45,6 +46,7 @@ AudioMixerGroupController:
   - {fileID: 243797896927775770}
   - {fileID: 243176561762350222}
   - {fileID: 243446330678868628}
+  - {fileID: 243731247213557430}
   m_Volume: 8777acc563f8f4cc198f8cf84eb7f30e
   m_Pitch: 64487a548814440a3bbeb34ba39d6706
   m_Effects:
@@ -163,6 +165,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243731247213557430
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Act 3
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 3058c6fcd4c07ae428df35e0a271fb1f
+  m_Children: []
+  m_Volume: e715b8a6ab20d9f49ab61b4a27e474d3
+  m_Pitch: 936fcafdd9f32ca49818bcf1498ed2bf
+  m_Effects:
+  - {fileID: 244569214683697130}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &243797896927775770
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -246,6 +265,19 @@ AudioMixerEffectController:
     m_GUID: ec4ef2af266454e5ba7121934aab6b17
   - m_ParameterName: Resonance
     m_GUID: 7570fb29ca18146f4ac8a5905a3cb885
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244569214683697130
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 12932b63516b83846ada2905d7ff7f66
+  m_EffectName: Attenuation
+  m_MixLevel: 170bc7f93119f684c8bda8f2d1ca2787
+  m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
@@ -379,6 +411,7 @@ AudioMixerSnapshotController:
     4c2b3f755c291431baadae7ddd625725: 1
     8777acc563f8f4cc198f8cf84eb7f30e: 0.04171297
     9fd5e2865f89c4ab8ad5f622b54184c4: -10000
+    e715b8a6ab20d9f49ab61b4a27e474d3: 20
     6daa8bf6d4edb44dd90879475a112815: -600
     3d51e4275f846429fa14dd81299a102a: 8
     6f25715834b3a4bb3a70193df079a7d1: 363
