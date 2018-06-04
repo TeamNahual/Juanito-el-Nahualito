@@ -15,10 +15,16 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 
 	public static ButterflyPuzzleManager ins;
 
+	//Completion Audio Install
+	private AudioSource myAudioSource;
+	public AudioClip[] ButterflyPuzzleSounds = new AudioClip[0];
+
 	private bool ShowBlocks = true;
 
 	// Use this for initialization
 	void Start () {
+
+		myAudioSource = gameObject.GetComponent<AudioSource>();
 
 		ins = this;
 
@@ -43,6 +49,7 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 			Debug.Log ("You have completed the Butterfly Puzzle");
 			StartCoroutine(relic.RaisePedestal());
 			completed = true;
+			myAudioSource.PlayOneShot (ButterflyPuzzleSounds [0], 1);
 		}
 		else
 		{
@@ -55,7 +62,7 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 		if(!completed)
 			return; 
 
-		if(!relic.active && !doorOpened)
+		if (!relic.active && !doorOpened)
 			StartCoroutine(OpenDoor());
 	}
 

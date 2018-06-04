@@ -29,8 +29,15 @@ public class PlayRandomSounds : MonoBehaviour {
 	void Start () {
 		mySound = gameObject.GetComponent<AudioSource>();
 		//timer = (Random.Range (minTime, maxTime));
-		minTime = Mathf.RoundToInt(Random.Range(1, 3));
-		maxTime = Mathf.RoundToInt(Random.Range(8, 15));
+		if (gameObject.tag == "Pidgeon") {
+			minTime = Mathf.RoundToInt (Random.Range (1, 3));
+			maxTime = Mathf.RoundToInt (Random.Range (8, 15));
+		}
+
+		if (gameObject.tag == "Bird") {
+			minTime = Mathf.RoundToInt (Random.Range (1, 3));
+			maxTime = Mathf.RoundToInt (Random.Range (4, 9));
+		}
 	}
 
 	// Update is called once per frame

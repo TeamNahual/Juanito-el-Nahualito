@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 
 namespace MalbersAnimations
@@ -13,6 +14,7 @@ namespace MalbersAnimations
 
         [HideInInspector]
         public AudioSource StepAudio;
+		public AudioMixerGroup audioMixer;
 
         bool hastrack;                      // Check if already  has a track... don't put another
         bool waitrack;                      // Check if is time to put a track; 
@@ -31,6 +33,8 @@ namespace MalbersAnimations
             if (StepAudio == null)
             {
                 StepAudio = gameObject.AddComponent<AudioSource>();
+				StepAudio.outputAudioMixerGroup = audioMixer;
+
             }
 
             StepAudio.spatialBlend = 1;  //Make the Sound 3D
