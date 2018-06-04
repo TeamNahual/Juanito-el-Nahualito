@@ -15,6 +15,10 @@ public class StatuePuzzleManager : MonoBehaviour {
 	public GameObject pyramidDoor;
 	private bool doorOpened = false;
 
+	//Completion Audio Install
+	private AudioSource myAudioSource;
+	public AudioClip[] RotationPuzzleSounds = new AudioClip[0];
+
 	public static StatuePuzzleManager ins
 	{
 		get 
@@ -30,6 +34,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 
 	void Awake()
 	{
+		myAudioSource = GetComponent<AudioSource> ();
 		statuePuzzleManagerinstance = this;
 
 	}
@@ -119,6 +124,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 		{
 			StartCoroutine(relic.RaisePedestal());
 			completed = true;
+			myAudioSource.PlayOneShot (RotationPuzzleSounds [0], 1);
 		}
 	}
 

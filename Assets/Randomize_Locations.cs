@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Randomize_Locations : MonoBehaviour {
 
 	// This Script is very heavily dependent on the PlayRandomSounds.cs script
 	// and must be attatched to the same object together
-
 	public Vector3[] sndLocation;
 	private int locSize;
 	private int timeSep;
@@ -18,23 +18,46 @@ public class Randomize_Locations : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (gameObject.tag == "Pidgeon") {
+			locSize = Mathf.RoundToInt (Random.Range (15, 20));
+		}
+		if (gameObject.tag == "Bird") {
+			locSize = Mathf.RoundToInt (Random.Range (30, 50));
+		}
 
-		locSize = Mathf.RoundToInt(Random.Range(15, 20));
 		sndLocation = new Vector3[locSize];
 
 		//Specific to Act 1 in Juanito el Nahualito
-		for (int i = 0; i < locSize; i++) {
-			sndLocation [i].x = Random.Range(8f, 260f);
-			sndLocation [i].z = Random.Range(66f, 240f);
+		if(gameObject.tag == "Pidgeon"){
+			for (int i = 0; i < locSize; i++) {
+				sndLocation [i].x = Random.Range(8f, 260f);
+				sndLocation [i].z = Random.Range(66f, 240f);
 
-			if (sndLocation [i].x > 8f && sndLocation [i].x < 104f) {
-				sndLocation [i].y = Random.Range (128f, 158f);
-			}
-			if (sndLocation [i].x > 104f && sndLocation [i].x < 260f) {
-				sndLocation [i].y = Random.Range (108f, 128f);
-			}
-			//Debug.Log ("Vector :" + sndLocation [i]);
-		}	
+				if (sndLocation [i].x > 8f && sndLocation [i].x < 104f) {
+					sndLocation [i].y = Random.Range (128f, 158f);
+				}
+				if (sndLocation [i].x > 104f && sndLocation [i].x < 260f) {
+					sndLocation [i].y = Random.Range (108f, 128f);
+				}
+				//Debug.Log ("Vector :" + sndLocation [i]);
+			}	
+		}
+
+		//Specific to Act 2 in Juanito el Nahualito
+		if (gameObject.tag == "Bird") {
+			for (int i = 0; i < locSize; i++) {
+				sndLocation [i].x = Random.Range(-172f, 213f);
+				sndLocation [i].z = Random.Range(-134f, 230f);
+				sndLocation [i].y = Random.Range (18f, 34f); 
+
+				if (sndLocation [i].x < 114f && sndLocation [i].x > -260f &&
+					sndLocation[i].z < 230 && sndLocation[i].z > 40) {
+					sndLocation [i].x = Random.Range(-125f, 148f);
+					sndLocation [i].z = Random.Range(-95f, 15f);
+				}
+				//Debug.Log ("Vector :" + sndLocation [i]);
+			}	
+		}
 	}
 	
 	// Update is called once per frame
