@@ -42,7 +42,7 @@ public class StartGameButton : MonoBehaviour {
 
     public void StartScene()
     {
-		GameManager.instance.loadLevel ("l2_zonetest");
+		GameManager.instance.loadLevel ("Act 2");
     }
 
 	IEnumerator SetText()
@@ -60,11 +60,11 @@ public class StartGameButton : MonoBehaviour {
 
 	public void StartAct1()
 	{
-		GameManager.instance.loadLevel("Lvl 1");
+		GameManager.instance.loadLevel("Act 1");
 	}
 
 	public void StartAct3()
 	{
-		GameManager.instance.loadLevel("Lvl 3");
+		GameManager.instance.loadLevel("Act 3");
 	}
 }
