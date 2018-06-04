@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -399,6 +399,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovementLocked: 0
   movementLocks: 0
+  emptyGradient: {fileID: 2800000, guid: d4e0c520bc7ddf2428b6f7ec86a26cf6, type: 3}
+  stylisticFog: {fileID: 2800000, guid: 5bde247af12533b49bc798a80d61032f, type: 3}
+  desaturationGradient: {fileID: 2800000, guid: e64dbce6f90686842b43f14dc48af0fb,
+    type: 3}
+  spiritModeGradient: {fileID: 2800000, guid: 161b0903caf0879418624b4846d58f88, type: 3}
+  spiritModeOrigin: {x: 0, y: 0, z: 0}
+  spiritModeRadius: 50
   levelToLoad: 
 --- !u!4 &156364173
 Transform:
