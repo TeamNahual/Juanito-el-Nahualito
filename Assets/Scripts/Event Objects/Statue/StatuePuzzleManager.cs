@@ -11,6 +11,14 @@ public class StatuePuzzleManager : MonoBehaviour {
 
 	public List<StatueContainer> statues;
 
+	public bool completed = false;
+	public GameObject pyramidDoor;
+	private bool doorOpened = false;
+
+	//Completion Audio Install
+	private AudioSource myAudioSource;
+	public AudioClip[] RotationPuzzleSounds = new AudioClip[0];
+
 	public static StatuePuzzleManager ins
 	{
 		get 
@@ -26,6 +34,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 
 	void Awake()
 	{
+		myAudioSource = GetComponent<AudioSource> ();
 		statuePuzzleManagerinstance = this;
 
 	}
@@ -33,11 +42,46 @@ public class StatuePuzzleManager : MonoBehaviour {
 	void FixedUpdate()
 	{
 		HandleSpirit();
+		ManageDoor();
 	}
 
 	void HandleSpirit()
 	{
 		transform.GetChild(0).gameObject.SetActive(Juanito.ins.SpiritState);
+
+	}
+
+	void ManageDoor()
+	{
+		if(!completed)
+			return; 
+
+		if(!relic.active && !doorOpened)
+			StartCoroutine(OpenDoor());
+	}
+
+	IEnumerator OpenDoor()
+	{
+		doorOpened = true;
+
+		Transform doorLeft = pyramidDoor.transform.GetChild(0);
+		Vector3 LStart = doorLeft.localPosition;
+		Vector3 LEnd = new Vector3(LStart.x, LStart.y, 4.86f);
+
+		Transform doorRight = pyramidDoor.transform.GetChild(1);
+		Vector3 RStart = doorRight.localPosition;
+		Vector3 REnd = new Vector3(RStart.x, RStart.y, -2.08f);
+
+		float k = 0;
+
+		while (k < 2) 
+		{
+			doorLeft.localPosition = Vector3.Lerp(LStart, LEnd, k);
+			doorRight.localPosition = Vector3.Lerp(RStart, REnd, k);
+
+			k += Time.deltaTime * Random.Range(0.5f,1f);
+			yield return null;
+		}
 
 	}
 
@@ -79,6 +123,9 @@ public class StatuePuzzleManager : MonoBehaviour {
 		if(!NextStatue())
 		{
 			StartCoroutine(relic.RaisePedestal());
+			completed = true;
+			myAudioSource.PlayOneShot (RotationPuzzleSounds [0], 1);
 		}
 	}
+
 }

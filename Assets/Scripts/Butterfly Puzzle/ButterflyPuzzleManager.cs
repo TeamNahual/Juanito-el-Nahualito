@@ -8,13 +8,23 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 	public List<GameObject> piecesStatic;
 	public bool allActive = false;
 	public RelicPedestal relic;
+	public GameObject VisibleInSpiritMode;
+	public bool completed = false;
+	public GameObject pyramidDoor;
+	public bool doorOpened = false;
 
 	public static ButterflyPuzzleManager ins;
+
+	//Completion Audio Install
+	private AudioSource myAudioSource;
+	public AudioClip[] ButterflyPuzzleSounds = new AudioClip[0];
 
 	private bool ShowBlocks = true;
 
 	// Use this for initialization
 	void Start () {
+
+		myAudioSource = gameObject.GetComponent<AudioSource>();
 
 		ins = this;
 
@@ -27,8 +37,9 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		ManageBlockSpiritState();
+		ManageDoor();
 	}
 
 	public void CheckPieces()
@@ -37,11 +48,47 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 		{
 			Debug.Log ("You have completed the Butterfly Puzzle");
 			StartCoroutine(relic.RaisePedestal());
+			completed = true;
+			myAudioSource.PlayOneShot (ButterflyPuzzleSounds [0], 1);
 		}
 		else
 		{
 			NextPiece();
 		}
+	}
+
+	void ManageDoor()
+	{
+		if(!completed)
+			return; 
+
+		if (!relic.active && !doorOpened)
+			StartCoroutine(OpenDoor());
+	}
+
+	IEnumerator OpenDoor()
+	{
+		doorOpened = true;
+
+		Transform doorLeft = pyramidDoor.transform.GetChild(0);
+		Vector3 LStart = doorLeft.localPosition;
+		Vector3 LEnd = new Vector3(LStart.x, LStart.y, -2.5f);
+
+		Transform doorRight = pyramidDoor.transform.GetChild(1);
+		Vector3 RStart = doorRight.localPosition;
+		Vector3 REnd = new Vector3(RStart.x, RStart.y, 4.2f);
+
+		float k = 0;
+
+		while (k < 2) 
+		{
+			doorLeft.localPosition = Vector3.Lerp(LStart, LEnd, k);
+			doorRight.localPosition = Vector3.Lerp(RStart, REnd, k);
+
+			k += Time.deltaTime * Random.Range(0.5f,1f);
+			yield return null;
+		}
+
 	}
 
 	void NextPiece()
@@ -74,6 +121,8 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 			{
 				ShowBlocks = true;
 
+				VisibleInSpiritMode.SetActive(true);
+
 				foreach(GameObject piece in piecesStatic)
 				{
 					piece.SetActive(true);
@@ -85,6 +134,8 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 			if(ShowBlocks)
 			{
 				ShowBlocks = false;
+
+				VisibleInSpiritMode.SetActive(false);
 
 				foreach(GameObject piece in piecesStatic)
 				{

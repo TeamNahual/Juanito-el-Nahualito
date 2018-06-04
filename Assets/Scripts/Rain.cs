@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Rain : MonoBehaviour {
 
-	public GameObject cloud;
 	public GameObject grass;
 	public Material gray;
-	Vector3 spot;
+
+    public ParticleSystem spiritTrails;
+	public AudioSource sound;
+
+    public ParticleSystem grassParticles;
+    public ParticleSystem foliageParticles;
 
 	void Start()
 	{
-		spot = grass.transform.position;
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -24,17 +27,13 @@ public class Rain : MonoBehaviour {
 
 	IEnumerator storm()
 	{
+        spiritTrails.Play();
 		yield return new WaitForSeconds (1);
-		cloud.GetComponent<MeshRenderer> ().material = gray;
-		yield return new WaitForSeconds (2);
-		Vector3 grow = grass.transform.position;
-		grow.y += 10;
-		while (grass.transform.position.y < grow.y) 
-		{
-			spot.y += 1;
-			grass.transform.position = spot;
-			yield return new WaitForEndOfFrame ();
-		}
+		sound.Play ();
+        grassParticles.Play();
+        foliageParticles.Play();
+        yield return new WaitForSeconds (2);
+
 		Destroy (this.gameObject);
 	}
 }

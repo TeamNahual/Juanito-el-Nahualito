@@ -14,6 +14,8 @@ public class Juanito : MonoBehaviour {
 	public Animator HumanAnim;
 	public Animator SpiritAnim;
 
+	public ParticleSystem energy;
+
 	public bool butterflyRelic = false;
 	public bool statueRelic = false;
     public bool hasFood = false;
@@ -75,6 +77,9 @@ public class Juanito : MonoBehaviour {
  		JuanitoHuman.GetComponent<ThirdPersonUserControl>().enabled = false;
  		JuanitoHuman.GetComponent<ThirdPersonCharacter>().enabled = false;
 
+		//Energy particle effect
+		energy.Play();
+
 	    if (FancyCam.ins) FancyCam.ins.player = JuanitoSpirit.transform;
 	    if (CameraPivotFollow.ins) CameraPivotFollow.ins.player = JuanitoSpirit.transform;
 	    
@@ -85,6 +90,10 @@ public class Juanito : MonoBehaviour {
 		spiritCanWalkIntoBodyFlag = false;
 
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+		Transform spiritBorder = JuanitoHuman.transform.Find("SpiritModeBorder");
+		if (spiritBorder) {
+			spiritBorder.GetComponent<Renderer>().enabled = true;
+		}
 		
 		// Shader related
 		Shader.SetGlobalVector("_MK_FOG_SPIRIT_MODE_ORIGIN", butterflyZoneOrigin);
@@ -143,6 +152,10 @@ public class Juanito : MonoBehaviour {
  		SpiritState = false;
 		UIManager.instance.TooltipDisable();
 		JuanitoHuman.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+		Transform spiritBorder = JuanitoHuman.transform.Find("SpiritModeBorder");
+		if (spiritBorder) {
+			spiritBorder.GetComponent<Renderer>().enabled = false;
+		}
 		
 		// Shader related
 		Shader.SetGlobalInt("_MK_FOG_SPIRIT_MODE_ENABLED", 0);

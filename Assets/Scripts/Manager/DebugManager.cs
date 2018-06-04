@@ -31,26 +31,26 @@ public class DebugManager : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.F3)) //Load Level 2
 		{
-			manager.forceLoadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("Act 2");
 		}
 		if (Input.GetKeyDown (KeyCode.F4)) //Level 2 pyramid 1
 		{
-			manager.forceLoadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("Act 2");
 			this.StartCoroutine (pause("Debug Marker 1"));
 		}
 		if (Input.GetKeyDown (KeyCode.F5)) //Level 2 deer 2
 		{
-			manager.forceLoadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("Act 2");
 			this.StartCoroutine (pause("Debug Marker 2"));
 		}
 		if (Input.GetKeyDown (KeyCode.F6)) // Level 2 foxes
 		{
-			manager.forceLoadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("Act 2");
 			this.StartCoroutine (pause("Debug Marker 3"));
 		}
 		if (Input.GetKeyDown (KeyCode.F7)) //Level 2 pyramid 2
 		{
-			manager.forceLoadLevel ("l2_zonetest");
+			manager.forceLoadLevel ("Act 2");
 			this.StartCoroutine (pause("Debug Marker 4"));
 		}
 		if (Input.GetKeyDown (KeyCode.F9)) //Load level 3
@@ -66,7 +66,7 @@ public class DebugManager : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator pause(string marker, string sceneName = "l2_zonetest")
+	public IEnumerator pause(string marker, string sceneName = "Act 2")
 	{
 		yield return null;
 		// Check if in correct scene

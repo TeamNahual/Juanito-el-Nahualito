@@ -7,6 +7,8 @@ using TMPro;
 
 public class SpeechBubble : MonoBehaviour {
 
+	public GameObject package;
+
 	GameManager manager;
 	int counter = 0;
 	string tip = "Press <sprite=0> to talk";
@@ -20,7 +22,18 @@ public class SpeechBubble : MonoBehaviour {
 	public string[] secondDia; //thing npc says after talked to once
 	public string[] thirdDia; //thing npc says after completed task
 
+
+	private AudioSource myDialogue;
+	public AudioClip[] FirstDialogueSound = new AudioClip[4];
+	public AudioClip[] SecondDialogueSound = new AudioClip[4];
+	public AudioClip[] ThirdDialogueSound = new AudioClip[3];
+
+
 	public TextMeshProUGUI speech;
+
+	void Awake(){
+		package.SetActive (false);
+	}
 
 	void OnTriggerStay(Collider other)//if an object is in the box around the old man
 	{
@@ -53,6 +66,10 @@ public class SpeechBubble : MonoBehaviour {
 				if (counter < firstDia.Length)
 				{
 					speech.text = firstDia[counter];
+					if (myDialogue.isPlaying) {
+						myDialogue.Stop ();
+					}
+					myDialogue.PlayOneShot (FirstDialogueSound [counter], 1);
 					speech.enabled = true;
 					counter++;
 					tip = "Press <sprite=0> to continue";
@@ -67,10 +84,15 @@ public class SpeechBubble : MonoBehaviour {
 				}
 				break;
 			case 1: //state when player has talked to NPC once, haven't completed quest yet
+				package.SetActive (true);
 				manager.isMovementLocked = true;
 				if(counter <secondDia.Length)
 				{
 					speech.text = secondDia[counter];
+					if (myDialogue.isPlaying) {
+						myDialogue.Stop ();
+					}
+					myDialogue.PlayOneShot (SecondDialogueSound [counter], 1);
 					speech.enabled = true;
 					counter++;
 					tip = "Press <sprite=0> to continue";
@@ -81,7 +103,7 @@ public class SpeechBubble : MonoBehaviour {
 					speech.enabled = false;
 					counter = 0;
 					tip = "Press <sprite=0> to talk";
-                        Juanito.ins.JuanitoHuman.transform.position = new Vector3(177.8f, 90.45f, 272.97f);
+                        Juanito.ins.JuanitoHuman.transform.position = new Vector3(173.5135f, 90.44999f, 262.44f);
 				}
 				break;
 			case 2: //player has completed quest
@@ -89,6 +111,10 @@ public class SpeechBubble : MonoBehaviour {
 				if(counter <thirdDia.Length)
 				{
 					speech.text = thirdDia[counter];
+					if (myDialogue.isPlaying) {
+						myDialogue.Stop ();
+					}
+					myDialogue.PlayOneShot (ThirdDialogueSound [counter], 1);
 					speech.enabled = true;
 					counter++;
 					tip = "Press <sprite=0> to continue";
@@ -128,6 +154,8 @@ public class SpeechBubble : MonoBehaviour {
 	void Start () {
 		speech.enabled = false;
 		manager = GameManager.instance;
+
+		myDialogue = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame

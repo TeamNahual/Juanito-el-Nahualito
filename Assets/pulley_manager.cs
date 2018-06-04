@@ -26,7 +26,7 @@ public class pulley_manager : MonoBehaviour {
 		//MovePlatforms ();
 	}
 	
-	public void MovePlatforms(){
+	public bool MovePlatforms(){
 		/*float w1 = plat1.GetWeight ();
 		float w2 = plat2.GetWeight ();
 		if (w1 < w2) {
@@ -41,7 +41,10 @@ public class pulley_manager : MonoBehaviour {
 			Debug.Log ("Moving");
 			timeline.Play ();
 			playtimeline = false;
-			StartCoroutine ( Deactivate_Delay() );
+			StartCoroutine (Deactivate_Delay ());
+			return true;
+		} else {
+			return false;
 		}
 	}
 

@@ -8,7 +8,7 @@ public class Dog_Sounds : MonoBehaviour {
 	public AudioSource mySound;        //The AudioSource component
 	private GameManager myManager;
 
-	public AudioMixerSnapshot breathingSnapshot;
+	//public AudioMixerSnapshot breathingSnapshot;
 
 	[Space(5.0f)]
 	private float currentVolume;
@@ -58,7 +58,7 @@ public class Dog_Sounds : MonoBehaviour {
 		} 
 		if (dogInteractFood == true) {
 			PlayBreathing ();
-			breathingSnapshot.TransitionTo (0.5f);
+			//breathingSnapshot.TransitionTo (0.5f);
 		} else
 			return;
 	}
@@ -74,8 +74,7 @@ public class Dog_Sounds : MonoBehaviour {
 			if (dogWhimper.Length > 0 && !mySound.isPlaying) {
 				mySound.PlayOneShot(dogWhimper [Random.Range (0, dogWhimper.Length)], currentVolume);
 				//gameObject.GetComponent<SphereCollider>().enabled = !gameObject.GetComponent<SphereCollider> ().enabled;
-			} else
-				Debug.LogError ("trying to play dog sound, but no dog sounds in array!");
+			}
 		}
 
 		if (other.gameObject == Juanito.ins.JuanitoHuman && Juanito.ins.hasFood) {
@@ -101,10 +100,9 @@ public class Dog_Sounds : MonoBehaviour {
 		//Debug.Log("This is the dog: " + gameObject.name);
 		if (dogMix.Length > 0) {
 			mySound.PlayOneShot (dogMix [Random.Range (0, dogMix.Length)], currentVolume);
-		} else
-			Debug.LogError ("trying to play dog sound, but no dog sounds in array!");
+		}
 	}
-
+		
 	void PlayBreathing(){
 		currentVolume = (volume + UnityEngine.Random.Range (-volumeVariance, volumeVariance));
 		pitch = (1.0f + Random.Range (-pitchVariance, pitchVariance));
