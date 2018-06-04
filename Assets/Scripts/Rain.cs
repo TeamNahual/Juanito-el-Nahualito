@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rain : MonoBehaviour {
 
-	public GameObject cloud;
+	public ParticleSystem cloud;
 	public GameObject grass;
 	public Material gray;
 
@@ -32,7 +32,9 @@ public class Rain : MonoBehaviour {
 	{
         spiritTrails.Play();
 		yield return new WaitForSeconds (1);
-		cloud.GetComponent<MeshRenderer> ().material = gray;
+		//cloud.GetComponent<MeshRenderer> ().material = gray;
+		var col = cloud.colorOverLifetime;
+		col.enabled = true;
         grassParticles.Play();
         foliageParticles.Play();
         yield return new WaitForSeconds (2);
