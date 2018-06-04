@@ -16,6 +16,8 @@ public class PackageRB : MonoBehaviour {
 
 	public Rigidbody rb;
 
+	public ParticleSystem dust;
+
 	private RigidbodyConstraints moving, still;
 
 	// Use this for initialization
@@ -43,11 +45,13 @@ public class PackageRB : MonoBehaviour {
 			//Added to Use in another Sound Script
 			//Juanito.ins.isPushing = true;
 
+
 			float horizontal = GetPlayerInput()[0];
 			float vertical = GetPlayerInput()[1];
 
 			if (horizontal > 0 || horizontal < 0 || vertical > 0 || vertical < 0) {
 				Juanito.ins.isPushing = true;
+				dust.Play ();
 			}// else
 				//Juanito.ins.isPushing = false;
 

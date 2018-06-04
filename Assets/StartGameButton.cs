@@ -42,7 +42,7 @@ public class StartGameButton : MonoBehaviour {
 
     public void StartScene()
     {
-		GameManager.instance.loadLevel ("Act2");
+		GameManager.instance.loadLevel ("Act 2");
     }
 
 	IEnumerator SetText()
@@ -65,6 +65,6 @@ public class StartGameButton : MonoBehaviour {
 
 	public void StartAct3()
 	{
-		GameManager.instance.loadLevel("Lvl 3");
+		GameManager.instance.loadLevel("Act 3");
 	}
 }

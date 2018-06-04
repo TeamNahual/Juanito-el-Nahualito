@@ -22,6 +22,13 @@ public class SpeechBubble : MonoBehaviour {
 	public string[] secondDia; //thing npc says after talked to once
 	public string[] thirdDia; //thing npc says after completed task
 
+
+	private AudioSource myDialogue;
+	public AudioClip[] FirstDialogueSound = new AudioClip[4];
+	public AudioClip[] SecondDialogueSound = new AudioClip[4];
+	public AudioClip[] ThirdDialogueSound = new AudioClip[3];
+
+
 	public TextMeshProUGUI speech;
 
 	void Awake(){
@@ -59,6 +66,10 @@ public class SpeechBubble : MonoBehaviour {
 				if (counter < firstDia.Length)
 				{
 					speech.text = firstDia[counter];
+					if (myDialogue.isPlaying) {
+						myDialogue.Stop ();
+					}
+					myDialogue.PlayOneShot (FirstDialogueSound [counter], 1);
 					speech.enabled = true;
 					counter++;
 					tip = "Press <sprite=0> to continue";
@@ -78,6 +89,10 @@ public class SpeechBubble : MonoBehaviour {
 				if(counter <secondDia.Length)
 				{
 					speech.text = secondDia[counter];
+					if (myDialogue.isPlaying) {
+						myDialogue.Stop ();
+					}
+					myDialogue.PlayOneShot (SecondDialogueSound [counter], 1);
 					speech.enabled = true;
 					counter++;
 					tip = "Press <sprite=0> to continue";
@@ -96,6 +111,10 @@ public class SpeechBubble : MonoBehaviour {
 				if(counter <thirdDia.Length)
 				{
 					speech.text = thirdDia[counter];
+					if (myDialogue.isPlaying) {
+						myDialogue.Stop ();
+					}
+					myDialogue.PlayOneShot (ThirdDialogueSound [counter], 1);
 					speech.enabled = true;
 					counter++;
 					tip = "Press <sprite=0> to continue";
@@ -135,6 +154,8 @@ public class SpeechBubble : MonoBehaviour {
 	void Start () {
 		speech.enabled = false;
 		manager = GameManager.instance;
+
+		myDialogue = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
