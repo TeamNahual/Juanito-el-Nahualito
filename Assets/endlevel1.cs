@@ -21,6 +21,14 @@ public class endlevel1 : MonoBehaviour {
 		if(other.gameObject == Juanito.ins.JuanitoHuman && active)
 		{
 			UIManager.instance.FadeOut();
+			StartCoroutine(StartLevel());
+			active = false;
 		}
+	}
+
+	IEnumerator StartLevel()
+	{
+		yield return new WaitForSeconds(2f);
+		GameManager.instance.loadLevel("Act2Cutscene");
 	}
 }
