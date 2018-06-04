@@ -98,7 +98,7 @@ public class Butterfly : MonoBehaviour {
 		// initialPosition = Juanito.ins.JuanitoHuman.transform.position;
 		// Debug.Log(initialPosition);
 		Juanito.ins.HumanAnim.SetBool("Kneeling", true);
-		// sphereContainer.SetActive(true);
+		sphereContainer.SetActive(true);
 		// containerLighting.SetActive(true);
 		//mBackgroundColor = Camera.main.backgroundColor;
 		//Camera.main.backgroundColor = new Color(0,0,0,1);
@@ -109,7 +109,7 @@ public class Butterfly : MonoBehaviour {
 	public void ExitSpiritMode()
 	{
 		Juanito.ins.HumanAnim.SetBool("Kneeling", false);
-		// sphereContainer.SetActive(false);
+		sphereContainer.SetActive(false);
 		//containerLighting.SetActive(false);
 		//Camera.main.backgroundColor = mBackgroundColor;
 		GetComponent<ButterflySpawner>().OnSpiritModeEnd();
