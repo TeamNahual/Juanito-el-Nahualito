@@ -8,6 +8,7 @@ using TMPro;
 public class SpeechBubble : MonoBehaviour {
 
 	public GameObject package;
+	public endlevel1 level1ending;
 
 	GameManager manager;
 	int counter = 0;
@@ -125,6 +126,7 @@ public class SpeechBubble : MonoBehaviour {
 					speech.enabled = false;
 					counter = 0;
 					tip = "Press <sprite=0> to talk";
+					level1ending.active = true;
 				}
 				break;
 			default:
