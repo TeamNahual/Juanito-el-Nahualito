@@ -51,7 +51,7 @@ public class pulley_switch_manager : MonoBehaviour {
 				if (manager.MovePlatforms ()) {
 					animator.SetBool ("pulled", true);
 				} else {
-					UIManager.instance.TooltipDisplay ("The pulley must be loaded before it can be used");
+					UIManager.instance.dialogueSystem.addDialogue("The pulley must be loaded before it can be used", 2500, null, false);
 					problemFlag = true;
 				}
 			}

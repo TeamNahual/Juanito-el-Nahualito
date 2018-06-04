@@ -19,17 +19,17 @@ public class TimelineTrigger : MonoBehaviour {
 		//lockPlayerMovement = myManager.isMovementLocked;
 		//timeLineCurrent = Mathf.Round ((float)timeline.time);
 		if (lockPlayerMovement == true) {
-			timeLineDuration = Mathf.Round ((float)timeline.duration);
+			timeLineDuration = (float) timeline.duration;
 			Debug.Log ("Timeline Duration: " + timeLineDuration);
 		}
 	}
 
 	void Update(){
 		if(lockPlayerMovement == true){
-			timeLineCurrent = Mathf.Round ((float)timeline.time);
-			///Debug.Log ("Timeline Time: " + timeLineCurrent);
+			timeLineCurrent = (float) timeline.time;
+			// Debug.Log ("Timeline Time: " + timeLineCurrent + " Timeline Duration: " + timeLineDuration);
 
-			if (timeLineCurrent >= timeLineDuration) {
+			if (timeLineCurrent >= timeLineDuration - 0.5f) {
 				myManager.unlockMovement ();
 				lockPlayerMovement = false;
 				//Debug.Log ("Called Unlocking");

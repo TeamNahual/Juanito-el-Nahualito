@@ -37,13 +37,13 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0
+        time: 0.8833333
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 2.25
+        time: 3.1333334
         value: {x: 0, y: -10, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -96,7 +96,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.25
+    m_StopTime: 3.1333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -116,13 +116,13 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0
+        time: 0.8833333
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 2.25
+        time: 3.1333334
         value: 0
         inSlope: 0
         outSlope: 0
@@ -138,13 +138,13 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0
+        time: 0.8833333
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 2.25
+        time: 3.1333334
         value: -10
         inSlope: 0
         outSlope: 0
@@ -160,13 +160,13 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0
+        time: 0.8833333
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 2.25
+        time: 3.1333334
         value: 0
         inSlope: 0
         outSlope: 0
@@ -251,11 +251,11 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 114230219905729588}
     m_UnderlyingAsset: {fileID: 0}
-    m_Duration: 2.5
-    m_TimeScale: 1
+    m_Duration: 3.125
+    m_TimeScale: 0.8
     m_ParentTrack: {fileID: 114906533711385750}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
+    m_EaseInDuration: 0.15
+    m_EaseOutDuration: 0.15
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
     m_MixInCurve:

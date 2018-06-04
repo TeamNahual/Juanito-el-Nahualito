@@ -87,7 +87,7 @@ public class AltarPiece : MonoBehaviour {
 				transform.GetChild (0).gameObject.SetActive (true);
 				main.NecklaceRelic = true;
 
-				UIManager.instance.dialogueSystem.addDialogue("To be continued....");
+				// UIManager.instance.dialogueSystem.addDialogue("To be continued....");
 			}
 		}
 		else
@@ -101,7 +101,11 @@ public class AltarPiece : MonoBehaviour {
 	{
 		if(other.gameObject == Juanito.ins.JuanitoHuman)
 		{
-			if(Juanito.ins.CheckFacingObjects(new GameObject[] {transform.parent.gameObject, gameObject}))
+			Debug.Log(other.gameObject.name);
+			Vector3 fwd = Juanito.ins.JuanitoHuman.transform.TransformDirection(Vector3.forward);
+			Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoHuman.transform.position);
+			bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
+			if(true)
 			{
 				if(SeashellRelic)
 				{
