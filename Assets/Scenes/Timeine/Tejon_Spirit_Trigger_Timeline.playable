@@ -37,15 +37,15 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
-  - m_Start: 0
+  - m_Start: 0.333333333333333
     m_ClipIn: 0
-    m_Asset: {fileID: 114734017045366534}
-    m_UnderlyingAsset: {fileID: 114734017045366534}
+    m_Asset: {fileID: 114342238626622940}
+    m_UnderlyingAsset: {fileID: 114342238626622940}
     m_Duration: 5
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114006677125818080}
     m_EaseInDuration: 1
-    m_EaseOutDuration: 2
+    m_EaseOutDuration: 1
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
     m_MixInCurve:
@@ -95,7 +95,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Tejon_vCam_to Spirit
     m_Version: 1
---- !u!114 &114734017045366534
+--- !u!114 &114342238626622940
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: CinemachineShot
   m_EditorClassIdentifier: 
   VirtualCamera:
-    exposedName: 34c04f80e95a18c449414926e17b569f
+    exposedName: fca0b6a1ab46def4d8a0e63d585cfffd
     defaultValue: {fileID: 0}
 --- !u!114 &114763546967168358
 MonoBehaviour:
