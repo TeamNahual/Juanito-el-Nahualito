@@ -68,17 +68,17 @@ MonoBehaviour:
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
-  - m_Start: 0.05
+  - m_Start: 1.0166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: 114268263852878150}
     m_UnderlyingAsset: {fileID: 114268263852878150}
-    m_Duration: 6.466666666666664
+    m_Duration: 6.95
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114281672379809064}
     m_EaseInDuration: 3
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 0
+    m_BlendOutDuration: 1.9500000000000002
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -99,7 +99,19 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -114,62 +126,16 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Juanito_vCam_to_Deer (R)
     m_Version: 1
-  - m_Start: 6.516666666666663
+  - m_Start: 6.016666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 114735446892199252}
     m_UnderlyingAsset: {fileID: 114735446892199252}
-    m_Duration: 5.933333333333334
+    m_Duration: 5.733333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: 114281672379809064}
     m_EaseInDuration: 0
     m_EaseOutDuration: 2.5
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 1.6833333333333282
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Deer_vCam_to Spirit (mid)
-    m_Version: 1
-  - m_Start: 10.766666666666667
-    m_ClipIn: 0
-    m_Asset: {fileID: 114560974857588796}
-    m_UnderlyingAsset: {fileID: 114560974857588796}
-    m_Duration: 5.266666666666667
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 114281672379809064}
-    m_EaseInDuration: 1
-    m_EaseOutDuration: 2.106999999999673
-    m_BlendInDuration: 1.6833333333333282
+    m_BlendInDuration: 1.9500000000000002
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -216,7 +182,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Deer_vCam_to Spirit (R)
+    m_DisplayName: Deer_vCam_to Spirit (mid)
     m_Version: 1
 --- !u!114 &114493029264902378
 MonoBehaviour:
@@ -479,20 +445,6 @@ MonoBehaviour:
   m_ApplyOffsets: 0
   m_AvatarMask: {fileID: 0}
   m_ApplyAvatarMask: 1
---- !u!114 &114560974857588796
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: 
-  VirtualCamera:
-    exposedName: e70db4e20f3c1084782294830405a3da
-    defaultValue: {fileID: 0}
 --- !u!114 &114683193889724774
 MonoBehaviour:
   m_ObjectHideFlags: 1
