@@ -29,6 +29,6 @@ public class endlevel1 : MonoBehaviour {
 	IEnumerator StartLevel()
 	{
 		yield return new WaitForSeconds(2f);
-		GameManager.instance.loadLevel("Act2Cutscene");
+		GameManager.instance.loadLevel("JuanitoLeaving");
 	}
 }
