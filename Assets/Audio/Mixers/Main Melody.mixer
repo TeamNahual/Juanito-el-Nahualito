@@ -12,6 +12,8 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   - {fileID: 245512789401493802}
+  - {fileID: 245228226536860234}
+  - {fileID: 245527287795440248}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -64,11 +66,11 @@ AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: No Main Melody
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: f0579a7596df64dc486765a4c57ca193
   m_FloatValues:
-    2e53b4b4d67bc477aafc565250e19a83: 0
+    2e53b4b4d67bc477aafc565250e19a83: -80
     cdba2a2fa84324e61ab5058b37ffedac: -80
     245b838f410be449ba8eb2b365b0d225: -80
   m_TransitionOverrides: {}
@@ -162,6 +164,19 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &245228226536860234
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Main Melody Introduced
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 3e08c6704cbd0480baa1171e62b9e7ec
+  m_FloatValues:
+    2e53b4b4d67bc477aafc565250e19a83: 0
+    cdba2a2fa84324e61ab5058b37ffedac: -80
+    245b838f410be449ba8eb2b365b0d225: -80
+  m_TransitionOverrides: {}
 --- !u!245 &245512789401493802
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
@@ -170,6 +185,19 @@ AudioMixerSnapshotController:
   m_Name: Main Melody Percussion
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 7fa270b114b0d4c84b520ed25f2cb997
+  m_FloatValues:
+    2e53b4b4d67bc477aafc565250e19a83: -80
+    cdba2a2fa84324e61ab5058b37ffedac: 0
+    245b838f410be449ba8eb2b365b0d225: 0
+  m_TransitionOverrides: {}
+--- !u!245 &245527287795440248
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Main Melody Percussion & Melody
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 45c8b4b317e4846ab96c1936c9138f74
   m_FloatValues:
     2e53b4b4d67bc477aafc565250e19a83: 0
     cdba2a2fa84324e61ab5058b37ffedac: 0

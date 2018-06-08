@@ -63,6 +63,7 @@ public class StatuePuzzleManager : MonoBehaviour {
 	IEnumerator OpenDoor()
 	{
 		doorOpened = true;
+		myAudioSource.PlayOneShot (RotationPuzzleSounds [1], 1);
 
 		Transform doorLeft = pyramidDoor.transform.GetChild(0);
 		Vector3 LStart = doorLeft.localPosition;

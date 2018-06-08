@@ -255,7 +255,7 @@ public class FootstepMaster_Curves : MonoBehaviour {
 			}
 			else if (whatTexture.Contains ("leaves") == true || whatTexture.Contains ("Leaves") == true|| whatTexture.Contains ("LEAVES") == true)
 				Invoke ("PlayLeaves", 0);
-			else if (whatTexture.Contains ("dirt") == true || whatTexture.Contains ("Dirt") == true|| whatTexture.Contains ("DIRT") == true)
+			else if (whatTexture.Contains ("dirt") == true || whatTexture.Contains ("Dirt") == true|| whatTexture.Contains ("DIRT") == true || whatTexture.Contains("road") || whatTexture.Contains("Road"))
 				Invoke ("PlayDirt", 0);
 			else if (whatTexture.Contains ("gravel") == true || whatTexture.Contains ("Gravel") == true|| whatTexture.Contains ("GRAVEL") == true)
 				Invoke ("PlayGravel", 0);
