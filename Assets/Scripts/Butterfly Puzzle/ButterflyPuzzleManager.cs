@@ -66,9 +66,10 @@ public class ButterflyPuzzleManager : MonoBehaviour {
 			StartCoroutine(OpenDoor());
 	}
 
-	IEnumerator OpenDoor()
+	IEnumerator OpenDoor() 
 	{
 		doorOpened = true;
+		myAudioSource.PlayOneShot (ButterflyPuzzleSounds [1], 0.5f);
 
 		Transform doorLeft = pyramidDoor.transform.GetChild(0);
 		Vector3 LStart = doorLeft.localPosition;

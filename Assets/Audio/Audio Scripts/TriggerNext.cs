@@ -7,6 +7,7 @@ public class TriggerNext : MonoBehaviour {
 
 	public AudioMixerSnapshot nextSnap;
 	//public AudioMixerSnapshot previous;
+	public float transitionTime = 1f;
 
 
 	void OnTriggerEnter(Collider other) {
@@ -14,6 +15,8 @@ public class TriggerNext : MonoBehaviour {
 		if(other.gameObject != Juanito.ins.JuanitoHuman)
 			return;
 
-		nextSnap.TransitionTo (.25f);
+		nextSnap.TransitionTo (transitionTime);
+
+		gameObject.GetComponent<BoxCollider> ().enabled = !gameObject.GetComponent<BoxCollider> ().enabled;
 	}
 }
