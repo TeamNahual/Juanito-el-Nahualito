@@ -25,7 +25,7 @@ public class SelectOnInputV : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		float v = Input.GetAxisRaw ("Vertical");
+		float v = Input.GetAxisRaw ("Vertical-Joystick");
 
 		Debug.Log(v);
 

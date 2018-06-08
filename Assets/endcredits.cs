@@ -8,9 +8,13 @@ public class endcredits : MonoBehaviour {
 	public bool started = false;
 	public bool ended = false;
 
+	// public GameObject KeyText;
+	private bool state = false;
+	private bool interactable = false;
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -33,5 +37,20 @@ public class endcredits : MonoBehaviour {
 			ended = false;
 			GameManager.instance.loadLevel("Menu");
 		}
+
+
+		if (Input.anyKeyDown && interactable)
+		{
+			if (!state)
+			{
+				state = true;
+				// KeyText.SetActive (true);
+			}
+			else
+			{
+				GameManager.instance.loadLevel("Menu");
+			}
+		}
 	}
+
 }
