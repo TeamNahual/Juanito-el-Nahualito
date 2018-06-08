@@ -233,15 +233,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410001654779192}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -344.48, y: 25.339996, z: -71.95999}
-  m_LocalScale: {x: 1, y: 1, z: 50}
+  m_LocalRotation: {x: 0, y: 0.3907311, z: 0, w: 0.9205049}
+  m_LocalPosition: {x: -262.43, y: 25.339996, z: -103.92}
+  m_LocalScale: {x: 1, y: 1, z: 20}
   m_Children:
   - {fileID: 4180965331587184}
   - {fileID: 4945263358236280}
   m_Father: {fileID: 4944694566699814}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 46, z: 0}
 --- !u!4 &4491864158158822
 Transform:
   m_ObjectHideFlags: 1
@@ -277,8 +277,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354110911146978}
-  m_LocalRotation: {x: 0.00067800365, y: 0.99273884, z: -0.005601668, w: 0.120157175}
-  m_LocalPosition: {x: -332.34094, y: 30.551926, z: 291.10913}
+  m_LocalRotation: {x: -0.0074551427, y: 0.79688835, z: 0.00983708, w: 0.60400057}
+  m_LocalPosition: {x: -593.83466, y: 27.267303, z: -111.951996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4823871625192246}
@@ -347,13 +347,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217071256762568}
   m_LocalRotation: {x: 0.08202947, y: -0.7013222, z: 0.08174187, w: 0.70337516}
-  m_LocalPosition: {x: 28.97, y: 17.57, z: -0.002}
+  m_LocalPosition: {x: 14.82, y: 4.97, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4631834734506782}
   m_Father: {fileID: 4270515181830820}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 13.3, y: -89.83301, z: -0.004}
+  m_LocalEulerAnglesHint: {x: 0.00000442172, y: 359.9737, z: 0.00621075}
 --- !u!65 &65056015780930064
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -488,10 +488,10 @@ MonoBehaviour:
   m_LookaheadSmoothing: 10
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.1
-  m_DeadZoneHeight: 0.1
+  m_ScreenX: 0.43704
+  m_ScreenY: 0.53674
+  m_DeadZoneWidth: 0.03494
+  m_DeadZoneHeight: 0.03929
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -511,7 +511,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 8
+  m_Priority: 7
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -594,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02e0c439a657e7479482152fec3aa9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   timeline: {fileID: 320782263043627108}
 --- !u!114 &114778739949152888
 MonoBehaviour:
@@ -631,7 +632,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 6
+  m_Priority: 8
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -674,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 10, y: 3, z: -5}
+  m_FollowOffset: {x: 0, y: 3, z: -5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -684,7 +685,7 @@ MonoBehaviour:
   m_Heading:
     m_HeadingDefinition: 2
     m_VelocityFilterStrength: 4
-    m_HeadingBias: 0
+    m_HeadingBias: 70
   m_RecenterToTargetHeading:
     m_enabled: 1
     m_RecenterWaitTime: 1
@@ -692,11 +693,11 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
+    Value: -0
     m_MaxSpeed: 300
     m_AccelTime: 2
     m_DecelTime: 1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertAxis: 1
   m_LegacyRadius: 3.4028235e+38
@@ -815,6 +816,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
+  - key: {fileID: 114907492979926196, guid: a5f3c18ef1ae6844597519f55a198ab5, type: 2}
+    value: {fileID: 1217071256762568}
   m_ExposedReferences:
     m_References:
     - dede32c5d0b996d4c95654a141ba1511: {fileID: 114525136509176820}

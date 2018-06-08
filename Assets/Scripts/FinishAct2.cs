@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class FinishAct2 : MonoBehaviour {
+
+	public ThirdPersonUserControl character;
 
 	public PlayableDirector timeline;
 
@@ -16,7 +19,20 @@ public class FinishAct2 : MonoBehaviour {
 	void Update () {
 		if(Mathf.Round ((float)timeline.time) >= Mathf.Round ((float)timeline.duration))
 		{
-			GameManager.instance.loadLevel("Act3Cutscene");
+			UIManager.instance.FadeOut();
+			StartCoroutine(loadLater());
 		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		character.endScene = true;	
+	}
+
+	IEnumerator loadLater()
+	{
+		yield return new WaitForSeconds(2f);
+
+		GameManager.instance.loadLevel("Act3Cutscene");
 	}
 }

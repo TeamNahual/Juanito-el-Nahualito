@@ -13,6 +13,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+        public bool endScene = false;
         
         private void Start()
         {
@@ -87,8 +88,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			
             // pass all parameters to the character control script
-            m_Character.Move(m_Move, crouch, false);
-			// Uncomment the below for jumping (also delete the above line);
+            if(!endScene)
+            {
+                m_Character.Move(m_Move, crouch, false);
+            }
+            else{
+                m_Character.Move(new Vector3(-1, 0, 1), false, false);
+            }
+            // Uncomment the below for jumping (also delete the above line);
             // m_Character.Move(m_Move, crouch, m_Jump);
             m_Jump = false;
         }
