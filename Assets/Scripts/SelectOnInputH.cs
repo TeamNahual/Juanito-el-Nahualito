@@ -16,16 +16,29 @@ public class SelectOnInputH : MonoBehaviour {
 	private bool buttonSelected;
 	private bool controllerDown = false;
 
+	public UIButton controllerBack;
+
 
 	// Use this for initialization
 	void Start () {
-		
+
+	}
+
+	void OnEnable()
+	{
+		StartCoroutine(SelectGameObjectLater(selectedObject));
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		float v = Input.GetAxisRaw ("Horizontal");
+		if(Input.GetKeyDown(KeyCode.JoystickButton1))
+		{
+			controllerBack.ExecuteClick();
+		}
+
+
+		float v = Input.GetAxisRaw ("Horizontal-Joystick");
 
 		Debug.Log(v);
 
@@ -48,7 +61,7 @@ public class SelectOnInputH : MonoBehaviour {
 			controllerDown = true;
 			StartCoroutine(SelectGameObjectLater(selectedObject));
 			// buttonSelected = true;
-			selectedObject.GetComponent<UIButton>().ExecuteOnPointerEnter(true);
+			// selectedObject.GetComponent<UIButton>().ExecuteOnPointerEnter(true);
 		}
 		else
 		{
@@ -59,8 +72,12 @@ public class SelectOnInputH : MonoBehaviour {
 	IEnumerator SelectGameObjectLater(GameObject objectToSelect)
 	{
 		yield return null;
+		yield return null;
+		yield return null;
 		EventSystem.current.SetSelectedGameObject(null);
 		EventSystem.current.SetSelectedGameObject(objectToSelect);
+		selectedObject.GetComponent<UIButton>().ExecuteOnPointerEnter(true);
+
 	}
 	private void OnDisable()
 	{

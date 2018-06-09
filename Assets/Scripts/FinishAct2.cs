@@ -20,19 +20,12 @@ public class FinishAct2 : MonoBehaviour {
 		if(Mathf.Round ((float)timeline.time) >= Mathf.Round ((float)timeline.duration))
 		{
 			UIManager.instance.FadeOut();
-			StartCoroutine(loadLater());
+			GameManager.instance.loadLevel("Act3Cutscene");
 		}
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		character.endScene = true;	
-	}
-
-	IEnumerator loadLater()
-	{
-		yield return new WaitForSeconds(2f);
-
-		GameManager.instance.loadLevel("Act3Cutscene");
 	}
 }

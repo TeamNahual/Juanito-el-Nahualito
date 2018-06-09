@@ -42,7 +42,7 @@ public class StatueEvent : EventObject {
 
 		Vector3 fwd = Juanito.ins.JuanitoSpirit.transform.TransformDirection(Vector3.forward);
         Vector3 dir = Vector3.Normalize(transform.position - Juanito.ins.JuanitoSpirit.transform.position);
-		bool dirCheck = Vector3.Dot(fwd, dir) > 0.5;
+		bool dirCheck = Vector3.Dot(fwd, dir) > 0.4;
 
 		if(dirCheck)
 		{
