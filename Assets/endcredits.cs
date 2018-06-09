@@ -39,7 +39,7 @@ public class endcredits : MonoBehaviour {
 		}
 
 
-		if (Input.anyKeyDown && interactable)
+		if (Input.anyKeyDown)
 		{
 			if (!state)
 			{

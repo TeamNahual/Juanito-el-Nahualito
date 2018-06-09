@@ -9,7 +9,8 @@ public class AnyButtonPress : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
@@ -17,6 +18,20 @@ public class AnyButtonPress : MonoBehaviour {
 		if(Input.anyKeyDown)
 		{
 			TitleButton.GetComponent<UIButton>().ExecuteClick();
+		}
+
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			if(Cursor.visible)
+			{
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+			}
+			else
+			{
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+			}
 		}
 	}
 }
